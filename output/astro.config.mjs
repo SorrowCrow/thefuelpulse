@@ -10,7 +10,7 @@ import cloudflare from "@astrojs/cloudflare";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://dieselcenas.lv',
+  site: 'https://thefuelpulse.com',
 
   i18n: {
     defaultLocale: 'lv',
