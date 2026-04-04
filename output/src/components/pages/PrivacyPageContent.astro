@@ -1,0 +1,104 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { t, localePath } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang} title={t(lang, 'meta.privacy.title')} description={t(lang, 'meta.privacy.description')}>
+  <div class="max-w-3xl mx-auto" data-reveal>
+
+    <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'common.back')}</a>
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">{t(lang, 'privacy.title')}</h1>
+    <p class="text-sm text-base-content/40 mb-8">{t(lang, 'privacy.updated')}</p>
+
+    <div class="card bg-base-100 border border-base-300 p-6 md:p-8 space-y-8 text-base-content/70 leading-relaxed">
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.1.title')}</h2>
+        <p>{t(lang, 'privacy.1.p')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.2.title')}</h2>
+        <p class="mb-3">{t(lang, 'privacy.2.p1')}</p>
+        <p>{t(lang, 'privacy.2.p2')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.3.title')}</h2>
+        <p class="mb-3">{t(lang, 'privacy.3.p1')}</p>
+        <ul class="space-y-2 mb-3">
+          <li class="flex gap-2">
+            <span class="text-base-content/30 shrink-0 mt-1">›</span>
+            <span><strong>fuel-theme</strong> — {t(lang, 'privacy.3.fueltheme')}</span>
+          </li>
+        </ul>
+        <p>{t(lang, 'privacy.3.p2')} <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="link link-primary">Google's Ads Settings</a>.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.4.title')}</h2>
+        <p class="mb-3">{t(lang, 'privacy.4.p1')}</p>
+        <p class="mb-3">{t(lang, 'privacy.4.p2')}</p>
+        <p class="mb-3">{t(lang, 'privacy.4.p3')} <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="link link-primary">Google's Ads Settings</a> / <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" class="link link-primary">aboutads.info</a>.</p>
+        <p><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" class="link link-primary">{t(lang, 'privacy.4.p4')}</a></p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.5.title')}</h2>
+        <p>{t(lang, 'privacy.5.p')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.6.title')}</h2>
+        <p>{t(lang, 'privacy.6.p')} <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="link link-primary">Cloudflare Privacy Policy</a>.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.7.title')}</h2>
+        <p>{t(lang, 'privacy.7.p')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.8.title')}</h2>
+        <p class="mb-3">{t(lang, 'privacy.8.p1')}</p>
+        <p>{t(lang, 'privacy.8.p2')} <a href="https://myaccount.google.com/data-and-privacy" target="_blank" rel="noopener noreferrer" class="link link-primary">Data & Privacy settings</a>.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.9.title')}</h2>
+        <p>{t(lang, 'privacy.9.p')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.10.title')}</h2>
+        <p>{t(lang, 'privacy.10.p')}</p>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

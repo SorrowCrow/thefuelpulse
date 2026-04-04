@@ -1,3 +1,5 @@
+export type Language = 'en' | 'lv' | 'ru';
+
 export type FuelType = 'diesel' | 'petrol_95' | 'petrol_98';
 
 export interface FuelPrices {

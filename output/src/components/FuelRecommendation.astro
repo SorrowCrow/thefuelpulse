@@ -1,6 +1,14 @@
 ---
+import { t } from '@/i18n/utils';
 import recData from '@/data/fuel-recommendation.json';
 import { formatDateTime } from '@/utils/dateHelpers';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
 
 type FuelBlock = { recommendation: string; confidence: string; summary: string };
 
@@ -15,66 +23,50 @@ const data = recData as {
   prices_snapshot: Record<string, number | null>;
 };
 
-const cfgMap: Record<string, { badgeClass: string; borderClass: string; bgClass: string; label: string; icon: string }> = {
-  buy:     { badgeClass: 'badge-success', borderClass: 'border-success/40', bgClass: 'bg-success/5',  label: 'Buy Now',  icon: '⛽' },
-  wait:    { badgeClass: 'badge-error',   borderClass: 'border-error/40',   bgClass: 'bg-error/5',    label: 'Wait',     icon: '⏳' },
-  neutral: { badgeClass: 'badge-ghost',   borderClass: 'border-base-300',   bgClass: 'bg-base-100',   label: 'Monitor',  icon: '📊' },
-};
-const confMap: Record<string, string> = {
-  high: 'High', medium: 'Medium', low: 'Low',
+const cfgMap: Record<string, { badgeClass: string; borderClass: string; bgClass: string; recKey: string; icon: string }> = {
+  buy:     { badgeClass: 'badge-success', borderClass: 'border-success/40', bgClass: 'bg-success/5',  recKey: 'rec.buy',     icon: '⛽' },
+  wait:    { badgeClass: 'badge-error',   borderClass: 'border-error/40',   bgClass: 'bg-error/5',    recKey: 'rec.wait',    icon: '⏳' },
+  neutral: { badgeClass: 'badge-ghost',   borderClass: 'border-base-300',   bgClass: 'bg-base-100',   recKey: 'rec.monitor', icon: '📊' },
 };
 
-// Practical fill-up advice based on recommendation × confidence
-const tipsMap: Record<string, Record<string, string>> = {
-  buy: {
-    high:   "Fill up now — even if your tank is half full. Prices likely rising within days.",
-    medium: "Consider topping up if you're below half a tank.",
-    low:    "Weak buy signal — top up if running low, no urgency otherwise.",
-  },
-  wait: {
-    high:   "Hold off if you can last 3–5 more days. A price drop is likely.",
-    medium: "Safe to delay if you have a few days of fuel left.",
-    low:    "Slight lean toward waiting, but fill up if you need to.",
-  },
-  neutral: {
-    high:   "Prices are stable — fill up on your normal schedule.",
-    medium: "No strong signal. Top up whenever convenient.",
-    low:    "Not enough data. Fill up based on your own needs.",
-  },
+const confKeyMap: Record<string, string> = {
+  high: 'rec.conf.high', medium: 'rec.conf.medium', low: 'rec.conf.low',
 };
 
-// Tooltip descriptions for confidence levels
-const confDesc: Record<string, string> = {
-  high:   "High: multiple signals align — price trend + global market news",
-  medium: "Medium: some signals present, but mixed or limited data",
-  low:    "Low: insufficient data or conflicting signals",
-};
-
-const fuels: { key: keyof typeof data; label: string }[] = [
-  { key: 'diesel',    label: 'Diesel'    },
-  { key: 'petrol_95', label: 'Petrol 95' },
-  { key: 'petrol_98', label: 'Petrol 98' },
+const fuels: { key: keyof typeof data; labelKey: string }[] = [
+  { key: 'diesel',    labelKey: 'fuel.diesel'   },
+  { key: 'petrol_95', labelKey: 'fuel.petrol95' },
+  { key: 'petrol_98', labelKey: 'fuel.petrol98' },
 ];
 
-const fuelCards = fuels.map(({ key, label }) => {
+const fuelCards = fuels.map(({ key, labelKey }) => {
   const fb   = data[key] as FuelBlock;
   const cfg  = cfgMap[fb.recommendation] ?? cfgMap.neutral;
-  const conf = confMap[fb.confidence] ?? fb.confidence;
-  const tip  = (tipsMap[fb.recommendation] ?? tipsMap.neutral)[fb.confidence] ?? tipsMap.neutral.low;
+  const conf = t(lang, confKeyMap[fb.confidence] ?? 'rec.conf.low');
+  const tipKey = `rec.tips.${fb.recommendation ?? 'neutral'}.${fb.confidence ?? 'low'}`;
+  const tip  = t(lang, tipKey);
   const snap = data.prices_snapshot[key as string];
-  const cdesc = confDesc[fb.confidence] ?? '';
-  return { label, fb, cfg, conf, tip, snap, cdesc };
+  const cdescKey = `rec.confdesc.${fb.confidence ?? 'low'}`;
+  const cdesc = t(lang, cdescKey);
+  const recLabel = t(lang, cfg.recKey);
+  const label = t(lang, labelKey);
+  return { label, fb, cfg, conf, tip, snap, cdesc, recLabel };
 });
 
 const hasAnalysis = data.analysis && data.analysis.trim().length > 0;
 const hasSources  = data.sources && data.sources.length > 0;
+
+const showmore = t(lang, 'rec.showmore');
+const showless = t(lang, 'rec.showless');
+const showanalysis = t(lang, 'rec.showanalysis');
+const hideanalysis = t(lang, 'rec.hideanalysis');
 ---
 
 <div class="mb-8" data-reveal>
 
   <!-- Header -->
   <div class="flex items-center gap-2 mb-4">
-    <span class="label-eyebrow">AI Recommendation</span>
+    <span class="label-eyebrow">{t(lang, 'rec.title')}</span>
     <span class="text-xs text-base-content/30 ml-auto">
       {formatDateTime(data.generated_at, 'en')}
     </span>
@@ -82,8 +74,9 @@ const hasSources  = data.sources && data.sources.length > 0;
 
   <!-- Per-fuel cards row -->
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-    {fuelCards.map(({ label, fb, cfg, conf, tip, snap, cdesc }) => (
-      <div class:list={['card border p-4', cfg.bgClass, cfg.borderClass]} x-data="{ expanded: false }">
+    {fuelCards.map(({ label, fb, cfg, conf, tip, snap, cdesc, recLabel }) => (
+      <div class:list={['card border p-4', cfg.bgClass, cfg.borderClass]}
+           x-data={`{ expanded: false, showmore: ${JSON.stringify(showmore)}, showless: ${JSON.stringify(showless)} }`}>
         <div class="flex items-center justify-between mb-2">
           <span class="text-sm font-semibold text-base-content/70">{label}</span>
           <span class="text-xl" aria-hidden="true">{cfg.icon}</span>
@@ -91,10 +84,10 @@ const hasSources  = data.sources && data.sources.length > 0;
 
         <!-- Recommendation badge with confidence tooltip -->
         <div class="flex items-center gap-2 mb-1">
-          <div class="tooltip tooltip-bottom" data-tip={`${cfg.label} · ${conf} confidence\n${cdesc}`}>
-            <span class:list={['badge badge-sm font-bold cursor-help', cfg.badgeClass]}>{cfg.label}</span>
+          <div class="tooltip tooltip-bottom" data-tip={`${recLabel} · ${conf} ${t(lang, 'rec.conf.suffix')}\n${cdesc}`}>
+            <span class:list={['badge badge-sm font-bold cursor-help whitespace-normal text-center h-auto py-0.5 leading-tight', cfg.badgeClass]}>{recLabel}</span>
           </div>
-          <span class="text-xs text-base-content/40">{conf} conf.</span>
+          <span class="text-xs text-base-content/40">{conf} {t(lang, 'rec.conf.suffix')}</span>
         </div>
 
         <!-- Practical fill-up advice (always visible) -->
@@ -107,8 +100,8 @@ const hasSources  = data.sources && data.sources.length > 0;
           <button
             class="text-xs text-base-content/40 hover:text-base-content/60 mt-1 transition-colors"
             x-on:click="expanded = !expanded"
-            x-text="expanded ? 'Show less ▲' : 'Show more ▼'"
-          >Show more ▼</button>
+            x-text="expanded ? showless : showmore"
+          >{showmore}</button>
         </div>
 
         {snap !== null && snap !== undefined && (
@@ -133,7 +126,7 @@ const hasSources  = data.sources && data.sources.length > 0;
   <!-- News sources (always visible) -->
   {hasSources && (
     <div class="mb-3">
-      <p class="label-eyebrow mb-2">News Sources</p>
+      <p class="label-eyebrow mb-2">{t(lang, 'rec.newsources')}</p>
       <ul class="space-y-1">
         {data.sources.map((s: { title: string; url: string; published_at: string }) => (
           <li class="text-xs flex items-start gap-2">
@@ -159,12 +152,12 @@ const hasSources  = data.sources && data.sources.length > 0;
 
   <!-- Analysis toggle -->
   {hasAnalysis && (
-    <div x-data="{ open: false }">
+    <div x-data={`{ open: false, showanalysis: ${JSON.stringify(showanalysis)}, hideanalysis: ${JSON.stringify(hideanalysis)} }`}>
       <button
         class="btn btn-ghost btn-xs text-xs gap-1"
         x-on:click="open = !open"
       >
-        <span x-text="open ? 'Hide full analysis ▲' : 'Show full analysis ▼'">Show full analysis ▼</span>
+        <span x-text="open ? hideanalysis : showanalysis">{showanalysis}</span>
       </button>
 
       <div x-show="open" x-transition class="mt-3">

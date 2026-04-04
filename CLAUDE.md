@@ -65,7 +65,9 @@ Phase 9  Deployment prep            Netlify/Vercel config, final build verificat
 **Current phase: 9**
 
 ## Notes
-- English only — no bilingual support
+- **Languages**: Latvian (default, `/`), English (`/en/`), Russian (`/ru/`) — expandable to more
+- Translation strings in `src/i18n/{lv,en,ru}.json`. All components accept a `lang: Language` prop.
+- Adding a new language: (1) add JSON file, (2) add locale to `astro.config.mjs`, (3) add `src/pages/{code}/` with thin wrapper pages
 - No tests (run and gun)
 - Theme: shadcn monochrome (black/white/grey) via DaisyUI v5 CSS variable overrides
 - `output/` IS the project root — `npm install` and `npm run dev` run from there

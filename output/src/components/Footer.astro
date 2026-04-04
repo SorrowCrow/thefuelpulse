@@ -1,20 +1,28 @@
 ---
+import { t, localePath } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
 const year = new Date().getFullYear();
 ---
+
 <footer class="border-t border-base-300 py-8 mt-8">
   <div class="container mx-auto px-4 flex flex-col items-center gap-4">
     <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-base-content/50">
-      <a href="/about" class="hover:text-primary transition-colors">About</a>
-      <a href="/contact" class="hover:text-primary transition-colors">Contact</a>
-      <a href="/privacy" class="hover:text-primary transition-colors">Privacy Policy</a>
-      <a href="/news" class="hover:text-primary transition-colors">News</a>
+      <a href={localePath('/about', lang)} class="hover:text-primary transition-colors">{t(lang, 'footer.about')}</a>
+      <a href={localePath('/contact', lang)} class="hover:text-primary transition-colors">{t(lang, 'footer.contact')}</a>
+      <a href={localePath('/privacy', lang)} class="hover:text-primary transition-colors">{t(lang, 'footer.privacy')}</a>
+      <a href={localePath('/news', lang)} class="hover:text-primary transition-colors">{t(lang, 'footer.news')}</a>
     </nav>
     <p class="text-sm text-base-content/40 text-center">
       © {year} The Fuel Pulse · <a href="mailto:info@thefuelpulse.com" class="hover:text-primary transition-colors">info@thefuelpulse.com</a>
     </p>
     <p class="text-xs text-base-content/25 text-center max-w-md">
-      Prices scraped from public retailer websites. Not affiliated with any fuel brand.
-      AI recommendations are for informational purposes only and do not constitute financial advice.
+      {t(lang, 'footer.tagline')}
     </p>
   </div>
 </footer>

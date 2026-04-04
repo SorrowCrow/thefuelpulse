@@ -18,6 +18,7 @@ Usage:
 """
 
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -25,6 +26,19 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+
+
+def _load_env(path: Path) -> None:
+    """Minimal .env loader — no external dependencies required."""
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, _, val = line.partition("=")
+            os.environ.setdefault(key.strip(), val.strip())
+
+_load_env(Path(__file__).parent.parent / ".env")
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
@@ -146,6 +160,64 @@ def fetch_feed(name: str, url: str) -> list[dict]:
     return articles
 
 
+# ── Translation ─────────────────────────────────────────────────────────────────
+
+def translate_articles(articles: list[dict], api_key: str) -> list[dict]:
+    """Batch-translate article titles and descriptions to Latvian and Russian via Gemini."""
+    if not articles:
+        return articles
+
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client(api_key=api_key)
+
+    items = [
+        {"i": i, "title": a["title"], "description": a.get("description", "")}
+        for i, a in enumerate(articles)
+    ]
+
+    prompt = (
+        "Translate the following news article titles and descriptions into Latvian (lv) "
+        "and Russian (ru).\n"
+        "Return ONLY a JSON array with one object per article, in the same order, with fields: "
+        "i, title_lv, title_ru, description_lv, description_ru\n\n"
+        "Rules:\n"
+        "- Keep translations natural and concise\n"
+        "- If the text is already in Latvian, copy it unchanged as title_lv/description_lv\n"
+        "- Return ONLY the JSON array, no markdown, no explanation\n\n"
+        f"Input:\n{json.dumps(items, ensure_ascii=False)}"
+    )
+
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                max_output_tokens=8192,
+                temperature=0.1,
+            ),
+        )
+        translations = json.loads(response.text.strip())
+    except Exception as e:
+        print(f"  ⚠️  Translation failed ({e}), skipping")
+        return articles
+
+    by_index = {t["i"]: t for t in translations if "i" in t}
+    enriched = []
+    for i, article in enumerate(articles):
+        tr = by_index.get(i, {})
+        enriched.append({
+            **article,
+            "title_lv":       tr.get("title_lv", article["title"]),
+            "title_ru":       tr.get("title_ru", article["title"]),
+            "description_lv": tr.get("description_lv", article.get("description", "")),
+            "description_ru": tr.get("description_ru", article.get("description", "")),
+        })
+    return enriched
+
+
 # ── Orchestration ───────────────────────────────────────────────────────────────
 
 def run() -> list[dict]:
@@ -171,6 +243,14 @@ def main() -> None:
     print(f"{'='*50}\n")
 
     articles = run()
+
+    api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if api_key and not dry_run:
+        print("\n  Translating articles with Gemini...")
+        articles = translate_articles(articles, api_key)
+        print("  ✅ Translations added (lv, ru)")
+    elif not api_key:
+        print("  ⚠️  GEMINI_API_KEY not set — skipping translation")
 
     if dry_run:
         print(f"\n[dry-run] {len(articles)} articles would be written:")

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FuelRecommendation from '@/components/FuelRecommendation.astro';
+import PriceCard from '@/components/PriceCard.astro';
+import PriceChart from '@/components/PriceChart.astro';
+import StationPriceChart from '@/components/StationPriceChart.astro';
+import StationPrices from '@/components/StationPrices.astro';
+import NewsFeed from '@/components/NewsFeed.astro';
+import { t } from '@/i18n/utils';
+import pricesData from '@/data/prices.json';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const prices = pricesData.averages;
+const updated = pricesData.last_updated;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Fuel Prices in Latvia",
+  "description": "Current retail fuel prices (diesel, petrol 95, petrol 98) across major Latvian fuel stations.",
+  "url": "https://fuel.lv/",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dateModified": updated,
+  "variableMeasured": [
+    { "@type": "PropertyValue", "name": "Diesel price",    "unitText": "EUR per litre", "value": prices.diesel    },
+    { "@type": "PropertyValue", "name": "Petrol 95 price", "unitText": "EUR per litre", "value": prices.petrol_95 },
+    { "@type": "PropertyValue", "name": "Petrol 98 price", "unitText": "EUR per litre", "value": prices.petrol_98 },
+  ]
+};
+---
+
+<BaseLayout lang={lang} title={t(lang, 'meta.home.title')} description={t(lang, 'meta.home.description')}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2">
+      <FuelRecommendation lang={lang} />
+      <PriceCard lang={lang} />
+      <StationPrices lang={lang} />
+      <PriceChart />
+      <StationPriceChart />
+    </div>
+    <div class="lg:col-span-1">
+      <NewsFeed lang={lang} />
+    </div>
+  </section>
+</BaseLayout>

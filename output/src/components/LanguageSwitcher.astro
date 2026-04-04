@@ -1,0 +1,33 @@
+---
+import { localePath, getCanonicalPath } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const canonical = getCanonicalPath(Astro.url.pathname);
+
+const langs: { code: Language; label: string }[] = [
+  { code: 'lv', label: 'LV' },
+  { code: 'en', label: 'EN' },
+  { code: 'ru', label: 'RU' },
+];
+---
+
+<div class="flex items-center gap-0.5">
+  {langs.map(({ code, label }, i) => (
+    <>
+      {i > 0 && <span class="text-base-content/20 text-xs">|</span>}
+      {code === lang ? (
+        <span class="px-1.5 py-0.5 text-xs font-semibold text-primary">{label}</span>
+      ) : (
+        <a
+          href={localePath(canonical, code)}
+          class="px-1.5 py-0.5 text-xs text-base-content/40 hover:text-base-content transition-colors"
+        >{label}</a>
+      )}
+    </>
+  ))}
+</div>

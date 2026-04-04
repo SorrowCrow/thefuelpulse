@@ -1,5 +1,13 @@
 ---
+import { t } from '@/i18n/utils';
 import stationData from '@/data/station-prices.json';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
 
 type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
 
@@ -22,10 +30,10 @@ const stations = stationData.stations as Array<{
   error: string | null;
 }>;
 
-const fuelTypes: Array<{ key: FuelKey; label: string }> = [
-  { key: 'diesel',    label: 'Diesel'    },
-  { key: 'petrol_95', label: 'Petrol 95' },
-  { key: 'petrol_98', label: 'Petrol 98' },
+const fuelTypes: Array<{ key: FuelKey; labelKey: string }> = [
+  { key: 'diesel',    labelKey: 'fuel.diesel'   },
+  { key: 'petrol_95', labelKey: 'fuel.petrol95' },
+  { key: 'petrol_98', labelKey: 'fuel.petrol98' },
 ];
 
 const tableData: Record<FuelKey, FuelTableData> = {} as Record<FuelKey, FuelTableData>;
@@ -48,13 +56,17 @@ for (const { key } of fuelTypes) {
 }
 
 const tableDataJson = JSON.stringify(tableData);
-const scrapedAt = stationData.scraped_at;
+
+const fuelTabsJson = JSON.stringify(
+  fuelTypes.map(({ key, labelKey }) => ({ key, label: t(lang, labelKey) }))
+);
 ---
 
 <div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal data-reveal-delay="150ms"
      x-data={`{
        fuel: 'diesel',
        data: ${tableDataJson},
+       tabs: ${fuelTabsJson},
        deltaText(price, avg) {
          if (price === null || avg === 0) return '—';
          const pct = (price - avg) / avg * 100;
@@ -70,19 +82,18 @@ const scrapedAt = stationData.scraped_at;
        }
      }`}>
   <div class="card-body p-0">
-    <h2 class="card-title text-2xl md:text-3xl mb-4">Station Comparison</h2>
+    <h2 class="card-title text-2xl md:text-3xl mb-4">{t(lang, 'station.title')}</h2>
 
     <!-- Fuel selector -->
     <div role="tablist" class="tabs tabs-bordered mb-4">
-      {fuelTypes.map(({ key, label }) => (
+      <template x-for="tab in tabs" :key="tab.key">
         <button
           role="tab"
-          :class={`fuel === '${key}' ? 'tab tab-active font-semibold' : 'tab text-base-content/60'`}
-          x-on:click={`fuel = '${key}'`}
-        >
-          {label}
-        </button>
-      ))}
+          :class="fuel === tab.key ? 'tab tab-active font-semibold' : 'tab text-base-content/60'"
+          x-on:click="fuel = tab.key"
+          x-text="tab.label"
+        ></button>
+      </template>
     </div>
 
     <!-- Prices table -->
@@ -90,9 +101,9 @@ const scrapedAt = stationData.scraped_at;
       <table class="table w-full">
         <thead>
           <tr class="text-base-content/50 text-xs uppercase tracking-wider">
-            <th>Station</th>
-            <th>Price</th>
-            <th>vs avg</th>
+            <th>{t(lang, 'station.station')}</th>
+            <th>{t(lang, 'station.price')}</th>
+            <th>{t(lang, 'station.vsavg')}</th>
           </tr>
         </thead>
         <tbody>
@@ -103,7 +114,7 @@ const scrapedAt = stationData.scraped_at;
                 <span
                   x-show="idx === 0 && row.price !== null"
                   class="badge badge-success badge-sm ml-2 text-xs"
-                >Best</span>
+                >{t(lang, 'station.best')}</span>
               </td>
               <td class="py-3 font-mono">
                 <span
@@ -123,7 +134,7 @@ const scrapedAt = stationData.scraped_at;
         </tbody>
         <tfoot>
           <tr class="text-base-content/40 text-xs border-t border-base-300">
-            <td class="pt-2">Market avg</td>
+            <td class="pt-2">{t(lang, 'station.marketavg')}</td>
             <td class="pt-2 font-mono" x-text="data[fuel].avg > 0 ? data[fuel].avg.toFixed(3) + ' €' : '—'"></td>
             <td></td>
           </tr>

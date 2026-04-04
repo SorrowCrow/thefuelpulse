@@ -1,5 +1,23 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { t, localePath, getCanonicalPath } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const canonical = getCanonicalPath(Astro.url.pathname);
+
+const navLinks = [
+  { key: 'nav.home',    path: '/'        },
+  { key: 'nav.news',    path: '/news'    },
+  { key: 'nav.about',   path: '/about'   },
+  { key: 'nav.contact', path: '/contact' },
+];
 ---
+
 <header id="site-header" class="bg-base-100 border-b border-base-300">
   <div class="navbar container mx-auto px-4">
     <div class="navbar-start items-center gap-2">
@@ -10,23 +28,22 @@
           </svg>
         </div>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
-          <li><a href="/">Home</a></li>
-          <li><a href="/news">News</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+          {navLinks.map(({ key, path }) => (
+            <li><a href={localePath(path, lang)}>{t(lang, key)}</a></li>
+          ))}
         </ul>
       </div>
-      <a href="/" class="btn btn-ghost text-base font-semibold tracking-tight">
-        Fuel Prices Latvia
+      <a href={localePath('/', lang)} class="btn btn-ghost text-base font-semibold tracking-tight">
+        {t(lang, 'site.name')}
       </a>
       <ul class="menu menu-horizontal hidden lg:flex px-1">
-        <li><a href="/" class="btn btn-ghost btn-sm">Home</a></li>
-        <li><a href="/news" class="btn btn-ghost btn-sm">News</a></li>
-        <li><a href="/about" class="btn btn-ghost btn-sm">About</a></li>
-        <li><a href="/contact" class="btn btn-ghost btn-sm">Contact</a></li>
+        {navLinks.map(({ key, path }) => (
+          <li><a href={localePath(path, lang)} class="btn btn-ghost btn-sm">{t(lang, key)}</a></li>
+        ))}
       </ul>
     </div>
-    <div class="navbar-end">
+    <div class="navbar-end gap-2">
+      <LanguageSwitcher lang={lang} />
       <button id="theme-toggle" class="btn btn-ghost btn-sm btn-circle" aria-label="Toggle theme">
         <!-- Sun icon — shown in dark mode (switch to light) -->
         <svg class="theme-icon-sun w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

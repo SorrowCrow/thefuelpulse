@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { t, localePath } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang} title={t(lang, 'meta.contact.title')} description={t(lang, 'meta.contact.description')}>
+  <div class="max-w-xl mx-auto" data-reveal>
+
+    <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'common.back')}</a>
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">{t(lang, 'contact.title')}</h1>
+    <p class="text-base-content/60 mb-8">{t(lang, 'contact.subtitle')}</p>
+
+    <div class="card bg-base-100 border border-base-300 p-6 md:p-8 space-y-6">
+
+      <div>
+        <h2 class="text-sm font-semibold text-base-content/50 uppercase tracking-wide mb-1">{t(lang, 'contact.general.title')}</h2>
+        <a href="mailto:info@thefuelpulse.com" class="link link-primary text-lg">info@thefuelpulse.com</a>
+        <p class="text-sm text-base-content/50 mt-1">{t(lang, 'contact.general.desc')}</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <h2 class="text-sm font-semibold text-base-content/50 uppercase tracking-wide mb-1">{t(lang, 'contact.data.title')}</h2>
+        <a href="mailto:data@thefuelpulse.com" class="link link-primary text-lg">data@thefuelpulse.com</a>
+        <p class="text-sm text-base-content/50 mt-1">{t(lang, 'contact.data.desc')}</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <h2 class="text-sm font-semibold text-base-content/50 uppercase tracking-wide mb-1">{t(lang, 'contact.ads.title')}</h2>
+        <a href="mailto:ads@thefuelpulse.com" class="link link-primary text-lg">ads@thefuelpulse.com</a>
+        <p class="text-sm text-base-content/50 mt-1">{t(lang, 'contact.ads.desc')}</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="text-xs text-base-content/30">{t(lang, 'contact.response')}</p>
+
+    </div>
+  </div>
+</BaseLayout>

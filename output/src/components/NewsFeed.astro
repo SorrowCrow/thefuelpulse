@@ -1,18 +1,40 @@
 ---
+import { t, localePath } from '@/i18n/utils';
 import newsRaw from '@/data/news-raw.json';
+import type { Language } from '@/types';
 
-const articles = (newsRaw as { articles: { title: string; url: string; description: string; published_at: string; source: string }[] }).articles.slice(0, 5);
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+type Article = {
+  title: string; url: string; description: string; published_at: string; source: string;
+  title_lv?: string; title_ru?: string;
+  description_lv?: string; description_ru?: string;
+};
+
+const rawArticles = (newsRaw as { articles: Article[] }).articles.slice(0, 5);
+
+function pick(article: Article, field: 'title' | 'description'): string {
+  if (lang === 'lv') return (article[`${field}_lv` as keyof Article] as string) || article[field];
+  if (lang === 'ru') return (article[`${field}_ru` as keyof Article] as string) || article[field];
+  return article[field];
+}
+
+const articles = rawArticles;
 ---
 
 <div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6" data-reveal data-reveal-delay="200ms">
   <div class="card-body p-0">
     <div class="flex items-center justify-between mb-4">
-      <h2 class="card-title text-2xl md:text-3xl">Latest News</h2>
-      <a href="/news" class="text-xs text-primary hover:underline underline-offset-2">View all →</a>
+      <h2 class="card-title text-2xl md:text-3xl">{t(lang, 'news.widget.title')}</h2>
+      <a href={localePath('/news', lang)} class="text-xs text-primary hover:underline underline-offset-2">{t(lang, 'news.widget.viewall')}</a>
     </div>
     <div class="space-y-4">
       {articles.length === 0 && (
-        <p class="text-sm text-base-content/50">No news articles available.</p>
+        <p class="text-sm text-base-content/50">{t(lang, 'news.widget.empty')}</p>
       )}
       {articles.map((article, i) => (
         <div class="card bg-base-200 border border-base-300" data-reveal data-reveal-delay={`${i * 80 + 250}ms`}>
@@ -29,10 +51,10 @@ const articles = (newsRaw as { articles: { title: string; url: string; descripti
                 target="_blank"
                 rel="noopener noreferrer"
                 class="hover:text-primary transition-colors"
-              >{article.title}</a>
+              >{pick(article, 'title')}</a>
             </h3>
             {article.description && (
-              <p class="text-sm text-base-content/70 leading-relaxed">{article.description}</p>
+              <p class="text-sm text-base-content/70 leading-relaxed">{pick(article, 'description')}</p>
             )}
           </div>
         </div>

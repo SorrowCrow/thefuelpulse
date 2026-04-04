@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { t, localePath } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang} title={t(lang, 'meta.about.title')} description={t(lang, 'meta.about.description')}>
+  <div class="max-w-3xl mx-auto space-y-6" data-reveal>
+
+    <div>
+      <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'common.back')}</a>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">{t(lang, 'about.title')}</h1>
+      <p class="text-base-content/60 leading-relaxed">{t(lang, 'about.subtitle')}</p>
+    </div>
+
+    <div class="card bg-base-100 border border-base-300 p-6 md:p-8 space-y-8">
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.whatwedo.title')}</h2>
+        <p class="text-base-content/70 leading-relaxed mb-3">{t(lang, 'about.whatwedo.p1')}</p>
+        <p class="text-base-content/70 leading-relaxed">{t(lang, 'about.whatwedo.p2')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.methodology.title')}</h2>
+        <ul class="space-y-2 text-base-content/70 leading-relaxed">
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>Station prices</strong> — {t(lang, 'about.methodology.station')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>Market news</strong> — {t(lang, 'about.methodology.news')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>Historical data</strong> — {t(lang, 'about.methodology.history')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>AI recommendation</strong> — {t(lang, 'about.methodology.ai')}</span></li>
+        </ul>
+        <p class="text-sm text-base-content/50 mt-3">{t(lang, 'about.methodology.note')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.frequency.title')}</h2>
+        <p class="text-base-content/70 leading-relaxed">{t(lang, 'about.frequency.p')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.trust.title')}</h2>
+        <p class="text-base-content/70 leading-relaxed mb-3">{t(lang, 'about.trust.p1')}</p>
+        <p class="text-base-content/70 leading-relaxed">{t(lang, 'about.trust.p2')}</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.contact.title')}</h2>
+        <p class="text-base-content/70 leading-relaxed mb-2">{t(lang, 'about.contact.p')}</p>
+        <a href="mailto:info@thefuelpulse.com" class="link link-primary">info@thefuelpulse.com</a>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.disclaimer.title')}</h2>
+        <p class="text-sm text-base-content/50 leading-relaxed">{t(lang, 'about.disclaimer.p')}</p>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

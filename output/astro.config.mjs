@@ -9,6 +9,14 @@ import cloudflare from "@astrojs/cloudflare";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  i18n: {
+    defaultLocale: 'lv',
+    locales: ['lv', 'en', 'ru'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+
   integrations: [alpinejs()],
 
   vite: {

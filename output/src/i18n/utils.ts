@@ -1,32 +1,35 @@
-import { translations } from './translations';
 import type { Language } from '@/types';
+import en from './en.json';
+import lv from './lv.json';
+import ru from './ru.json';
 
-export function getTranslation(lang: Language, key: string): string {
-  return translations[key]?.[lang] || key;
+const translations: Record<Language, Record<string, string>> = { en, lv, ru };
+
+export function t(lang: Language, key: string): string {
+  return translations[lang]?.[key] ?? translations['en']?.[key] ?? key;
 }
 
-export function getCurrentLang(url: URL): Language {
-  const pathname = url.pathname;
-  if (pathname.startsWith('/en')) {
-    return 'en';
+/** Strip locale prefix from a URL pathname to get the canonical path. */
+export function getCanonicalPath(pathname: string): string {
+  const match = pathname.match(/^\/(en|ru)(\/|$)(.*)/);
+  if (match) {
+    const rest = match[3];
+    return rest ? `/${rest}` : '/';
   }
+  return pathname;
+}
+
+/** Build a locale-prefixed path. lv is the default locale (no prefix). */
+export function localePath(canonicalPath: string, lang: Language): string {
+  if (lang === 'lv') return canonicalPath;
+  if (canonicalPath === '/') return `/${lang}/`;
+  return `/${lang}${canonicalPath}`;
+}
+
+/** Detect language from URL pathname. */
+export function getLangFromUrl(url: URL): Language {
+  const [, prefix] = url.pathname.split('/');
+  if (prefix === 'en') return 'en';
+  if (prefix === 'ru') return 'ru';
   return 'lv';
-}
-
-export function getLocalizedPath(path: string, lang: Language): string {
-  if (lang === 'en') {
-    return `/en${path}`;
-  }
-  return path;
-}
-
-export function getAlternateLanguage(currentLang: Language): Language {
-  return currentLang === 'lv' ? 'en' : 'lv';
-}
-
-export function getAlternatePath(currentPath: string, currentLang: Language): string {
-  if (currentLang === 'lv') {
-    return `/en${currentPath}`;
-  }
-  return currentPath.replace(/^\/en/, '') || '/';
 }
