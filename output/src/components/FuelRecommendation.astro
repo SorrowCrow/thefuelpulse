@@ -83,7 +83,7 @@ const hasSources  = data.sources && data.sources.length > 0;
   <!-- Per-fuel cards row -->
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
     {fuelCards.map(({ label, fb, cfg, conf, tip, snap, cdesc }) => (
-      <div class:list={['card border p-4', cfg.bgClass, cfg.borderClass]}>
+      <div class:list={['card border p-4', cfg.bgClass, cfg.borderClass]} x-data="{ expanded: false }">
         <div class="flex items-center justify-between mb-2">
           <span class="text-sm font-semibold text-base-content/70">{label}</span>
           <span class="text-xl" aria-hidden="true">{cfg.icon}</span>
@@ -97,11 +97,19 @@ const hasSources  = data.sources && data.sources.length > 0;
           <span class="text-xs text-base-content/40">{conf} conf.</span>
         </div>
 
-        <!-- Practical fill-up advice -->
+        <!-- Practical fill-up advice (always visible) -->
         <p class="text-xs text-primary/70 font-medium leading-snug mb-2">{tip}</p>
 
-        <!-- AI summary -->
-        <p class="text-xs text-base-content/60 leading-snug">{fb.summary}</p>
+        <!-- AI summary — collapsed by default, expand on tap -->
+        <div>
+          <p class="text-xs text-base-content/60 leading-snug"
+             :class="expanded ? '' : 'line-clamp-2'">{fb.summary}</p>
+          <button
+            class="text-xs text-base-content/40 hover:text-base-content/60 mt-1 transition-colors"
+            x-on:click="expanded = !expanded"
+            x-text="expanded ? 'Show less ▲' : 'Show more ▼'"
+          >Show more ▼</button>
+        </div>
 
         {snap !== null && snap !== undefined && (
           <p class="text-xs text-base-content/30 mt-2">{snap.toFixed(3)} EUR/L</p>

@@ -7,7 +7,8 @@ export function formatDateTime(isoString: string, lang: 'lv' | 'en'): string {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    hour12: false, // Use 24-hour format
+    hour12: false,
+    timeZone: 'Europe/Riga',
   };
   return new Intl.DateTimeFormat(locale, options).format(date);
 }
