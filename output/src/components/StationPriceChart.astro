@@ -1,0 +1,226 @@
+---
+import historyData from '@/data/price-history.json';
+import { formatShortDate } from '@/utils/dateHelpers';
+
+// All colors pre-computed — no regex inside Alpine x-data (backslashes get stripped by HTML encoding)
+const STATIONS = [
+  { key: 'virsi',   label: 'Virši',    color: 'rgba(251,191,36,0.9)',  fillColor: 'rgba(251,191,36,0.07)'  },
+  { key: 'circlek', label: 'Circle K', color: 'rgba(248,113,113,0.9)', fillColor: 'rgba(248,113,113,0.07)' },
+  { key: 'neste',   label: 'Neste',    color: 'rgba(52,211,153,0.9)',  fillColor: 'rgba(52,211,153,0.07)'  },
+  { key: 'viada',   label: 'Viada',    color: 'rgba(167,139,250,0.9)', fillColor: 'rgba(167,139,250,0.07)' },
+];
+
+type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
+
+// Group multiple polls per day, average per station, oldest-first
+const grouped = new Map<string, {
+  date: string;
+  stations: Record<string, { diesel: number[]; petrol_95: number[]; petrol_98: number[] }>;
+}>();
+
+for (const item of historyData.history) {
+  if (!grouped.has(item.date)) {
+    const stationBuckets: Record<string, { diesel: number[]; petrol_95: number[]; petrol_98: number[] }> = {};
+    for (const s of STATIONS) stationBuckets[s.key] = { diesel: [], petrol_95: [], petrol_98: [] };
+    grouped.set(item.date, { date: item.date, stations: stationBuckets });
+  }
+  const g = grouped.get(item.date)!;
+  const stationPrices = (item as Record<string, unknown>).stations as Record<string, Record<FuelKey, number | null>> | undefined;
+  if (stationPrices) {
+    for (const s of STATIONS) {
+      const sp = stationPrices[s.key];
+      if (!sp) continue;
+      if (sp.diesel    != null) g.stations[s.key].diesel.push(sp.diesel);
+      if (sp.petrol_95 != null) g.stations[s.key].petrol_95.push(sp.petrol_95);
+      if (sp.petrol_98 != null) g.stations[s.key].petrol_98.push(sp.petrol_98);
+    }
+  }
+}
+
+const _avg = (arr: number[]) => arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null;
+
+const allHistory = [...grouped.values()]
+  .sort((a, b) => a.date.localeCompare(b.date))
+  .map(g => ({
+    date: g.date,
+    label: formatShortDate(g.date, 'en'),
+    stations: Object.fromEntries(
+      STATIONS.map(s => [s.key, {
+        diesel:    _avg(g.stations[s.key].diesel),
+        petrol_95: _avg(g.stations[s.key].petrol_95),
+        petrol_98: _avg(g.stations[s.key].petrol_98),
+      }])
+    ),
+  }));
+
+const allHistoryJson = JSON.stringify(allHistory);
+const stationsJson = JSON.stringify(STATIONS);
+---
+
+<div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal data-reveal-delay="100ms">
+  <div class="card-body p-0">
+    <!-- Header row: title + legend -->
+    <div class="flex flex-wrap justify-between items-baseline gap-3 mb-4">
+      <h2 class="card-title text-2xl md:text-3xl">Station Price History</h2>
+      <div class="flex flex-wrap gap-4 text-xs text-base-content/50">
+        {STATIONS.map(s => (
+          <span class="flex items-center gap-1.5">
+            <span class="inline-block w-3 h-3 rounded-full" style={`background:${s.color}`}></span>
+            {s.label}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div
+      x-data={`{
+        fuel: 'diesel',
+        range: '7d',
+        fromDate: '',
+        toDate: '',
+        history: ${allHistoryJson},
+        stations: ${stationsJson},
+
+        filteredData() {
+          if (this.range === '7d')  return this.history.slice(-7);
+          if (this.range === '30d') return this.history.slice(-30);
+          let r = this.history;
+          if (this.fromDate) r = r.filter(e => e.date >= this.fromDate);
+          if (this.toDate)   r = r.filter(e => e.date <= this.toDate);
+          return r;
+        },
+
+        setFuel(f) {
+          this.fuel = f;
+          this.$nextTick(() => this.updateChart());
+        },
+
+        setRange(r) {
+          this.range = r;
+          this.$nextTick(() => this.updateChart());
+        },
+
+        updateChart() {
+          const chart = Chart.getChart(this.$refs.stationChart);
+          if (!chart) return;
+          const data = this.filteredData();
+          const f = this.fuel;
+          chart.data.labels = data.map(e => e.label);
+          chart.data.datasets.forEach((ds, i) => {
+            ds.data = data.map(e => e.stations[this.stations[i].key][f]);
+          });
+          chart.update();
+        },
+
+        init() {
+          const ctx = this.$refs.stationChart.getContext('2d');
+          const f = this.fuel;
+          const initData = this.filteredData();
+
+          const datasets = this.stations.map(s => ({
+            label: s.label,
+            data: initData.map(e => e.stations[s.key][f]),
+            borderColor: s.color,
+            borderWidth: 2,
+            backgroundColor: s.fillColor,
+            pointBackgroundColor: s.color,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            tension: 0.35,
+            fill: true,
+            spanGaps: true,
+          }));
+
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: initData.map(e => e.label),
+              datasets,
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  backgroundColor: '#18181b',
+                  titleColor: '#a1a1aa',
+                  bodyColor: '#fafafa',
+                  borderColor: '#27272a',
+                  borderWidth: 1,
+                  padding: 12,
+                  callbacks: {
+                    label: function(context) {
+                      const v = context.parsed.y;
+                      return ' ' + context.dataset.label + ': ' + (v != null ? v.toFixed(3) + ' EUR' : 'N/A');
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  grid: { display: false },
+                  border: { display: false },
+                  ticks: { color: '#71717a', font: { size: 12 } }
+                },
+                y: {
+                  grid: { color: 'rgba(127,127,127,0.07)' },
+                  border: { display: false },
+                  ticks: {
+                    color: '#71717a',
+                    font: { size: 12 },
+                    callback: function(value) {
+                      return value.toFixed(2) + ' €';
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+      }`}
+    >
+      <!-- Controls row: fuel selector + range selector -->
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <!-- Fuel type -->
+        <div class="join">
+          <button class="join-item btn btn-sm" :class="fuel === 'diesel'    ? 'btn-primary' : 'btn-ghost'" @click="setFuel('diesel')">Diesel</button>
+          <button class="join-item btn btn-sm" :class="fuel === 'petrol_95' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('petrol_95')">95</button>
+          <button class="join-item btn btn-sm" :class="fuel === 'petrol_98' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('petrol_98')">98</button>
+        </div>
+
+        <span class="text-base-content/20 select-none">|</span>
+
+        <!-- Range -->
+        <div class="join">
+          <button class="join-item btn btn-sm" :class="range === '7d'     ? 'btn-neutral' : 'btn-ghost'" @click="setRange('7d')">7d</button>
+          <button class="join-item btn btn-sm" :class="range === '30d'    ? 'btn-neutral' : 'btn-ghost'" @click="setRange('30d')">30d</button>
+          <button class="join-item btn btn-sm" :class="range === 'custom' ? 'btn-neutral' : 'btn-ghost'" @click="setRange('custom')">Custom</button>
+        </div>
+
+        <!-- Custom date range — shown only when range = custom -->
+        <div x-show="range === 'custom'" class="flex items-center gap-2 text-sm">
+          <input
+            type="date"
+            class="input input-sm input-bordered bg-base-200 text-base-content"
+            x-model="fromDate"
+            @change="updateChart()"
+          />
+          <span class="text-base-content/40">—</span>
+          <input
+            type="date"
+            class="input input-sm input-bordered bg-base-200 text-base-content"
+            x-model="toDate"
+            @change="updateChart()"
+          />
+        </div>
+      </div>
+
+      <!-- Chart canvas -->
+      <div class="h-64 md:h-80">
+        <canvas x-ref="stationChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

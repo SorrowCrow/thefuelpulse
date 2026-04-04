@@ -1,0 +1,289 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@theme {
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Inter', system-ui, sans-serif;
+  /* Give shadow-xl a subtle white ring so cards lift off the dark page */
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.4), 0 0 0 1px rgb(255 255 255 / 0.07);
+}
+
+/* ── Light theme ── */
+[data-theme="light"] {
+  --color-base-100: oklch(99% 0.001 240);
+  --color-base-200: oklch(95% 0.003 240);
+  --color-base-300: oklch(87% 0.005 240);
+  --color-base-content: oklch(18% 0.005 240);
+  --color-primary: oklch(58% 0.18 65);
+  --color-primary-content: oklch(99% 0 0);
+  --color-secondary: oklch(50% 0.005 240);
+  --color-secondary-content: oklch(99% 0 0);
+  --color-accent: oklch(52% 0.15 185);
+  --color-accent-content: oklch(99% 0 0);
+  --color-neutral: oklch(90% 0 0);
+  --color-neutral-content: oklch(18% 0 0);
+  --color-success: oklch(48% 0.15 143.4);
+  --color-success-content: oklch(99% 0 0);
+  --color-warning: oklch(55% 0.15 66.1);
+  --color-warning-content: oklch(99% 0 0);
+  --color-error: oklch(50% 0.2 15.4);
+  --color-error-content: oklch(99% 0 0);
+  --rounded-box: 0.375rem;
+  --rounded-btn: 0.375rem;
+  --rounded-badge: 0.375rem;
+}
+
+[data-theme="light"] body {
+  background-color: oklch(96% 0.004 240);
+}
+
+[data-theme="light"] header.scrolled {
+  background: oklch(98% 0 0 / 0.85);
+}
+
+/* Reduce ambient blobs/rig in light mode */
+[data-theme="light"] .bg-blobs { opacity: 0.10; }
+[data-theme="light"] .bg-rig   { opacity: 0.06; }
+
+/* Theme toggle icons */
+[data-theme="dark"]  .theme-icon-moon { display: none; }
+[data-theme="light"] .theme-icon-sun  { display: none; }
+
+/* shadcn-style dark theme with amber fuel accent */
+[data-theme="dark"] {
+  --color-base-100: oklch(11% 0.005 240);   /* card surface — subtle navy tint */
+  --color-base-200: oklch(16% 0.005 240);   /* elevated elements inside cards */
+  --color-base-300: oklch(30% 0.005 240);   /* borders */
+  --color-base-content: oklch(97.8% 0 0);
+  --color-primary: oklch(78% 0.18 65);      /* amber/gold — fuel prices */
+  --color-primary-content: oklch(12% 0 0);
+  --color-secondary: oklch(63% 0 0);
+  --color-secondary-content: oklch(9.5% 0 0);
+  --color-accent: oklch(62% 0.15 185);      /* teal accent */
+  --color-accent-content: oklch(97.8% 0 0);
+  --color-neutral: oklch(20% 0 0);
+  --color-neutral-content: oklch(97.8% 0 0);
+  --color-success: oklch(64.8% 0.15 143.4);
+  --color-success-content: oklch(97.8% 0 0);
+  --color-warning: oklch(74.4% 0.15 66.1);
+  --color-warning-content: oklch(9.5% 0 0);
+  --color-error: oklch(62% 0.2 15.4);
+  --color-error-content: oklch(97.8% 0 0);
+  --rounded-box: 0.375rem;
+  --rounded-btn: 0.375rem;
+  --rounded-badge: 0.375rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: oklch(6% 0.01 240); /* dark navy — base for ambient blob glow */
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ── Card hover micro-interactions ── */
+.card {
+  position: relative;
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    oklch(78% 0.18 65 / 0.07) 0%,
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+.card:hover::before {
+  opacity: 1;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: oklch(78% 0.18 65 / 0.35);
+  box-shadow:
+    0 20px 40px -8px oklch(0% 0 0 / 0.65),
+    0 0 0 1px oklch(78% 0.18 65 / 0.12),
+    0 0 32px oklch(78% 0.18 65 / 0.08);
+}
+
+/* ── Section reveal animations ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Typography utilities ── */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.label-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* ── Header scroll blur ── */
+header.scrolled {
+  backdrop-filter: blur(16px);
+  background: oklch(9.5% 0 0 / 0.7);
+}
+
+/* ── Stat panel micro-interactions ── */
+.stat {
+  transition: background 200ms ease, transform 200ms ease;
+}
+.stat:hover {
+  background: oklch(97.8% 0 0 / 0.025);
+}
+.stat-value {
+  transition: text-shadow 300ms ease;
+}
+.stat:hover .stat-value {
+  text-shadow: 0 0 24px oklch(78% 0.18 65 / 0.5);
+}
+
+/* ── Badge micro-interactions ── */
+.badge {
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+.badge:hover {
+  transform: scale(1.1);
+  filter: brightness(1.15);
+}
+.badge-success {
+  box-shadow: 0 0 0 0 oklch(64.8% 0.15 143.4 / 0);
+  animation: badge-pulse-success 3s ease-in-out infinite;
+}
+.badge-error {
+  box-shadow: 0 0 0 0 oklch(62% 0.2 15.4 / 0);
+  animation: badge-pulse-error 3s ease-in-out infinite;
+}
+
+/* ── Nav link underline sweep ── */
+.menu a {
+  position: relative;
+  transition: color 150ms ease, background 150ms ease;
+}
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  right: 50%;
+  height: 1px;
+  background: oklch(78% 0.18 65);
+  transition: left 220ms ease, right 220ms ease;
+}
+.menu a:hover::after {
+  left: 12%;
+  right: 12%;
+}
+
+/* ── Table row hover ── */
+tbody tr {
+  transition: background 150ms ease;
+}
+tbody tr:hover td {
+  background: oklch(97.8% 0 0 / 0.025);
+}
+
+/* ── Dropdown / modal ── */
+.dropdown-content {
+  animation: pop-in 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Site header brand ── */
+#site-header .btn-ghost {
+  transition: color 200ms ease, letter-spacing 200ms ease;
+}
+#site-header .btn-ghost:hover {
+  color: oklch(78% 0.18 65);
+  letter-spacing: 0.01em;
+}
+
+/* ── Gradient blob keyframes ── */
+@keyframes blob-drift-a {
+  0%   { transform: translate(0px, 0px) scale(1);      opacity: 0.45; }
+  33%  { transform: translate(40px, -30px) scale(1.05); opacity: 0.35; }
+  66%  { transform: translate(-20px, 20px) scale(0.97); opacity: 0.5;  }
+  100% { transform: translate(0px, 0px) scale(1);      opacity: 0.45; }
+}
+@keyframes blob-drift-b {
+  0%   { transform: translate(0px, 0px) scale(1);       opacity: 0.3; }
+  50%  { transform: translate(-50px, 30px) scale(1.08); opacity: 0.4; }
+  100% { transform: translate(0px, 0px) scale(1);       opacity: 0.3; }
+}
+@keyframes blob-drift-c {
+  0%   { transform: translate(0px, 0px) scale(1);      opacity: 0.25; }
+  40%  { transform: translate(30px, 40px) scale(1.04); opacity: 0.35; }
+  100% { transform: translate(0px, 0px) scale(1);      opacity: 0.25; }
+}
+
+/* ── Oil rig keyframes ── */
+@keyframes pump-rock {
+  from { transform: rotate(-6deg); }
+  to   { transform: rotate(6deg);  }
+}
+@keyframes flare-flicker {
+  0%   { opacity: 0.7; transform: scaleY(1);    }
+  20%  { opacity: 1;   transform: scaleY(1.15); }
+  45%  { opacity: 0.5; transform: scaleY(0.9);  }
+  70%  { opacity: 0.9; transform: scaleY(1.1);  }
+  100% { opacity: 0.7; transform: scaleY(1);    }
+}
+@keyframes sea-shimmer {
+  from { transform: translateX(0);     }
+  to   { transform: translateX(-80px); }
+}
+
+/* ── Badge ambient pulse ── */
+@keyframes badge-pulse-success {
+  0%, 85%, 100% { box-shadow: 0 0 0 0 oklch(64.8% 0.15 143.4 / 0); }
+  50%           { box-shadow: 0 0 0 4px oklch(64.8% 0.15 143.4 / 0.25); }
+}
+@keyframes badge-pulse-error {
+  0%, 85%, 100% { box-shadow: 0 0 0 0 oklch(62% 0.2 15.4 / 0); }
+  50%           { box-shadow: 0 0 0 4px oklch(62% 0.2 15.4 / 0.25); }
+}
+
+/* ── Dropdown pop-in ── */
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Oil rig float ── */
+@keyframes rig-float {
+  0%, 100% { transform: translateY(0px);   }
+  50%      { transform: translateY(-5px);  }
+}

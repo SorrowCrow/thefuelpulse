@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import newsRaw from '@/data/news-raw.json';
+
+const { articles, fetched_at } = newsRaw as {
+  fetched_at: string;
+  articles: { title: string; url: string; description: string; published_at: string; source: string }[];
+};
+
+const sources = [...new Set(articles.map(a => a.source))];
+const articlesJson = JSON.stringify(articles);
+---
+
+<BaseLayout title="Fuel News — Latvia" description="Latest global and local fuel price news relevant to Latvia.">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header -->
+    <div class="mb-6" data-reveal>
+      <a href="/" class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">← Back to dashboard</a>
+      <h1 class="text-3xl md:text-4xl font-bold mb-1">Fuel News</h1>
+      <p class="text-sm text-base-content/50">
+        {articles.length} articles · fetched {fetched_at.slice(0, 10)}
+      </p>
+    </div>
+
+    <!-- Filterable list via Alpine -->
+    <div
+      x-data={`{
+        filter: 'all',
+        articles: ${articlesJson},
+        get filtered() {
+          if (this.filter === 'all') return this.articles;
+          return this.articles.filter(a => a.source === this.filter);
+        }
+      }`}
+    >
+      <!-- Source filter chips -->
+      <div class="flex flex-wrap gap-2 mb-6" data-reveal data-reveal-delay="80ms">
+        <button
+          class="badge cursor-pointer transition-colors"
+          :class="filter === 'all' ? 'badge-primary' : 'badge-ghost hover:badge-outline'"
+          @click="filter = 'all'"
+        >All ({articles.length})</button>
+        {sources.map(s => (
+          <button
+            class="badge cursor-pointer transition-colors"
+            :class={`filter === '${s}' ? 'badge-primary' : 'badge-ghost hover:badge-outline'`}
+            @click={`filter = filter === '${s}' ? 'all' : '${s}'`}
+          >{s}</button>
+        ))}
+      </div>
+
+      <!-- Article count line -->
+      <p class="text-xs text-base-content/40 mb-3" x-text="`${filtered.length} article${filtered.length !== 1 ? 's' : ''}`"></p>
+
+      <!-- Article list -->
+      <div class="space-y-3">
+        <template x-for="(article, i) in filtered" :key="article.url">
+          <div class="card bg-base-100 border border-base-300 hover:border-primary/30 transition-colors">
+            <div class="card-body p-4 md:p-5">
+              <div class="flex items-center justify-between mb-2 gap-2 flex-wrap">
+                <button
+                  class="badge badge-ghost text-xs shrink-0 cursor-pointer hover:badge-primary transition-colors"
+                  @click="filter = article.source"
+                  x-text="article.source"
+                ></button>
+                <time class="text-xs text-base-content/40 shrink-0" x-text="article.published_at ? article.published_at.slice(0,10) : ''"></time>
+              </div>
+              <h2 class="font-semibold text-base leading-snug mb-2">
+                <a
+                  :href="article.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-primary transition-colors"
+                  x-text="article.title"
+                ></a>
+              </h2>
+              <p class="text-sm text-base-content/60 leading-relaxed" x-show="article.description" x-text="article.description"></p>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Empty state -->
+      <p class="text-sm text-base-content/40 text-center py-8" x-show="filtered.length === 0">No articles for this source.</p>
+    </div>
+
+    <p class="text-xs text-base-content/30 text-center mt-10 mb-4">
+      Refreshed daily via RSS · Google News, Delfi.lv
+    </p>
+  </div>
+</BaseLayout>

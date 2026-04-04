@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — Diesel Prices Latvia" description="About this website, data sources, and update frequency.">
+  <div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-8 max-w-3xl mx-auto">
+    <div class="card-body p-0 space-y-8">
+      <h1 class="text-3xl md:text-4xl font-bold">About</h1>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">Data Sources</h2>
+        <p class="text-base-content/70 leading-relaxed mb-2">
+          Diesel prices displayed on this website are based on publicly available data from major fuel retailers in Latvia.
+        </p>
+        <p class="text-base-content/70 leading-relaxed">
+          While we strive for accuracy, prices may vary by station and time of day.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">Update Frequency</h2>
+        <p class="text-base-content/70 leading-relaxed">
+          Price data is updated daily. News is published in response to significant market or regulatory changes.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">Contact</h2>
+        <p class="text-base-content/70 leading-relaxed mb-2">
+          Questions or suggestions? Reach us at:
+        </p>
+        <a href="mailto:info@dizelacenas.lv" class="link link-primary">info@dizelacenas.lv</a>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3">Disclaimer</h2>
+        <p class="text-base-content/50 text-sm leading-relaxed">
+          This website provides an informational overview of diesel prices. Actual prices may vary. We do not assume responsibility for decisions made based on information provided here.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

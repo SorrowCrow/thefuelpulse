@@ -1,0 +1,170 @@
+---
+import recData from '@/data/fuel-recommendation.json';
+import { formatDateTime } from '@/utils/dateHelpers';
+
+type FuelBlock = { recommendation: string; confidence: string; summary: string };
+
+const data = recData as {
+  diesel:          FuelBlock;
+  petrol_95:       FuelBlock;
+  petrol_98:       FuelBlock;
+  factors:         string[];
+  analysis:        string;
+  sources:         { title: string; url: string; published_at: string }[];
+  generated_at:    string;
+  prices_snapshot: Record<string, number | null>;
+};
+
+const cfgMap: Record<string, { badgeClass: string; borderClass: string; bgClass: string; label: string; icon: string }> = {
+  buy:     { badgeClass: 'badge-success', borderClass: 'border-success/40', bgClass: 'bg-success/5',  label: 'Buy Now',  icon: '⛽' },
+  wait:    { badgeClass: 'badge-error',   borderClass: 'border-error/40',   bgClass: 'bg-error/5',    label: 'Wait',     icon: '⏳' },
+  neutral: { badgeClass: 'badge-ghost',   borderClass: 'border-base-300',   bgClass: 'bg-base-100',   label: 'Monitor',  icon: '📊' },
+};
+const confMap: Record<string, string> = {
+  high: 'High', medium: 'Medium', low: 'Low',
+};
+
+// Practical fill-up advice based on recommendation × confidence
+const tipsMap: Record<string, Record<string, string>> = {
+  buy: {
+    high:   "Fill up now — even if your tank is half full. Prices likely rising within days.",
+    medium: "Consider topping up if you're below half a tank.",
+    low:    "Weak buy signal — top up if running low, no urgency otherwise.",
+  },
+  wait: {
+    high:   "Hold off if you can last 3–5 more days. A price drop is likely.",
+    medium: "Safe to delay if you have a few days of fuel left.",
+    low:    "Slight lean toward waiting, but fill up if you need to.",
+  },
+  neutral: {
+    high:   "Prices are stable — fill up on your normal schedule.",
+    medium: "No strong signal. Top up whenever convenient.",
+    low:    "Not enough data. Fill up based on your own needs.",
+  },
+};
+
+// Tooltip descriptions for confidence levels
+const confDesc: Record<string, string> = {
+  high:   "High: multiple signals align — price trend + global market news",
+  medium: "Medium: some signals present, but mixed or limited data",
+  low:    "Low: insufficient data or conflicting signals",
+};
+
+const fuels: { key: keyof typeof data; label: string }[] = [
+  { key: 'diesel',    label: 'Diesel'    },
+  { key: 'petrol_95', label: 'Petrol 95' },
+  { key: 'petrol_98', label: 'Petrol 98' },
+];
+
+const fuelCards = fuels.map(({ key, label }) => {
+  const fb   = data[key] as FuelBlock;
+  const cfg  = cfgMap[fb.recommendation] ?? cfgMap.neutral;
+  const conf = confMap[fb.confidence] ?? fb.confidence;
+  const tip  = (tipsMap[fb.recommendation] ?? tipsMap.neutral)[fb.confidence] ?? tipsMap.neutral.low;
+  const snap = data.prices_snapshot[key as string];
+  const cdesc = confDesc[fb.confidence] ?? '';
+  return { label, fb, cfg, conf, tip, snap, cdesc };
+});
+
+const hasAnalysis = data.analysis && data.analysis.trim().length > 0;
+const hasSources  = data.sources && data.sources.length > 0;
+---
+
+<div class="mb-8" data-reveal>
+
+  <!-- Header -->
+  <div class="flex items-center gap-2 mb-4">
+    <span class="label-eyebrow">AI Recommendation</span>
+    <span class="text-xs text-base-content/30 ml-auto">
+      {formatDateTime(data.generated_at, 'en')}
+    </span>
+  </div>
+
+  <!-- Per-fuel cards row -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+    {fuelCards.map(({ label, fb, cfg, conf, tip, snap, cdesc }) => (
+      <div class:list={['card border p-4', cfg.bgClass, cfg.borderClass]}>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-semibold text-base-content/70">{label}</span>
+          <span class="text-xl" aria-hidden="true">{cfg.icon}</span>
+        </div>
+
+        <!-- Recommendation badge with confidence tooltip -->
+        <div class="flex items-center gap-2 mb-1">
+          <div class="tooltip tooltip-bottom" data-tip={`${cfg.label} · ${conf} confidence\n${cdesc}`}>
+            <span class:list={['badge badge-sm font-bold cursor-help', cfg.badgeClass]}>{cfg.label}</span>
+          </div>
+          <span class="text-xs text-base-content/40">{conf} conf.</span>
+        </div>
+
+        <!-- Practical fill-up advice -->
+        <p class="text-xs text-primary/70 font-medium leading-snug mb-2">{tip}</p>
+
+        <!-- AI summary -->
+        <p class="text-xs text-base-content/60 leading-snug">{fb.summary}</p>
+
+        {snap !== null && snap !== undefined && (
+          <p class="text-xs text-base-content/30 mt-2">{snap.toFixed(3)} EUR/L</p>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <!-- Key factors -->
+  {data.factors.length > 0 && (
+    <ul class="space-y-1.5 mb-3 px-1">
+      {data.factors.map((f: string) => (
+        <li class="flex items-start gap-2 text-sm text-base-content/70">
+          <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
+          <span>{f}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <!-- News sources (always visible) -->
+  {hasSources && (
+    <div class="mb-3">
+      <p class="label-eyebrow mb-2">News Sources</p>
+      <ul class="space-y-1">
+        {data.sources.map((s: { title: string; url: string; published_at: string }) => (
+          <li class="text-xs flex items-start gap-2">
+            <span class="text-base-content/30 shrink-0 mt-0.5">›</span>
+            <span>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline"
+              >
+                {s.title}
+              </a>
+              {s.published_at && (
+                <span class="ml-2 text-base-content/30">{s.published_at.slice(0, 10)}</span>
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <!-- Analysis toggle -->
+  {hasAnalysis && (
+    <div x-data="{ open: false }">
+      <button
+        class="btn btn-ghost btn-xs text-xs gap-1"
+        x-on:click="open = !open"
+      >
+        <span x-text="open ? 'Hide full analysis ▲' : 'Show full analysis ▼'">Show full analysis ▼</span>
+      </button>
+
+      <div x-show="open" x-transition class="mt-3">
+        <div class="card bg-base-200 border border-base-300 p-4 rounded-lg">
+          <p class="text-sm text-base-content/80 leading-relaxed whitespace-pre-line">{data.analysis}</p>
+        </div>
+      </div>
+    </div>
+  )}
+
+</div>

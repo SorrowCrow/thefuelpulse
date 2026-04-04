@@ -1,0 +1,104 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      (function() {
+        try {
+          var t = localStorage.getItem('fuel-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch(e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#09090b" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Gradient blob background — high-opacity amber + teal for visible ambient glow -->
+    <div aria-hidden="true" class="bg-blobs" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;">
+      <div style="position:absolute;width:900px;height:900px;top:35%;left:25%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center, oklch(62% 0.16 185 / 0.55) 0%, oklch(55% 0.12 185 / 0.2) 50%, transparent 70%);filter:blur(55px);animation:blob-drift-a 18s ease-in-out infinite;"></div>
+      <div style="position:absolute;width:750px;height:750px;top:8%;left:72%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center, oklch(72% 0.20 65 / 0.55) 0%, oklch(65% 0.16 65 / 0.2) 50%, transparent 70%);filter:blur(60px);animation:blob-drift-b 24s ease-in-out infinite;"></div>
+      <div style="position:absolute;width:650px;height:650px;top:82%;left:14%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center, oklch(50% 0.14 265 / 0.50) 0%, oklch(44% 0.10 265 / 0.18) 50%, transparent 70%);filter:blur(50px);animation:blob-drift-c 30s ease-in-out infinite;"></div>
+    </div>
+
+    <!-- Oil rig silhouette background -->
+    <div aria-hidden="true" class="bg-rig" style="position:fixed;bottom:0;left:0;width:100%;z-index:-1;pointer-events:none;opacity:0.22;animation:rig-float 6s ease-in-out infinite;">
+      <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" style="width:100%;display:block;">
+        <g style="animation:sea-shimmer 8s linear infinite;">
+          <path d="M0,260 C120,250 200,270 320,260 C440,250 520,270 640,260 C760,250 840,270 960,260 C1080,250 1160,270 1280,260 C1360,253 1400,258 1440,260 L1440,320 L0,320 Z" fill="currentColor" opacity="0.4"/>
+          <path d="M0,270 C100,263 200,278 340,270 C480,262 560,278 700,270 C840,262 920,278 1060,270 C1200,262 1340,275 1440,270 L1440,320 L0,320 Z" fill="currentColor" opacity="0.2"/>
+        </g>
+        <polygon points="680,80 700,260 760,260 740,80" fill="currentColor"/>
+        <line x1="685" y1="120" x2="755" y2="200" stroke="currentColor" stroke-width="4"/>
+        <line x1="755" y1="120" x2="685" y2="200" stroke="currentColor" stroke-width="4"/>
+        <line x1="688" y1="160" x2="752" y2="230" stroke="currentColor" stroke-width="4"/>
+        <line x1="752" y1="160" x2="688" y2="230" stroke="currentColor" stroke-width="4"/>
+        <rect x="705" y="70" width="30" height="14" rx="2" fill="currentColor"/>
+        <g style="transform-origin:720px 180px;animation:pump-rock 2s ease-in-out infinite alternate;">
+          <rect x="660" y="175" width="120" height="10" rx="5" fill="currentColor"/>
+          <path d="M660,175 L640,185 L645,195 L665,195 L665,185 Z" fill="currentColor"/>
+          <ellipse cx="785" cy="180" rx="22" ry="14" fill="currentColor"/>
+        </g>
+        <rect x="700" y="220" width="40" height="40" rx="3" fill="currentColor"/>
+        <rect x="718" y="200" width="4" height="60" fill="currentColor" opacity="0.6"/>
+        <rect x="810" y="180" width="8" height="80" fill="currentColor"/>
+        <g style="transform-origin:814px 180px;animation:flare-flicker 1.5s ease-in-out infinite;">
+          <ellipse cx="814" cy="172" rx="8" ry="12" fill="currentColor" opacity="0.9"/>
+          <ellipse cx="814" cy="165" rx="5" ry="8" fill="currentColor" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <Header />
+    <main class="flex-grow container mx-auto p-6 md:p-10 lg:p-16">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script is:inline>
+      (function () {
+        // ── IntersectionObserver reveal ──
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReduced) {
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                var el = entry.target;
+                var delay = el.dataset.revealDelay || '0ms';
+                el.style.transitionDelay = delay;
+                el.classList.add('is-visible');
+                observer.unobserve(el);
+              }
+            });
+          }, { threshold: 0.15 });
+          document.querySelectorAll('[data-reveal]').forEach(function(el) { observer.observe(el); });
+        } else {
+          document.querySelectorAll('[data-reveal]').forEach(function(el) { el.classList.add('is-visible'); });
+        }
+
+      })();
+    </script>
+  </body>
+</html>

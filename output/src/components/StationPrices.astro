@@ -1,0 +1,134 @@
+---
+import stationData from '@/data/station-prices.json';
+
+type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
+
+interface StationRow {
+  brand: string;
+  key: string;
+  price: number | null;
+}
+
+interface FuelTableData {
+  avg: number;
+  rows: StationRow[];
+}
+
+const stations = stationData.stations as Array<{
+  brand: string;
+  key: string;
+  prices: Record<FuelKey, number | null>;
+  currency: string;
+  error: string | null;
+}>;
+
+const fuelTypes: Array<{ key: FuelKey; label: string }> = [
+  { key: 'diesel',    label: 'Diesel'    },
+  { key: 'petrol_95', label: 'Petrol 95' },
+  { key: 'petrol_98', label: 'Petrol 98' },
+];
+
+const tableData: Record<FuelKey, FuelTableData> = {} as Record<FuelKey, FuelTableData>;
+
+for (const { key } of fuelTypes) {
+  const valid = stations
+    .map(s => s.prices[key])
+    .filter((p): p is number => p !== null);
+  const avg = valid.length ? valid.reduce((a, b) => a + b, 0) / valid.length : 0;
+
+  const rows: StationRow[] = stations
+    .map(s => ({ brand: s.brand, key: s.key, price: s.prices[key] }))
+    .sort((a, b) => {
+      if (a.price === null) return 1;
+      if (b.price === null) return -1;
+      return a.price - b.price;
+    });
+
+  tableData[key] = { avg, rows };
+}
+
+const tableDataJson = JSON.stringify(tableData);
+const scrapedAt = stationData.scraped_at;
+---
+
+<div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal data-reveal-delay="150ms"
+     x-data={`{
+       fuel: 'diesel',
+       data: ${tableDataJson},
+       deltaText(price, avg) {
+         if (price === null || avg === 0) return '—';
+         const pct = (price - avg) / avg * 100;
+         if (Math.abs(pct) < 0.05) return '—';
+         return (pct > 0 ? '+' : '') + pct.toFixed(1) + '%';
+       },
+       deltaClass(price, avg) {
+         if (price === null || avg === 0) return 'text-base-content/40';
+         const pct = (price - avg) / avg * 100;
+         if (pct < -0.05) return 'text-success';
+         if (pct > 0.05) return 'text-error';
+         return 'text-base-content/50';
+       }
+     }`}>
+  <div class="card-body p-0">
+    <h2 class="card-title text-2xl md:text-3xl mb-4">Station Comparison</h2>
+
+    <!-- Fuel selector -->
+    <div role="tablist" class="tabs tabs-bordered mb-4">
+      {fuelTypes.map(({ key, label }) => (
+        <button
+          role="tab"
+          :class={`fuel === '${key}' ? 'tab tab-active font-semibold' : 'tab text-base-content/60'`}
+          x-on:click={`fuel = '${key}'`}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Prices table -->
+    <div class="overflow-x-auto">
+      <table class="table w-full">
+        <thead>
+          <tr class="text-base-content/50 text-xs uppercase tracking-wider">
+            <th>Station</th>
+            <th>Price</th>
+            <th>vs avg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="(row, idx) in data[fuel].rows" :key="row.key">
+            <tr :class="idx === 0 && row.price !== null ? 'bg-base-200' : 'border-b border-base-300/40'">
+              <td class="py-3">
+                <span x-text="row.brand" class="font-medium"></span>
+                <span
+                  x-show="idx === 0 && row.price !== null"
+                  class="badge badge-success badge-sm ml-2 text-xs"
+                >Best</span>
+              </td>
+              <td class="py-3 font-mono">
+                <span
+                  class="tabular"
+                  x-text="row.price !== null ? row.price.toFixed(3) + ' €' : 'N/A'"
+                  :class="row.price === null ? 'text-base-content/40' : 'text-primary'"
+                ></span>
+              </td>
+              <td class="py-3 text-sm">
+                <span
+                  :class="deltaClass(row.price, data[fuel].avg)"
+                  x-text="deltaText(row.price, data[fuel].avg)"
+                ></span>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+        <tfoot>
+          <tr class="text-base-content/40 text-xs border-t border-base-300">
+            <td class="pt-2">Market avg</td>
+            <td class="pt-2 font-mono" x-text="data[fuel].avg > 0 ? data[fuel].avg.toFixed(3) + ' €' : '—'"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,333 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import recData from '@/data/fuel-recommendation.json';
+
+const basePrice = (recData.prices_snapshot?.diesel ?? 2.024) as number;
+---
+
+<BaseLayout title="Fuel Trader — Game" description="A fuel price strategy game. Buy low, drive far, spend smart.">
+  <div class="max-w-lg mx-auto" x-data="fuelTrader()" x-init="init()">
+
+    <!-- Title / intro screen -->
+    <template x-if="screen === 'intro'">
+      <div class="text-center py-12" data-reveal>
+        <div class="text-6xl mb-4" aria-hidden="true">⛽</div>
+        <h1 class="text-4xl font-bold mb-2">Fuel Trader</h1>
+        <p class="text-base-content/60 mb-1">14-day challenge · Latvia</p>
+        <p class="text-sm text-base-content/40 mb-8 max-w-sm mx-auto">
+          Buy fuel smart. Prices shift daily based on global events.
+          Drive 50 km/day. Don't run dry. Spend less than everyone else.
+        </p>
+        <div class="card bg-base-200 border border-base-300 p-4 mb-8 text-left text-sm space-y-1">
+          <p><span class="text-base-content/50">Tank capacity:</span> 60 L</p>
+          <p><span class="text-base-content/50">Starting fuel:</span> 15 L</p>
+          <p><span class="text-base-content/50">Starting budget:</span> €60.00</p>
+          <p><span class="text-base-content/50">Consumption:</span> ~7 L / 100 km</p>
+          <p><span class="text-base-content/50">Daily drive:</span> 50 km (3.5 L used)</p>
+        </div>
+        <button class="btn btn-primary btn-lg" @click="startGame()">Start Challenge</button>
+
+        <!-- High scores -->
+        <div x-show="scores.length > 0" class="mt-10">
+          <p class="label-eyebrow mb-3">Leaderboard (this device)</p>
+          <div class="space-y-1">
+            <template x-for="(s, i) in scores.slice(0,5)" :key="i">
+              <div class="flex justify-between text-sm px-2">
+                <span x-text="`#${i+1}  ${s.date}`" class="text-base-content/50"></span>
+                <span x-text="`${s.km} km · €${s.spent}`" class="font-mono"></span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Game screen -->
+    <template x-if="screen === 'game'">
+      <div>
+        <!-- Header bar -->
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="label-eyebrow">Day</span>
+            <span class="text-3xl font-bold ml-2" x-text="day"></span>
+            <span class="text-base-content/40 text-lg"> / 14</span>
+          </div>
+          <div class="text-right">
+            <p class="text-xs text-base-content/40">Budget remaining</p>
+            <p class="text-2xl font-mono font-bold text-primary" x-text="`€${budget.toFixed(2)}`"></p>
+          </div>
+        </div>
+
+        <!-- News flash -->
+        <div class="card bg-base-200 border border-base-300 p-3 mb-4">
+          <p class="text-xs text-base-content/40 uppercase tracking-wider mb-1">Market news</p>
+          <p class="text-sm text-base-content/80" x-text="todayNews"></p>
+        </div>
+
+        <!-- Price display -->
+        <div class="card bg-base-100 border p-4 mb-4"
+             :class="priceDirection > 0 ? 'border-error/40' : priceDirection < 0 ? 'border-success/40' : 'border-base-300'">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs text-base-content/40">Today's Diesel Price</p>
+              <p class="text-3xl font-mono font-bold" x-text="`${todayPrice.toFixed(3)} €/L`"></p>
+            </div>
+            <div class="text-right">
+              <span
+                class="badge badge-sm"
+                :class="priceDirection > 0 ? 'badge-error' : priceDirection < 0 ? 'badge-success' : 'badge-ghost'"
+                x-text="priceDirection > 0 ? '▲ Rising' : priceDirection < 0 ? '▼ Falling' : '● Stable'"
+              ></span>
+              <p class="text-xs text-base-content/40 mt-1" x-text="`${priceChange >= 0 ? '+' : ''}${priceChange.toFixed(3)} vs yesterday`"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tank gauge -->
+        <div class="mb-4">
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-base-content/50">Tank</span>
+            <span class="font-mono" x-text="`${tank.toFixed(1)} L / 60 L`"></span>
+          </div>
+          <div class="w-full bg-base-300 rounded-full h-3">
+            <div
+              class="h-3 rounded-full transition-all duration-500"
+              :class="tank < 10 ? 'bg-error' : tank < 20 ? 'bg-warning' : 'bg-primary'"
+              :style="`width: ${Math.min(100, tank/60*100)}%`"
+            ></div>
+          </div>
+          <p class="text-xs text-error mt-1" x-show="tank < 10">⚠ Low fuel — fill up now!</p>
+        </div>
+
+        <!-- Fill up slider -->
+        <div class="card bg-base-100 border border-base-300 p-4 mb-4">
+          <p class="text-xs text-base-content/40 mb-3">How much to add? (max <span x-text="maxFill.toFixed(1)"></span> L)</p>
+          <div class="flex items-center gap-3 mb-3">
+            <button class="btn btn-ghost btn-sm btn-circle" @click="fillAmount = 0">0</button>
+            <input
+              type="range"
+              class="range range-primary range-sm flex-1"
+              min="0"
+              :max="maxFill"
+              step="1"
+              x-model.number="fillAmount"
+            />
+            <button class="btn btn-ghost btn-sm" @click="fillAmount = maxFill">Full</button>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm" x-text="`+ ${fillAmount.toFixed(0)} L`"></span>
+            <span class="font-mono text-sm text-primary" x-text="`Cost: €${(fillAmount * todayPrice).toFixed(2)}`"></span>
+          </div>
+          <p class="text-xs text-error mt-1" x-show="fillAmount * todayPrice > budget">Not enough budget!</p>
+        </div>
+
+        <!-- Confirm button -->
+        <button
+          class="btn btn-primary w-full"
+          :disabled="fillAmount * todayPrice > budget"
+          @click="nextDay()"
+        >
+          <span x-text="fillAmount > 0 ? `Fill ${fillAmount.toFixed(0)} L (€${(fillAmount * todayPrice).toFixed(2)}) & Drive` : 'Skip & Drive 50 km'"></span>
+        </button>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+          <div class="card bg-base-200 p-2">
+            <p class="text-xs text-base-content/40">Km driven</p>
+            <p class="font-bold font-mono" x-text="`${kmDriven}`"></p>
+          </div>
+          <div class="card bg-base-200 p-2">
+            <p class="text-xs text-base-content/40">EUR spent</p>
+            <p class="font-bold font-mono" x-text="`€${totalSpent.toFixed(2)}`"></p>
+          </div>
+          <div class="card bg-base-200 p-2">
+            <p class="text-xs text-base-content/40">Efficiency</p>
+            <p class="font-bold font-mono" x-text="totalSpent > 0 ? `${(kmDriven/totalSpent).toFixed(1)} km/€` : '—'"></p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Game over screen -->
+    <template x-if="screen === 'gameover'">
+      <div class="text-center py-8" data-reveal>
+        <div class="text-5xl mb-4" x-text="kmDriven >= 700 ? '🏆' : kmDriven >= 500 ? '🥈' : '💀'"></div>
+        <h2 class="text-3xl font-bold mb-2" x-text="kmDriven >= 700 ? 'Challenge Complete!' : kmDriven >= 500 ? 'Not bad!' : 'Ran Dry!'"></h2>
+        <p class="text-base-content/50 mb-6" x-text="endMessage"></p>
+
+        <div class="card bg-base-200 border border-base-300 p-5 mb-6 text-left space-y-2">
+          <div class="flex justify-between">
+            <span class="text-base-content/50">Days survived</span>
+            <span class="font-mono font-bold" x-text="`${day - 1} / 14`"></span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-base-content/50">Distance driven</span>
+            <span class="font-mono font-bold" x-text="`${kmDriven} km`"></span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-base-content/50">Total spent on fuel</span>
+            <span class="font-mono font-bold" x-text="`€${totalSpent.toFixed(2)}`"></span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-base-content/50">Budget remaining</span>
+            <span class="font-mono font-bold text-success" x-text="`€${budget.toFixed(2)}`"></span>
+          </div>
+          <div class="divider my-1"></div>
+          <div class="flex justify-between">
+            <span class="text-base-content/50">Efficiency score</span>
+            <span class="font-mono font-bold text-primary" x-text="totalSpent > 0 ? `${(kmDriven/totalSpent).toFixed(2)} km/€` : '—'"></span>
+          </div>
+        </div>
+
+        <div class="flex gap-3 justify-center">
+          <button class="btn btn-primary" @click="startGame()">Play Again</button>
+          <button class="btn btn-ghost" @click="screen = 'intro'">Leaderboard</button>
+        </div>
+      </div>
+    </template>
+
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ basePrice }}>
+  // News events pool — hint at price direction without giving it away
+  const NEWS_POOL = [
+    { text: "OPEC holds output steady — analysts divided on direction.", dir: 0 },
+    { text: "Brent crude slips on demand fears from slowing Chinese economy.", dir: -1 },
+    { text: "US-Iran tensions escalate; Strait of Hormuz risk premium rises.", dir: 1 },
+    { text: "Russian oil exports fall short of OPEC+ quota commitments.", dir: 1 },
+    { text: "EU announces strategic reserves release to cool prices.", dir: -1 },
+    { text: "Saudi Arabia signals readiness to increase output if needed.", dir: -1 },
+    { text: "Refinery outage in Rotterdam reduces regional diesel supply.", dir: 1 },
+    { text: "Global demand forecast cut by IEA amid recession concerns.", dir: -1 },
+    { text: "Geopolitical calm in Middle East eases supply-risk premium.", dir: -1 },
+    { text: "OPEC+ surprise cut of 500k bpd announced for next quarter.", dir: 1 },
+    { text: "Latvian government considers fuel excise tax reduction.", dir: -1 },
+    { text: "Winter heating demand pushes diesel prices higher across Europe.", dir: 1 },
+    { text: "USD weakens against EUR — imported crude becomes cheaper.", dir: -1 },
+    { text: "Pipeline disruption in Eastern Europe tightens diesel supply.", dir: 1 },
+  ];
+
+  function fuelTrader() {
+    return {
+      screen: 'intro',
+      day: 1,
+      tank: 15,
+      budget: 60,
+      totalSpent: 0,
+      kmDriven: 0,
+      fillAmount: 0,
+      todayPrice: basePrice,
+      priceDirection: 0,
+      priceChange: 0,
+      todayNews: '',
+      endMessage: '',
+      scores: [],
+      _prices: [],
+
+      get maxFill() {
+        const litresCanAfford = Math.floor(this.budget / this.todayPrice);
+        return Math.min(60 - this.tank, litresCanAfford);
+      },
+
+      init() {
+        try {
+          this.scores = JSON.parse(localStorage.getItem('fueltrader-scores') || '[]');
+        } catch(e) { this.scores = []; }
+      },
+
+      _generatePrices() {
+        // Generate 14 days of prices with trend and noise
+        const prices = [basePrice];
+        const news = [];
+        // Pick a dominant trend for the game (random)
+        const seed = Math.random();
+        const trendBias = seed < 0.33 ? -0.008 : seed < 0.66 ? 0.008 : 0;
+
+        for (let i = 1; i < 14; i++) {
+          const prev = prices[i - 1];
+          // Pick a news event
+          const candidate = NEWS_POOL[Math.floor(Math.random() * NEWS_POOL.length)];
+          const eventImpact = candidate.dir * (Math.random() * 0.04 + 0.005);
+          const noise = (Math.random() - 0.5) * 0.015;
+          const next = Math.max(1.4, Math.min(3.5, prev + trendBias + eventImpact + noise));
+          prices.push(+next.toFixed(3));
+          news.push(candidate.text);
+        }
+        // Prepend a neutral news for day 1
+        news.unshift("Markets open. Check today's price before deciding.");
+        return { prices, news };
+      },
+
+      startGame() {
+        const { prices, news } = this._generatePrices();
+        this._prices = prices;
+        this._news = news;
+        this.day = 1;
+        this.tank = 15;
+        this.budget = 60;
+        this.totalSpent = 0;
+        this.kmDriven = 0;
+        this.fillAmount = 0;
+        this.todayPrice = prices[0];
+        this.priceDirection = 0;
+        this.priceChange = 0;
+        this.todayNews = news[0];
+        this.screen = 'game';
+      },
+
+      nextDay() {
+        // Pay for fuel
+        const cost = this.fillAmount * this.todayPrice;
+        if (cost > this.budget) return;
+        this.budget -= cost;
+        this.totalSpent += cost;
+        this.tank += this.fillAmount;
+
+        // Drive 50 km (consume 3.5 L)
+        const consumed = 3.5;
+        this.tank -= consumed;
+        this.kmDriven += 50;
+
+        // Check out of fuel
+        if (this.tank <= 0) {
+          this.tank = 0;
+          this.endMessage = "You ran out of fuel mid-route. Fill up earlier next time!";
+          this._saveScore();
+          this.screen = 'gameover';
+          return;
+        }
+
+        this.day++;
+
+        // Check completed all 14 days
+        if (this.day > 14) {
+          this.endMessage = `You completed the full 14-day challenge with €${this.budget.toFixed(2)} to spare!`;
+          this._saveScore();
+          this.screen = 'gameover';
+          return;
+        }
+
+        // Advance to next day
+        const prevPrice = this.todayPrice;
+        this.todayPrice = this._prices[this.day - 1];
+        this.priceChange = +(this.todayPrice - prevPrice).toFixed(3);
+        this.priceDirection = this.priceChange > 0.002 ? 1 : this.priceChange < -0.002 ? -1 : 0;
+        this.todayNews = this._news[this.day - 1];
+        this.fillAmount = 0;
+      },
+
+      _saveScore() {
+        const entry = {
+          date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }),
+          km: this.kmDriven,
+          spent: this.totalSpent.toFixed(2),
+          score: this.kmDriven > 0 ? +(this.kmDriven / Math.max(0.01, this.totalSpent)).toFixed(2) : 0,
+        };
+        this.scores.unshift(entry);
+        this.scores = this.scores.slice(0, 10);
+        try { localStorage.setItem('fueltrader-scores', JSON.stringify(this.scores)); } catch(e) {}
+      },
+    };
+  }
+</script>

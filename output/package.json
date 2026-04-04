@@ -1,0 +1,24 @@
+{
+  "name": "diesel-price-news",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/alpinejs": "^0.4.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "alpinejs": "^3.13.8",
+    "astro": "^5.0.0",
+    "chart.js": "^4.4.2",
+    "daisyui": "^5.0.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
