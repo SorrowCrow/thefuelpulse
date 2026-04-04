@@ -18,7 +18,7 @@ const { articles, fetched_at } = newsRaw as {
 const sources = [...new Set(articles.map(a => a.source))];
 const articlesJson = JSON.stringify(articles);
 
-const allLabel = `All (${articles.length})`;
+const allLabel = `${t(lang, 'news.page.all')} (${articles.length})`;
 const noFilterMsg = t(lang, 'news.page.nofilter');
 ---
 
@@ -30,7 +30,7 @@ const noFilterMsg = t(lang, 'news.page.nofilter');
       <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'news.page.back')}</a>
       <h1 class="text-3xl md:text-4xl font-bold mb-1">{t(lang, 'news.page.title')}</h1>
       <p class="text-sm text-base-content/50">
-        {articles.length} articles · fetched {fetched_at.slice(0, 10)}
+        {articles.length} {t(lang, 'news.page.articles')} · {t(lang, 'news.page.fetched')} {fetched_at.slice(0, 10)}
       </p>
     </div>
 

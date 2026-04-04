@@ -1,6 +1,8 @@
-export function formatDateTime(isoString: string, lang: 'lv' | 'en'): string {
+const LOCALES: Record<string, string> = { lv: 'lv-LV', en: 'en-US', ru: 'ru-RU' };
+const toLocale = (lang: string) => LOCALES[lang] ?? 'en-US';
+
+export function formatDateTime(isoString: string, lang: string): string {
   const date = new Date(isoString);
-  const locale = lang === 'lv' ? 'lv-LV' : 'en-US';
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'numeric',
@@ -10,15 +12,14 @@ export function formatDateTime(isoString: string, lang: 'lv' | 'en'): string {
     hour12: false,
     timeZone: 'Europe/Riga',
   };
-  return new Intl.DateTimeFormat(locale, options).format(date);
+  return new Intl.DateTimeFormat(toLocale(lang), options).format(date);
 }
 
-export function formatShortDate(isoString: string, lang: 'lv' | 'en'): string {
+export function formatShortDate(isoString: string, lang: string): string {
   const date = new Date(isoString);
-  const locale = lang === 'lv' ? 'lv-LV' : 'en-US';
   const options: Intl.DateTimeFormatOptions = {
     month: 'short',
     day: 'numeric',
   };
-  return new Intl.DateTimeFormat(locale, options).format(date);
+  return new Intl.DateTimeFormat(toLocale(lang), options).format(date);
 }

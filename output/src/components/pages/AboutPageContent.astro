@@ -32,10 +32,10 @@ const { lang } = Astro.props;
       <section>
         <h2 class="text-xl font-semibold mb-3">{t(lang, 'about.methodology.title')}</h2>
         <ul class="space-y-2 text-base-content/70 leading-relaxed">
-          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>Station prices</strong> — {t(lang, 'about.methodology.station')}</span></li>
-          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>Market news</strong> — {t(lang, 'about.methodology.news')}</span></li>
-          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>Historical data</strong> — {t(lang, 'about.methodology.history')}</span></li>
-          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>AI recommendation</strong> — {t(lang, 'about.methodology.ai')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>{t(lang, 'about.methodology.station.label')}</strong> — {t(lang, 'about.methodology.station')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>{t(lang, 'about.methodology.news.label')}</strong> — {t(lang, 'about.methodology.news')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>{t(lang, 'about.methodology.history.label')}</strong> — {t(lang, 'about.methodology.history')}</span></li>
+          <li class="flex gap-2"><span class="text-base-content/30 shrink-0 mt-1">›</span><span><strong>{t(lang, 'about.methodology.ai.label')}</strong> — {t(lang, 'about.methodology.ai')}</span></li>
         </ul>
         <p class="text-sm text-base-content/50 mt-3">{t(lang, 'about.methodology.note')}</p>
       </section>
