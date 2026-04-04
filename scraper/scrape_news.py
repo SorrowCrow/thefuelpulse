@@ -162,20 +162,12 @@ def fetch_feed(name: str, url: str) -> list[dict]:
 
 # ── Translation ─────────────────────────────────────────────────────────────────
 
-def translate_articles(articles: list[dict], api_key: str) -> list[dict]:
-    """Batch-translate article titles and descriptions to Latvian and Russian via Gemini."""
-    if not articles:
-        return articles
+TRANSLATE_BATCH_SIZE = 5
 
-    from google import genai
+
+def _translate_batch(client, items: list[dict]) -> dict[int, dict]:
+    """Translate a small batch of items; returns a dict keyed by original index."""
     from google.genai import types
-
-    client = genai.Client(api_key=api_key)
-
-    items = [
-        {"i": i, "title": a["title"], "description": a.get("description", "")}
-        for i, a in enumerate(articles)
-    ]
 
     prompt = (
         "Translate the following news article titles and descriptions into Latvian (lv) "
@@ -188,23 +180,40 @@ def translate_articles(articles: list[dict], api_key: str) -> list[dict]:
         "- Return ONLY the JSON array, no markdown, no explanation\n\n"
         f"Input:\n{json.dumps(items, ensure_ascii=False)}"
     )
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            max_output_tokens=16384,
+            temperature=0.1,
+        ),
+    )
+    translations = json.loads(response.text.strip())
+    return {t["i"]: t for t in translations if "i" in t}
 
-    try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                max_output_tokens=8192,
-                temperature=0.1,
-            ),
-        )
-        translations = json.loads(response.text.strip())
-    except Exception as e:
-        print(f"  ⚠️  Translation failed ({e}), skipping")
+
+def translate_articles(articles: list[dict], api_key: str) -> list[dict]:
+    """Translate article titles and descriptions to Latvian and Russian via Gemini."""
+    if not articles:
         return articles
 
-    by_index = {t["i"]: t for t in translations if "i" in t}
+    from google import genai
+
+    client = genai.Client(api_key=api_key)
+
+    by_index: dict[int, dict] = {}
+    for start in range(0, len(articles), TRANSLATE_BATCH_SIZE):
+        batch_articles = articles[start:start + TRANSLATE_BATCH_SIZE]
+        items = [
+            {"i": start + j, "title": a["title"], "description": a.get("description", "")}
+            for j, a in enumerate(batch_articles)
+        ]
+        try:
+            by_index.update(_translate_batch(client, items))
+        except Exception as e:
+            print(f"  ⚠️  Translation failed for batch starting at {start} ({e}), skipping batch")
+
     enriched = []
     for i, article in enumerate(articles):
         tr = by_index.get(i, {})
