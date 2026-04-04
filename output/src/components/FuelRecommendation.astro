@@ -3,6 +3,7 @@ import { t } from '@/i18n/utils';
 import recData from '@/data/fuel-recommendation.json';
 import { formatDateTime } from '@/utils/dateHelpers';
 import type { Language } from '@/types';
+import ToggleButton from '@/components/ToggleButton.astro';
 
 interface Props {
   lang: Language;
@@ -65,6 +66,10 @@ const hasSources  = data.sources && data.sources.length > 0;
 
 const showmore = t(lang, 'rec.showmore');
 const showless = t(lang, 'rec.showless');
+const showfactors = t(lang, 'rec.factors');
+const hidefactors = t(lang, 'rec.hidefactors');
+const showsources = t(lang, 'rec.sources');
+const hidesources = t(lang, 'rec.hidesources');
 const showanalysis = t(lang, 'rec.showanalysis');
 const hideanalysis = t(lang, 'rec.hideanalysis');
 ---
@@ -104,11 +109,7 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
         <div>
           <p class="text-xs text-base-content/60 leading-snug"
              :class="expanded ? '' : 'line-clamp-2'">{summary}</p>
-          <button
-            class="text-xs text-base-content/40 hover:text-base-content/60 mt-1 transition-colors"
-            x-on:click="expanded = !expanded"
-            x-text="expanded ? showless : showmore"
-          >{showmore}</button>
+          <ToggleButton showText={showmore} hideText={showless} stateVar="expanded" class="mt-1" />
         </div>
 
         {snap !== null && snap !== undefined && (
@@ -121,85 +122,44 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
   <!-- Key factors (collapsible) -->
   {data.factors.length > 0 && (
     <div class="mb-3"
-         x-data={`{ open: false, showmore: ${JSON.stringify(showmore)}, showless: ${JSON.stringify(showless)} }`}>
-      <ul class="space-y-1.5 px-1">
-        {data.factors.slice(0, 3).map((f) => (
-          <li class="flex items-start gap-2 text-sm text-base-content/70">
-            <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
-            <span>{pickLang(f, lang)}</span>
-          </li>
-        ))}
-      </ul>
-      {data.factors.length > 3 && (
-        <>
-          <div x-show="open" x-transition>
-            <ul class="space-y-1.5 px-1 mt-1.5">
-              {data.factors.slice(3).map((f) => (
-                <li class="flex items-start gap-2 text-sm text-base-content/70">
-                  <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
-                  <span>{pickLang(f, lang)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button
-            class="text-xs text-base-content/40 hover:text-base-content/60 mt-1.5 ml-1 transition-colors"
-            x-on:click="open = !open"
-            x-text="open ? showless : showmore"
-          >{showmore}</button>
-        </>
-      )}
+         x-data={`{ open: false, showfactors: ${JSON.stringify(showfactors)}, hidefactors: ${JSON.stringify(hidefactors)} }`}>
+      <ToggleButton showText={showfactors} hideText={hidefactors} class="mb-1.5 ml-1" />
+      <div x-show="open" x-transition>
+        <ul class="space-y-1.5 px-1">
+          {data.factors.map((f) => (
+            <li class="flex items-start gap-2 text-sm text-base-content/70">
+              <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
+              <span>{pickLang(f, lang)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )}
 
   <!-- News sources (collapsible) -->
   {hasSources && (
     <div class="mb-3"
-         x-data={`{ open: false, showmore: ${JSON.stringify(showmore)}, showless: ${JSON.stringify(showless)} }`}>
-      <p class="label-eyebrow mb-2">{t(lang, 'rec.newsources')}</p>
-      <ul class="space-y-1">
-        {data.sources.slice(0, 2).map((s: { title: string; url: string; published_at: string }) => (
-          <li class="text-xs flex items-start gap-2">
-            <span class="text-base-content/30 shrink-0 mt-0.5">›</span>
-            <span>
-              <a href={s.url} target="_blank" rel="noopener noreferrer"
-                 class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline">
-                {s.title}
-              </a>
-              {s.published_at && (
-                <span class="ml-2 text-base-content/30">{s.published_at.slice(0, 10)}</span>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
-      {data.sources.length > 2 && (
-        <>
-          <div x-show="open" x-transition>
-            <ul class="space-y-1 mt-1">
-              {data.sources.slice(2).map((s: { title: string; url: string; published_at: string }) => (
-                <li class="text-xs flex items-start gap-2">
-                  <span class="text-base-content/30 shrink-0 mt-0.5">›</span>
-                  <span>
-                    <a href={s.url} target="_blank" rel="noopener noreferrer"
-                       class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline">
-                      {s.title}
-                    </a>
-                    {s.published_at && (
-                      <span class="ml-2 text-base-content/30">{s.published_at.slice(0, 10)}</span>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button
-            class="text-xs text-base-content/40 hover:text-base-content/60 mt-1.5 transition-colors"
-            x-on:click="open = !open"
-            x-text="open ? showless : showmore"
-          >{showmore}</button>
-        </>
-      )}
+         x-data={`{ open: false, showsources: ${JSON.stringify(showsources)}, hidesources: ${JSON.stringify(hidesources)} }`}>
+      <ToggleButton showText={showsources} hideText={hidesources} class="mb-1.5 ml-1" />
+      <div x-show="open" x-transition>
+        <ul class="space-y-1">
+          {data.sources.map((s: { title: string; url: string; published_at: string }) => (
+            <li class="text-xs flex items-start gap-2">
+              <span class="text-base-content/30 shrink-0 mt-0.5">›</span>
+              <span>
+                <a href={s.url} target="_blank" rel="noopener noreferrer"
+                   class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline">
+                  {s.title}
+                </a>
+                {s.published_at && (
+                  <span class="ml-2 text-base-content/30">{s.published_at.slice(0, 10)}</span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )}
 

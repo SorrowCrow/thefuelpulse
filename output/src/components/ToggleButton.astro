@@ -1,0 +1,16 @@
+---
+interface Props {
+  showText: string;
+  hideText: string;
+  stateVar?: string;
+  class?: string;
+}
+
+const { showText, hideText, stateVar = 'open', class: extraClass = '' } = Astro.props;
+---
+
+<button
+  class:list={['text-xs text-base-content/40 hover:text-base-content/60 transition-colors cursor-pointer', extraClass]}
+  x-on:click={`${stateVar} = !${stateVar}`}
+  x-text={`${stateVar} ? ${JSON.stringify(hideText)} : ${JSON.stringify(showText)}`}
+>{showText}</button>
