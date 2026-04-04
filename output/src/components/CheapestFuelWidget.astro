@@ -1,0 +1,66 @@
+---
+import stationData from '@/data/station-prices.json';
+import { t } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const stations = stationData.stations.filter(s => !s.error);
+
+type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
+const fuelTypes: { key: FuelKey; i18nKey: string }[] = [
+  { key: 'diesel',    i18nKey: 'fuel.diesel'   },
+  { key: 'petrol_95', i18nKey: 'fuel.petrol95' },
+  { key: 'petrol_98', i18nKey: 'fuel.petrol98' },
+];
+
+const cheapestByFuel = fuelTypes.map(({ key, i18nKey }) => {
+  const withPrice = stations
+    .filter(s => s.prices[key] != null)
+    .sort((a, b) => (a.prices[key] as number) - (b.prices[key] as number));
+  const best  = withPrice[0];
+  const worst = withPrice[withPrice.length - 1];
+  const saving = (best && worst && withPrice.length > 1)
+    ? ((worst.prices[key] as number) - (best.prices[key] as number))
+    : 0;
+  return {
+    label:  t(lang, i18nKey),
+    brand:  best?.brand ?? '—',
+    price:  best ? (best.prices[key] as number) : null,
+    saving,
+  };
+});
+---
+
+<div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal>
+  <div class="card-body p-0">
+    <div class="flex justify-between items-baseline mb-4">
+      <h2 class="card-title text-xl">{t(lang, 'cheapest.title')}</h2>
+      <span class="text-xs text-base-content/40">{t(lang, 'cheapest.subtitle')}</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {cheapestByFuel.map(({ label, brand, price, saving }) => (
+        <div class="flex flex-col gap-1 p-4 rounded-xl bg-base-200 border border-success/20">
+          <span class="text-xs text-base-content/50 uppercase tracking-wide font-medium">{label}</span>
+          <div class="flex items-baseline gap-1 mt-1">
+            <span class="text-3xl font-bold tabular text-success">
+              {price != null ? price.toFixed(3) : '—'}
+            </span>
+            <span class="text-sm text-base-content/50">€/L</span>
+          </div>
+          <span class="text-sm font-semibold mt-0.5">{brand}</span>
+          {saving > 0.005 && (
+            <span class="text-xs text-success/70 mt-1">
+              {t(lang, 'cheapest.save').replace('{amount}', saving.toFixed(3))}
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

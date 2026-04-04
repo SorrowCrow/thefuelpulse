@@ -13,7 +13,12 @@ interface Props {
 const { lang } = Astro.props;
 
 const { averages, currency, last_updated } = pricesData;
-const prev = historyData.history[1];
+
+// Find the entry closest to 7 days ago for a meaningful "week change" indicator
+const weekAgoDate = new Date(last_updated);
+weekAgoDate.setDate(weekAgoDate.getDate() - 7);
+const weekAgoStr = weekAgoDate.toISOString().split('T')[0];
+const prev = historyData.history.find(h => h.date <= weekAgoStr) ?? historyData.history[1];
 
 function fuelStat(curr: number, prevPrice: number | undefined) {
   const { changeValue, changePercentage } = calculatePriceChange(curr, prevPrice);
@@ -78,6 +83,9 @@ const updatedText = t(lang, 'price.updated').replace('{time}', formatDateTime(la
       </div>
     </div>
 
-    <p class="text-xs text-base-content/40 mt-3">{updatedText}</p>
+    <p class="text-xs text-base-content/40 mt-3">
+      {updatedText}
+      {prev?.date && <span class="ml-2 opacity-60">· {t(lang, 'price.vs_week').replace('{date}', prev.date)}</span>}
+    </p>
   </div>
 </div>

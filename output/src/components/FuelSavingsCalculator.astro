@@ -1,0 +1,165 @@
+---
+import stationData from '@/data/station-prices.json';
+import pricesData from '@/data/prices.json';
+import { t } from '@/i18n/utils';
+import type { Language } from '@/types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const stations = stationData.stations
+  .filter(s => !s.error)
+  .map(s => ({
+    brand:     s.brand,
+    diesel:    s.prices.diesel,
+    petrol_95: s.prices.petrol_95,
+    petrol_98: s.prices.petrol_98,
+  }));
+
+const averages = pricesData.averages;
+
+const labels = {
+  total:   t(lang, 'calc.total'),
+  cheaper: t(lang, 'calc.cheaper'),
+  vs:      t(lang, 'calc.vs'),
+};
+---
+
+<div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal>
+  <div class="card-body p-0">
+    <h2 class="card-title text-xl mb-5">{t(lang, 'calc.title')}</h2>
+
+    <div x-data="fuelCalc()" class="space-y-5">
+
+      <!-- Controls row -->
+      <div class="flex flex-wrap gap-5 items-end">
+
+        <!-- Tank size slider -->
+        <div class="flex-1 min-w-[200px]">
+          <label class="label pb-1 px-0">
+            <span class="label-text text-sm">{t(lang, 'calc.tank')}</span>
+            <span class="label-text-alt text-primary font-bold tabular" x-text="tankSize + ' L'"></span>
+          </label>
+          <input type="range" min="20" max="120" step="5"
+            x-model.number="tankSize"
+            class="range range-primary range-sm w-full" />
+          <div class="flex justify-between text-xs text-base-content/40 mt-1 px-0.5">
+            <span>20 L</span><span>70 L</span><span>120 L</span>
+          </div>
+        </div>
+
+        <!-- Fuel type -->
+        <div class="flex flex-col gap-2">
+          <span class="text-sm text-base-content/70">{t(lang, 'calc.fuel')}</span>
+          <div class="join">
+            <button class="join-item btn btn-sm"
+              :class="fuel==='diesel' ? 'btn-primary' : 'btn-ghost'"
+              @click="fuel='diesel'">{t(lang, 'fuel.diesel')}</button>
+            <button class="join-item btn btn-sm"
+              :class="fuel==='petrol_95' ? 'btn-primary' : 'btn-ghost'"
+              @click="fuel='petrol_95'">{t(lang, 'fuel.petrol95')}</button>
+            <button class="join-item btn btn-sm"
+              :class="fuel==='petrol_98' ? 'btn-primary' : 'btn-ghost'"
+              @click="fuel='petrol_98'">{t(lang, 'fuel.petrol98')}</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+
+        <!-- Cheapest station -->
+        <div class="col-span-2 sm:col-span-1 p-4 rounded-xl bg-success/10 border border-success/30 flex flex-col gap-1">
+          <span class="text-xs text-base-content/50">{t(lang, 'calc.cheapest_at')}</span>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-bold tabular text-success" x-text="cheapestPrice().toFixed(3) + ' €'"></span>
+            <span class="text-xs text-base-content/50">/L</span>
+          </div>
+          <span class="text-sm font-semibold" x-text="cheapestBrand()"></span>
+          <span class="text-xs text-base-content/40 mt-auto" x-text="'≈ ' + cheapestTotal().toFixed(2) + ' € ' + lTotal"></span>
+        </div>
+
+        <!-- Market average -->
+        <div class="p-4 rounded-xl bg-base-200 flex flex-col gap-1">
+          <span class="text-xs text-base-content/50">{t(lang, 'calc.avg_price')}</span>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-bold tabular" x-text="avgPrice().toFixed(3) + ' €'"></span>
+          </div>
+          <span class="text-xs text-base-content/40 mt-auto" x-text="'≈ ' + (avgPrice() * tankSize).toFixed(2) + ' € ' + lTotal"></span>
+        </div>
+
+        <!-- Save vs average -->
+        <div class="p-4 rounded-xl bg-base-200 flex flex-col gap-1">
+          <span class="text-xs text-base-content/50">{t(lang, 'calc.savings_vs_avg')}</span>
+          <span class="text-2xl font-bold tabular text-success" x-text="'−' + savingsVsAvg().toFixed(2) + ' €'"></span>
+          <span class="text-xs text-base-content/40 mt-auto" x-text="savingsVsAvgPerL().toFixed(3) + ' €/L ' + lCheaper"></span>
+        </div>
+
+        <!-- Save vs most expensive -->
+        <div class="p-4 rounded-xl bg-base-200 flex flex-col gap-1">
+          <span class="text-xs text-base-content/50">{t(lang, 'calc.savings_vs_max')}</span>
+          <span class="text-2xl font-bold tabular text-success" x-text="'−' + savingsVsMax().toFixed(2) + ' €'"></span>
+          <span class="text-xs text-base-content/40 mt-auto" x-text="lVs + ' ' + mostExpensiveBrand()"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ stations, averages, labels }}>
+  document.addEventListener('alpine:init', function () {
+    Alpine.data('fuelCalc', function () {
+      return {
+        stations: stations,
+        averages: averages,
+        tankSize: 50,
+        fuel: 'diesel',
+        lTotal:   labels.total,
+        lCheaper: labels.cheaper,
+        lVs:      labels.vs,
+
+        _sorted(dir) {
+          return [...this.stations]
+            .filter(s => s[this.fuel] != null)
+            .sort((a, b) => dir === 'asc'
+              ? a[this.fuel] - b[this.fuel]
+              : b[this.fuel] - a[this.fuel]);
+        },
+
+        cheapestPrice() {
+          const s = this._sorted('asc')[0];
+          return s ? s[this.fuel] : 0;
+        },
+        cheapestBrand() {
+          const s = this._sorted('asc')[0];
+          return s ? s.brand : '—';
+        },
+        mostExpensiveBrand() {
+          const s = this._sorted('desc')[0];
+          return s ? s.brand : '—';
+        },
+        avgPrice() {
+          return this.averages[this.fuel] ?? 0;
+        },
+        cheapestTotal() {
+          return this.cheapestPrice() * this.tankSize;
+        },
+        savingsVsAvg() {
+          return Math.max(0, (this.avgPrice() - this.cheapestPrice()) * this.tankSize);
+        },
+        savingsVsAvgPerL() {
+          return Math.max(0, this.avgPrice() - this.cheapestPrice());
+        },
+        savingsVsMax() {
+          const s = this._sorted('desc')[0];
+          const maxPrice = s ? s[this.fuel] : 0;
+          return Math.max(0, (maxPrice - this.cheapestPrice()) * this.tankSize);
+        },
+      };
+    });
+  });
+</script>

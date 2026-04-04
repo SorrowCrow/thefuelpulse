@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import CheapestFuelWidget from '@/components/CheapestFuelWidget.astro';
+import FuelSavingsCalculator from '@/components/FuelSavingsCalculator.astro';
 import FuelRecommendation from '@/components/FuelRecommendation.astro';
 import PriceCard from '@/components/PriceCard.astro';
 import PriceChart from '@/components/PriceChart.astro';
@@ -39,8 +41,10 @@ const jsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2">
+      <CheapestFuelWidget lang={lang} />
       <FuelRecommendation lang={lang} />
       <PriceCard lang={lang} />
+      <FuelSavingsCalculator lang={lang} />
       <StationPrices lang={lang} />
       <PriceChart lang={lang} />
       <StationPriceChart lang={lang} />

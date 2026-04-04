@@ -114,6 +114,13 @@ const hreflangLinks: { hreflang: string; locale: Language }[] = [
       <slot />
     </main>
     <Footer lang={lang} />
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {});
+        });
+      }
+    </script>
     <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script is:inline>
       (function () {
