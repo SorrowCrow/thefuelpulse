@@ -29,6 +29,8 @@ jobs:
         run: python scraper/scrape_prices.py
 
       - name: Scrape news
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scraper/scrape_news.py
 
       - name: Generate AI recommendation
