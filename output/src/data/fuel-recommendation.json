@@ -2,24 +2,52 @@
   "diesel": {
     "recommendation": "buy",
     "confidence": "high",
-    "summary": "Global crude prices are surging due to Iran conflict; European diesel prices are climbing, indicating future Latvian increases."
+    "summary": {
+      "lv": "Globālās jēlnaftas cenas strauji aug Irānas konflikta dēļ; Eiropas dīzeļdegvielas cenas kāpj, norādot uz turpmāku pieaugumu Latvijā.",
+      "en": "Global crude prices are surging due to Iran conflict; European diesel prices are climbing, indicating future Latvian increases.",
+      "ru": "Мировые цены на нефть резко растут из-за конфликта с Ираном; европейские цены на дизельное топливо растут, предвещая рост в Латвии."
+    }
   },
   "petrol_95": {
     "recommendation": "buy",
     "confidence": "high",
-    "summary": "Crude oil prices are extremely high due to geopolitical tensions, suggesting imminent petrol price hikes in Latvia."
+    "summary": {
+      "lv": "Jēlnaftas cenas ir ļoti augstas ģeopolitiskās spriedzes dēļ, liekot domāt par nenovēršamu benzīna cenu kāpumu Latvijā.",
+      "en": "Crude oil prices are extremely high due to geopolitical tensions, suggesting imminent petrol price hikes in Latvia.",
+      "ru": "Цены на нефть крайне высоки из-за геополитической напряжённости, что предвещает неминуемый рост цен на бензин в Латвии."
+    }
   },
   "petrol_98": {
     "recommendation": "buy",
     "confidence": "high",
-    "summary": "Global crude oil prices are soaring, indicating that Latvian petrol 98 prices are likely to rise further soon."
+    "summary": {
+      "lv": "Globālās jēlnaftas cenas strauji pieaug, norādot, ka Latvijas 98. benzīna cenas drīzumā visticamāk turpinās augt.",
+      "en": "Global crude oil prices are soaring, indicating that Latvian petrol 98 prices are likely to rise further soon.",
+      "ru": "Мировые цены на нефть стремительно растут, указывая на вероятный дальнейший рост цен на бензин-98 в Латвии."
+    }
   },
   "factors": [
-    "Brent crude oil prices surged past $140, with WTI topping $112 due to Iran risk.",
-    "The Iran conflict and Strait of Hormuz disruption are squeezing global oil supply.",
-    "Latvian petrol prices increased by 4.4% and diesel by 1.2% last week, with overall prices up 'teju 40%'."
+    {
+      "lv": "Brent jēlnaftas cenas pārsniedza 140 USD, WTI — 112 USD Irānas riska dēļ.",
+      "en": "Brent crude oil prices surged past $140, with WTI topping $112 due to Iran risk.",
+      "ru": "Цены на нефть Brent превысили 140 долл., WTI — 112 долл. из-за рисков, связанных с Ираном."
+    },
+    {
+      "lv": "Irānas konflikts un Hormuzas šauruma traucējumi samazina globālo naftas piedāvājumu.",
+      "en": "The Iran conflict and Strait of Hormuz disruption are squeezing global oil supply.",
+      "ru": "Конфликт с Ираном и перебои в Ормузском проливе сокращают мировые поставки нефти."
+    },
+    {
+      "lv": "Latvijas benzīna cenas pagājušajā nedēļā pieauga par 4,4%, dīzelis — par 1,2%; kopumā degvielas cenas augušas par 'teju 40%'.",
+      "en": "Latvian petrol prices increased by 4.4% and diesel by 1.2% last week, with overall prices up 'teju 40%'.",
+      "ru": "Цены на бензин в Латвии выросли на 4,4%, на дизельное топливо — на 1,2% за прошлую неделю; общий рост составил «почти 40%»."
+    }
   ],
-  "analysis": "Current fuel prices in Latvia show short-term stability for diesel at 2.024 EUR/L, while Petrol 95 and 98 have seen minor increases of +0.004 EUR and +0.003 EUR respectively over the last three days. However, this masks a more significant underlying trend: Latvian news indicates that petrol prices increased by 4.4% and diesel by 1.2% last week, with overall fuel prices in Latvia reportedly rising by 'teju 40%'. Public sentiment reflects distrust in fuel traders, and the Saeima is considering excise tax reductions, highlighting the local impact of rising costs. airBaltic has also requested a state loan due to high fuel prices, underscoring the severity of the situation. \n\nThe global oil market is experiencing extreme volatility and sharp price increases, primarily driven by escalating geopolitical tensions surrounding the Iran conflict. Brent crude prices have surged past $140, and WTI has topped $112, with US crude jumping more than 11% and Brent nearly 8% recently. The Strait of Hormuz disruption and threats of further attacks on Iran are directly impacting supply fears, causing WTI to trade at a premium over Brent. European drivers are already 'choking on rising diesel prices' due to these supply squeezes, indicating that these global trends are rapidly translating into higher retail costs across the continent.\n\nGiven the substantial increases in global crude oil prices and the clear upward trend in European fuel markets, it is highly probable that Latvian retail prices will continue to climb in the coming weeks. Despite the very recent stability, the strong global signals and the significant increases observed in Latvia over the past week suggest that current prices represent a temporary plateau before further rises. Therefore, drivers are advised to fill up today to mitigate against anticipated price hikes.",
+  "analysis": {
+    "lv": "Pašreizējās degvielas cenas Latvijā uzrāda īstermiņa stabilitāti dīzeļdegvielai — 2,024 EUR/L, savukārt 95. un 98. benzīna cenas pēdējo trīs dienu laikā nedaudz pieaugušas — attiecīgi par +0,004 EUR un +0,003 EUR. Tomēr tas maskē būtiskāku tendenci: Latvijas ziņas liecina, ka benzīna cenas pagājušajā nedēļā pieaugušas par 4,4%, bet dīzeļdegvielai — par 1,2%, un kopumā degvielas cenas Latvijā esot augušas par 'teju 40%'. Sabiedrībā valda neuzticība degvielas tirgotājiem, un Saeima apsver akcīzes nodokļa samazinājumu. airBaltic arī lūdzis valsts aizdevumu augsto degvielas cenu dēļ.\n\nGlobālais naftas tirgus piedzīvo ārkārtēju nestabilitāti un straujas cenu kāpumu, ko galvenokārt izraisa pieaugošā ģeopolitiskā spriedze saistībā ar Irānas konfliktu. Brent jēlnaftas cenas pārsniegušas 140 USD, bet WTI — 112 USD; ASV jēlnafta nesen lēca par vairāk nekā 11%, bet Brent — par gandrīz 8%. Hormuzas šauruma darbības traucējumi un draudi par turpmākiem uzbrukumiem Irānai tieši ietekmē piedāvājuma bažas, liekot WTI tirgot ar uzcenojumu pār Brent. Eiropas autovadītāji jau tagad 'smok no kāpjošajām dīzeļdegvielas cenām' šo piegādes samazinājumu dēļ.\n\nŅemot vērā būtisko jēlnaftas cenu kāpumu globāli un skaidro augšupvērsto tendenci Eiropas degvielas tirgos, ir ļoti ticams, ka Latvijas mazumtirdzniecības cenas nākamajās nedēļās turpinās augt. Neskatoties uz pēdējo dienu stabilitāti, spēcīgie globālie signāli un Latvijā novērotais ievērojamais cenu kāpums pagājušajā nedēļā liecina, ka pašreizējās cenas ir pagaidu apstāšanās pirms turpmāka kāpuma. Tāpēc autovadītājiem ieteicams piepildīt bāku jau šodien.",
+    "en": "Current fuel prices in Latvia show short-term stability for diesel at 2.024 EUR/L, while Petrol 95 and 98 have seen minor increases of +0.004 EUR and +0.003 EUR respectively over the last three days. However, this masks a more significant underlying trend: Latvian news indicates that petrol prices increased by 4.4% and diesel by 1.2% last week, with overall fuel prices in Latvia reportedly rising by 'teju 40%'. Public sentiment reflects distrust in fuel traders, and the Saeima is considering excise tax reductions, highlighting the local impact of rising costs. airBaltic has also requested a state loan due to high fuel prices, underscoring the severity of the situation.\n\nThe global oil market is experiencing extreme volatility and sharp price increases, primarily driven by escalating geopolitical tensions surrounding the Iran conflict. Brent crude prices have surged past $140, and WTI has topped $112, with US crude jumping more than 11% and Brent nearly 8% recently. The Strait of Hormuz disruption and threats of further attacks on Iran are directly impacting supply fears, causing WTI to trade at a premium over Brent. European drivers are already 'choking on rising diesel prices' due to these supply squeezes, indicating that these global trends are rapidly translating into higher retail costs across the continent.\n\nGiven the substantial increases in global crude oil prices and the clear upward trend in European fuel markets, it is highly probable that Latvian retail prices will continue to climb in the coming weeks. Despite the very recent stability, the strong global signals and the significant increases observed in Latvia over the past week suggest that current prices represent a temporary plateau before further rises. Therefore, drivers are advised to fill up today to mitigate against anticipated price hikes.",
+    "ru": "Текущие цены на топливо в Латвии демонстрируют краткосрочную стабильность для дизельного топлива на уровне 2,024 EUR/л, тогда как бензин-95 и бензин-98 за последние три дня незначительно подорожали — на +0,004 EUR и +0,003 EUR соответственно. Однако это скрывает более значимую тенденцию: латвийские СМИ сообщают, что цены на бензин выросли на 4,4%, а на дизельное топливо — на 1,2% за прошлую неделю, при этом общий рост цен на топливо в Латвии составил «почти 40%». Общественное доверие к топливным торговцам низкое, Сейм рассматривает снижение акцизного налога. Авиакомпания airBaltic также обратилась за государственным кредитом из-за высоких цен на топливо.\n\nМировой нефтяной рынок переживает крайнюю волатильность и резкий рост цен, обусловленный прежде всего эскалацией геополитической напряжённости вокруг иранского конфликта. Цены на нефть Brent превысили 140 долл., WTI — 112 долл.; американская нефть недавно подскочила более чем на 11%, Brent — почти на 8%. Перебои в работе Ормузского пролива и угрозы новых ударов по Ирану непосредственно влияют на опасения относительно поставок, из-за чего WTI торгуется с премией к Brent. Европейские водители уже «задыхаются от растущих цен на дизельное топливо».\n\nУчитывая существенный рост мировых цен на сырую нефть и очевидную восходящую тенденцию на европейских топливных рынках, весьма вероятно, что розничные цены в Латвии продолжат расти в ближайшие недели. Несмотря на недавнюю стабильность, сильные глобальные сигналы и значительный рост цен в Латвии за прошлую неделю свидетельствуют о том, что текущие цены представляют собой временное плато перед дальнейшим ростом. Поэтому водителям рекомендуется заправиться сегодня."
+  },
   "sources": [
     {
       "title": "Latvijas iedzīvotāji netic degvielas tirgotāju godaprātam - nra",

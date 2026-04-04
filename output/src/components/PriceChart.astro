@@ -134,16 +134,14 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
           return this.showForecast ? [...r, ...fcastEntries] : r;
         },
 
-        minPrice() {
-          const base = this.history.slice(0, -3);
-          const vals = base.flatMap(e => [e.diesel, e.petrol_95, e.petrol_98]).filter(v => v != null);
-          return vals.length ? Math.min(...vals) : 0;
-        },
-
-        maxPrice() {
-          const base = this.history.slice(0, -3);
-          const vals = base.flatMap(e => [e.diesel, e.petrol_95, e.petrol_98]).filter(v => v != null);
-          return vals.length ? Math.max(...vals) : 0;
+        periodChange(key) {
+          const data = this.filteredData().filter(e => e[key] != null);
+          if (data.length < 2) return null;
+          const first = data[0][key];
+          const last  = data[data.length - 1][key];
+          const delta = last - first;
+          const pct   = first !== 0 ? (delta / first) * 100 : 0;
+          return { delta, pct };
         },
 
         setRange(r) {
@@ -364,15 +362,34 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
         </div>
       </div>
 
-      <!-- Min / Max stats (dynamic) -->
-      <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
-        <div class="stat p-0 min-w-fit">
-          <div class="stat-title">{t(lang, 'chart.period.low')}</div>
-          <div class="stat-value tabular text-success" x-text={`minPrice().toFixed(3) + ' ${currency}'`}></div>
+      <!-- Per-fuel period change stats -->
+      <div class="flex flex-wrap gap-4 mb-4">
+        <div class="flex items-baseline gap-2 text-sm">
+          <span class="text-base-content/40 text-xs">{labelDiesel}</span>
+          <span class="tabular font-medium"
+                :class="periodChange('diesel') && periodChange('diesel').delta < 0 ? 'text-success' : periodChange('diesel') && periodChange('diesel').delta > 0 ? 'text-error' : 'text-base-content/50'"
+                x-text={`periodChange('diesel') ? (periodChange('diesel').delta >= 0 ? '+' : '') + periodChange('diesel').delta.toFixed(3) + ' ${currency}' : '—'`}></span>
+          <span class="text-base-content/30 text-xs"
+                x-show="periodChange('diesel') !== null"
+                x-text="periodChange('diesel') ? '(' + (periodChange('diesel').pct >= 0 ? '+' : '') + periodChange('diesel').pct.toFixed(1) + '%)' : ''"></span>
         </div>
-        <div class="stat p-0 min-w-fit">
-          <div class="stat-title">{t(lang, 'chart.period.high')}</div>
-          <div class="stat-value tabular text-error" x-text={`maxPrice().toFixed(3) + ' ${currency}'`}></div>
+        <div class="flex items-baseline gap-2 text-sm">
+          <span class="text-base-content/40 text-xs">{labelP95}</span>
+          <span class="tabular font-medium"
+                :class="periodChange('petrol_95') && periodChange('petrol_95').delta < 0 ? 'text-success' : periodChange('petrol_95') && periodChange('petrol_95').delta > 0 ? 'text-error' : 'text-base-content/50'"
+                x-text={`periodChange('petrol_95') ? (periodChange('petrol_95').delta >= 0 ? '+' : '') + periodChange('petrol_95').delta.toFixed(3) + ' ${currency}' : '—'`}></span>
+          <span class="text-base-content/30 text-xs"
+                x-show="periodChange('petrol_95') !== null"
+                x-text="periodChange('petrol_95') ? '(' + (periodChange('petrol_95').pct >= 0 ? '+' : '') + periodChange('petrol_95').pct.toFixed(1) + '%)' : ''"></span>
+        </div>
+        <div class="flex items-baseline gap-2 text-sm">
+          <span class="text-base-content/40 text-xs">{labelP98}</span>
+          <span class="tabular font-medium"
+                :class="periodChange('petrol_98') && periodChange('petrol_98').delta < 0 ? 'text-success' : periodChange('petrol_98') && periodChange('petrol_98').delta > 0 ? 'text-error' : 'text-base-content/50'"
+                x-text={`periodChange('petrol_98') ? (periodChange('petrol_98').delta >= 0 ? '+' : '') + periodChange('petrol_98').delta.toFixed(3) + ' ${currency}' : '—'`}></span>
+          <span class="text-base-content/30 text-xs"
+                x-show="periodChange('petrol_98') !== null"
+                x-text="periodChange('petrol_98') ? '(' + (periodChange('petrol_98').pct >= 0 ? '+' : '') + periodChange('petrol_98').pct.toFixed(1) + '%)' : ''"></span>
         </div>
       </div>
 

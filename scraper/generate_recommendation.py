@@ -40,14 +40,16 @@ DRY_RUN  = "--dry-run" in sys.argv
 FUEL_LABELS = {"diesel": "Diesel", "petrol_95": "Petrol 95", "petrol_98": "Petrol 98"}
 MODEL_NAME  = "gemini-2.5-flash"
 
-_NEUTRAL_FUEL = {"recommendation": "neutral", "confidence": "low", "summary": "Recommendation not yet generated."}
+_NEUTRAL_SUMMARY = {"lv": "Ieteikums vēl nav ģenerēts.", "en": "Recommendation not yet generated.", "ru": "Рекомендация ещё не сгенерирована."}
+_NEUTRAL_FUEL = {"recommendation": "neutral", "confidence": "low", "summary": _NEUTRAL_SUMMARY}
+_NEUTRAL_FACTOR = {"lv": "Nav datu", "en": "No data", "ru": "Нет данных"}
 
 NEUTRAL_SEED = {
     "diesel":          _NEUTRAL_FUEL,
     "petrol_95":       _NEUTRAL_FUEL,
     "petrol_98":       _NEUTRAL_FUEL,
-    "factors":         ["No price trend data analysed yet", "No news context loaded yet"],
-    "analysis":        "",
+    "factors":         [_NEUTRAL_FACTOR, _NEUTRAL_FACTOR],
+    "analysis":        {"lv": "", "en": "", "ru": ""},
     "sources":         [],
     "generated_at":    datetime.now(timezone.utc).isoformat(),
     "prices_snapshot": {"diesel": None, "petrol_95": None, "petrol_98": None},
@@ -109,11 +111,43 @@ within 1-2 weeks, so forward-looking signals matter.
 
 Respond ONLY with a valid JSON object matching this schema exactly:
 {
-  "diesel":    {"recommendation": "buy"|"wait"|"neutral", "confidence": "high"|"medium"|"low", "summary": "<max 120 chars>"},
-  "petrol_95": {"recommendation": "buy"|"wait"|"neutral", "confidence": "high"|"medium"|"low", "summary": "<max 120 chars>"},
-  "petrol_98": {"recommendation": "buy"|"wait"|"neutral", "confidence": "high"|"medium"|"low", "summary": "<max 120 chars>"},
-  "factors": ["<reason 1>", "<reason 2>", "<reason 3>"],
-  "analysis": "<2-3 paragraphs of plain-text analysis citing specific prices, global events, and news>"
+  "diesel": {
+    "recommendation": "buy"|"wait"|"neutral",
+    "confidence": "high"|"medium"|"low",
+    "summary": {
+      "lv": "<Latvian summary, max 120 chars>",
+      "en": "<English summary, max 120 chars>",
+      "ru": "<Russian summary, max 120 chars>"
+    }
+  },
+  "petrol_95": {
+    "recommendation": "buy"|"wait"|"neutral",
+    "confidence": "high"|"medium"|"low",
+    "summary": {
+      "lv": "<Latvian summary, max 120 chars>",
+      "en": "<English summary, max 120 chars>",
+      "ru": "<Russian summary, max 120 chars>"
+    }
+  },
+  "petrol_98": {
+    "recommendation": "buy"|"wait"|"neutral",
+    "confidence": "high"|"medium"|"low",
+    "summary": {
+      "lv": "<Latvian summary, max 120 chars>",
+      "en": "<English summary, max 120 chars>",
+      "ru": "<Russian summary, max 120 chars>"
+    }
+  },
+  "factors": [
+    {"lv": "<Latvian reason 1>", "en": "<English reason 1>", "ru": "<Russian reason 1>"},
+    {"lv": "<Latvian reason 2>", "en": "<English reason 2>", "ru": "<Russian reason 2>"},
+    {"lv": "<Latvian reason 3>", "en": "<English reason 3>", "ru": "<Russian reason 3>"}
+  ],
+  "analysis": {
+    "lv": "<2-3 paragraphs of plain-text analysis in Latvian>",
+    "en": "<2-3 paragraphs of plain-text analysis in English>",
+    "ru": "<2-3 paragraphs of plain-text analysis in Russian>"
+  }
 }
 
 Rules:
@@ -124,6 +158,7 @@ Rules:
 - factors must cite actual figures or headlines from the input data
 - analysis must reference both local Latvia trends AND any relevant global signals
 - analysis must NOT invent data not present in the context below
+- All text fields (summary, factors, analysis) must be provided in all 3 languages: lv (Latvian), en (English), ru (Russian)
 - Return ONLY the JSON object, no markdown, no explanation outside it\
 """
 
@@ -251,18 +286,42 @@ def main() -> None:
 
     def fuel_block(key: str) -> dict:
         fb = result.get(key, {})
+        raw_summary = fb.get("summary", "")
+        # Normalise: if model returned a plain string, wrap it as English only
+        if isinstance(raw_summary, str):
+            summary = {"lv": raw_summary, "en": raw_summary, "ru": raw_summary}
+        else:
+            summary = {
+                "lv": raw_summary.get("lv", ""),
+                "en": raw_summary.get("en", ""),
+                "ru": raw_summary.get("ru", ""),
+            }
         return {
             "recommendation": fb.get("recommendation", "neutral"),
             "confidence":     fb.get("confidence", "low"),
-            "summary":        fb.get("summary", ""),
+            "summary":        summary,
         }
+
+    def normalise_factors(raw: list) -> list:
+        out = []
+        for item in raw:
+            if isinstance(item, str):
+                out.append({"lv": item, "en": item, "ru": item})
+            else:
+                out.append({"lv": item.get("lv", ""), "en": item.get("en", ""), "ru": item.get("ru", "")})
+        return out
+
+    def normalise_analysis(raw) -> dict:
+        if isinstance(raw, str):
+            return {"lv": raw, "en": raw, "ru": raw}
+        return {"lv": raw.get("lv", ""), "en": raw.get("en", ""), "ru": raw.get("ru", "")}
 
     output = {
         "diesel":          fuel_block("diesel"),
         "petrol_95":       fuel_block("petrol_95"),
         "petrol_98":       fuel_block("petrol_98"),
-        "factors":         result.get("factors", []),
-        "analysis":        result.get("analysis", ""),
+        "factors":         normalise_factors(result.get("factors", [])),
+        "analysis":        normalise_analysis(result.get("analysis", "")),
         "sources":         [
             {"title": a["title"], "url": a["url"], "published_at": a.get("published_at", "")}
             for a in articles[:5]
@@ -282,7 +341,8 @@ def main() -> None:
 
     for fk, fl in FUEL_LABELS.items():
         fb = output[fk]
-        print(f"  ✅ {fl}: {fb['recommendation'].upper()} ({fb['confidence']}) — {fb['summary'][:80]}")
+        summary_en = fb['summary'].get('en', '') if isinstance(fb['summary'], dict) else fb['summary']
+        print(f"  ✅ {fl}: {fb['recommendation'].upper()} ({fb['confidence']}) — {summary_en[:80]}")
     print(f"  ✅ Written → {DATA_DIR / 'fuel-recommendation.json'}")
     print(f"\n{'='*50}\nDone.\n{'='*50}\n")
 

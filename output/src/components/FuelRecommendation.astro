@@ -10,18 +10,24 @@ interface Props {
 
 const { lang } = Astro.props;
 
-type FuelBlock = { recommendation: string; confidence: string; summary: string };
+type LangMap = { lv: string; en: string; ru: string };
+type FuelBlock = { recommendation: string; confidence: string; summary: LangMap | string };
 
 const data = recData as {
   diesel:          FuelBlock;
   petrol_95:       FuelBlock;
   petrol_98:       FuelBlock;
-  factors:         string[];
-  analysis:        string;
+  factors:         (LangMap | string)[];
+  analysis:        LangMap | string;
   sources:         { title: string; url: string; published_at: string }[];
   generated_at:    string;
   prices_snapshot: Record<string, number | null>;
 };
+
+function pickLang(val: LangMap | string, l: Language): string {
+  if (typeof val === 'string') return val;
+  return val[l] ?? val.en ?? '';
+}
 
 const cfgMap: Record<string, { badgeClass: string; borderClass: string; bgClass: string; recKey: string; icon: string }> = {
   buy:     { badgeClass: 'badge-success', borderClass: 'border-success/40', bgClass: 'bg-success/5',  recKey: 'rec.buy',     icon: '⛽' },
@@ -50,10 +56,11 @@ const fuelCards = fuels.map(({ key, labelKey }) => {
   const cdesc = t(lang, cdescKey);
   const recLabel = t(lang, cfg.recKey);
   const label = t(lang, labelKey);
-  return { label, fb, cfg, conf, tip, snap, cdesc, recLabel };
+  const summary = pickLang(fb.summary, lang);
+  return { label, fb, cfg, conf, tip, snap, cdesc, recLabel, summary };
 });
 
-const hasAnalysis = data.analysis && data.analysis.trim().length > 0;
+const hasAnalysis = !!data.analysis && pickLang(data.analysis, lang).trim().length > 0;
 const hasSources  = data.sources && data.sources.length > 0;
 
 const showmore = t(lang, 'rec.showmore');
@@ -74,7 +81,7 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
 
   <!-- Per-fuel cards row -->
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-    {fuelCards.map(({ label, fb, cfg, conf, tip, snap, cdesc, recLabel }) => (
+    {fuelCards.map(({ label, fb, cfg, conf, tip, snap, cdesc, recLabel, summary }) => (
       <div class:list={['card border p-4', cfg.bgClass, cfg.borderClass]}
            x-data={`{ expanded: false, showmore: ${JSON.stringify(showmore)}, showless: ${JSON.stringify(showless)} }`}>
         <div class="flex items-center justify-between mb-2">
@@ -96,7 +103,7 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
         <!-- AI summary — collapsed by default, expand on tap -->
         <div>
           <p class="text-xs text-base-content/60 leading-snug"
-             :class="expanded ? '' : 'line-clamp-2'">{fb.summary}</p>
+             :class="expanded ? '' : 'line-clamp-2'">{summary}</p>
           <button
             class="text-xs text-base-content/40 hover:text-base-content/60 mt-1 transition-colors"
             x-on:click="expanded = !expanded"
@@ -111,33 +118,52 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
     ))}
   </div>
 
-  <!-- Key factors -->
+  <!-- Key factors (collapsible) -->
   {data.factors.length > 0 && (
-    <ul class="space-y-1.5 mb-3 px-1">
-      {data.factors.map((f: string) => (
-        <li class="flex items-start gap-2 text-sm text-base-content/70">
-          <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
-          <span>{f}</span>
-        </li>
-      ))}
-    </ul>
+    <div class="mb-3"
+         x-data={`{ open: false, showmore: ${JSON.stringify(showmore)}, showless: ${JSON.stringify(showless)} }`}>
+      <ul class="space-y-1.5 px-1">
+        {data.factors.slice(0, 3).map((f) => (
+          <li class="flex items-start gap-2 text-sm text-base-content/70">
+            <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
+            <span>{pickLang(f, lang)}</span>
+          </li>
+        ))}
+      </ul>
+      {data.factors.length > 3 && (
+        <>
+          <div x-show="open" x-transition>
+            <ul class="space-y-1.5 px-1 mt-1.5">
+              {data.factors.slice(3).map((f) => (
+                <li class="flex items-start gap-2 text-sm text-base-content/70">
+                  <span class="text-base-content/30 mt-0.5 shrink-0">›</span>
+                  <span>{pickLang(f, lang)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <button
+            class="text-xs text-base-content/40 hover:text-base-content/60 mt-1.5 ml-1 transition-colors"
+            x-on:click="open = !open"
+            x-text="open ? showless : showmore"
+          >{showmore}</button>
+        </>
+      )}
+    </div>
   )}
 
-  <!-- News sources (always visible) -->
+  <!-- News sources (collapsible) -->
   {hasSources && (
-    <div class="mb-3">
+    <div class="mb-3"
+         x-data={`{ open: false, showmore: ${JSON.stringify(showmore)}, showless: ${JSON.stringify(showless)} }`}>
       <p class="label-eyebrow mb-2">{t(lang, 'rec.newsources')}</p>
       <ul class="space-y-1">
-        {data.sources.map((s: { title: string; url: string; published_at: string }) => (
+        {data.sources.slice(0, 2).map((s: { title: string; url: string; published_at: string }) => (
           <li class="text-xs flex items-start gap-2">
             <span class="text-base-content/30 shrink-0 mt-0.5">›</span>
             <span>
-              <a
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline"
-              >
+              <a href={s.url} target="_blank" rel="noopener noreferrer"
+                 class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline">
                 {s.title}
               </a>
               {s.published_at && (
@@ -147,6 +173,33 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
           </li>
         ))}
       </ul>
+      {data.sources.length > 2 && (
+        <>
+          <div x-show="open" x-transition>
+            <ul class="space-y-1 mt-1">
+              {data.sources.slice(2).map((s: { title: string; url: string; published_at: string }) => (
+                <li class="text-xs flex items-start gap-2">
+                  <span class="text-base-content/30 shrink-0 mt-0.5">›</span>
+                  <span>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer"
+                       class="text-base-content/60 hover:text-primary transition-colors underline-offset-2 hover:underline">
+                      {s.title}
+                    </a>
+                    {s.published_at && (
+                      <span class="ml-2 text-base-content/30">{s.published_at.slice(0, 10)}</span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <button
+            class="text-xs text-base-content/40 hover:text-base-content/60 mt-1.5 transition-colors"
+            x-on:click="open = !open"
+            x-text="open ? showless : showmore"
+          >{showmore}</button>
+        </>
+      )}
     </div>
   )}
 
@@ -162,7 +215,7 @@ const hideanalysis = t(lang, 'rec.hideanalysis');
 
       <div x-show="open" x-transition class="mt-3">
         <div class="card bg-base-200 border border-base-300 p-4 rounded-lg">
-          <p class="text-sm text-base-content/80 leading-relaxed whitespace-pre-line">{data.analysis}</p>
+          <p class="text-sm text-base-content/80 leading-relaxed whitespace-pre-line">{pickLang(data.analysis, lang)}</p>
         </div>
       </div>
     </div>
