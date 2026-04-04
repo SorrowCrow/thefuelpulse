@@ -221,7 +221,7 @@ def main() -> None:
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_PROMPT,
             response_mime_type="application/json",
-            max_output_tokens=4096,
+            max_output_tokens=8192,
             temperature=0.3,
         ),
     )
