@@ -1,15 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import CheapestFuelWidget from '@/components/CheapestFuelWidget.astro';
-import FuelSavingsCalculator from '@/components/FuelSavingsCalculator.astro';
-import FuelRecommendation from '@/components/FuelRecommendation.astro';
-import PriceCard from '@/components/PriceCard.astro';
 import PriceChart from '@/components/PriceChart.astro';
-import StationPriceChart from '@/components/StationPriceChart.astro';
 import StationPrices from '@/components/StationPrices.astro';
 import NewsFeed from '@/components/NewsFeed.astro';
-import { t } from '@/i18n/utils';
+import { calculatePriceChange, getPriceTrend } from '@/utils/priceHelpers';
+import { t, localePath } from '@/i18n/utils';
 import pricesData from '@/data/prices.json';
+import historyData from '@/data/price-history.json';
+import stationData from '@/data/station-prices.json';
 import type { Language } from '@/types';
 
 interface Props {
@@ -20,6 +18,35 @@ const { lang } = Astro.props;
 
 const prices = pricesData.averages;
 const updated = pricesData.last_updated;
+
+const stations = stationData.stations.filter((s: any) => !s.error);
+
+type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
+function cheapestFor(key: FuelKey) {
+  return stations
+    .filter((s: any) => s.prices[key] != null)
+    .sort((a: any, b: any) => (a.prices[key] as number) - (b.prices[key] as number))[0];
+}
+
+// Week-change delta (same logic as PriceCard)
+const weekAgoDate = new Date(updated);
+weekAgoDate.setDate(weekAgoDate.getDate() - 7);
+const weekAgoStr = weekAgoDate.toISOString().split('T')[0];
+const prev = historyData.history.find((h: any) => h.date <= weekAgoStr) ?? historyData.history[1];
+
+function weekDelta(curr: number, prevPrice: number | undefined) {
+  const { changeValue, changePercentage } = calculatePriceChange(curr, prevPrice);
+  const trend = getPriceTrend(changeValue);
+  const icon = trend === 'up' ? '▲' : trend === 'down' ? '▼' : '—';
+  const cls = trend === 'up' ? 'badge-error' : trend === 'down' ? 'badge-success' : 'badge-ghost';
+  return { changeValue, changePercentage, icon, cls };
+}
+
+const heroFuels: { key: FuelKey; labelKey: string; avg: number; delta: ReturnType<typeof weekDelta> }[] = [
+  { key: 'diesel',    labelKey: 'fuel.diesel',   avg: prices.diesel,    delta: weekDelta(prices.diesel,    prev?.diesel)    },
+  { key: 'petrol_95', labelKey: 'fuel.petrol95',  avg: prices.petrol_95, delta: weekDelta(prices.petrol_95, prev?.petrol_95) },
+  { key: 'petrol_98', labelKey: 'fuel.petrol98',  avg: prices.petrol_98, delta: weekDelta(prices.petrol_98, prev?.petrol_98) },
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -39,18 +66,58 @@ const jsonLd = {
 
 <BaseLayout lang={lang} title={t(lang, 'meta.home.title')} description={t(lang, 'meta.home.description')}>
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <!-- Hero: 3 big numbers + cheapest station per fuel type -->
+  <section class="mb-8" aria-label={t(lang, 'price.title')}>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {heroFuels.map(({ key, labelKey, avg, delta }) => {
+        const best = cheapestFor(key);
+        return (
+          <div class="rounded-2xl bg-base-100 border border-base-300 shadow-xl p-6 flex flex-col gap-2" data-reveal>
+            <span class="text-xs uppercase tracking-widest text-base-content/40 font-medium">
+              {t(lang, labelKey)}
+            </span>
+            <div class="flex items-baseline gap-1">
+              <span class="text-5xl font-extrabold tabular-nums text-primary leading-none">
+                {avg.toFixed(3)}
+              </span>
+              <span class="text-lg text-base-content/50">€/L</span>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class:list={['badge badge-sm text-xs', delta.cls]}>
+                {delta.icon} {Math.abs(delta.changeValue).toFixed(3)}
+              </span>
+              {delta.changePercentage !== 0 &&
+                <span class="text-xs text-base-content/40">({delta.changePercentage.toFixed(1)}%)</span>
+              }
+              <span class="text-xs text-base-content/30">{t(lang, 'price.vs_week').replace('{date}', prev?.date ?? '')}</span>
+            </div>
+            {best && (
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs text-base-content/40">{t(lang, 'cheapest.title')}:</span>
+                <span class="text-sm font-semibold text-success">{best.brand}</span>
+                <span class="text-sm tabular-nums text-success">{(best.prices[key] as number).toFixed(3)} €</span>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Main content grid -->
   <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2">
-      <CheapestFuelWidget lang={lang} />
-      <FuelRecommendation lang={lang} />
-      <PriceCard lang={lang} />
-      <FuelSavingsCalculator lang={lang} />
+    <div class="lg:col-span-2 space-y-0">
       <StationPrices lang={lang} />
       <PriceChart lang={lang} />
-      <StationPriceChart lang={lang} />
+      <!-- CTA to in-depth page -->
+      <div class="card bg-base-200 border border-base-300 p-4 mb-8 flex flex-row items-center justify-between gap-4" data-reveal>
+        <span class="text-sm text-base-content/70">{t(lang, 'indepth.cta.text')}</span>
+        <a href={localePath('/in-depth', lang)} class="btn btn-sm btn-primary whitespace-nowrap">{t(lang, 'indepth.cta.link')}</a>
+      </div>
     </div>
     <div class="lg:col-span-1">
-      <NewsFeed lang={lang} />
+      <NewsFeed lang={lang} limit={3} />
     </div>
   </section>
 </BaseLayout>

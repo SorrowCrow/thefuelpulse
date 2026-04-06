@@ -1,25 +1,11 @@
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1265)"><rect width="1000" height="1000" fill="#000000"></rect><g transform="matrix(33.333333333333336,0,0,33.333333333333336,100,100)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24"><defs>
     <mask id="gapMask">
-      <rect width="24" height="24" fill="white" />
+      <rect width="24" height="24" fill="white"></rect>
       <!-- 
         Perpendicular "Through the line" cut:
         - Positioned on the right slope between (12, 2) and (17.9, 11.2)
         - Rotated 57 degrees to match the slope, then wider than the stroke to ensure a clean break
       -->
-      <rect x="14.5" y="6" width="2" height="5" fill="black" transform="rotate(57 15.5 8.5)" />
+      <rect x="14.5" y="6" width="2" height="5" fill="black" transform="rotate(57 15.5 8.5)"></rect>
     </mask>
-  </defs>
-  <!-- 
-    Droplet Path (Solid Orange):
-    - Smooth tangential transition from triangle top to circular base
-  -->
-  <path 
-    d="M12 2L17.9 11.2A7 7 0 1 1 6.1 11.2L12 2Z" 
-    stroke="#f97316" 
-    stroke-width="2.2" 
-    stroke-linecap="round" 
-    stroke-linejoin="round"
-    mask="url(#gapMask)"
-  />
-</svg>
+  <clipPath id="SvgjsClipPath1265"><rect width="1000" height="1000" x="0" y="0" rx="500" ry="500"></rect></clipPath></defs><path d="M12 2L17.9 11.2A7 7 0 1 1 6.1 11.2L12 2Z" stroke="#f97316" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" mask="url(#gapMask)"></path></svg></g></g></svg>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fuel-pulse-v1';
+const CACHE_NAME = 'fuel-pulse-__BUILD_TIMESTAMP__';
 
 // Static shell to pre-cache on install
 const PRECACHE = ['/', '/manifest.webmanifest', '/favicon.svg'];

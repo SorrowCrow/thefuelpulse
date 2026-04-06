@@ -132,13 +132,7 @@ const fuelTabsJson = JSON.stringify(
             </tr>
           </template>
         </tbody>
-        <tfoot>
-          <tr class="text-base-content/40 text-xs border-t border-base-300">
-            <td class="pt-2">{t(lang, 'station.marketavg')}</td>
-            <td class="pt-2 font-mono" x-text="data[fuel].avg > 0 ? data[fuel].avg.toFixed(3) + ' €' : '—'"></td>
-            <td></td>
-          </tr>
-        </tfoot>
+
       </table>
     </div>
   </div>

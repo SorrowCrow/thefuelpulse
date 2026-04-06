@@ -5,9 +5,10 @@ import type { Language } from '@/types';
 
 interface Props {
   lang: Language;
+  limit?: number;
 }
 
-const { lang } = Astro.props;
+const { lang, limit = 5 } = Astro.props;
 
 type Article = {
   title: string; url: string; description: string; published_at: string; source: string;
@@ -15,7 +16,7 @@ type Article = {
   description_lv?: string; description_ru?: string;
 };
 
-const rawArticles = (newsRaw as { articles: Article[] }).articles.slice(0, 5);
+const rawArticles = (newsRaw as { articles: Article[] }).articles.slice(0, limit);
 
 function pick(article: Article, field: 'title' | 'description'): string {
   if (lang === 'lv') return (article[`${field}_lv` as keyof Article] as string) || article[field];

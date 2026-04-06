@@ -11,10 +11,11 @@ const { lang } = Astro.props;
 const canonical = getCanonicalPath(Astro.url.pathname);
 
 const navLinks = [
-  { key: 'nav.home',    path: '/'        },
-  { key: 'nav.news',    path: '/news'    },
-  { key: 'nav.about',   path: '/about'   },
-  { key: 'nav.contact', path: '/contact' },
+  { key: 'nav.home',    path: '/'         },
+  { key: 'nav.indepth', path: '/in-depth' },
+  { key: 'nav.news',    path: '/news'     },
+  { key: 'nav.about',   path: '/about'    },
+  { key: 'nav.contact', path: '/contact'  },
 ];
 ---
 
