@@ -8,10 +8,11 @@ This file provides guidance to Claude Code when working on the Fuel Prices Latvi
 
 - **Stack**: Astro v5 + Tailwind v4 + DaisyUI v5 + Chart.js + Alpine.js
 - **Deployment**: Static hosting (Netlify/Vercel)
-- **Data**: Mock JSON files (no backend, no database)
-- **Workflow**: Direct Claude Code collaboration — no scripts, no orchestration layer
+- **Data**: JSON files in `output/src/data/` (scraper-populated)
+- **Workflow**: Orchestrator → UI Designer / Developer agents
 
-Requirements are in `requirements.md`. Generated output stages in `output/` before moving to `src/`.
+**Current project state**: see `STATUS.md` (always read this before starting work).
+Requirements are in `requirements.md`. Agent instruction template in `agent-instructions-template.md`.
 
 ---
 
@@ -46,24 +47,6 @@ Requirements are in `requirements.md`. Generated output stages in `output/` befo
 - `import React from 'react'`
 - Pre-release package versions (alpha/beta/rc/preview) — use stable `^x.y.z`
 
----
-
-## Phase Roadmap
-
-```
-Phase 1  ✅ Project scaffold        Astro config, tsconfig, package.json, global.css
-Phase 2  ✅ Mock data + BaseLayout  prices.json, news.json, BaseLayout.astro
-Phase 3  ✅ PriceCard               Current price display (DaisyUI stats)
-Phase 4  ✅ PriceChart              Chart.js historical price chart
-Phase 5  ✅ NewsFeed                News articles list
-Phase 6  ✅ Pages                   index.astro, about.astro — English only, shadcn theme
-Phase 7  ✅ Real data integration   Python scraper for all 4 brands → station-prices.json + prices.json
-Phase 8  ✅ All-fuel pivot          Diesel + Petrol 95 + Petrol 98; StationPrices component, updated PriceCard/Chart
-Phase 9  Deployment prep            Netlify/Vercel config, final build verification
-```
-
-**Current phase: 9**
-
 ## Notes
 - **Languages**: Latvian (default, `/`), English (`/en/`), Russian (`/ru/`) — expandable to more
 - Translation strings in `src/i18n/{lv,en,ru}.json`. All components accept a `lang: Language` prop.
@@ -79,14 +62,3 @@ Phase 9  Deployment prep            Netlify/Vercel config, final build verificat
 - NEVER write generated files directly to `src/`
 - ALWAYS stage in `output/` first
 - Human reviews output before copying to `src/`
-
----
-
-## Success Criteria (Before Calling MVP Done)
-
-- Site loads in < 2 seconds
-- All pages are mobile responsive
-- Chart displays price data accurately for all 3 fuel types
-- Zero console errors
-- Builds as a static site (`npm run build` succeeds)
-- Lighthouse performance > 90
