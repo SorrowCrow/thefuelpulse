@@ -12,23 +12,23 @@
 
 /* ── Light theme ── */
 [data-theme="light"] {
-  --color-base-100: oklch(99% 0.001 240);
-  --color-base-200: oklch(95% 0.003 240);
-  --color-base-300: oklch(87% 0.005 240);
-  --color-base-content: oklch(18% 0.005 240);
-  --color-primary: oklch(58% 0.18 65);
+  --color-base-100: oklch(99% 0.003 35);
+  --color-base-200: oklch(95% 0.006 35);
+  --color-base-300: oklch(87% 0.010 35);
+  --color-base-content: oklch(18% 0.010 35);
+  --color-primary: oklch(55% 0.22 38);       /* fiery orange — fuel/fire */
   --color-primary-content: oklch(99% 0 0);
-  --color-secondary: oklch(50% 0.005 240);
+  --color-secondary: oklch(52% 0.18 52);     /* amber */
   --color-secondary-content: oklch(99% 0 0);
-  --color-accent: oklch(52% 0.15 185);
-  --color-accent-content: oklch(99% 0 0);
+  --color-accent: oklch(56% 0.17 80);        /* gold */
+  --color-accent-content: oklch(12% 0 0);
   --color-neutral: oklch(90% 0 0);
   --color-neutral-content: oklch(18% 0 0);
   --color-success: oklch(48% 0.15 143.4);
   --color-success-content: oklch(99% 0 0);
-  --color-warning: oklch(55% 0.15 66.1);
+  --color-warning: oklch(57% 0.19 52);       /* dark orange */
   --color-warning-content: oklch(99% 0 0);
-  --color-error: oklch(50% 0.2 15.4);
+  --color-error: oklch(47% 0.22 22);         /* crimson */
   --color-error-content: oklch(99% 0 0);
   --rounded-box: 0.375rem;
   --rounded-btn: 0.375rem;
@@ -36,11 +36,11 @@
 }
 
 [data-theme="light"] body {
-  background-color: oklch(96% 0.004 240);
+  background-color: oklch(96% 0.008 35);
 }
 
 [data-theme="light"] header.scrolled {
-  background: oklch(98% 0 0 / 0.85);
+  background: oklch(99% 0.003 35 / 0.85);
 }
 
 /* Reduce ambient blobs/rig in light mode */
@@ -51,25 +51,25 @@
 [data-theme="dark"]  .theme-icon-moon { display: none; }
 [data-theme="light"] .theme-icon-sun  { display: none; }
 
-/* shadcn-style dark theme with amber fuel accent */
+/* fire-fuel dark theme — orange/amber/crimson palette */
 [data-theme="dark"] {
-  --color-base-100: oklch(11% 0.005 240);   /* card surface — subtle navy tint */
-  --color-base-200: oklch(16% 0.005 240);   /* elevated elements inside cards */
-  --color-base-300: oklch(30% 0.005 240);   /* borders */
+  --color-base-100: oklch(11% 0.008 35);    /* card surface — warm charcoal tint */
+  --color-base-200: oklch(16% 0.008 35);    /* elevated elements inside cards */
+  --color-base-300: oklch(30% 0.010 35);    /* borders */
   --color-base-content: oklch(97.8% 0 0);
-  --color-primary: oklch(78% 0.18 65);      /* amber/gold — fuel prices */
-  --color-primary-content: oklch(12% 0 0);
-  --color-secondary: oklch(63% 0 0);
-  --color-secondary-content: oklch(9.5% 0 0);
-  --color-accent: oklch(62% 0.15 185);      /* teal accent */
-  --color-accent-content: oklch(97.8% 0 0);
+  --color-primary: oklch(68% 0.22 38);      /* fiery orange — ff5500 territory */
+  --color-primary-content: oklch(10% 0 0);
+  --color-secondary: oklch(75% 0.18 58);    /* amber — ffa600 territory */
+  --color-secondary-content: oklch(10% 0 0);
+  --color-accent: oklch(83% 0.16 88);       /* golden yellow — ffd000 territory */
+  --color-accent-content: oklch(12% 0 0);
   --color-neutral: oklch(20% 0 0);
   --color-neutral-content: oklch(97.8% 0 0);
   --color-success: oklch(64.8% 0.15 143.4);
   --color-success-content: oklch(97.8% 0 0);
-  --color-warning: oklch(74.4% 0.15 66.1);
-  --color-warning-content: oklch(9.5% 0 0);
-  --color-error: oklch(62% 0.2 15.4);
+  --color-warning: oklch(71% 0.19 52);      /* dark orange — ff8c00 territory */
+  --color-warning-content: oklch(10% 0 0);
+  --color-error: oklch(52% 0.23 22);        /* crimson — db143c territory */
   --color-error-content: oklch(97.8% 0 0);
   --rounded-box: 0.375rem;
   --rounded-btn: 0.375rem;
@@ -81,7 +81,7 @@ html {
 }
 
 body {
-  background-color: oklch(6% 0.01 240); /* dark navy — base for ambient blob glow */
+  background-color: oklch(6% 0.012 30); /* warm near-black — base for fire blob glow */
   font-family: var(--font-body);
 }
 
@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: inherit;
   background: linear-gradient(
     to bottom,
-    oklch(78% 0.18 65 / 0.07) 0%,
+    oklch(68% 0.22 38 / 0.08) 0%,
     transparent 40%
   );
   opacity: 0;
@@ -116,11 +116,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card:hover {
   transform: translateY(-2px);
-  border-color: oklch(78% 0.18 65 / 0.35);
+  border-color: oklch(68% 0.22 38 / 0.40);
   box-shadow:
     0 20px 40px -8px oklch(0% 0 0 / 0.65),
-    0 0 0 1px oklch(78% 0.18 65 / 0.12),
-    0 0 32px oklch(78% 0.18 65 / 0.08);
+    0 0 0 1px oklch(68% 0.22 38 / 0.15),
+    0 0 32px oklch(68% 0.22 38 / 0.12);
 }
 
 /* ── Section reveal animations ── */
@@ -157,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Header scroll blur ── */
 header.scrolled {
   backdrop-filter: blur(16px);
-  background: oklch(9.5% 0 0 / 0.7);
+  background: oklch(9% 0.010 30 / 0.78);
 }
 
 /* ── Stat panel micro-interactions ── */
@@ -171,7 +171,7 @@ header.scrolled {
   transition: text-shadow 300ms ease;
 }
 .stat:hover .stat-value {
-  text-shadow: 0 0 24px oklch(78% 0.18 65 / 0.5);
+  text-shadow: 0 0 24px oklch(68% 0.22 38 / 0.55);
 }
 
 /* ── Badge micro-interactions ── */
@@ -187,7 +187,7 @@ header.scrolled {
   animation: badge-pulse-success 3s ease-in-out infinite;
 }
 .badge-error {
-  box-shadow: 0 0 0 0 oklch(62% 0.2 15.4 / 0);
+  box-shadow: 0 0 0 0 oklch(52% 0.23 22 / 0);
   animation: badge-pulse-error 3s ease-in-out infinite;
 }
 
@@ -203,7 +203,7 @@ header.scrolled {
   left: 50%;
   right: 50%;
   height: 1px;
-  background: oklch(78% 0.18 65);
+  background: oklch(68% 0.22 38);
   transition: left 220ms ease, right 220ms ease;
 }
 .menu a:hover::after {
@@ -229,7 +229,7 @@ tbody tr:hover td {
   transition: color 200ms ease, letter-spacing 200ms ease;
 }
 #site-header .btn-ghost:hover {
-  color: oklch(78% 0.18 65);
+  color: oklch(68% 0.22 38);
   letter-spacing: 0.01em;
 }
 
@@ -274,8 +274,8 @@ tbody tr:hover td {
   50%           { box-shadow: 0 0 0 4px oklch(64.8% 0.15 143.4 / 0.25); }
 }
 @keyframes badge-pulse-error {
-  0%, 85%, 100% { box-shadow: 0 0 0 0 oklch(62% 0.2 15.4 / 0); }
-  50%           { box-shadow: 0 0 0 4px oklch(62% 0.2 15.4 / 0.25); }
+  0%, 85%, 100% { box-shadow: 0 0 0 0 oklch(52% 0.23 22 / 0); }
+  50%           { box-shadow: 0 0 0 4px oklch(52% 0.23 22 / 0.25); }
 }
 
 /* ── Dropdown pop-in ── */
