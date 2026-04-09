@@ -43,7 +43,23 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // Cache-first for everything else (CSS, JS, fonts, images)
+  // Network-first for HTML pages — always fresh
+  if (url.pathname.endsWith('/') || url.pathname.endsWith('.html') || !url.pathname.includes('.')) {
+    e.respondWith(
+      fetch(e.request)
+        .then(function (res) {
+          if (res.ok) {
+            var clone = res.clone();
+            caches.open(CACHE_NAME).then(function (c) { c.put(e.request, clone); });
+          }
+          return res;
+        })
+        .catch(function () { return caches.match(e.request); })
+    );
+    return;
+  }
+
+  // Cache-first for static assets (CSS, JS, fonts, images)
   e.respondWith(
     caches.match(e.request).then(function (cached) {
       if (cached) return cached;
