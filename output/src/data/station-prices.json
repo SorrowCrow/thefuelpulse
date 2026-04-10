@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-10T05:25:16.465921+00:00",
+  "scraped_at": "2026-04-10T10:08:27.644189+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -38,12 +38,12 @@
       "brand": "Viada",
       "key": "viada",
       "prices": {
-        "diesel": 1.997,
-        "petrol_95": 1.727,
-        "petrol_98": 1.832
+        "diesel": null,
+        "petrol_95": null,
+        "petrol_98": null
       },
       "currency": "EUR",
-      "error": null
+      "error": "HTTPSConnectionPool(host='www.viada.lv', port=443): Max retries exceeded with url: /zemakas-degvielas-cenas/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
     }
   ]
 }
