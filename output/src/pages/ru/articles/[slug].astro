@@ -1,0 +1,123 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { t, localePath } from '@/i18n/utils';
+
+export async function getStaticPaths() {
+  const allArticles = await getCollection('articles');
+  return allArticles
+    .filter(entry => entry.id.startsWith('ru/'))
+    .map(entry => ({
+      params: { slug: entry.id.replace(/^ru\//, '').replace(/\.mdx?$/, '') },
+      props: { entry },
+    }));
+}
+
+const lang = 'ru' as const;
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout lang={lang} title={entry.data.title} description={entry.data.description}>
+  <article class="max-w-2xl mx-auto">
+    <div class="mb-8" data-reveal>
+      <a href={localePath('/articles', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-4 inline-block">
+        ← {t(lang, 'articles.page.title')}
+      </a>
+      <div class="flex items-center gap-2 mb-3 flex-wrap">
+        {entry.data.tags?.map((tag: string) => (
+          <span class="badge badge-outline text-xs">{tag}</span>
+        ))}
+        <time class="text-xs text-base-content/40" datetime={entry.data.pubDate.toISOString()}>
+          {t(lang, 'articles.published')}: {entry.data.pubDate.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        {entry.data.updated && (
+          <time class="text-xs text-base-content/30" datetime={entry.data.updated.toISOString()}>
+            · {t(lang, 'articles.updated')}: {entry.data.updated.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        )}
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold leading-tight mb-3">{entry.data.title}</h1>
+      <p class="text-base text-base-content/60 leading-relaxed">{entry.data.description}</p>
+    </div>
+
+    <div class="article-prose" data-reveal>
+      <Content />
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-base-300" data-reveal>
+      <a href={localePath('/articles', lang)} class="btn btn-ghost btn-sm">← {t(lang, 'articles.page.title')}</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-prose :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.3;
+    color: var(--color-base-content);
+  }
+  .article-prose :global(h3) {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.625rem;
+    color: var(--color-base-content);
+  }
+  .article-prose :global(p) {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    color: oklch(from var(--color-base-content) calc(l * 0.85) c h);
+  }
+  .article-prose :global(ul),
+  .article-prose :global(ol) {
+    margin-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .article-prose :global(li) {
+    line-height: 1.75;
+    margin-bottom: 0.375rem;
+    color: oklch(from var(--color-base-content) calc(l * 0.85) c h);
+  }
+  .article-prose :global(strong) {
+    font-weight: 600;
+    color: var(--color-base-content);
+  }
+  .article-prose :global(a) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .article-prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .article-prose :global(th) {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-base-200);
+    border-bottom: 2px solid var(--color-base-300);
+    font-weight: 600;
+  }
+  .article-prose :global(td) {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--color-base-300);
+  }
+  .article-prose :global(blockquote) {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: oklch(from var(--color-base-content) calc(l * 0.7) c h);
+  }
+  .article-prose :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-base-300);
+    margin: 2rem 0;
+  }
+</style>

@@ -3,6 +3,7 @@
 
   "nav.home": "Home",
   "nav.news": "News",
+  "nav.articles": "Articles",
   "nav.about": "About",
   "nav.contact": "Contact",
 
@@ -87,8 +88,14 @@
 
   "common.back": "← Back to dashboard",
 
-  "meta.home.title": "Fuel Prices in Latvia",
-  "meta.home.description": "Current diesel and petrol fuel prices and market news in Latvia.",
+  "meta.home.title": "Fuel Prices in Latvia — Circle K, Virši, Neste, Viada",
+  "meta.home.description": "Compare live diesel, petrol 95, and petrol 98 prices across Circle K, Virši, Neste, and Viada in Latvia. Scraped 3× daily — plus AI fill-up recommendations and price history charts.",
+
+  "hero.intro.heading": "Latvia's Real-Time Fuel Price Tracker",
+  "hero.intro.p": "Compare diesel, petrol 95, and petrol 98 prices across Circle K, Virši, Neste, and Viada — scraped directly from each retailer's website three times a day. No manual updates, no guesswork.",
+  "hero.intro.badge1": "Updated 3× daily",
+  "hero.intro.badge2": "4 major chains",
+  "hero.intro.badge3": "AI fill-up recommendation",
   "meta.about.title": "About — The Fuel Pulse",
   "meta.about.description": "Who we are, how we collect fuel price data, and why The Fuel Pulse is Latvia's most up-to-date fuel price tracker.",
   "meta.news.title": "Fuel News — Latvia",
@@ -101,7 +108,7 @@
   "about.title": "About The Fuel Pulse",
   "about.subtitle": "Real-time diesel, petrol 95, and petrol 98 prices across Latvia's major fuel networks — updated automatically, three times a day.",
   "about.whatwedo.title": "What We Do",
-  "about.whatwedo.p1": "The Fuel Pulse tracks retail fuel prices at the pump across Latvia's four major fuel station chains — Circle K, Virši, Neste, and Girteka / Oksana. Prices are scraped directly from each retailer's public pricing pages and aggregated into a single dashboard.",
+  "about.whatwedo.p1": "The Fuel Pulse tracks retail fuel prices at the pump across Latvia's four major fuel station chains — Circle K, Virši, Neste, and Viada. Prices are scraped directly from each retailer's public pricing pages and aggregated into a single dashboard.",
   "about.whatwedo.p2": "On top of raw prices, our AI analysis layer (powered by Google Gemini) reviews current global oil market news and issues a daily fill-up recommendation — buy now, wait, or monitor — with a plain-language explanation of the key price drivers.",
   "about.methodology.title": "Data Sources & Methodology",
   "about.methodology.station": "Station prices — scraped directly from each retailer's public-facing website, three times daily (08:00, 14:00, 20:00 Riga time).",
@@ -182,5 +189,13 @@
   "indepth.cta.link": "In-Depth Analysis →",
   "meta.indepth.title": "In-Depth Fuel Analysis — The Fuel Pulse",
   "meta.indepth.description": "AI fill-up recommendations, fuel savings calculator, and per-station price history for Latvia.",
-  "pwa.install": "Install App"
+  "pwa.install": "Install App",
+
+  "articles.page.title": "Articles",
+  "articles.page.description": "Guides, comparisons, and fuel market explainers for Latvian drivers.",
+  "articles.readmore": "Read more →",
+  "articles.published": "Published",
+  "articles.updated": "Updated",
+  "meta.articles.title": "Fuel Articles & Guides — The Fuel Pulse",
+  "meta.articles.description": "In-depth fuel guides for Latvia: station comparisons, diesel vs petrol explainers, money-saving tips, and fuel price analysis."
 }

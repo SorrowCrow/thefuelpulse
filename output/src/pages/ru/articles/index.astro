@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { t, localePath } from '@/i18n/utils';
+
+const lang = 'ru' as const;
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter(e => e.id.startsWith('ru/'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout lang={lang} title={t(lang, 'meta.articles.title')} description={t(lang, 'meta.articles.description')}>
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-8" data-reveal>
+      <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'common.back')}</a>
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">{t(lang, 'articles.page.title')}</h1>
+      <p class="text-base-content/60">{t(lang, 'articles.page.description')}</p>
+    </div>
+
+    <div class="space-y-4">
+      {articles.map((article, i) => {
+        const slug = article.id.replace(/^ru\//, '').replace(/\.mdx?$/, '');
+        return (
+          <article class="card bg-base-100 border border-base-300 hover:border-primary/30 transition-colors" data-reveal data-reveal-delay={`${i * 60}ms`}>
+            <div class="card-body p-5">
+              <div class="flex items-center gap-2 mb-2 flex-wrap">
+                {article.data.tags?.map(tag => (
+                  <span class="badge badge-ghost text-xs">{tag}</span>
+                ))}
+                <time class="text-xs text-base-content/40 ml-auto" datetime={article.data.pubDate.toISOString()}>
+                  {article.data.pubDate.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </div>
+              <h2 class="text-lg font-semibold leading-snug mb-1">
+                <a href={localePath(`/articles/${slug}`, lang)} class="hover:text-primary transition-colors">
+                  {article.data.title}
+                </a>
+              </h2>
+              <p class="text-sm text-base-content/60 leading-relaxed mb-3">{article.data.description}</p>
+              <a href={localePath(`/articles/${slug}`, lang)} class="text-sm text-primary hover:underline font-medium">
+                {t(lang, 'articles.readmore')}
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>

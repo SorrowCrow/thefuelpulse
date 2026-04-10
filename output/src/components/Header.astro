@@ -11,11 +11,12 @@ const { lang } = Astro.props;
 const canonical = getCanonicalPath(Astro.url.pathname);
 
 const navLinks = [
-  { key: 'nav.home',    path: '/'         },
-  { key: 'nav.indepth', path: '/in-depth' },
-  { key: 'nav.news',    path: '/news'     },
-  { key: 'nav.about',   path: '/about'    },
-  { key: 'nav.contact', path: '/contact'  },
+  { key: 'nav.home',     path: '/'          },
+  { key: 'nav.indepth',  path: '/in-depth'  },
+  { key: 'nav.news',     path: '/news'      },
+  { key: 'nav.articles', path: '/articles'  },
+  { key: 'nav.about',    path: '/about'     },
+  { key: 'nav.contact',  path: '/contact'   },
 ];
 ---
 
@@ -36,9 +37,9 @@ const navLinks = [
       <a href={localePath('/', lang)} class="btn btn-ghost text-base font-semibold tracking-tight">
         {t(lang, 'site.name')}
       </a>
-      <ul class="menu menu-horizontal hidden lg:flex px-1">
+      <ul class="menu menu-horizontal hidden lg:flex px-0 flex-nowrap">
         {navLinks.map(({ key, path }) => (
-          <li><a href={localePath(path, lang)} class="btn btn-ghost btn-sm">{t(lang, key)}</a></li>
+          <li><a href={localePath(path, lang)} class="btn btn-ghost btn-xs text-sm">{t(lang, key)}</a></li>
         ))}
       </ul>
     </div>
