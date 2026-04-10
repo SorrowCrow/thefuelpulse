@@ -9,10 +9,11 @@ const { lang } = Astro.props;
 
 // All colors pre-computed — no regex inside Alpine x-data (backslashes get stripped by HTML encoding)
 const STATIONS = [
-  { key: 'virsi',   label: 'Virši',    color: 'rgba(251,191,36,0.9)',  fillColor: 'rgba(251,191,36,0.07)'  },
-  { key: 'circlek', label: 'Circle K', color: 'rgba(248,113,113,0.9)', fillColor: 'rgba(248,113,113,0.07)' },
-  { key: 'neste',   label: 'Neste',    color: 'rgba(52,211,153,0.9)',  fillColor: 'rgba(52,211,153,0.07)'  },
-  { key: 'viada',   label: 'Viada',    color: 'rgba(167,139,250,0.9)', fillColor: 'rgba(167,139,250,0.07)' },
+  { key: 'virsi',     label: 'Virši',      color: 'rgba(251,191,36,0.9)',  fillColor: 'rgba(251,191,36,0.07)',  borderDash: [] as number[] },
+  { key: 'circlek',   label: 'Circle K',   color: 'rgba(248,113,113,0.9)', fillColor: 'rgba(248,113,113,0.07)', borderDash: [] as number[] },
+  { key: 'neste',     label: 'Neste',      color: 'rgba(52,211,153,0.9)',  fillColor: 'rgba(52,211,153,0.07)',  borderDash: [] as number[] },
+  { key: 'viada',     label: 'Viada DUS',  color: 'rgba(167,139,250,0.9)', fillColor: 'rgba(167,139,250,0.07)', borderDash: [] as number[] },
+  { key: 'viada_adus',label: 'Viada ADUS', color: 'rgba(196,181,253,0.85)',fillColor: 'rgba(196,181,253,0.03)', borderDash: [5,3] as number[] },
 ];
 
 type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
@@ -33,11 +34,18 @@ for (const item of historyData.history) {
   const stationPrices = (item as Record<string, unknown>).stations as Record<string, Record<FuelKey, number | null>> | undefined;
   if (stationPrices) {
     for (const s of STATIONS) {
-      const sp = stationPrices[s.key];
-      if (!sp) continue;
-      if (sp.diesel    != null) g.stations[s.key].diesel.push(sp.diesel);
-      if (sp.petrol_95 != null) g.stations[s.key].petrol_95.push(sp.petrol_95);
-      if (sp.petrol_98 != null) g.stations[s.key].petrol_98.push(sp.petrol_98);
+      if (s.key === 'viada_adus') {
+        // Read diesel_ecto from viada's history entry
+        const viadaSp = stationPrices['viada'] as any;
+        if (viadaSp?.diesel_ecto != null) g.stations['viada_adus'].diesel.push(viadaSp.diesel_ecto);
+        // petrol for ADUS is same as DUS — omit to avoid duplicate lines on petrol tabs
+      } else {
+        const sp = stationPrices[s.key];
+        if (!sp) continue;
+        if (sp.diesel    != null) g.stations[s.key].diesel.push(sp.diesel);
+        if (sp.petrol_95 != null) g.stations[s.key].petrol_95.push(sp.petrol_95);
+        if (sp.petrol_98 != null) g.stations[s.key].petrol_98.push(sp.petrol_98);
+      }
     }
   }
 }
@@ -113,6 +121,7 @@ const stationsJson = JSON.stringify(STATIONS);
           chart.data.labels = data.map(e => e.label);
           chart.data.datasets.forEach((ds, i) => {
             ds.data = data.map(e => e.stations[this.stations[i].key][f]);
+            ds.hidden = false;
           });
           chart.update();
         },
@@ -126,13 +135,14 @@ const stationsJson = JSON.stringify(STATIONS);
             label: s.label,
             data: initData.map(e => e.stations[s.key][f]),
             borderColor: s.color,
-            borderWidth: 2,
+            borderWidth: s.borderDash.length ? 1.5 : 2,
+            borderDash: s.borderDash,
             backgroundColor: s.fillColor,
             pointBackgroundColor: s.color,
-            pointRadius: 5,
-            pointHoverRadius: 8,
+            pointRadius: s.borderDash.length ? 3 : 5,
+            pointHoverRadius: s.borderDash.length ? 5 : 8,
             tension: 0.35,
-            fill: true,
+            fill: s.borderDash.length ? false : true,
             spanGaps: true,
           }));
 

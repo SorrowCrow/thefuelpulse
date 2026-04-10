@@ -55,3 +55,28 @@ export interface NewsArticle {
 export interface NewsData {
   articles: NewsArticle[];
 }
+
+export type FuelCategory = "standard" | "premium" | "specialty";
+export type StationType = "standard" | "ADUS" | "DUS";
+
+export interface FuelEntry {
+  fuel_type: string;
+  fuel_name: string;
+  category: FuelCategory;
+  price: number;
+  station_type?: StationType;
+  note?: string;
+  currency: "EUR";
+}
+
+export interface StationData {
+  brand: string;
+  key: string;
+  fuel_entries: FuelEntry[];
+  error: string | null;
+}
+
+export interface StationPricesFile {
+  scraped_at: string;
+  stations: StationData[];
+}

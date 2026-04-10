@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Latvian fuel price scraper — diesel, petrol 95, petrol 98.
+Latvian fuel price scraper — diesel, petrol 95, petrol 98, and specialty fuels.
 
 Scrapes 4 station brands and writes:
-  output/src/data/station-prices.json  — per-brand, per-fuel prices
-  output/src/data/prices.json          — average prices + history (appended)
+  output/src/data/station-prices.json  — per-brand, per-fuel FuelEntry list
+  output/src/data/prices.json          — average prices (standard fuels)
+  output/src/data/price-history.json   — historical averages + station snapshots
 
 Usage:
   python scraper/scrape_prices.py            # scrape and write files
@@ -18,7 +19,11 @@ from datetime import datetime, timezone, date
 from pathlib import Path
 
 import requests
+import urllib3
 from bs4 import BeautifulSoup
+
+# Viada's SSL cert chain is broken — suppress the resulting InsecureRequestWarning
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 
@@ -43,129 +48,175 @@ FUEL_LABELS = {
 
 # ── Scrapers ───────────────────────────────────────────────────────────────────
 
-# Virši uses data-type attributes on price cards.
-# "dd" confirmed diesel. "95e"/"98e" confirmed petrol grades.
-VIRSI_DATA_TYPES = {
-    "diesel":    "dd",
-    "petrol_95": "95e",
-    "petrol_98": "98e",
-}
-
-def scrape_virsi() -> dict[str, float | None]:
+def scrape_virsi() -> list[dict]:
     """
-    div.price-card[data-type=X] → p.price → last span = price number
+    div.price-card[data-type=X] → p.price → last span = price number.
+    Returns a list of FuelEntry dicts.
     """
     url = "https://www.virsi.lv/lv/privatpersonam/degviela/degvielas-un-elektrouzlades-cenas"
     r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "lxml")
 
-    result: dict[str, float | None] = {}
-    for fuel, dtype in VIRSI_DATA_TYPES.items():
+    # Maps data-type attribute value → (fuel_type, fuel_name, category)
+    DATA_TYPE_MAP = {
+        "dd":     ("diesel",    "Virši DD",  "standard"),
+        "95e":    ("petrol_95", "Virši 95E", "standard"),
+        "98e":    ("petrol_98", "Virši 98E", "standard"),
+        "cng":    ("cng",       "CNG",       "specialty"),
+        "lpg":    ("lpg",       "LPG",       "specialty"),
+        "adblue": ("adblue",    "AdBlue",    "specialty"),
+    }
+
+    entries: list[dict] = []
+    for dtype, (fuel_type, fuel_name, category) in DATA_TYPE_MAP.items():
         card = soup.find("div", class_="price-card", attrs={"data-type": dtype})
         if not card:
-            result[fuel] = None
             continue
         spans = card.select("p.price span")
         try:
-            result[fuel] = float(spans[-1].get_text(strip=True)) if len(spans) >= 2 else None
+            price = float(spans[-1].get_text(strip=True)) if len(spans) >= 2 else None
         except (ValueError, IndexError):
-            result[fuel] = None
-    return result
+            price = None
+        if price is None:
+            continue
+        entries.append({
+            "fuel_type": fuel_type,
+            "fuel_name": fuel_name,
+            "category":  category,
+            "price":     price,
+            "currency":  "EUR",
+        })
+    return entries
 
 
-# Circle K table rows identified by label text.
-# "dmiles" is confirmed diesel. Petrol rows assumed to contain "95"/"98".
-CIRCLEK_FUEL_PATTERNS = {
-    "diesel":    "dmiles",
-    "petrol_95": "95",
-    "petrol_98": "98",
-}
-
-def scrape_circlek() -> dict[str, float | None]:
+def scrape_circlek() -> list[dict]:
     """
-    table.table tbody tr → first td label matches pattern → second td = price
+    table.table tbody tr → first td label matches pattern → second td = price.
+    Returns a list of FuelEntry dicts.
+    Check most-specific labels first to avoid false positives.
     """
     url = "https://www.circlek.lv/degviela-miles/degvielas-cenas"
     r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "lxml")
 
-    result: dict[str, float | None] = {f: None for f in CIRCLEK_FUEL_PATTERNS}
+    # Ordered list: (label_check_fn, fuel_type, fuel_name, category)
+    # Check "dmiles+" before "dmiles" and "98" before "95" to avoid false positives.
+    LABEL_MAP = [
+        (lambda lbl: "dmiles+" in lbl,                      "premium_diesel", "Dmiles+",     "premium"),
+        (lambda lbl: "dmiles" in lbl and "+" not in lbl,    "diesel",         "Dmiles",      "standard"),
+        (lambda lbl: "xtl" in lbl,                          "xtl",            "miles+ XTL",  "specialty"),
+        (lambda lbl: "98" in lbl,                           "petrol_98",      "98miles+",    "standard"),
+        (lambda lbl: "95" in lbl and "98" not in lbl,       "petrol_95",      "95miles",     "standard"),
+        (lambda lbl: "autogāze" in lbl or "lpg" in lbl,     "lpg",            "Autogāze/LPG","specialty"),
+    ]
+
+    entries: list[dict] = []
+    seen_fuel_types: set[str] = set()
+
     for row in soup.select("table.table tbody tr"):
         cells = row.find_all("td")
         if len(cells) < 2:
             continue
         label = cells[0].get_text(strip=True).lower()
-        for fuel, pattern in CIRCLEK_FUEL_PATTERNS.items():
-            if result[fuel] is not None:
+        for check_fn, fuel_type, fuel_name, category in LABEL_MAP:
+            if fuel_type in seen_fuel_types:
                 continue
-            if pattern in label:
+            if check_fn(label):
                 raw = cells[1].get_text(strip=True).replace("EUR", "").strip()
                 try:
-                    result[fuel] = float(raw)
+                    price = float(raw)
                 except ValueError:
-                    pass
+                    break
+                seen_fuel_types.add(fuel_type)
+                entries.append({
+                    "fuel_type": fuel_type,
+                    "fuel_name": fuel_name,
+                    "category":  category,
+                    "price":     price,
+                    "currency":  "EUR",
+                })
                 break
-    return result
+    return entries
 
 
-# Neste page does not use a <table> — prices are in styled divs.
-# Search the full page text for each fuel name then grab the nearest price.
-NESTE_FUEL_PATTERNS = {
-    "diesel":    "futura d",
-    "petrol_95": "futura 95",
-    "petrol_98": "futura 98",
-}
-
-def scrape_neste() -> dict[str, float | None]:
+def scrape_neste() -> list[dict]:
     """
     tr → first td label matches pattern (case-insensitive) → second td = price.
     Uses soup.select("tr") directly — the table wrapper tag is unreliable.
+    Iterates ALL rows; does not break early.
+    Returns a list of FuelEntry dicts.
     """
     url = "https://www.neste.lv/lv/content/degvielas-cenas"
     r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "lxml")
 
-    result: dict[str, float | None] = {f: None for f in NESTE_FUEL_PATTERNS}
+    # Maps label substring → (fuel_type, fuel_name, category)
+    LABEL_MAP = [
+        ("futura d",       "diesel",         "Neste Futura D",          "standard"),
+        ("futura 95",      "petrol_95",       "Neste Futura 95",         "standard"),
+        ("futura 98",      "petrol_98",       "Neste Futura 98",         "standard"),
+        ("pro diesel",     "premium_diesel",  "Neste Pro Diesel",        "premium"),
+        ("my renewable",   "hvo",             "Neste MY Renewable Diesel","specialty"),
+        ("hvo",            "hvo",             "Neste MY Renewable Diesel","specialty"),
+    ]
+
+    entries: list[dict] = []
+    seen_fuel_types: set[str] = set()
+
     for row in soup.select("tr"):
         cells = row.find_all("td")
         if len(cells) < 2:
             continue
-        label = cells[0].get_text().lower().replace("\xa0", " ")
-        for fuel, pattern in NESTE_FUEL_PATTERNS.items():
-            if result[fuel] is not None:
+        label = cells[0].get_text().lower().replace("\xa0", " ").strip()
+        for lbl_pattern, fuel_type, fuel_name, category in LABEL_MAP:
+            if fuel_type in seen_fuel_types:
                 continue
-            if pattern in label:
+            if lbl_pattern in label:
                 raw = re.sub(r"[^\d.]", "", cells[1].get_text(strip=True))
                 try:
-                    result[fuel] = float(raw)
+                    price = float(raw)
                 except ValueError:
-                    pass
+                    break
+                seen_fuel_types.add(fuel_type)
+                entries.append({
+                    "fuel_type": fuel_type,
+                    "fuel_name": fuel_name,
+                    "category":  category,
+                    "price":     price,
+                    "currency":  "EUR",
+                })
                 break
-    return result
+    return entries
 
 
-# Viada rows identified by img src substrings.
-# URLs follow the pattern petrol_d_new.png / petrol_95_new.png / petrol_98_new.png
-VIADA_FUEL_SRC_PATTERNS = {
-    "diesel":    ("petrol_d",  ["petrol_95", "petrol_98"]),
-    "petrol_95": ("petrol_95", []),
-    "petrol_98": ("petrol_98", []),
-}
-
-def scrape_viada() -> dict[str, float | None]:
+def scrape_viada() -> list[dict]:
     """
-    table tr → first td img src matches pattern → second td = price
-    Takes minimum when multiple rows match (cheapest variant).
+    table tr → first td img src matches pattern → second td = price.
+    Emits one FuelEntry per matched row. No deduplication or min-price logic.
+    Returns a list of FuelEntry dicts.
     """
     url = "https://www.viada.lv/zemakas-degvielas-cenas/"
-    r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+    r = requests.get(url, headers=HEADERS, timeout=TIMEOUT, verify=False)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "lxml")
 
-    buckets: dict[str, list[float]] = {f: [] for f in VIADA_FUEL_SRC_PATTERNS}
+    # Ordered list: (src_substring, fuel_type, fuel_name, category, station_type, note)
+    # Check "petrol_95ectoplus" before "petrol_95ecto" and "ecto" before "d_new".
+    SRC_MAP = [
+        ("petrol_95ectoplus", "petrol_95_premium", "95 Ecto+",     "premium",  "ADUS", "Loyalty cards not accepted"),
+        ("petrol_95ecto",     "petrol_95",         "95 Ecto",      "standard", "ADUS", "Loyalty cards not accepted"),
+        ("petrol_98",         "petrol_98",         "Petrol 98",    "standard", "ADUS", None),
+        ("petrol_d_ecto",     "diesel_ecto",       "Diesel Ecto",  "standard", "ADUS", "Loyalty cards not accepted"),
+        ("petrol_d_new",      "diesel",            "Diesel",       "standard", "DUS",  None),
+        ("gaze",              "lpg",               "LPG",          "specialty","ADUS", None),
+        ("petrol_e85",        "e85",               "E85",          "specialty","DUS",  None),
+    ]
+
+    entries: list[dict] = []
+
     for row in soup.select("table tr"):
         cells = row.find_all("td")
         if len(cells) < 2:
@@ -174,15 +225,27 @@ def scrape_viada() -> dict[str, float | None]:
         if not img:
             continue
         src = img.get("src", "").lower()
-        for fuel, (pattern, excludes) in VIADA_FUEL_SRC_PATTERNS.items():
-            if pattern in src and not any(ex in src for ex in excludes):
+
+        for src_substr, fuel_type, fuel_name, category, station_type, note in SRC_MAP:
+            if src_substr in src:
                 raw = cells[1].get_text(strip=True).replace("EUR", "").strip()
                 try:
-                    buckets[fuel].append(float(raw))
+                    price = float(raw)
                 except ValueError:
-                    pass
-
-    return {f: min(prices) if prices else None for f, prices in buckets.items()}
+                    break
+                entry: dict = {
+                    "fuel_type":    fuel_type,
+                    "fuel_name":    fuel_name,
+                    "category":     category,
+                    "price":        price,
+                    "station_type": station_type,
+                    "currency":     "EUR",
+                }
+                if note is not None:
+                    entry["note"] = note
+                entries.append(entry)
+                break  # one match per row
+    return entries
 
 
 # ── Orchestration ──────────────────────────────────────────────────────────────
@@ -199,20 +262,19 @@ def run_scrapers() -> list[dict]:
     results = []
     for brand, key, fn in SCRAPERS:
         try:
-            prices = fn()
-            for fuel in FUEL_KEYS:
-                price = prices.get(fuel)
-                if price is not None:
-                    print(f"  ✅ {brand:<10} {FUEL_LABELS[fuel]}  {price:.3f} EUR")
-                else:
-                    print(f"  ⚠️  {brand:<10} {FUEL_LABELS[fuel]}  N/A")
-            results.append({"brand": brand, "key": key, "prices": prices, "error": None})
+            entries = fn()
+            for entry in entries:
+                print(
+                    f"  {brand:<10} | {entry['fuel_name']:<30} | "
+                    f"{entry['price']:.3f} EUR | {entry['category']}"
+                )
+            results.append({"brand": brand, "key": key, "fuel_entries": entries, "error": None})
         except Exception as e:
-            print(f"  ❌ {brand:<10} FAILED — {e}")
+            print(f"  FAILED {brand:<10} — {e}")
             results.append({
                 "brand": brand,
                 "key": key,
-                "prices": {f: None for f in FUEL_KEYS},
+                "fuel_entries": [],
                 "error": str(e),
             })
     return results
@@ -223,15 +285,22 @@ def build_station_prices(results: list[dict], scraped_at: str) -> dict:
         "scraped_at": scraped_at,
         "stations": [
             {
-                "brand": r["brand"],
-                "key": r["key"],
-                "prices": r["prices"],
-                "currency": "EUR",
-                "error": r["error"],
+                "brand":        r["brand"],
+                "key":          r["key"],
+                "fuel_entries": r["fuel_entries"],
+                "error":        r["error"],
             }
             for r in results
         ],
     }
+
+
+def _get_standard_price(result: dict, fuel_type: str) -> float | None:
+    """Return the price of the first standard-category FuelEntry matching fuel_type, or None."""
+    for entry in result.get("fuel_entries", []):
+        if entry.get("fuel_type") == fuel_type and entry.get("category") == "standard":
+            return entry["price"]
+    return None
 
 
 def compute_averages(results: list[dict], existing_averages: dict) -> tuple[dict, dict, bool]:
@@ -242,7 +311,10 @@ def compute_averages(results: list[dict], existing_averages: dict) -> tuple[dict
     new_averages: dict = {}
 
     for fuel in FUEL_KEYS:
-        valid = [r["prices"].get(fuel) for r in results if r["prices"].get(fuel) is not None]
+        valid = [
+            price for r in results
+            if (price := _get_standard_price(r, fuel)) is not None
+        ]
         if valid:
             avg = round(sum(valid) / len(valid), 3)
             new_averages[fuel] = avg
@@ -268,12 +340,12 @@ def update_prices_json(results: list[dict], scraped_at: str) -> None:
 
     for fuel in FUEL_KEYS:
         if new_averages.get(fuel):
-            print(f"  ✅ {FUEL_LABELS[fuel]}  avg {new_averages[fuel]:.3f} EUR")
+            print(f"  {FUEL_LABELS[fuel]}  avg {new_averages[fuel]:.3f} EUR")
         else:
-            print(f"  ⚠️  {FUEL_LABELS[fuel]}  no valid prices")
+            print(f"  {FUEL_LABELS[fuel]}  no valid prices")
 
     if not any_valid:
-        print("  ⚠️  No valid prices scraped — prices.json not updated")
+        print("  No valid prices scraped — prices.json not updated")
         return
 
     existing.update({
@@ -300,12 +372,17 @@ def update_price_history(results: list[dict], scraped_at: str) -> None:
     _, history_entry, any_valid = compute_averages(results, existing_averages)
 
     if not any_valid:
-        print("  ⚠️  No valid prices scraped — price-history.json not updated")
+        print("  No valid prices scraped — price-history.json not updated")
         return
 
     history_entry["datetime"] = scraped_at  # full ISO timestamp for this poll
     history_entry["stations"] = {
-        r["key"]: r["prices"] for r in results
+        r["key"]: {
+            entry["fuel_type"]: entry["price"]
+            for entry in r["fuel_entries"]
+            if entry.get("category") == "standard"
+        }
+        for r in results
     }
 
     history: list[dict] = existing.get("history", [])
@@ -326,9 +403,20 @@ def main() -> None:
     if dry_run:
         print("\n[dry-run] Would write station-prices.json:")
         print(json.dumps(build_station_prices(results, scraped_at), indent=2))
+        print("\n[dry-run] Entries per station:")
+        for r in results:
+            print(f"\n  {r['brand']}:")
+            for entry in r["fuel_entries"]:
+                print(
+                    f"    {r['brand']:<10} | {entry['fuel_name']:<30} | "
+                    f"{entry['price']:.3f} EUR | {entry['category']}"
+                )
         print("\n[dry-run] Averages that would be written to prices.json + price-history.json:")
         for fuel in FUEL_KEYS:
-            valid = [r["prices"].get(fuel) for r in results if r["prices"].get(fuel) is not None]
+            valid = [
+                price for r in results
+                if (price := _get_standard_price(r, fuel)) is not None
+            ]
             avg = round(sum(valid) / len(valid), 3) if valid else None
             print(f"  {FUEL_LABELS[fuel]}  {avg:.3f} EUR" if avg else f"  {FUEL_LABELS[fuel]}  N/A")
         return
@@ -338,15 +426,15 @@ def main() -> None:
     station_data = build_station_prices(results, scraped_at)
     station_path = OUTPUT_DIR / "station-prices.json"
     station_path.write_text(json.dumps(station_data, indent=2))
-    print(f"\n  ✅ station-prices.json written → {station_path}")
+    print(f"\n  station-prices.json written → {station_path}")
 
     print()
     update_prices_json(results, scraped_at)
-    print(f"  ✅ prices.json updated → {OUTPUT_DIR / 'prices.json'}")
+    print(f"  prices.json updated → {OUTPUT_DIR / 'prices.json'}")
 
     print()
     update_price_history(results, scraped_at)
-    print(f"  ✅ price-history.json updated → {OUTPUT_DIR / 'price-history.json'}")
+    print(f"  price-history.json updated → {OUTPUT_DIR / 'price-history.json'}")
 
     print(f"\n{'='*50}")
     print("Done.")

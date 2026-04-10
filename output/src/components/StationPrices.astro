@@ -9,12 +9,32 @@ interface Props {
 
 const { lang } = Astro.props;
 
-type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
+interface FuelEntryRaw {
+  fuel_type: string;
+  fuel_name: string;
+  category: string;
+  price: number;
+  station_type?: string;
+  note?: string;
+  currency: string;
+}
+
+interface StationRaw {
+  brand: string;
+  key: string;
+  fuel_entries?: FuelEntryRaw[];
+  // old schema compat
+  prices?: Record<string, number | null>;
+  error: string | null;
+}
 
 interface StationRow {
   brand: string;
   key: string;
   price: number | null;
+  fuel_name: string;
+  station_type?: string;
+  note?: string;
 }
 
 interface FuelTableData {
@@ -22,44 +42,104 @@ interface FuelTableData {
   rows: StationRow[];
 }
 
-const stations = stationData.stations as Array<{
-  brand: string;
-  key: string;
-  prices: Record<FuelKey, number | null>;
-  currency: string;
-  error: string | null;
-}>;
+const stations = (stationData as any).stations as StationRaw[];
 
-const fuelTypes: Array<{ key: FuelKey; labelKey: string }> = [
+// Fuel families for each tab
+const FUEL_FAMILIES: Record<string, string[]> = {
+  diesel:    ['diesel', 'diesel_ecto'],
+  petrol_95: ['petrol_95', 'petrol_95_premium'],
+  petrol_98: ['petrol_98'],
+};
+
+const fuelTypes = [
   { key: 'diesel',    labelKey: 'fuel.diesel'   },
   { key: 'petrol_95', labelKey: 'fuel.petrol95' },
   { key: 'petrol_98', labelKey: 'fuel.petrol98' },
 ];
 
-const tableData: Record<FuelKey, FuelTableData> = {} as Record<FuelKey, FuelTableData>;
+const tableData: Record<string, FuelTableData> = {};
 
 for (const { key } of fuelTypes) {
-  const valid = stations
-    .map(s => s.prices[key])
-    .filter((p): p is number => p !== null);
-  const avg = valid.length ? valid.reduce((a, b) => a + b, 0) / valid.length : 0;
+  const family = FUEL_FAMILIES[key];
+  const rows: StationRow[] = [];
 
-  const rows: StationRow[] = stations
-    .map(s => ({ brand: s.brand, key: s.key, price: s.prices[key] }))
-    .sort((a, b) => {
-      if (a.price === null) return 1;
-      if (b.price === null) return -1;
-      return a.price - b.price;
-    });
+  for (const station of stations) {
+    if (station.fuel_entries) {
+      // New schema
+      for (const entry of station.fuel_entries) {
+        if (family.includes(entry.fuel_type)) {
+          rows.push({
+            brand: station.brand,
+            key: station.key + '_' + entry.fuel_type,
+            price: entry.price,
+            fuel_name: entry.fuel_name,
+            station_type: entry.station_type,
+            note: entry.note,
+          });
+        }
+      }
+    } else if (station.prices) {
+      // Old schema fallback
+      const price = station.prices[key] ?? null;
+      rows.push({ brand: station.brand, key: station.key, price, fuel_name: station.brand });
+    }
+  }
+
+  rows.sort((a, b) => {
+    if (a.price === null) return 1;
+    if (b.price === null) return -1;
+    return a.price - b.price;
+  });
+
+  // Avg over standard canonical entries only
+  const stdPrices = rows
+    .filter(r => r.price !== null && !r.station_type?.length)
+    .map(r => r.price as number);
+  // If no station_type distinction, average all
+  const allPrices = rows.filter(r => r.price !== null).map(r => r.price as number);
+  const avgPrices = stdPrices.length ? stdPrices : allPrices;
+  const avg = avgPrices.length ? avgPrices.reduce((a, b) => a + b, 0) / avgPrices.length : 0;
 
   tableData[key] = { avg, rows };
 }
 
 const tableDataJson = JSON.stringify(tableData);
 
-const fuelTabsJson = JSON.stringify(
-  fuelTypes.map(({ key, labelKey }) => ({ key, label: t(lang, labelKey) }))
-);
+// Specialty / premium entries
+interface SpecialtyRow {
+  brand: string;
+  key: string;
+  fuel_name: string;
+  fuel_type: string;
+  category: string;
+  price: number;
+  station_type?: string;
+  note?: string;
+}
+
+const specialtyData: SpecialtyRow[] = [];
+for (const station of stations) {
+  for (const entry of (station.fuel_entries ?? [])) {
+    if (entry.category === 'premium' || entry.category === 'specialty') {
+      specialtyData.push({
+        brand: station.brand,
+        key: station.key + '_' + entry.fuel_type,
+        fuel_name: entry.fuel_name,
+        fuel_type: entry.fuel_type,
+        category: entry.category,
+        price: entry.price,
+        station_type: entry.station_type,
+        note: entry.note,
+      });
+    }
+  }
+}
+const specialtyDataJson = JSON.stringify(specialtyData);
+
+const fuelTabsJson = JSON.stringify([
+  ...fuelTypes.map(({ key, labelKey }) => ({ key, label: t(lang, labelKey) })),
+  { key: 'specialty', label: t(lang, 'fuel.specialty') },
+]);
 ---
 
 <div class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal data-reveal-delay="150ms"
@@ -67,6 +147,7 @@ const fuelTabsJson = JSON.stringify(
        fuel: 'diesel',
        data: ${tableDataJson},
        tabs: ${fuelTabsJson},
+       specialtyData: ${specialtyDataJson},
        deltaText(price, avg) {
          if (price === null || avg === 0) return '—';
          const pct = (price - avg) / avg * 100;
@@ -96,43 +177,99 @@ const fuelTabsJson = JSON.stringify(
       </template>
     </div>
 
-    <!-- Prices table -->
-    <div class="overflow-x-auto">
+    <!-- Standard fuel table -->
+    <div x-show="fuel !== 'specialty'">
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr class="text-base-content/50 text-xs uppercase tracking-wider">
+              <th>{t(lang, 'station.station')}</th>
+              <th>{t(lang, 'station.price')}</th>
+              <th>{t(lang, 'station.vsavg')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="(row, idx) in data[fuel].rows" :key="row.key">
+              <tr :class="idx === 0 && row.price !== null ? 'bg-success/5 border-b border-success/20 border-l-2 border-l-success' : 'border-b border-base-300/40'">
+                <td class="py-3">
+                  <span x-text="row.brand" class="font-medium"></span>
+                  <span
+                    x-show="idx === 0 && row.price !== null"
+                    class="badge badge-success badge-sm ml-2 text-xs"
+                  >{t(lang, 'station.best')}</span>
+                  <span
+                    x-show="row.station_type === 'ADUS'"
+                    class="badge badge-outline badge-xs ml-1"
+                  >ADUS</span>
+                  <span
+                    x-show="row.station_type === 'DUS'"
+                    class="badge badge-ghost badge-xs ml-1"
+                  >DUS</span>
+                  <span
+                    x-show="row.note"
+                    :title="row.note"
+                    class="ml-1 cursor-help text-base-content/40 text-xs"
+                  >ⓘ</span>
+                  <span
+                    x-show="row.station_type"
+                    x-text="row.fuel_name"
+                    class="block text-xs text-base-content/40"
+                  ></span>
+                </td>
+                <td class="py-3 font-mono">
+                  <span
+                    class="tabular"
+                    x-text="row.price !== null ? row.price.toFixed(3) + ' €' : 'N/A'"
+                    :class="row.price === null ? 'text-base-content/40' : (idx === 0 ? 'text-success font-bold' : 'text-primary')"
+                  ></span>
+                </td>
+                <td class="py-3 text-sm">
+                  <span
+                    :class="deltaClass(row.price, data[fuel].avg)"
+                    x-text="deltaText(row.price, data[fuel].avg)"
+                  ></span>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Specialty / premium fuels table -->
+    <div x-show="fuel === 'specialty'" class="overflow-x-auto">
       <table class="table w-full">
         <thead>
           <tr class="text-base-content/50 text-xs uppercase tracking-wider">
-            <th>{t(lang, 'station.station')}</th>
-            <th>{t(lang, 'station.price')}</th>
-            <th>{t(lang, 'station.vsavg')}</th>
+            <th>Station</th>
+            <th>Fuel</th>
+            <th class="text-right">Price</th>
           </tr>
         </thead>
         <tbody>
-          <template x-for="(row, idx) in data[fuel].rows" :key="row.key">
-            <tr :class="idx === 0 && row.price !== null ? 'bg-success/5 border-b border-success/20 border-l-2 border-l-success' : 'border-b border-base-300/40'">
+          <template x-for="row in specialtyData" :key="row.key">
+            <tr class="border-b border-base-300/40">
+              <td class="py-3 font-medium" x-text="row.brand"></td>
               <td class="py-3">
-                <span x-text="row.brand" class="font-medium"></span>
+                <span x-text="row.fuel_name"></span>
                 <span
-                  x-show="idx === 0 && row.price !== null"
-                  class="badge badge-success badge-sm ml-2 text-xs"
-                >{t(lang, 'station.best')}</span>
-              </td>
-              <td class="py-3 font-mono">
+                  x-show="row.category === 'premium'"
+                  class="badge badge-warning badge-sm ml-1"
+                >premium</span>
                 <span
-                  class="tabular"
-                  x-text="row.price !== null ? row.price.toFixed(3) + ' €' : 'N/A'"
-                  :class="row.price === null ? 'text-base-content/40' : (idx === 0 ? 'text-success font-bold' : 'text-primary')"
-                ></span>
-              </td>
-              <td class="py-3 text-sm">
+                  x-show="row.category === 'specialty'"
+                  class="badge badge-info badge-sm ml-1"
+                >specialty</span>
                 <span
-                  :class="deltaClass(row.price, data[fuel].avg)"
-                  x-text="deltaText(row.price, data[fuel].avg)"
-                ></span>
+                  x-show="row.note"
+                  :title="row.note"
+                  class="ml-1 cursor-help text-base-content/40 text-xs"
+                >ⓘ</span>
               </td>
+              <td class="py-3 font-mono text-primary text-right" x-text="row.price.toFixed(3) + ' €'"></td>
             </tr>
           </template>
         </tbody>
-
       </table>
     </div>
   </div>

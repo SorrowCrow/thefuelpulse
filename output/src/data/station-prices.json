@@ -1,49 +1,211 @@
 {
-  "scraped_at": "2026-04-10T10:08:27.644189+00:00",
+  "scraped_at": "2026-04-10T15:23:55.345399+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
       "key": "virsi",
-      "prices": {
-        "diesel": 2.147,
-        "petrol_95": 1.854,
-        "petrol_98": 1.907
-      },
-      "currency": "EUR",
+      "fuel_entries": [
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Vir\u0161i DD",
+          "category": "standard",
+          "price": 2.147,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Vir\u0161i 95E",
+          "category": "standard",
+          "price": 1.854,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Vir\u0161i 98E",
+          "category": "standard",
+          "price": 1.907,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "cng",
+          "fuel_name": "CNG",
+          "category": "specialty",
+          "price": 1.774,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "lpg",
+          "fuel_name": "LPG",
+          "category": "specialty",
+          "price": 1.085,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "adblue",
+          "fuel_name": "AdBlue",
+          "category": "specialty",
+          "price": 0.845,
+          "currency": "EUR"
+        }
+      ],
       "error": null
     },
     {
       "brand": "Circle K",
       "key": "circlek",
-      "prices": {
-        "diesel": 2.144,
-        "petrol_95": 1.854,
-        "petrol_98": 1.924
-      },
-      "currency": "EUR",
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "95miles",
+          "category": "standard",
+          "price": 1.844,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "98miles+",
+          "category": "standard",
+          "price": 1.914,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Dmiles",
+          "category": "standard",
+          "price": 2.134,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Dmiles+",
+          "category": "premium",
+          "price": 2.264,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "xtl",
+          "fuel_name": "miles+ XTL",
+          "category": "specialty",
+          "price": 2.77,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "lpg",
+          "fuel_name": "Autog\u0101ze/LPG",
+          "category": "specialty",
+          "price": 1.085,
+          "currency": "EUR"
+        }
+      ],
       "error": null
     },
     {
       "brand": "Neste",
       "key": "neste",
-      "prices": {
-        "diesel": 2.127,
-        "petrol_95": 1.837,
-        "petrol_98": 1.907
-      },
-      "currency": "EUR",
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Neste Futura 95",
+          "category": "standard",
+          "price": 1.827,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Neste Futura 98",
+          "category": "standard",
+          "price": 1.897,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Neste Futura D",
+          "category": "standard",
+          "price": 2.117,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Neste Pro Diesel",
+          "category": "premium",
+          "price": 2.247,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "hvo",
+          "fuel_name": "Neste MY Renewable Diesel",
+          "category": "specialty",
+          "price": 2.59,
+          "currency": "EUR"
+        }
+      ],
       "error": null
     },
     {
       "brand": "Viada",
       "key": "viada",
-      "prices": {
-        "diesel": null,
-        "petrol_95": null,
-        "petrol_98": null
-      },
-      "currency": "EUR",
-      "error": "HTTPSConnectionPool(host='www.viada.lv', port=443): Max retries exceeded with url: /zemakas-degvielas-cenas/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "95 Ecto",
+          "category": "standard",
+          "price": 1.727,
+          "station_type": "ADUS",
+          "currency": "EUR",
+          "note": "Loyalty cards not accepted"
+        },
+        {
+          "fuel_type": "petrol_95_premium",
+          "fuel_name": "95 Ecto+",
+          "category": "premium",
+          "price": 1.752,
+          "station_type": "ADUS",
+          "currency": "EUR",
+          "note": "Loyalty cards not accepted"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Petrol 98",
+          "category": "standard",
+          "price": 1.832,
+          "station_type": "ADUS",
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Diesel",
+          "category": "standard",
+          "price": 2.124,
+          "station_type": "DUS",
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel_ecto",
+          "fuel_name": "Diesel Ecto",
+          "category": "standard",
+          "price": 1.967,
+          "station_type": "ADUS",
+          "currency": "EUR",
+          "note": "Loyalty cards not accepted"
+        },
+        {
+          "fuel_type": "lpg",
+          "fuel_name": "LPG",
+          "category": "specialty",
+          "price": 0.985,
+          "station_type": "ADUS",
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "e85",
+          "fuel_name": "E85",
+          "category": "specialty",
+          "price": 1.959,
+          "station_type": "DUS",
+          "currency": "EUR"
+        }
+      ],
+      "error": null
     }
   ]
 }
