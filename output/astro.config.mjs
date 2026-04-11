@@ -33,7 +33,7 @@ export default defineConfig({
   site: 'https://thefuelpulse.com',
 
   i18n: {
-    defaultLocale: 'lv',
+    defaultLocale: 'en',
     locales: ['lv', 'en', 'ru'],
     routing: {
       prefixDefaultLocale: false,
@@ -44,7 +44,7 @@ export default defineConfig({
     alpinejs(),
     sitemap({
       i18n: {
-        defaultLocale: 'lv',
+        defaultLocale: 'en',
         locales: {
           lv: 'lv-LV',
           en: 'en-US',

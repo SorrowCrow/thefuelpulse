@@ -26,8 +26,8 @@
 ## Languages
 | Code | Route | Status |
 |---|---|---|
-| `lv` | `/` (default) | Active |
-| `en` | `/en/` | Active |
+| `en` | `/` (default) | Active |
+| `lv` | `/lv/` | Active |
 | `ru` | `/ru/` | Active |
 
 Translation strings: `output/src/i18n/{lv,en,ru}.json`
@@ -37,13 +37,13 @@ Translation strings: `output/src/i18n/{lv,en,ru}.json`
 ## Pages
 | Page | LV | EN | RU | Content component |
 |---|---|---|---|---|
-| Home | `/` | `/en/` | `/ru/` | `HomePageContent.astro` |
-| Articles index | `/articles/` | `/en/articles/` | `/ru/articles/` | `NewsPageContent.astro` |
-| Article detail | `/articles/[slug]` | `/en/articles/[slug]` | `/ru/articles/[slug]` | Astro content collections |
-| In-depth | `/in-depth/` | `/en/in-depth/` | `/ru/in-depth/` | `InDepthPageContent.astro` |
-| About | `/about/` | `/en/about/` | `/ru/about/` | `AboutPageContent.astro` |
-| Contact | `/contact/` | `/en/contact/` | `/ru/contact/` | `ContactPageContent.astro` |
-| Privacy | `/privacy/` | `/en/privacy/` | `/ru/privacy/` | `PrivacyPageContent.astro` |
+| Home | `/lv/` | `/` | `/ru/` | `HomePageContent.astro` |
+| Articles index | `/lv/articles/` | `/articles/` | `/ru/articles/` | `NewsPageContent.astro` |
+| Article detail | `/lv/articles/[slug]` | `/articles/[slug]` | `/ru/articles/[slug]` | Astro content collections |
+| In-depth | `/lv/in-depth/` | `/in-depth/` | `/ru/in-depth/` | `InDepthPageContent.astro` |
+| About | `/lv/about/` | `/about/` | `/ru/about/` | `AboutPageContent.astro` |
+| Contact | `/lv/contact/` | `/contact/` | `/ru/contact/` | `ContactPageContent.astro` |
+| Privacy | `/lv/privacy/` | `/privacy/` | `/ru/privacy/` | `PrivacyPageContent.astro` |
 | Game | `/game/` | — | — | inline (minimal) |
 
 ---

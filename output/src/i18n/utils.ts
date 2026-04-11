@@ -11,7 +11,7 @@ export function t(lang: Language, key: string): string {
 
 /** Strip locale prefix from a URL pathname to get the canonical path. */
 export function getCanonicalPath(pathname: string): string {
-  const match = pathname.match(/^\/(en|ru)(\/|$)(.*)/);
+  const match = pathname.match(/^\/(lv|ru)(\/|$)(.*)/);
   if (match) {
     const rest = match[3];
     return rest ? `/${rest}` : '/';
@@ -19,9 +19,9 @@ export function getCanonicalPath(pathname: string): string {
   return pathname;
 }
 
-/** Build a locale-prefixed path. lv is the default locale (no prefix). */
+/** Build a locale-prefixed path. en is the default locale (no prefix). */
 export function localePath(canonicalPath: string, lang: Language): string {
-  if (lang === 'lv') return canonicalPath;
+  if (lang === 'en') return canonicalPath;
   if (canonicalPath === '/') return `/${lang}/`;
   return `/${lang}${canonicalPath}`;
 }
@@ -29,7 +29,7 @@ export function localePath(canonicalPath: string, lang: Language): string {
 /** Detect language from URL pathname. */
 export function getLangFromUrl(url: URL): Language {
   const [, prefix] = url.pathname.split('/');
-  if (prefix === 'en') return 'en';
+  if (prefix === 'lv') return 'lv';
   if (prefix === 'ru') return 'ru';
-  return 'lv';
+  return 'en';
 }

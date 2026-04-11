@@ -6,14 +6,14 @@ import { t, localePath } from '@/i18n/utils';
 export async function getStaticPaths() {
   const allArticles = await getCollection('articles');
   return allArticles
-    .filter(entry => entry.id.startsWith('lv/'))
+    .filter(entry => entry.id.startsWith('en/'))
     .map(entry => ({
-      params: { slug: entry.id.replace(/^lv\//, '').replace(/\.mdx?$/, '') },
+      params: { slug: entry.id.replace(/^en\//, '').replace(/\.mdx?$/, '') },
       props: { entry },
     }));
 }
 
-const lang = 'lv' as const;
+const lang = 'en' as const;
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
@@ -59,11 +59,11 @@ const breadcrumbJsonLd = {
           <span class="badge badge-ghost badge-sm text-xs opacity-60">{tag}</span>
         ))}
         <time class="text-xs text-base-content/40 ml-auto" datetime={entry.data.pubDate.toISOString()}>
-          {t(lang, 'articles.published')}: {entry.data.pubDate.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' })}
+          {t(lang, 'articles.published')}: {entry.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
         {entry.data.updated && (
           <time class="text-xs text-base-content/30" datetime={entry.data.updated.toISOString()}>
-            · {t(lang, 'articles.updated')}: {entry.data.updated.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' })}
+            · {t(lang, 'articles.updated')}: {entry.data.updated.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         )}
       </div>

@@ -3,24 +3,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { t, localePath } from '@/i18n/utils';
 
-const lang = 'lv' as const;
+const lang = 'en' as const;
 const allArticles = await getCollection('articles');
 const articles = allArticles
-  .filter(e => e.id.startsWith('lv/'))
+  .filter(e => e.id.startsWith('en/'))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const CATEGORIES = ['station-guide', 'explainer', 'savings', 'comparison', 'recap'] as const;
 
-// Pre-compute label for each category chip
 const catLabels: Record<string, string> = Object.fromEntries(
   CATEGORIES.map(c => [c, t(lang, `articles.cat.${c}`)])
 );
 const catAllLabel = t(lang, 'articles.cat.all');
 
-// Serialise articles for Alpine (only what's needed for filtering + rendering)
 const articlesJson = JSON.stringify(articles.map(a => {
-  const slug = a.id.replace(/^lv\//, '').replace(/\.mdx?$/, '');
-  const localeDate = a.data.pubDate.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' });
+  const slug = a.id.replace(/^en\//, '').replace(/\.mdx?$/, '');
+  const localeDate = a.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
   return {
     slug,
     title: a.data.title,
@@ -83,7 +81,7 @@ const listUrl = localePath('/articles', lang);
       </div>
 
       <!-- Article count -->
-      <p class="text-xs text-base-content/40 mb-3" x-text="`${filtered.length} rakst${filtered.length === 1 ? 's' : 'i'}`"></p>
+      <p class="text-xs text-base-content/40 mb-3" x-text="`${filtered.length} article${filtered.length !== 1 ? 's' : ''}`"></p>
 
       <!-- Article list -->
       <div class="space-y-4">
@@ -91,13 +89,11 @@ const listUrl = localePath('/articles', lang);
           <article class="card bg-base-100 border border-base-300 hover:border-primary/30 transition-colors">
             <div class="card-body p-5">
               <div class="flex items-center gap-2 mb-2 flex-wrap">
-                <!-- Category badge (clickable — filters list) -->
                 <button
                   class="badge badge-outline badge-sm text-xs cursor-pointer hover:badge-primary transition-colors"
                   @click="filter = article.category"
                   x-text="labels[article.category] || article.category"
                 ></button>
-                <!-- Tags (decorative) -->
                 <template x-for="tag in article.tags" :key="tag">
                   <span class="badge badge-ghost badge-sm text-xs opacity-60" x-text="tag"></span>
                 </template>
@@ -120,7 +116,6 @@ const listUrl = localePath('/articles', lang);
         </template>
       </div>
 
-      <!-- Empty state -->
       <p class="text-sm text-base-content/40 text-center py-8" x-show="filtered.length === 0">
         {t(lang, 'news.page.nofilter')}
       </p>
