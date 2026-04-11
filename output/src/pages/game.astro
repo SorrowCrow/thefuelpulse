@@ -76,7 +76,7 @@ const basePrice = (recData.prices_snapshot?.diesel ?? 2.024) as number;
               <span
                 class="badge badge-sm"
                 :class="priceDirection > 0 ? 'badge-error' : priceDirection < 0 ? 'badge-success' : 'badge-ghost'"
-                x-text="priceDirection > 0 ? '▲ Rising' : priceDirection < 0 ? '▼ Falling' : '● Stable'"
+                x-text="priceDirection > 0 ? '< Rising' : priceDirection < 0 ? '> Falling' : '● Stable'"
               ></span>
               <p class="text-xs text-base-content/40 mt-1" x-text="`${priceChange >= 0 ? '+' : ''}${priceChange.toFixed(3)} vs yesterday`"></p>
             </div>

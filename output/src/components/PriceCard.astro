@@ -24,7 +24,7 @@ const prev = historyData.history.find(h => h.date <= weekAgoStr) ?? historyData.
 function fuelStat(curr: number, prevPrice: number | undefined) {
   const { changeValue, changePercentage } = calculatePriceChange(curr, prevPrice);
   const trend = getPriceTrend(changeValue);
-  const icon = trend === 'up' ? '▲' : trend === 'down' ? '▼' : '—';
+  const icon = trend === 'up' ? '<' : trend === 'down' ? '>' : '—';
   const badgeClass = trend === 'up' ? 'badge-error' : trend === 'down' ? 'badge-success' : 'badge-ghost';
   return { changeValue, changePercentage, icon, badgeClass };
 }

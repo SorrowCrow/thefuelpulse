@@ -40,7 +40,7 @@ const prev = historyData.history.find((h: any) => h.date <= weekAgoStr) ?? histo
 function weekDelta(curr: number, prevPrice: number | undefined) {
   const { changeValue, changePercentage } = calculatePriceChange(curr, prevPrice);
   const trend = getPriceTrend(changeValue);
-  const icon = trend === 'up' ? '▲' : trend === 'down' ? '▼' : '—';
+  const icon = trend === 'up' ? '<' : trend === 'down' ? '>' : '—';
   const cls = trend === 'up' ? 'badge-error' : trend === 'down' ? 'badge-success' : 'badge-ghost';
   return { changeValue, changePercentage, icon, cls };
 }
