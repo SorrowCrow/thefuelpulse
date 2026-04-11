@@ -1,42 +1,41 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working on the Fuel Prices Latvia website.
+Guidance for Claude Code on Fuel Prices Latvia website.
 
 ## Project Overview
 
-**Fuel Prices Latvia** — a static website tracking diesel, petrol 95, and petrol 98 prices across major fuel stations in Latvia.
+**Fuel Prices Latvia** — static site tracking diesel, petrol 95, petrol 98 prices across major Latvia fuel stations.
 
 - **Stack**: Astro v5 + Tailwind v4 + DaisyUI v5 + Chart.js + Alpine.js
 - **Deployment**: Static hosting (Netlify/Vercel)
 - **Data**: JSON files in `output/src/data/` (scraper-populated)
 - **Workflow**: Orchestrator → UI Designer / Developer agents
 
-**Current project state**: see `STATUS.md` (always read this before starting work).
-Requirements are in `requirements.md`. Agent instruction template in `agent-instructions-template.md`.
+**Current project state**: see `STATUS.md` (read before starting). Requirements in `requirements.md`. Agent template in `agent-instructions-template.md`.
 
 ---
 
 ## Tech Stack Rules
 
 ### Tailwind v4 (CSS-First)
-- NO `tailwind.config.mjs` — does not exist in v4
-- NO `@apply` directive — deprecated in v4
+- NO `tailwind.config.mjs` — not exist in v4
+- NO `@apply` — deprecated v4
 - NO `@astrojs/tailwind` integration
 - USE `@tailwindcss/vite` plugin only
 - ALL theme tokens as CSS variables under `@theme` in `global.css`
-- NO hardcoded hex colors anywhere
+- NO hardcoded hex colors
 
 ### DaisyUI v5
-- Load via `@plugin "daisyui";` in `global.css` (not in any config file)
-- Use `data-theme="dark"` on `<html>` tag
+- Load via `@plugin "daisyui";` in `global.css` (not config file)
+- Use `data-theme="dark"` on `<html>`
 - Use DaisyUI component classes: `card`, `btn`, `badge`, `stats`, `navbar`, etc.
 
 ### Astro v5
 - NO React/Vue/Svelte components
 - Alpine.js via `@astrojs/alpinejs` integration only
 - Use `:class` binding for dynamic classes (not `class:list` with Alpine)
-- `__dirname` is unavailable in ES modules — use `dirname(fileURLToPath(import.meta.url))`
-- `tsconfig.json` must extend `"astro/tsconfigs/strict"` and must NOT include `jsx` or `jsxImportSource`
+- `__dirname` unavailable in ES modules — use `dirname(fileURLToPath(import.meta.url))`
+- `tsconfig.json` must extend `"astro/tsconfigs/strict"`, must NOT include `jsx` or `jsxImportSource`
 - Vite alias `"@"` → `"src"` in `astro.config.mjs`
 
 ### Forbidden Patterns
@@ -48,12 +47,12 @@ Requirements are in `requirements.md`. Agent instruction template in `agent-inst
 - Pre-release package versions (alpha/beta/rc/preview) — use stable `^x.y.z`
 
 ## Notes
-- **Languages**: Latvian (default, `/`), English (`/en/`), Russian (`/ru/`) — expandable to more
-- Translation strings in `src/i18n/{lv,en,ru}.json`. All components accept a `lang: Language` prop.
-- Adding a new language: (1) add JSON file, (2) add locale to `astro.config.mjs`, (3) add `src/pages/{code}/` with thin wrapper pages
+- **Languages**: Latvian (default, `/`), English (`/en/`), Russian (`/ru/`) — expandable
+- Translation strings in `src/i18n/{lv,en,ru}.json`. All components accept `lang: Language` prop.
+- New language: (1) add JSON file, (2) add locale to `astro.config.mjs`, (3) add `src/pages/{code}/` with thin wrapper pages
 - No tests (run and gun)
 - Theme: shadcn monochrome (black/white/grey) via DaisyUI v5 CSS variable overrides
-- `output/` IS the project root — `npm install` and `npm run dev` run from there
+- `output/` IS project root — `npm install` and `npm run dev` run from there
 
 ---
 
@@ -67,12 +66,12 @@ Requirements are in `requirements.md`. Agent instruction template in `agent-inst
 
 ## STATUS.md — Mandatory Update Rule
 
-After completing **any task that adds, removes, or meaningfully changes a feature**, update `STATUS.md` at the project root:
+After any task adding, removing, or meaningfully changing a feature, update `STATUS.md` at project root:
 
-1. **New component or page** → add a row to the Components or Pages table
-2. **New feature** → tick it in "Features Implemented" or add it to "Not Yet Implemented"
+1. **New component or page** → add row to Components or Pages table
+2. **New feature** → tick in "Features Implemented" or add to "Not Yet Implemented"
 3. **New station or data field** → update Stations Tracked table
 4. **Bug fix or known issue** → update Known Issues / Tech Debt section
 5. **Lighthouse or performance change** → update Lighthouse Status section
 
-Keep entries concise (one line each). The goal is that any agent can read STATUS.md and understand the full project without reading source files.
+One line per entry. Goal: any agent reads STATUS.md, understands full project without reading source.

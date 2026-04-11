@@ -1,12 +1,12 @@
 # Agent Instructions Template — Fuel Prices Latvia
 
-Prompt creation agent uses this to generate self-contained feature instructions for sub-agents.
+This file is used by the prompt creation agent (Claude Code) to generate precise, self-contained feature instructions for sub-agents working on separate features of this project. Read this before writing any agent prompt.
 
 ---
 
 ## How to Use This File
 
-User requests feature/phase → compose complete agent prompt using sections below. Each prompt must be **fully self-contained** — receiving agent has no prior context.
+When the user asks for a new feature or phase, use the sections below to compose a complete agent prompt. Each agent prompt must be **fully self-contained** — the agent receiving it has no memory of prior conversations.
 
 ### Checklist Before Issuing a Prompt
 
@@ -164,7 +164,7 @@ CSS variable palette (from global.css):
 
 ## Prompt Structure Template
 
-Skeleton for new agent prompts:
+Use this skeleton when writing a new agent prompt:
 
 ```markdown
 # Feature: [Feature Name]
@@ -218,32 +218,32 @@ Stage all files under `output/`. List every file to create or modify:
 ### Adding a new page
 - Create `output/src/pages/[name].astro`
 - Import `BaseLayout` from `@/layouts/BaseLayout.astro`
-- `data-theme="dark"` already on `<html>` via BaseLayout — don't add again
-- Page title via `<BaseLayout title="...">` prop
+- Use `data-theme="dark"` is already on `<html>` via BaseLayout — do not add it again
+- Page title passed as `<BaseLayout title="...">` prop
 
 ### Adding a new component
 - Create `output/src/components/[Name].astro`
-- Read `station-prices.json` or `prices.json` via `Astro.glob` or `fs` with `fileURLToPath`
-- DaisyUI classes for layout (card, stats, table, etc.)
-- Interactive parts use Alpine.js — no inline `<script>` with framework imports
+- Read `station-prices.json` or `prices.json` using `Astro.glob` or `fs` with `fileURLToPath`
+- Use DaisyUI classes for layout (card, stats, table, etc.)
+- Interactive parts (tabs, toggles) use Alpine.js — no inline `<script>` with framework imports
 
 ### Modifying the scraper
-- Scraper: `/Users/user/repos/agentsCollab/scraper/scrape_prices.py`
-- Writes to `output/src/data/station-prices.json` and `output/src/data/prices.json`
+- Scraper lives at `/Users/user/repos/agentsCollab/scraper/scrape_prices.py`
+- Writes output to `output/src/data/station-prices.json` and `output/src/data/prices.json`
 - Python 3, uses `requests` and `beautifulsoup4`
-- Note new dependencies if added
+- Do not add new dependencies without noting them
 
 ### Deployment / config changes
-- Config: `output/astro.config.mjs`
+- Config file: `output/astro.config.mjs`
 - Netlify: `output/netlify.toml` (create if needed)
 - Vercel: `output/vercel.json` (create if needed)
-- Static adapter: `@astrojs/netlify` or `@astrojs/vercel` (stable only)
+- Static adapter: `@astrojs/netlify` or `@astrojs/vercel` (stable versions only)
 
 ---
 
 ## Scope Guards
 
-Always include in prompts:
+Always include these in prompts to prevent agents from going out of scope:
 
 ```
 - Do NOT refactor existing components unless directly required by the task

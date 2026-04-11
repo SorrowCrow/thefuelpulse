@@ -1,6 +1,6 @@
 # The Fuel Pulse — Project Status
 
-> **Agents: read before any task. Update relevant section when done.**
+> **Agents: read this before starting any task. Update the relevant section when you finish.**
 > Last updated: 2026-04-11
 
 ---
@@ -51,15 +51,15 @@ Translation strings: `output/src/i18n/{lv,en,ru}.json`
 ## Components (`output/src/components/`)
 | File | Purpose |
 |---|---|
-| `Header.astro` | Nav + theme toggle + lang switcher |
-| `Footer.astro` | Links, mailto contacts (3 emails) |
+| `Header.astro` | Navigation + theme toggle + language switcher |
+| `Footer.astro` | Links, mailto contacts (3 email addresses) |
 | `LanguageSwitcher.astro` | LV / EN / RU switcher |
-| `ToggleButton.astro` | Light/dark toggle (localStorage) |
-| `PriceCard.astro` | Current price per fuel type + change delta |
-| `PriceChart.astro` | Market avg price history + 7-day forecast bands |
+| `ToggleButton.astro` | Light/dark theme toggle (localStorage) |
+| `PriceCard.astro` | Current price for a fuel type with change delta |
+| `PriceChart.astro` | Market average price history + 7-day forecast bands |
 | `StationPriceChart.astro` | Per-station history chart (all 5 stations, fuel tabs) |
 | `StationPrices.astro` | Current prices table per station |
-| `CheapestFuelWidget.astro` | Badge: cheapest station per fuel type |
+| `CheapestFuelWidget.astro` | Badge showing cheapest station per fuel type |
 | `FuelRecommendation.astro` | Recommendation card from `fuel-recommendation.json` |
 | `FuelSavingsCalculator.astro` | Interactive savings calculator (Alpine.js) |
 | `NewsFeed.astro` | Article card grid |
@@ -72,9 +72,9 @@ Translation strings: `output/src/i18n/{lv,en,ru}.json`
 |---|---|---|
 | `prices.json` | Scraper (GH Actions) | Market averages (diesel, 95, 98) + `last_updated` |
 | `station-prices.json` | Scraper (GH Actions) | Per-station fuel entries with `scraped_at` |
-| `price-history.json` | Scraper (GH Actions) | Daily price history per station |
+| `price-history.json` | Scraper (GH Actions) | Historical daily prices per station |
 | `news.json` | Manual / scraper | Processed article metadata |
-| `news-raw.json` | Scraper | Raw articles pre-processing |
+| `news-raw.json` | Scraper | Raw articles before processing |
 | `fuel-recommendation.json` | Manual / scraper | Recommendation card data |
 
 ---
@@ -89,7 +89,7 @@ Translation strings: `output/src/i18n/{lv,en,ru}.json`
 | `kool` | Kool | petrol_95, petrol_98, diesel, premium_diesel |
 
 Chart note: Viada renders two series — `viada` (DUS diesel) and `viada_adus` (ADUS diesel_ecto).
-Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
+Petrol tabs only show single Viada series (ADUS and DUS use the same petrol price).
 
 ---
 
@@ -119,8 +119,8 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 
 ## Not Yet Implemented
 - [ ] Telegram bot (post-commit notifications — discussed 2026-04-11, not started)
-- [ ] `/game/` page (route exists, content minimal)
-- [ ] Weekly recap automation (workflow file partial)
+- [ ] `/game/` page (route exists, content is minimal)
+- [ ] Weekly recap automation (workflow file exists but partial)
 - [ ] Price alerts / email notifications
 - [ ] Real-time API (scraper runs on schedule, not live)
 - [ ] Exact chart.js version pin on CDN (currently `@4`, could use `@4.x.y` for 1-yr cache)
@@ -154,12 +154,12 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 
 ## Known Issues / Tech Debt
 - Cloudflare email obfuscation adds ~1 KB `email-decode.min.js` (3 mailto links in Footer/Contact/About — low impact, Cloudflare-side)
-- AdSense script cannot defer (Google requirement)
+- AdSense ads script cannot be deferred (Google requirement)
 
 ---
 
 ## Lighthouse Status (2026-04-11)
-- SEO: Canonical fixed to self-referential per language (was pointing to lv hreflang)
-- Perf: Google Fonts non-blocking (print-media swap + preload)
+- SEO: Fixed canonical to self-referential per language (was pointing to lv hreflang)
+- Perf: Google Fonts now non-blocking (print-media swap + preload)
 - Perf: chart.js now `defer` + head preload hint
 - Perf: chart.js pinned to `@4` (7d CDN cache — pin exact version for 1-yr cache)

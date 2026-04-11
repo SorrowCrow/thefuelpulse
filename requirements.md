@@ -1,36 +1,35 @@
 # Diesel Price News Website - MVP Requirements
 
 ## Project Goal
-Create a simple, informative website that tracks and displays diesel fuel price movements in Latvia.
+Latvia diesel price tracker website.
 
 ## Target Audience
-- Latvian drivers and fleet managers
-- People interested in fuel price trends
-- Bilingual audience (Latvian and English speakers)
+- Latvian drivers, fleet managers
+- Fuel price trend watchers
+- LV/EN bilingual users
 
 ## Core Features (MVP)
 
 ### 1. Homepage
-- Display current diesel price prominently
-- Show price change from previous day (up/down indicator)
-- Display last update timestamp
-- Language switcher (LV/EN)
+- Current diesel price prominent
+- Price change from prev day (up/down)
+- Last update timestamp
+- LV/EN switcher
 
 ### 2. Price History
-- Visual chart showing last 7 days of diesel prices
-- Simple line chart using Chart.js
-- Show min/max prices in the period
-- Data points should be hoverable
+- 7-day price chart (Chart.js line)
+- Min/max display
+- Hoverable data points
 
 ### 3. News Feed
-- List of 5-10 recent price-related news items
-- Each item: title, date, brief summary
-- News about factors affecting diesel prices (taxes, global oil, etc.)
+- 5-10 recent price news items
+- Each: title, date, brief summary
+- Covers taxes, global oil factors
 
 ### 4. About Page
-- Explanation of data sources
-- Update frequency information
-- Contact information
+- Data sources
+- Update frequency
+- Contact info
 
 ## Technical Requirements
 
@@ -41,21 +40,21 @@ Create a simple, informative website that tracks and displays diesel fuel price 
 - **Deployment**: Static hosting ready (Netlify/Vercel)
 
 ### Data Source (MVP)
-- **Mock data** stored in JSON files (static)
-- Structure: `src/data/prices.json` and `src/data/news.json`
-- Real API integration is out of scope for MVP
+- **Mock data** in JSON files (static)
+- `src/data/prices.json` and `src/data/news.json`
+- Real API out of scope
 
 ### Design Requirements
-- Mobile-first responsive design
-- Clean, readable typography
-- Fast loading (Lighthouse score > 90)
-- Accessible (WCAG 2.1 AA compliance)
+- Mobile-first responsive
+- Clean typography
+- Lighthouse > 90
+- WCAG 2.1 AA
 
 ### Bilingual Support
-- All UI text in both Latvian and English
-- Language toggle in header
-- URL structure: `/` (LV default) and `/en/` (English)
-- All content duplicated in both languages
+- All UI text LV + EN
+- Header language toggle
+- `/` (LV default), `/en/` (English)
+- Content duplicated both languages
 
 ## Content Structure
 
@@ -106,30 +105,24 @@ Create a simple, informative website that tracks and displays diesel fuel price 
 
 ## Out of Scope (Future Phases)
 
-- Real-time price API integration
-- User authentication
-- Price alerts/notifications
-- Historical data beyond 7 days
-- Admin panel for content management
-- Comments section
-- Social media integration
-- Price predictions/analytics
+- Real-time API, auth, alerts, history >7 days
+- Admin panel, comments, social, predictions
 
 ## Success Criteria
 
-- ✅ Site loads in < 2 seconds
-- ✅ All pages are mobile responsive
-- ✅ Language switcher works correctly
-- ✅ Chart displays price data accurately
+- ✅ Load < 2s
+- ✅ Mobile responsive
+- ✅ Language switcher works
+- ✅ Chart accurate
 - ✅ No console errors
-- ✅ Can be deployed as static site
-- ✅ Code is clean and well-structured
-- ✅ All content available in both languages
+- ✅ Static deployable
+- ✅ Clean code
+- ✅ Both languages complete
 
 ## Constraints
 
-- Use Astro v5 features (no older patterns)
-- Tailwind v4 CSS-first approach (no @apply directives)
-- No external CSS frameworks besides Tailwind
-- All data must be mockable (no hard API dependencies)
-- Keep bundle size minimal (< 100KB initial JS)
+- Astro v5 only (no old patterns)
+- Tailwind v4 CSS-first (no `@apply`)
+- No other CSS frameworks
+- All data mockable (no hard API deps)
+- Bundle < 100KB initial JS

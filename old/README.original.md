@@ -1,12 +1,12 @@
 # Diesel Price News - Agent Workflow POC
 
-Multi-agent system using Claude AI to generate complete Astro website tracking diesel fuel prices in Latvia.
+A multi-agent system that uses Claude AI to generate a complete Astro website for tracking diesel fuel prices in Latvia.
 
 ## What This Does
 
-Demonstrates **simple agentic workflow** via direct LLM API calls. Three agents collaborate:
+This project demonstrates a **simple agentic workflow** using direct LLM API calls. Three AI agents collaborate to build a website:
 
-1. **Planner Agent** - Reads requirements, designs architecture
+1. **Planner Agent** - Reads requirements and designs the architecture
 2. **Builder Agent** - Generates all code files (Astro components, pages, data)
 3. **Reviewer Agent** - Reviews code quality and best practices
 
@@ -39,24 +39,28 @@ cp .env.example .env
 python agents/run_poc.py
 ```
 
-Does:
-- Reads `requirements.md`
-- Calls Planner → architecture plan
-- Calls Builder → all code files
-- Calls Reviewer → validates code
-- Outputs to `output/`
+This will:
+- Read `requirements.md`
+- Call the Planner agent to create an architecture plan
+- Call the Builder agent to generate all code files
+- Call the Reviewer agent to validate the code
+- Output everything to `output/` directory
 
 ### 4. Review the Output
+
+Check the generated files:
 
 ```bash
 ls -la output/
 ```
 
-Finds:
+You'll find:
 - `output/src/` - Generated Astro website files
-- `output/*_output.txt` - Raw agent responses (debugging)
+- `output/*_output.txt` - Raw agent responses (for debugging)
 
 ### 5. Test the Website
+
+To actually run the generated website:
 
 ```bash
 # Go to output directory
@@ -131,7 +135,7 @@ requirements.md
 
 ### Model Selection
 
-Edit `agents/run_poc.py`:
+Edit `agents/run_poc.py` to change models:
 
 ```python
 # In call_agent method:
@@ -140,11 +144,15 @@ model="claude-sonnet-4-5"  # Change to claude-opus-4, claude-haiku-4, etc.
 
 ### Temperature
 
+Adjust creativity vs consistency:
+
 ```python
 temperature=0.3  # Lower = more consistent, Higher = more creative
 ```
 
 ### Max Tokens
+
+Increase for larger outputs:
 
 ```python
 max_tokens=16000  # Builder needs more tokens for code generation
@@ -152,7 +160,7 @@ max_tokens=16000  # Builder needs more tokens for code generation
 
 ## Cost Estimate
 
-Approximate per run (March 2026):
+Approximate costs per run (as of March 2026):
 
 - Planner: ~8K input + 2K output = ~$0.05
 - Builder: ~10K input + 15K output = ~$0.25
@@ -164,29 +172,32 @@ Approximate per run (March 2026):
 
 ### "ANTHROPIC_API_KEY not found"
 
-1. Created `.env` (copy from `.env.example`)
-2. Added API key to `.env`
-3. Key starts with `sk-ant-`
+Make sure you:
+1. Created `.env` file (copy from `.env.example`)
+2. Added your API key to `.env`
+3. API key starts with `sk-ant-`
 
 ### "No valid JSON found in response"
 
-Agents sometimes format JSON imperfectly. Check raw output files:
+Sometimes agents don't format JSON perfectly. Check the raw output files:
 - `output/planner_output.txt`
 - `output/builder_output.txt`
 - `output/reviewer_output.txt`
 
-Manually extract JSON and fix formatting.
+You can manually extract the JSON and fix formatting.
 
 ### Generated code has errors
 
-Reviewer catches most issues. If website fails:
+The Reviewer agent will catch most issues. If the website doesn't work:
 1. Check `output/reviewer_output.txt` for findings
 2. Manually fix critical issues in `output/src/`
-3. Re-run npm commands to test
+3. Re-run specific npm commands to test
 
 ## Next Steps
 
 ### Iteration 1: Add Retry Logic
+
+Modify `run_poc.py` to re-prompt Builder if Reviewer finds FAIL verdict:
 
 ```python
 if review["verdict"] == "FAIL":
@@ -196,7 +207,7 @@ if review["verdict"] == "FAIL":
 
 ### Iteration 2: Migrate to CrewAI
 
-Once flow understood, CrewAI offers easier orchestration:
+Once you understand this flow, try using CrewAI for easier orchestration:
 - Automatic context passing
 - Built-in memory
 - Task dependencies
