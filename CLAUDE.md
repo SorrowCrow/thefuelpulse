@@ -64,7 +64,29 @@ Guidance for Claude Code on Fuel Prices Latvia website.
 
 ---
 
+## Agent Delegation — Mandatory
+
+**Always delegate implementation work to specialized agents.** Never implement UI, data, or scraper changes inline.
+
+| Task type | Agent to use |
+|---|---|
+| Layout, components, styling, Alpine.js | `ui-designer` |
+| Data wiring, config, build, scraper | `developer` |
+| New feature planning / multi-agent breakdown | `feature-architect` |
+| Article / content writing | `fuel-writer` |
+| Codebase exploration | `Explore` |
+| Starting any new phase or feature | `orchestrator` |
+
+Rules:
+- Before any implementation task, read `STATUS.md` first
+- Independent subtasks → spawn agents in parallel
+- Research findings → pass to implementing agent in full brief (never re-derive)
+
+---
+
 ## STATUS.md — Mandatory Update Rule
+
+**Update STATUS.md at the end of EVERY task that touches the codebase.** No exceptions. Do it before the final response to the user.
 
 After any task adding, removing, or meaningfully changing a feature, update `STATUS.md` at project root:
 

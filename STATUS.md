@@ -52,7 +52,7 @@ Translation strings: `output/src/i18n/{lv,en,ru}.json`
 | File | Purpose |
 |---|---|
 | `Header.astro` | Nav + theme toggle + lang switcher |
-| `Footer.astro` | Links, mailto contacts (3 emails) |
+| `Footer.astro` | Links, mailto contacts (3 emails), Telegram channel button |
 | `LanguageSwitcher.astro` | LV / EN / RU switcher |
 | `ToggleButton.astro` | Light/dark toggle (localStorage) |
 | `PriceCard.astro` | Current price per fuel type + change delta |
@@ -114,6 +114,7 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 - [x] Service worker (prod only)
 - [x] Python scraper — 5 brands, runs via GitHub Actions
 - [x] Price history persisted in JSON
+- [x] Telegram channel CTA — footer button + home page alert banner (https://t.me/thefuelpulse, i18n lv/en/ru)
 
 ## GitHub Actions
 | Workflow | Trigger | Purpose |
