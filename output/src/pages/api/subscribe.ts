@@ -43,6 +43,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
       }
       throw error;
     }
+                                                                  
+   
+  console.log('resendKey present:', !!resendKey);                                                                                  
+  console.log('runtime env keys:', Object.keys(runtimeEnv));
 
     const token = data.token;
     const resend = new Resend(resendKey);
@@ -59,12 +63,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
       ru: `Нажмите на ссылку ниже, чтобы подтвердить подписку на уведомления о ценах на топливо:\n\nhttps://thefuelpulse.com/confirm?token=${token}\n\nЕсли вы не подписывались, проигнорируйте это письмо.`,
     };
 
-    await resend.emails.send({
-      from: 'The Fuel Pulse <noreply@thefuelpulse.com>',
-      to: email,
-      subject: subjects[language],
-      text: bodies[language],
-    });
+      const { data: emailData, error: sendError } = await resend.emails.send({                                                         
+    from: 'The Fuel Pulse <noreply@thefuelpulse.com>',                                                                             
+    to: email,
+    subject: subjects[language],                                                                                                   
+    text: bodies[language],                                                                                                        
+  });
+                                                                                                                                   
+  if (sendError) {                                          
+    console.error('resend error:', sendError);
+    throw new Error(sendError.message);                                                                                            
+  }
 
     return new Response(JSON.stringify({ status: 'confirm_email_sent' }), { status: 200, headers: corsHeaders });
   } catch (err) {
