@@ -4,6 +4,7 @@ description: "Автоматические станции Viada ADUS предл�
 pubDate: 2026-04-10
 lang: ru
 tags: ["viada", "station guide", "ADUS", "cheapest"]
+category: station-guide
 ---
 
 ## Литовская сеть, конкурирующая ценой

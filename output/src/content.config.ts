@@ -8,6 +8,7 @@ const articles = defineCollection({
     pubDate: z.coerce.date(),
     lang: z.enum(['lv', 'en', 'ru']),
     tags: z.array(z.string()).optional(),
+    category: z.string().optional(),
     updated: z.coerce.date().optional(),
   }),
 });

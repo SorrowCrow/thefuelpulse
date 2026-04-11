@@ -4,6 +4,7 @@ description: "Praktisks degvielas lojalitﾄ》es programmu salﾄｫdzinﾄ）ums Latvijﾄ
 pubDate: 2026-04-10
 lang: lv
 tags: ["loyalty cards", "savings", "apps"]
+category: savings
 ---
 
 ## Kﾄ｝ﾄ田 lojalitﾄ》es programmas ir svarﾄｫgas pie sﾅｫkﾅ�a

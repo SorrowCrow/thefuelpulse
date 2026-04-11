@@ -4,6 +4,7 @@ description: "Practical tips for Latvian drivers to cut fuel costs - from choosi
 pubDate: 2026-04-10
 lang: en
 tags: ["saving money", "tips", "fuel costs"]
+category: savings
 ---
 
 ## Fuel Is a Big Expense - Here Is How to Reduce It

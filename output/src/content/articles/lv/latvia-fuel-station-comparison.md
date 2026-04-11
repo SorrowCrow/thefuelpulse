@@ -4,6 +4,7 @@ description: "Visaptverošs četru lielāko Latvijas DUS tīklu salīdzinājums 
 pubDate: 2026-04-10
 lang: lv
 tags: ["station comparison", "prices", "2026"]
+category: comparison
 ---
 
 ## Četri tīkli, viens tirgus - kurš ir labākais?

@@ -4,6 +4,7 @@ description: "Всё, что нужно знать о заправочных с�
 pubDate: 2026-04-10
 lang: ru
 tags: ["circle-k", "station guide", "loyalty cards"]
+category: station-guide
 ---
 
 ## Кто такой Circle K в Латвии?

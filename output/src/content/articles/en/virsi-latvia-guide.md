@@ -4,6 +4,7 @@ description: "A complete guide to Virši fuel stations in Latvia - prices, CNG a
 pubDate: 2026-04-10
 lang: en
 tags: ["virsi", "station guide", "CNG", "LPG"]
+category: station-guide
 ---
 
 ## A Latvian Brand With Three Decades of History

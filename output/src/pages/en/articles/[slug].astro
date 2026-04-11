@@ -17,6 +17,10 @@ const lang = 'en' as const;
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
+const category = (entry.data as any).category ?? '';
+const categoryLabel = t(lang, `articles.cat.${category}`) || category;
+const articlesUrl = localePath('/articles', lang);
+
 const siteOrigin = 'https://thefuelpulse.com';
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -43,10 +47,18 @@ const breadcrumbJsonLd = {
         </div>
       </nav>
       <div class="flex items-center gap-2 mb-3 flex-wrap">
-        {entry.data.tags?.map((tag: string) => (
-          <span class="badge badge-outline text-xs">{tag}</span>
+        {category && (
+          <a
+            href={articlesUrl}
+            class="badge badge-outline badge-sm text-xs hover:badge-primary transition-colors no-underline cursor-pointer"
+            data-cat-filter={category}
+            data-cat-url={articlesUrl}
+          >{categoryLabel}</a>
+        )}
+        {(entry.data as any).tags?.map((tag: string) => (
+          <span class="badge badge-ghost badge-sm text-xs opacity-60">{tag}</span>
         ))}
-        <time class="text-xs text-base-content/40" datetime={entry.data.pubDate.toISOString()}>
+        <time class="text-xs text-base-content/40 ml-auto" datetime={entry.data.pubDate.toISOString()}>
           {t(lang, 'articles.published')}: {entry.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
         {entry.data.updated && (
@@ -67,6 +79,18 @@ const breadcrumbJsonLd = {
       <a href={localePath('/articles', lang)} class="btn btn-ghost btn-sm">← {t(lang, 'articles.page.title')}</a>
     </div>
   </article>
+
+  <script>
+    document.querySelectorAll<HTMLAnchorElement>('a[data-cat-filter]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const cat = a.dataset.catFilter!;
+        const url = a.dataset.catUrl!;
+        sessionStorage.setItem('categoryFilter', cat);
+        window.location.href = url;
+      });
+    });
+  </script>
 </BaseLayout>
 
 <style>

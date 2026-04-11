@@ -4,6 +4,7 @@ description: "Полный обзор четырех крупнейших сет
 pubDate: 2026-04-10
 lang: ru
 tags: ["station comparison", "prices", "2026"]
+category: comparison
 ---
 
 ## Четыре сети, один рынок - кто побеждает в 2026 году?

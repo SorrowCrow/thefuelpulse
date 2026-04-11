@@ -4,6 +4,7 @@ description: "Neste Latvia offers the cheapest standard diesel among the big thr
 pubDate: 2026-04-10
 lang: en
 tags: ["neste", "station guide", "renewable diesel"]
+category: station-guide
 ---
 
 ## The Finnish Chain With a Green Edge

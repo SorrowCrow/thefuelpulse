@@ -4,6 +4,7 @@ description: "Viada piedāvā zemākās dīzeļdegvielas cenas Latvijā caur sav
 pubDate: 2026-04-10
 lang: lv
 tags: ["viada", "station guide", "cheap fuel"]
+category: station-guide
 ---
 
 ## Tirgus cenu līderis: Viada ADUS

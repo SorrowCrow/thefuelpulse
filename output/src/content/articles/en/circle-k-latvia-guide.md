@@ -4,6 +4,7 @@ description: "Everything you need to know about Circle K fuel stations in Latvia
 pubDate: 2026-04-10
 lang: en
 tags: ["circle-k", "station guide", "loyalty cards"]
+category: station-guide
 ---
 
 ## Who Is Circle K in Latvia?

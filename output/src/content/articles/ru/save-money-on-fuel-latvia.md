@@ -4,6 +4,7 @@ description: "Практические советы для латвийских 
 pubDate: 2026-04-10
 lang: ru
 tags: ["saving money", "tips", "fuel costs"]
+category: savings
 ---
 
 ## Топливо - серьезная статья расходов. Вот как её сократить

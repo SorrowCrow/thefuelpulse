@@ -4,6 +4,7 @@ description: "Praktiski padomi Latvijas autovadītājiem degvielas izmaksu samaz
 pubDate: 2026-04-10
 lang: lv
 tags: ["saving money", "tips", "fuel costs"]
+category: savings
 ---
 
 ## Degviela ir liels izdevums - lūk, kā to samazināt

@@ -4,6 +4,7 @@ description: "Virši ir lielākais Latvijas kapitāla degvielas tīkls, kas paz�
 pubDate: 2026-04-10
 lang: lv
 tags: ["virsi", "station guide", "CNG"]
+category: station-guide
 ---
 
 ## Latvijas uzņēmums ar ambīcijām

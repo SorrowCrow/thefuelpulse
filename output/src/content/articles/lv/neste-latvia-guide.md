@@ -4,6 +4,7 @@ description: "Neste Latvijā piedāvā vienu no lētākajām dīzeļdegvielām s
 pubDate: 2026-04-10
 lang: lv
 tags: ["neste", "station guide", "renewable diesel"]
+category: station-guide
 ---
 
 ## Somu kvalitāte ar uzsvaru uz ekoloģiju

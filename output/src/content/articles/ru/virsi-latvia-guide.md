@@ -4,6 +4,7 @@ description: "Полный справочник по заправочным ст
 pubDate: 2026-04-10
 lang: ru
 tags: ["virsi", "station guide", "CNG", "LPG"]
+category: station-guide
 ---
 
 ## Латвийский бренд с тридцатилетней историей

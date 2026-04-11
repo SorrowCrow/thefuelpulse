@@ -4,6 +4,7 @@ description: "A practical comparison of fuel loyalty programmes in Latvia - Circ
 pubDate: 2026-04-10
 lang: en
 tags: ["loyalty cards", "savings", "apps"]
+category: savings
 ---
 
 ## Why Loyalty Programmes Matter at the Pump

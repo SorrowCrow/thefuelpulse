@@ -4,6 +4,7 @@ description: "Neste в Латвии предлагает один из самы�
 pubDate: 2026-04-10
 lang: ru
 tags: ["neste", "station guide", "renewable diesel"]
+category: station-guide
 ---
 
 ## Финское качество с акцентом на экологию

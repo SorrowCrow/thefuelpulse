@@ -4,6 +4,7 @@ description: "Why does a litre of diesel cost what it does in Latvia? A breakdow
 pubDate: 2026-04-10
 lang: en
 tags: ["fuel prices", "explainer", "excise tax"]
+category: explainer
 ---
 
 ## Why Does Fuel Cost So Much - and Why Does It Change?

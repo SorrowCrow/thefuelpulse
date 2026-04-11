@@ -4,6 +4,7 @@ description: "Dīzelis maksā vairāk par litru, bet patērē mazāk kilometrā.
 pubDate: 2026-04-10
 lang: lv
 tags: ["diesel", "petrol 95", "explainer"]
+category: explainer
 ---
 
 ## Jautājums ar vienkāršu atbildi

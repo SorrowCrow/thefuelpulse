@@ -4,6 +4,7 @@ description: "Практическое сравнение программ ло�
 pubDate: 2026-04-10
 lang: ru
 tags: ["loyalty cards", "savings", "apps"]
+category: savings
 ---
 
 ## Почему программы лояльности важны на заправке

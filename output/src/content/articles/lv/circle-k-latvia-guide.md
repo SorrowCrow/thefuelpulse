@@ -4,6 +4,7 @@ description: "Viss, kas jāzina par Circle K degvielas uzpildes stacijām Latvij
 pubDate: 2026-04-10
 lang: lv
 tags: ["circle-k", "station guide", "loyalty cards"]
+category: station-guide
 ---
 
 ## Kas ir Circle K Latvijā?

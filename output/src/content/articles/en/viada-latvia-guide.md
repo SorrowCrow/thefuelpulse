@@ -4,6 +4,7 @@ description: "Viada's automated ADUS stations offer diesel at 1.967 €/L - far 
 pubDate: 2026-04-10
 lang: en
 tags: ["viada", "station guide", "ADUS", "cheapest"]
+category: station-guide
 ---
 
 ## The Lithuanian Chain That Competes on Price

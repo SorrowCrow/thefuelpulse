@@ -4,6 +4,7 @@ description: "A complete comparison of the four major Latvian fuel networks in 2
 pubDate: 2026-04-10
 lang: en
 tags: ["station comparison", "prices", "2026"]
+category: comparison
 ---
 
 ## Four Networks, One Market - Who Wins?

@@ -4,6 +4,7 @@ description: "Diesel costs more per litre than petrol 95 in Latvia, but uses les
 pubDate: 2026-04-10
 lang: en
 tags: ["diesel", "petrol 95", "explainer"]
+category: explainer
 ---
 
 ## A Question With a Simple Answer

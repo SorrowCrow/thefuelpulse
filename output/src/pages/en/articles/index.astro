@@ -6,8 +6,32 @@ import { t, localePath } from '@/i18n/utils';
 const lang = 'en' as const;
 const allArticles = await getCollection('articles');
 const articles = allArticles
-  .filter(e => e.id.startsWith('en/') && e.id.includes('circle-k-latvia-guide'))
+  .filter(e => e.id.startsWith('en/'))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const CATEGORIES = ['station-guide', 'explainer', 'savings', 'comparison', 'recap'] as const;
+
+const catLabels: Record<string, string> = Object.fromEntries(
+  CATEGORIES.map(c => [c, t(lang, `articles.cat.${c}`)])
+);
+const catAllLabel = t(lang, 'articles.cat.all');
+
+const articlesJson = JSON.stringify(articles.map(a => {
+  const slug = a.id.replace(/^en\//, '').replace(/\.mdx?$/, '');
+  const localeDate = a.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+  return {
+    slug,
+    title: a.data.title,
+    description: a.data.description,
+    category: a.data.category ?? '',
+    tags: a.data.tags ?? [],
+    pubDate: localeDate,
+    pubDateIso: a.data.pubDate.toISOString(),
+  };
+}));
+
+const catLabelsJson = JSON.stringify({ all: catAllLabel, ...catLabels });
+const listUrl = localePath('/articles', lang);
 ---
 
 <BaseLayout lang={lang} title={t(lang, 'meta.articles.title')} description={t(lang, 'meta.articles.description')}>
@@ -25,33 +49,76 @@ const articles = allArticles
       <p class="text-base-content/60">{t(lang, 'articles.page.description')}</p>
     </div>
 
-    <div class="space-y-4">
-      {articles.map((article, i) => {
-        const slug = article.id.replace(/^en\//, '').replace(/\.mdx?$/, '');
-        return (
-          <article class="card bg-base-100 border border-base-300 hover:border-primary/30 transition-colors" data-reveal data-reveal-delay={`${i * 60}ms`}>
+    <div
+      x-data={`{
+        filter: sessionStorage.getItem('categoryFilter') || 'all',
+        articles: ${articlesJson},
+        labels: ${catLabelsJson},
+        baseUrl: '${listUrl.replace(/\/$/, '')}',
+        get filtered() {
+          if (this.filter === 'all') return this.articles;
+          return this.articles.filter(a => a.category === this.filter);
+        },
+        init() { sessionStorage.removeItem('categoryFilter'); }
+      }`}
+    >
+      <!-- Category filter chips -->
+      <div class="flex flex-wrap gap-2 mb-6" data-reveal data-reveal-delay="60ms">
+        <button
+          class="badge cursor-pointer transition-colors"
+          :class="filter === 'all' ? 'badge-primary' : 'badge-ghost hover:badge-outline'"
+          @click="filter = 'all'"
+          x-text="labels.all"
+        ></button>
+        {CATEGORIES.map(c => (
+          <button
+            class="badge cursor-pointer transition-colors"
+            :class={`filter === '${c}' ? 'badge-primary' : 'badge-ghost hover:badge-outline'`}
+            @click={`filter = filter === '${c}' ? 'all' : '${c}'`}
+            x-text={`labels['${c}']`}
+          ></button>
+        ))}
+      </div>
+
+      <!-- Article count -->
+      <p class="text-xs text-base-content/40 mb-3" x-text="`${filtered.length} article${filtered.length !== 1 ? 's' : ''}`"></p>
+
+      <!-- Article list -->
+      <div class="space-y-4">
+        <template x-for="(article, i) in filtered" :key="article.slug">
+          <article class="card bg-base-100 border border-base-300 hover:border-primary/30 transition-colors">
             <div class="card-body p-5">
               <div class="flex items-center gap-2 mb-2 flex-wrap">
-                {article.data.tags?.map(tag => (
-                  <span class="badge badge-ghost text-xs">{tag}</span>
-                ))}
-                <time class="text-xs text-base-content/40 ml-auto" datetime={article.data.pubDate.toISOString()}>
-                  {article.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </time>
+                <button
+                  class="badge badge-outline badge-sm text-xs cursor-pointer hover:badge-primary transition-colors"
+                  @click="filter = article.category"
+                  x-text="labels[article.category] || article.category"
+                ></button>
+                <template x-for="tag in article.tags" :key="tag">
+                  <span class="badge badge-ghost badge-sm text-xs opacity-60" x-text="tag"></span>
+                </template>
+                <time class="text-xs text-base-content/40 ml-auto" :datetime="article.pubDateIso" x-text="article.pubDate"></time>
               </div>
               <h2 class="text-lg font-semibold leading-snug mb-1">
-                <a href={localePath(`/articles/${slug}`, lang)} class="hover:text-primary transition-colors">
-                  {article.data.title}
-                </a>
+                <a
+                  :href="baseUrl + '/' + article.slug"
+                  class="hover:text-primary transition-colors"
+                  x-text="article.title"
+                ></a>
               </h2>
-              <p class="text-sm text-base-content/60 leading-relaxed mb-3">{article.data.description}</p>
-              <a href={localePath(`/articles/${slug}`, lang)} class="text-sm text-primary hover:underline font-medium">
-                {t(lang, 'articles.readmore')}
-              </a>
+              <p class="text-sm text-base-content/60 leading-relaxed mb-3" x-text="article.description"></p>
+              <a
+                :href="baseUrl + '/' + article.slug"
+                class="text-sm text-primary hover:underline font-medium"
+              >{t(lang, 'articles.readmore')}</a>
             </div>
           </article>
-        );
-      })}
+        </template>
+      </div>
+
+      <p class="text-sm text-base-content/40 text-center py-8" x-show="filtered.length === 0">
+        {t(lang, 'news.page.nofilter')}
+      </p>
     </div>
   </div>
 </BaseLayout>

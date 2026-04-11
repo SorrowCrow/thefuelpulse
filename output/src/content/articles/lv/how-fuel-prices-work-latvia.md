@@ -4,6 +4,7 @@ description: "Kāpēc dīzeļdegvielas litrs Latvijā maksā tieši tik? Brent n
 pubDate: 2026-04-10
 lang: lv
 tags: ["fuel prices", "explainer", "excise tax"]
+category: explainer
 ---
 
 ## Kāpēc degviela ir tik dārga - un kāpēc cena mainās?

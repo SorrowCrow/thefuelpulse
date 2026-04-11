@@ -4,6 +4,7 @@ description: "Почему литр дизеля в Латвии стоит им
 pubDate: 2026-04-10
 lang: ru
 tags: ["fuel prices", "explainer", "excise tax"]
+category: explainer
 ---
 
 ## Почему топливо такое дорогое - и почему цена постоянно меняется?

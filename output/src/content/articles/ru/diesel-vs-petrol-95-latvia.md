@@ -4,6 +4,7 @@ description: "Дизель стоит больше за литр, но расх�
 pubDate: 2026-04-10
 lang: ru
 tags: ["diesel", "petrol 95", "explainer"]
+category: explainer
 ---
 
 ## Вопрос с простым ответом
