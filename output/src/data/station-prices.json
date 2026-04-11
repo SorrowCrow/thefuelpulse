@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-11T08:35:17.509883+00:00",
+  "scraped_at": "2026-04-11T09:09:25.673708+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -202,6 +202,41 @@
           "category": "specialty",
           "price": 1.959,
           "station_type": "DUS",
+          "currency": "EUR"
+        }
+      ],
+      "error": null
+    },
+    {
+      "brand": "Kool",
+      "key": "kool",
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Kool 95",
+          "category": "standard",
+          "price": 1.797,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Kool 98",
+          "category": "standard",
+          "price": 1.867,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Kool Diesel",
+          "category": "standard",
+          "price": 1.997,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Kool Premium DD",
+          "category": "premium",
+          "price": 2.057,
           "currency": "EUR"
         }
       ],

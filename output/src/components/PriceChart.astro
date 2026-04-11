@@ -289,6 +289,14 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
                 legend: { display: false },
                 tooltip: {
                   ...${_tooltipJson},
+                  filter: function(item) {
+                    // Hide forecast dataset items at the bridge point (today's date)
+                    // where actual data is also present — only show forecast for future days
+                    if (item.datasetIndex >= 3) {
+                      return item.chart.data.datasets[0].data[item.dataIndex] === null;
+                    }
+                    return true;
+                  },
                   callbacks: {
                     label: function(context) {
                       return ' ' + context.dataset.label + ': ' + context.parsed.y.toFixed(3) + ' EUR';

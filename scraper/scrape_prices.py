@@ -192,6 +192,103 @@ def scrape_neste() -> list[dict]:
     return entries
 
 
+def scrape_kool() -> list[dict]:
+    """
+    Kool fuel prices are embedded in a readymag HtmlSnippet page served from the CDN.
+    The main page (https://kool.lv/degviela/) embeds ServerData JSON in a <script> tag;
+    within that JSON each page object carries an ``htmlUrl`` field pointing to a static
+    CDN-hosted HTML fragment.  The fuel-prices page is identified by
+    ``pagePath == "degviela"`` and ``pageNestedNum == "5"``.
+
+    Inside the HtmlSnippet every price/label is a ``widget-text-v3`` div whose CSS
+    ``left`` pixel position determines its column (fuel type):
+
+      95E  → left  260–320 px
+      98*  → left  400–435 px
+      DD   → left  535–570 px
+      Kool Premium DD → left 680–715 px
+
+    Two station locations appear on the same page (stacked vertically); both price rows
+    are parsed and the minimum (cheapest) is reported per fuel type.
+
+    Returns a list of FuelEntry dicts.
+    """
+    main_url = "https://kool.lv/degviela/"
+    r = requests.get(main_url, headers=HEADERS, timeout=TIMEOUT)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "lxml")
+
+    # Locate the ServerData JSON embedded in a <script> tag
+    server_data_json: str | None = None
+    for script in soup.find_all("script"):
+        txt = script.get_text()
+        if "ServerData" in txt and "htmlUrl" in txt:
+            m = re.search(
+                r"window\.ServerData\s*=\s*(\{.+\})\s*;?\s*$", txt, re.DOTALL | re.MULTILINE
+            )
+            if m:
+                server_data_json = m.group(1)
+                break
+
+    if not server_data_json:
+        raise RuntimeError("Kool: ServerData JSON not found in page source")
+
+    data_str = json.dumps(json.loads(server_data_json))
+
+    # The fuel-prices page object has pagePath "degviela" followed by its htmlUrl
+    html_url_m = re.search(
+        r'"pagePath"\s*:\s*"degviela".*?"htmlUrl"\s*:\s*"([^"]+)"', data_str
+    )
+    if not html_url_m:
+        raise RuntimeError("Kool: htmlUrl for degviela page not found in ServerData")
+
+    html_url = html_url_m.group(1)
+
+    # Fetch the static HtmlSnippet that contains the price widgets
+    r2 = requests.get(html_url, headers=HEADERS, timeout=TIMEOUT)
+    r2.raise_for_status()
+    snippet = BeautifulSoup(r2.text, "lxml")
+
+    # X-pixel column ranges → (fuel_type, fuel_name, category)
+    COLUMN_MAP: list[tuple[int, int, str, str, str]] = [
+        (260, 320, "petrol_95",      "Kool 95",          "standard"),
+        (400, 435, "petrol_98",      "Kool 98",          "standard"),
+        (535, 570, "diesel",         "Kool Diesel",      "standard"),
+        (680, 715, "premium_diesel", "Kool Premium DD",  "premium"),
+    ]
+
+    # Collect (left_px, price_value) pairs from all text widgets
+    candidate_prices: list[tuple[int, float]] = []
+    for widget in snippet.find_all(class_="widget-text-v3"):
+        style = widget.get("style", "")
+        left_m = re.search(r"left:\s*(\d+)px", style)
+        if not left_m:
+            continue
+        left_px = int(left_m.group(1))
+        raw = widget.get_text(strip=True).replace("\u200d", "").replace(",", ".").strip()
+        try:
+            val = float(raw)
+        except ValueError:
+            continue
+        if 1.0 < val < 5.0:
+            candidate_prices.append((left_px, val))
+
+    # Group by column, take minimum price per fuel type
+    entries: list[dict] = []
+    for x_min, x_max, fuel_type, fuel_name, category in COLUMN_MAP:
+        column_prices = [v for left_px, v in candidate_prices if x_min <= left_px <= x_max]
+        if not column_prices:
+            continue
+        entries.append({
+            "fuel_type": fuel_type,
+            "fuel_name": fuel_name,
+            "category":  category,
+            "price":     min(column_prices),
+            "currency":  "EUR",
+        })
+    return entries
+
+
 def scrape_viada() -> list[dict]:
     """
     table tr → first td img src matches pattern → second td = price.
@@ -255,6 +352,7 @@ SCRAPERS = [
     ("Circle K", "circlek",  scrape_circlek),
     ("Neste",    "neste",    scrape_neste),
     ("Viada",    "viada",    scrape_viada),
+    ("Kool",     "kool",     scrape_kool),
 ]
 
 
