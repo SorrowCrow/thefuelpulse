@@ -197,5 +197,24 @@
   "articles.published": "Published",
   "articles.updated": "Updated",
   "meta.articles.title": "Fuel Articles & Guides — The Fuel Pulse",
-  "meta.articles.description": "In-depth fuel guides for Latvia: station comparisons, diesel vs petrol explainers, money-saving tips, and fuel price analysis."
+  "meta.articles.description": "In-depth fuel guides for Latvia: station comparisons, diesel vs petrol explainers, money-saving tips, and fuel price analysis.",
+
+  "hero.dus_adus.title": "Viada DUS vs ADUS Gap",
+  "hero.dus_adus.desc": "Price difference between manned and unmanned Viada stations",
+  "hero.dus_adus.wider": "gap widened",
+  "hero.dus_adus.narrowed": "gap narrowed",
+
+  "faq.title": "Frequently Asked Questions",
+  "faq.1.q": "How often are fuel prices updated?",
+  "faq.1.a": "Prices are scraped directly from each station's website three times daily — at 08:00, 14:00, and 20:00 Riga time. The timestamp on the dashboard reflects the last completed data run.",
+  "faq.2.q": "What is the difference between DUS and ADUS?",
+  "faq.2.a": "DUS is a full-service manned station with an operator on-site. ADUS is an unmanned automated station — self-service only, usually cheaper. Viada operates both types.",
+  "faq.3.q": "What do E85, XTL, and HVO mean?",
+  "faq.3.a": "E85 is a flex-fuel blend (85% ethanol, 15% petrol) — cheaper per litre but lower energy density, for compatible flex-fuel cars only. XTL is a synthetic diesel from Circle K. HVO (Hydrotreated Vegetable Oil) is Neste's renewable diesel — near-identical to fossil diesel but made from waste fats.",
+  "faq.4.q": "Which station is usually cheapest for diesel in Latvia?",
+  "faq.4.a": "Viada ADUS (unmanned) and Neste frequently offer diesel below the market average. Check the Station Comparison table above for today's live ranking.",
+  "faq.5.q": "Is the AI fill-up recommendation reliable?",
+  "faq.5.a": "The recommendation uses Google Gemini to analyse current oil market news alongside today's prices. It gives directional guidance (buy / wait / monitor) with a stated confidence level — not a guarantee. Always check the confidence level and cited sources before acting.",
+  "faq.6.q": "Are station prices the same at every location in Latvia?",
+  "faq.6.a": "The prices shown are national web prices published by each chain. Most Latvian chains maintain uniform pricing across all sites, but local promotions or loyalty card discounts may differ by location."
 }

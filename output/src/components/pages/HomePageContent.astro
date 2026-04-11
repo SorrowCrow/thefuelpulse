@@ -102,10 +102,42 @@ const jsonLd = {
     { "@type": "PropertyValue", "name": "Petrol 98 price", "unitText": "EUR per litre", "value": prices.petrol_98 },
   ]
 };
+
+// Last updated time
+const scrapedAt = (stationData as any).scraped_at as string;
+const localeStr = lang === 'lv' ? 'lv-LV' : lang === 'ru' ? 'ru-RU' : 'en-GB';
+const scrapedTime = new Date(scrapedAt).toLocaleTimeString(localeStr, { hour: '2-digit', minute: '2-digit' });
+
+// DUS vs ADUS gap
+const viadaStation = (stationData as any).stations?.find((s: any) => s.key === 'viada');
+const dusEntry = viadaStation?.fuel_entries?.find((e: any) => e.fuel_type === 'diesel' && e.station_type === 'DUS');
+const adusEntry = viadaStation?.fuel_entries?.find((e: any) => e.fuel_type === 'diesel_ecto');
+const dusPrice: number | null = dusEntry?.price ?? null;
+const adusPrice: number | null = adusEntry?.price ?? null;
+const currentGap: number | null = (dusPrice !== null && adusPrice !== null) ? dusPrice - adusPrice : null;
+
+const prevViada = ((historyData as any).history[1])?.stations?.viada;
+const prevGap: number | null = (prevViada?.diesel != null && prevViada?.diesel_ecto != null)
+  ? prevViada.diesel - prevViada.diesel_ecto : null;
+const gapDiff = (currentGap !== null && prevGap !== null) ? currentGap - prevGap : null;
+const gapTrend = gapDiff === null ? null : Math.abs(gapDiff) < 0.001 ? 'same' : gapDiff > 0 ? 'wider' : 'narrowed';
+
+// FAQ
+const faqKeys = [1,2,3,4,5,6].map(n => ({ q: `faq.${n}.q`, a: `faq.${n}.a` }));
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqKeys.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": t(lang, q),
+    "acceptedAnswer": { "@type": "Answer", "text": t(lang, a) }
+  }))
+};
 ---
 
 <BaseLayout lang={lang} title={t(lang, 'meta.home.title')} description={t(lang, 'meta.home.description')}>
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
   <!-- Intro section -->
   <div class="mb-7" data-reveal>
@@ -181,6 +213,36 @@ const jsonLd = {
     </div>
   </section>
 
+  <p class="text-xs text-base-content/30 text-right -mt-4 mb-6">{t(lang, 'price.updated').replace('{time}', scrapedTime)}</p>
+
+  <!-- DUS vs ADUS gap tracker -->
+  {currentGap !== null && (
+    <div class="mb-8" data-reveal>
+      <div class="stats bg-base-100 border border-base-300 shadow-xl w-full">
+        <div class="stat">
+          <div class="stat-title">{t(lang, 'hero.dus_adus.title')}</div>
+          <div class="stat-value text-2xl tabular-nums">{currentGap.toFixed(3)} <span class="text-base font-normal text-base-content/50">€/L</span></div>
+          <div class="stat-desc flex items-center gap-1 flex-wrap">
+            <span>{t(lang, 'hero.dus_adus.desc')}</span>
+            {gapTrend && gapTrend !== 'same' && (
+              <span class:list={['badge badge-xs ml-1', gapTrend === 'wider' ? 'badge-warning' : 'badge-success']}>
+                {t(lang, gapTrend === 'wider' ? 'hero.dus_adus.wider' : 'hero.dus_adus.narrowed')}
+              </span>
+            )}
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-title">Viada DUS</div>
+          <div class="stat-value text-xl text-error tabular-nums">{(dusPrice ?? 0).toFixed(3)} €</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title">Viada ADUS</div>
+          <div class="stat-value text-xl text-success tabular-nums">{(adusPrice ?? 0).toFixed(3)} €</div>
+        </div>
+      </div>
+    </div>
+  )}
+
   <!-- Main content grid -->
   <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2 space-y-0">
@@ -195,6 +257,22 @@ const jsonLd = {
     </div>
     <div class="lg:col-span-1">
       <NewsFeed lang={lang} limit={3} />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mt-12 mb-8" data-reveal>
+    <h2 class="text-xl font-bold mb-4">{t(lang, 'faq.title')}</h2>
+    <div class="space-y-1">
+      {faqKeys.map(({ q, a }) => (
+        <div class="collapse collapse-arrow bg-base-100 border border-base-300">
+          <input type="checkbox" />
+          <div class="collapse-title text-sm font-medium">{t(lang, q)}</div>
+          <div class="collapse-content">
+            <p class="text-sm text-base-content/70 leading-relaxed pt-1">{t(lang, a)}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 </BaseLayout>

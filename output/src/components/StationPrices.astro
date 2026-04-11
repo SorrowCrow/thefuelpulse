@@ -160,6 +160,14 @@ const fuelTabsJson = JSON.stringify([
          if (pct < -0.05) return 'text-success';
          if (pct > 0.05) return 'text-error';
          return 'text-base-content/50';
+       },
+       fuelTypeLabel(type) {
+         const m = {e85:'E85',xtl:'XTL',hvo:'HVO',cng:'CNG',lpg:'LPG',adblue:'AdBlue',premium_diesel:'Premium'};
+         return m[type] || type.replace(/_/g,' ').toUpperCase();
+       },
+       fuelTypeBadgeCls(type) {
+         const m = {e85:'badge badge-accent badge-sm ml-1',xtl:'badge badge-info badge-sm ml-1',hvo:'badge badge-success badge-sm ml-1',cng:'badge badge-warning badge-sm ml-1',lpg:'badge badge-warning badge-sm ml-1',adblue:'badge badge-ghost badge-sm ml-1',premium_diesel:'badge badge-secondary badge-sm ml-1'};
+         return m[type] || 'badge badge-outline badge-sm ml-1';
        }
      }`}>
   <div class="card-body p-0">
@@ -253,13 +261,9 @@ const fuelTabsJson = JSON.stringify([
               <td class="py-3">
                 <span x-text="row.fuel_name"></span>
                 <span
-                  x-show="row.category === 'premium'"
-                  class="badge badge-warning badge-sm ml-1"
-                >premium</span>
-                <span
-                  x-show="row.category === 'specialty'"
-                  class="badge badge-info badge-sm ml-1"
-                >specialty</span>
+                  :class="fuelTypeBadgeCls(row.fuel_type)"
+                  x-text="fuelTypeLabel(row.fuel_type)"
+                ></span>
                 <span
                   x-show="row.note"
                   :title="row.note"
