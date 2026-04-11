@@ -80,23 +80,11 @@ const stationsJson = JSON.stringify(STATIONS);
 ---
 
 <div id="station-history" class="card bg-base-100 border border-base-300 shadow-xl p-4 md:p-6 mb-8" data-reveal data-reveal-delay="100ms" style="scroll-margin-top: calc(4rem + 15vh)">
-  <div class="card-body p-0">
-    <!-- Header row: title + legend -->
-    <div class="flex flex-wrap justify-between items-baseline gap-3 mb-4">
-      <h2 class="card-title text-2xl md:text-3xl">{t(lang, 'chart.station.title')}</h2>
-      <div class="flex flex-wrap gap-4 text-xs text-base-content/50">
-        {STATIONS.map(s => (
-          <span class="flex items-center gap-1.5">
-            <span class="inline-block w-3 h-3 rounded-full" style={`background:${s.color}`}></span>
-            {s.label}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div
-      x-data={`{
-        fuel: 'diesel',
+  <div
+    class="card-body p-0"
+    x-data={`{
+      fuel: 'diesel',
+      isolatedStation: null,
         ...${_rangeFilterJson},
         history: ${allHistoryJson},
         stations: ${stationsJson},
@@ -120,6 +108,21 @@ const stationsJson = JSON.stringify(STATIONS);
           this.$nextTick(() => this.updateChart());
         },
 
+        isolateStation(key) {
+          this.isolatedStation = this.isolatedStation === key ? null : key;
+          const chart = Chart.getChart(this.$refs.stationChart);
+          if (!chart) return;
+          chart.data.datasets.forEach((ds, i) => {
+            const s = this.stations[i];
+            const muted = this.isolatedStation && s.key !== this.isolatedStation;
+            ds.borderColor = muted ? 'rgba(127,127,127,0.25)' : s.color;
+            ds.backgroundColor = muted ? 'rgba(127,127,127,0.03)' : s.fillColor;
+            ds.pointBackgroundColor = muted ? 'rgba(127,127,127,0.25)' : s.color;
+            ds.borderWidth = muted ? 1 : (s.borderDash.length ? 1.5 : 2);
+          });
+          chart.update();
+        },
+
         updateChart() {
           const chart = Chart.getChart(this.$refs.stationChart);
           if (!chart) return;
@@ -127,8 +130,14 @@ const stationsJson = JSON.stringify(STATIONS);
           const f = this.fuel;
           chart.data.labels = data.map(e => e.label);
           chart.data.datasets.forEach((ds, i) => {
-            ds.data = data.map(e => e.stations[this.stations[i].key][f]);
+            const s = this.stations[i];
+            const muted = this.isolatedStation && s.key !== this.isolatedStation;
+            ds.data = data.map(e => e.stations[s.key][f]);
             ds.hidden = false;
+            ds.borderColor = muted ? 'rgba(127,127,127,0.25)' : s.color;
+            ds.backgroundColor = muted ? 'rgba(127,127,127,0.03)' : s.fillColor;
+            ds.pointBackgroundColor = muted ? 'rgba(127,127,127,0.25)' : s.color;
+            ds.borderWidth = muted ? 1 : (s.borderDash.length ? 1.5 : 2);
           });
           chart.update();
         },
@@ -193,6 +202,35 @@ const stationsJson = JSON.stringify(STATIONS);
         }
       }`}
     >
+    <!-- Header row: title + legend -->
+    <div class="flex flex-wrap justify-between items-baseline gap-3 mb-4">
+      <h2 class="card-title text-2xl md:text-3xl">{t(lang, 'chart.station.title')}</h2>
+      <div class="flex flex-wrap gap-4 text-xs text-base-content/50">
+        {STATIONS.map(s => (
+          <span
+            class="flex items-center gap-1.5 cursor-pointer select-none transition-opacity duration-200 rounded-sm px-1 -mx-1"
+            :class={`isolatedStation === '${s.key}' ? 'ring-1 ring-base-content/30 text-base-content' : 'hover:text-base-content/80'`}
+            :style={`opacity: isolatedStation && isolatedStation !== '${s.key}' ? 0.3 : 1`}
+            @click={`isolateStation('${s.key}')`}
+            title={t(lang, 'chart.station.isolate_hint')}
+          >
+            <span class="inline-block w-3 h-3 rounded-full" style={`background:${s.color}`}></span>
+            <span class="hover:underline underline-offset-2 decoration-base-content/30">{s.label}</span>
+          </span>
+        ))}
+        <span
+          class="flex items-center gap-1 text-base-content/25 transition-opacity duration-200 select-none cursor-pointer hover:text-base-content/50"
+          x-show="isolatedStation"
+          x-cloak
+          @click="isolateStation(isolatedStation)"
+          title={t(lang, 'chart.station.clear_title')}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          {t(lang, 'chart.station.clear')}
+        </span>
+      </div>
+    </div>
+
       <!-- Controls row: fuel selector + range selector -->
       <div class="flex flex-wrap items-center gap-3 mb-4">
         <!-- Fuel type -->
@@ -233,6 +271,5 @@ const stationsJson = JSON.stringify(STATIONS);
       <div class="h-64 md:h-80">
         <canvas x-ref="stationChart"></canvas>
       </div>
-    </div>
   </div>
 </div>
