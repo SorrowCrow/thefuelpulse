@@ -5,7 +5,8 @@
       "Bash(python3:*)",
       "Bash(python -m pip show google-genai)",
       "Bash(/tmp/tree_output.txt:*)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(grep -n \"FUEL_ALIASES\\\\|const stations\\\\|const STATIONS\" /Users/user/repos/agentsCollab/output/src/components/*.astro)"
     ]
   }
 }

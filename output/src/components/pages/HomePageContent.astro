@@ -5,6 +5,7 @@ import StationPrices from '@/components/StationPrices.astro';
 import NewsFeed from '@/components/NewsFeed.astro';
 import FuelSavingsCalculator from '@/components/FuelSavingsCalculator.astro';
 import { calculatePriceChange, getPriceTrend } from '@/utils/priceHelpers';
+import { normalizeStationWithLabels } from '@/utils/stationHelpers';
 import { t, localePath } from '@/i18n/utils';
 import pricesData from '@/data/prices.json';
 import historyData from '@/data/price-history.json';
@@ -20,28 +21,8 @@ const { lang } = Astro.props;
 const prices = pricesData.averages;
 const updated = pricesData.last_updated;
 
-// diesel_ecto (Viada ADUS) and petrol_95_premium map to the canonical keys — take cheapest variant
-const FUEL_ALIASES: Record<string, string> = { diesel_ecto: 'diesel', petrol_95_premium: 'petrol_95' };
-
 // Normalise stations: support both old schema (prices: {}) and new schema (fuel_entries: [])
-const stations = stationData.stations
-  .filter((s: any) => !s.error)
-  .map((s: any) => {
-    if (s.prices) return { ...s, displayLabels: {} }; // old schema — pass through
-    // New schema: build a synthetic prices map — use cheapest variant per canonical key
-    const prices: Record<string, number | null> = { diesel: null, petrol_95: null, petrol_98: null };
-    const displayLabels: Record<string, string> = {}; // e.g. diesel → "Viada ADUS"
-    for (const entry of (s.fuel_entries ?? [])) {
-      const key = FUEL_ALIASES[entry.fuel_type] ?? entry.fuel_type;
-      if (key in prices && entry.price != null) {
-        if (prices[key] === null || entry.price < prices[key]!) {
-          prices[key] = entry.price;
-          displayLabels[key] = entry.station_type ? `${s.brand} ${entry.station_type}` : s.brand;
-        }
-      }
-    }
-    return { ...s, prices, displayLabels };
-  });
+const stations = normalizeStationWithLabels(stationData.stations as any[]);
 
 type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
 function cheapestFor(key: FuelKey) {

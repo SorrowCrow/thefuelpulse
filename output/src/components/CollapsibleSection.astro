@@ -1,0 +1,21 @@
+---
+import ToggleButton from '@/components/ToggleButton.astro';
+
+interface Props {
+  showText: string;
+  hideText: string;
+  stateVar?: string;
+  class?: string;
+}
+
+const { showText, hideText, stateVar = 'open', class: extraClass = '' } = Astro.props;
+
+const xData = JSON.stringify({ [stateVar]: false });
+---
+
+<div x-data={xData} class:list={[extraClass]}>
+  <ToggleButton showText={showText} hideText={hideText} stateVar={stateVar} class="mb-1.5 ml-1" />
+  <div x-show={stateVar} x-transition>
+    <slot />
+  </div>
+</div>

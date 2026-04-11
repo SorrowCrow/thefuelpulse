@@ -4,6 +4,15 @@ import pricesData from '@/data/prices.json';
 import { formatShortDate } from '@/utils/dateHelpers';
 import { t } from '@/i18n/utils';
 import type { Language } from '@/types';
+import { CHART_COLORS } from '@/utils/chartColors';
+import { getSharedTooltipConfig, getSharedScaleConfig } from '@/utils/chartHelpers';
+import { rangeFilterMixin } from '@/scripts/alpineRangeFilter';
+const _rangeFilterJson = JSON.stringify(rangeFilterMixin());
+
+const _tooltipJson = JSON.stringify(getSharedTooltipConfig());
+const _scales = getSharedScaleConfig('rgba(255,255,255,0.05)');
+const _scaleXJson = JSON.stringify(_scales.x);
+const _scaleYBaseJson = JSON.stringify(_scales.y);
 
 interface Props { lang: Language; }
 const { lang } = Astro.props;
@@ -96,22 +105,20 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
       <h2 class="card-title text-2xl md:text-3xl">{t(lang, 'chart.title')}</h2>
       <div class="flex gap-4 text-xs text-base-content/50">
         <span class="flex items-center gap-1">
-          <span class="inline-block w-3 h-0.5" style="background:rgba(100,116,139,0.9)"></span> {labelDiesel}
+          <span class="inline-block w-3 h-0.5" style={`background:${CHART_COLORS.diesel.solid}`}></span> {labelDiesel}
         </span>
         <span class="flex items-center gap-1">
-          <span class="inline-block w-3 h-0.5" style="background:rgba(110,231,183,0.9)"></span> 95
+          <span class="inline-block w-3 h-0.5" style={`background:${CHART_COLORS.petrol95.solid}`}></span> 95
         </span>
         <span class="flex items-center gap-1">
-          <span class="inline-block w-3 h-0.5" style="background:rgba(252,129,129,0.9)"></span> 98
+          <span class="inline-block w-3 h-0.5" style={`background:${CHART_COLORS.petrol98.solid}`}></span> 98
         </span>
       </div>
     </div>
 
     <div
       x-data={`{
-        range: '7d',
-        fromDate: '',
-        toDate: '',
+        ...${_rangeFilterJson},
         history: ${extendedHistoryJson},
         forecastDiesel:   ${forecastDieselJson},
         forecastPetrol95: ${forecastPetrol95Json},
@@ -174,16 +181,16 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
           const ctx = this.$refs.priceChart.getContext('2d');
 
           const gradientDiesel = ctx.createLinearGradient(0, 0, 0, 320);
-          gradientDiesel.addColorStop(0, 'rgba(100,116,139,0.12)');
-          gradientDiesel.addColorStop(1, 'rgba(100,116,139,0.0)');
+          gradientDiesel.addColorStop(0, '${CHART_COLORS.diesel.gradientTop}');
+          gradientDiesel.addColorStop(1, '${CHART_COLORS.diesel.gradientBot}');
 
           const gradient95 = ctx.createLinearGradient(0, 0, 0, 320);
-          gradient95.addColorStop(0, 'rgba(110,231,183,0.10)');
-          gradient95.addColorStop(1, 'rgba(110,231,183,0.0)');
+          gradient95.addColorStop(0, '${CHART_COLORS.petrol95.gradientTop}');
+          gradient95.addColorStop(1, '${CHART_COLORS.petrol95.gradientBot}');
 
           const gradient98 = ctx.createLinearGradient(0, 0, 0, 320);
-          gradient98.addColorStop(0, 'rgba(252,129,129,0.10)');
-          gradient98.addColorStop(1, 'rgba(252,129,129,0.0)');
+          gradient98.addColorStop(0, '${CHART_COLORS.petrol98.gradientTop}');
+          gradient98.addColorStop(1, '${CHART_COLORS.petrol98.gradientBot}');
 
           const pointStyle = {
             radius: 4,
@@ -220,10 +227,10 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
                 {
                   label: '${labelDiesel}',
                   data: initData.map(e => e.diesel),
-                  borderColor: 'rgba(100,116,139,0.9)',
+                  borderColor: '${CHART_COLORS.diesel.border}',
                   borderWidth: 2,
                   backgroundColor: gradientDiesel,
-                  pointBackgroundColor: 'rgba(100,116,139,0.9)',
+                  pointBackgroundColor: '${CHART_COLORS.diesel.pointBg}',
                   tension: 0.35,
                   fill: true,
                   ...pointStyle,
@@ -231,10 +238,10 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
                 {
                   label: '${labelP95}',
                   data: initData.map(e => e.petrol_95),
-                  borderColor: 'rgba(110,231,183,0.85)',
+                  borderColor: '${CHART_COLORS.petrol95.border}',
                   borderWidth: 2,
                   backgroundColor: gradient95,
-                  pointBackgroundColor: 'rgba(110,231,183,0.9)',
+                  pointBackgroundColor: '${CHART_COLORS.petrol95.pointBg}',
                   tension: 0.35,
                   fill: true,
                   ...pointStyle,
@@ -242,10 +249,10 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
                 {
                   label: '${labelP98}',
                   data: initData.map(e => e.petrol_98),
-                  borderColor: 'rgba(252,129,129,0.85)',
+                  borderColor: '${CHART_COLORS.petrol98.border}',
                   borderWidth: 2,
                   backgroundColor: gradient98,
-                  pointBackgroundColor: 'rgba(252,129,129,0.9)',
+                  pointBackgroundColor: '${CHART_COLORS.petrol98.pointBg}',
                   tension: 0.35,
                   fill: true,
                   ...pointStyle,
@@ -255,22 +262,22 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
                   label: '${labelDiesel} ${labelForecastSuffix}',
                   data: [...nullPad, lastD, ...this.forecastDiesel],
                   ...forecastStyle,
-                  borderColor: 'rgba(100,116,139,0.55)',
-                  pointBackgroundColor: 'rgba(100,116,139,0.55)',
+                  borderColor: '${CHART_COLORS.diesel.forecast}',
+                  pointBackgroundColor: '${CHART_COLORS.diesel.forecast}',
                 },
                 {
                   label: '${labelP95} ${labelForecastSuffix}',
                   data: [...nullPad, lastP95, ...this.forecastPetrol95],
                   ...forecastStyle,
-                  borderColor: 'rgba(110,231,183,0.50)',
-                  pointBackgroundColor: 'rgba(110,231,183,0.50)',
+                  borderColor: '${CHART_COLORS.petrol95.forecast}',
+                  pointBackgroundColor: '${CHART_COLORS.petrol95.forecast}',
                 },
                 {
                   label: '${labelP98} ${labelForecastSuffix}',
                   data: [...nullPad, lastP98, ...this.forecastPetrol98],
                   ...forecastStyle,
-                  borderColor: 'rgba(252,129,129,0.50)',
-                  pointBackgroundColor: 'rgba(252,129,129,0.50)',
+                  borderColor: '${CHART_COLORS.petrol98.forecast}',
+                  pointBackgroundColor: '${CHART_COLORS.petrol98.forecast}',
                 },
               ]
             },
@@ -281,12 +288,7 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
               plugins: {
                 legend: { display: false },
                 tooltip: {
-                  backgroundColor: '#18181b',
-                  titleColor: '#a1a1aa',
-                  bodyColor: '#fafafa',
-                  borderColor: '#27272a',
-                  borderWidth: 1,
-                  padding: 12,
+                  ...${_tooltipJson},
                   callbacks: {
                     label: function(context) {
                       return ' ' + context.dataset.label + ': ' + context.parsed.y.toFixed(3) + ' EUR';
@@ -295,14 +297,9 @@ const labelForecastSuffix = t(lang, 'chart.forecast.suffix');
                 }
               },
               scales: {
-                x: {
-                  grid: { display: false },
-                  border: { display: false },
-                  ticks: { color: '#71717a', font: { size: 12 } }
-                },
+                x: ${_scaleXJson},
                 y: {
-                  grid: { color: 'rgba(255,255,255,0.05)' },
-                  border: { display: false },
+                  ...${_scaleYBaseJson},
                   ticks: {
                     color: '#71717a',
                     font: { size: 12 },

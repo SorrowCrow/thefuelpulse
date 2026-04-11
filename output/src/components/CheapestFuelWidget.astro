@@ -2,6 +2,7 @@
 import stationData from '@/data/station-prices.json';
 import { t } from '@/i18n/utils';
 import type { Language } from '@/types';
+import { normalizeStationPrices } from '@/utils/stationHelpers';
 
 interface Props {
   lang: Language;
@@ -9,20 +10,7 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const FUEL_ALIASES: Record<string, string> = { diesel_ecto: 'diesel', petrol_95_premium: 'petrol_95' };
-const stations = (stationData.stations as any[])
-  .filter(s => !s.error)
-  .map(s => {
-    if (s.prices) return s;
-    const prices: Record<string, number | null> = { diesel: null, petrol_95: null, petrol_98: null };
-    for (const e of (s.fuel_entries ?? [])) {
-      const key = FUEL_ALIASES[e.fuel_type] ?? e.fuel_type;
-      if (key in prices && e.price != null) {
-        prices[key] = prices[key] === null ? e.price : Math.min(prices[key]!, e.price);
-      }
-    }
-    return { ...s, prices };
-  });
+const stations = normalizeStationPrices(stationData.stations as any[]);
 
 type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
 const fuelTypes: { key: FuelKey; i18nKey: string }[] = [
