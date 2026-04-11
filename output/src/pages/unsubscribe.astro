@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Unsubscribe — The Fuel Pulse"
+  description="Unsubscribe from fuel price email alerts."
+  lang="lv"
+>
+  <div class="min-h-[60vh] flex items-center justify-center px-4">
+    <div
+      x-data="{ status: 'loading' }"
+      x-init="
+        const token = new URLSearchParams(window.location.search).get('token');
+        if (!token) {
+          status = 'error';
+        } else {
+          fetch('/api/unsubscribe?token=' + token)
+            .then(r => r.json())
+            .then(d => { status = d.status === 'unsubscribed' ? 'unsubscribed' : 'not_found'; })
+            .catch(() => { status = 'error'; });
+        }
+      "
+      class="card bg-base-200 p-8 max-w-md w-full text-center"
+    >
+      <!-- Loading -->
+      <div x-show="status === 'loading'" class="loading loading-spinner loading-lg mx-auto"></div>
+
+      <!-- Successfully unsubscribed -->
+      <div x-show="status === 'unsubscribed'">
+        <div class="text-4xl mb-4">&#10003;</div>
+        <h1 class="text-xl font-bold mb-2">You have been unsubscribed.</h1>
+        <p class="text-base-content/70">You won't receive any more price alerts.</p>
+        <a href="/" class="btn btn-primary mt-6">Go to site</a>
+      </div>
+
+      <!-- Not found or error -->
+      <div x-show="status === 'not_found' || status === 'error'">
+        <div class="text-4xl mb-4">&#10007;</div>
+        <h1 class="text-xl font-bold mb-2">Link invalid or already used</h1>
+        <p class="text-base-content/70">This unsubscribe link is no longer valid or has already been used.</p>
+        <a href="/" class="btn btn-ghost mt-6">Go to site</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

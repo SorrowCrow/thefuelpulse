@@ -41,7 +41,23 @@ jobs:
         run: python scraper/generate_recommendation.py
 
       - name: Commit updated data files
+        id: auto-commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update fuel data'
           file_pattern: 'output/src/data/*.json'
+
+      - name: Notify Telegram
+        if: steps.auto-commit.outputs.changes_detected == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scraper/notify_telegram.py
+
+      - name: Send price alert emails
+        if: steps.auto-commit.outputs.changes_detected == 'true'
+        env:
+          SUPABASE_PROJECT_URL: ${{ secrets.SUPABASE_PROJECT_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python scraper/send_price_alert.py

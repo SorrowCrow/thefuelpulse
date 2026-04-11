@@ -141,7 +141,7 @@
   "privacy.1.title": "1. Kas mēs esam",
   "privacy.1.p": "Šī privātuma politika attiecas uz The Fuel Pulse, pieejama thefuelpulse.com. Vietni uztur kā neatkarīgs degvielas cenu informācijas pakalpojums, kas aptver Latviju. Ar privātumu saistītu jautājumu gadījumā sazinieties ar mums: info@thefuelpulse.com.",
   "privacy.2.title": "2. Kādu informāciju mēs vācam",
-  "privacy.2.p1": "The Fuel Pulse nevāc, neglabā un neapstrādā nekādu personu identificējošu informāciju. Mums nav lietotāju kontu, reģistrācijas formu vai komentāru sistēmu.",
+  "privacy.2.p1": "The Fuel Pulse pēc noklusējuma nevāc, neglabā un neapstrādā nekādu personu identificējošu informāciju. Mums nav lietotāju kontu vai komentāru sistēmu. Izņēmums: ja abonējat cenu paziņojumus (sk. 11. sadaļu), jūsu e-pasta adrese tiek glabāta ar jūsu piekrišanu.",
   "privacy.2.p2": "Vienīgie dati, kas tiek apstrādāti mūsu serveros, ir publiski pieejami degvielas cenu dati, kas iegūti no mazumtirgotāju mājaslapām. Neviena apmeklētāja dati netiek saglabāti mūsu infrastruktūrā.",
   "privacy.3.title": "3. Sīkdatnes",
   "privacy.3.p1": "Mēs glabājam vienu pirmās puses preferences sīkdatni:",
@@ -165,6 +165,13 @@
   "privacy.9.p": "Mēs varam laiku pa laikam atjaunināt šo privātuma politiku. Izmaiņas tiks publicētas šajā lapā ar atjauninātu datumu. Turpinot izmantot vietni pēc izmaiņām, jūs piekrītat atjauninātajai politikai.",
   "privacy.10.title": "10. Kontakti",
   "privacy.10.p": "Ar privātuma jautājumiem vai bažām rakstiet uz info@thefuelpulse.com.",
+
+  "privacy.11.title": "11. E-pasta paziņojumi",
+  "privacy.11.p1": "Ja abonējat degvielas cenu izmaiņu paziņojumus, mēs vācam šādus personas datus: e-pasta adrese, abonēšanas datums un valodas preference. Šie dati tiek izmantoti vienīgi, lai nosūtītu jums cenu izmaiņu brīdinājumus.",
+  "privacy.11.p2": "Abonenta dati tiek glabāti Supabase platformā Frankfurtē (ES reģions). Juridiskais pamats apstrādei ir jūsu piekrišana (VDAR 6. panta 1. punkta a) apakšpunkts). Dati tiek dzēsti nekavējoties pēc atteikšanās no abonēšanas.",
+  "privacy.11.p3": "Jūs varat atteikties no abonēšanas jebkurā laikā, izmantojot saiti katrā e-pasta vēstulē vai apmeklējot",
+  "privacy.11.unsubscribe_link": "thefuelpulse.com/unsubscribe",
+  "privacy.11.p4": "Jums ir tiesības atsaukt piekrišanu jebkurā laikā, neskarot tās apstrādes likumīgumu, kas veikta pirms atsaukuma.",
 
   "cheapest.title": "Lētākā tagad",
   "cheapest.subtitle": "labākā cena katrā stacijā",
@@ -226,5 +233,13 @@
 
   "chart.station.isolate_hint": "Klikšķini, lai izceltu",
   "chart.station.clear_title": "Notīrīt izvēli",
-  "chart.station.clear": "atcelt"
+  "chart.station.clear": "atcelt",
+
+  "subscribe.heading": "Saņemt cenu paziņojumus",
+  "subscribe.email_placeholder": "Jūsu e-pasts",
+  "subscribe.consent": "Piekrītu datu apstrādei un saņemšanai e-pastā",
+  "subscribe.cta": "Abonēt",
+  "subscribe.success": "Paldies! Pārbaudiet e-pastu.",
+  "subscribe.error": "Kļūda. Lūdzu, mēģiniet vēlreiz.",
+  "subscribe.consent_required": "Nepieciešama piekrišana."
 }

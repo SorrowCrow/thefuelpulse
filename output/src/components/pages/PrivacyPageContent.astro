@@ -106,6 +106,16 @@ const { lang } = Astro.props;
         <p>{t(lang, 'privacy.10.p')}</p>
       </section>
 
+      <div class="divider"></div>
+
+      <section>
+        <h2 class="text-xl font-semibold text-base-content mb-3">{t(lang, 'privacy.11.title')}</h2>
+        <p class="mb-3">{t(lang, 'privacy.11.p1')}</p>
+        <p class="mb-3">{t(lang, 'privacy.11.p2')}</p>
+        <p class="mb-3">{t(lang, 'privacy.11.p3')} <a href="https://thefuelpulse.com/unsubscribe" target="_blank" rel="noopener noreferrer" class="link link-primary">{t(lang, 'privacy.11.unsubscribe_link')}</a>.</p>
+        <p>{t(lang, 'privacy.11.p4')}</p>
+      </section>
+
     </div>
   </div>
 </BaseLayout>

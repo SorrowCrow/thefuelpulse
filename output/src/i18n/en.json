@@ -141,7 +141,7 @@
   "privacy.1.title": "1. Who We Are",
   "privacy.1.p": "This Privacy Policy applies to The Fuel Pulse, accessible at thefuelpulse.com. The site is operated as an independent fuel price information service covering Latvia. For privacy-related enquiries, contact us at info@thefuelpulse.com.",
   "privacy.2.title": "2. Information We Collect",
-  "privacy.2.p1": "The Fuel Pulse does not collect, store, or process any personally identifiable information. We do not have user accounts, registration forms, or comment systems.",
+  "privacy.2.p1": "The Fuel Pulse does not collect, store, or process any personally identifiable information by default. We do not have user accounts or comment systems. Exception: if you subscribe to price alerts (see Section 11), your email address is stored with your consent.",
   "privacy.2.p2": "The only data processed on our servers is publicly available fuel price data scraped from retailer websites. No visitor data is retained on our infrastructure.",
   "privacy.3.title": "3. Cookies",
   "privacy.3.p1": "We store one first-party preference cookie:",
@@ -165,6 +165,13 @@
   "privacy.9.p": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. Continued use of the site after any changes constitutes acceptance of the updated policy.",
   "privacy.10.title": "10. Contact",
   "privacy.10.p": "For privacy-related questions or concerns, email us at info@thefuelpulse.com.",
+
+  "privacy.11.title": "11. Email Notifications",
+  "privacy.11.p1": "If you subscribe to fuel price change alerts, we collect the following personal data: email address, subscription date, and language preference. This data is used solely to send you price change notifications.",
+  "privacy.11.p2": "Subscriber data is stored on Supabase, located in Frankfurt (EU region). The legal basis for processing is your consent (GDPR Art. 6(1)(a)). Data is deleted immediately upon unsubscribe.",
+  "privacy.11.p3": "You may unsubscribe at any time via the link included in every email, or by visiting",
+  "privacy.11.unsubscribe_link": "thefuelpulse.com/unsubscribe",
+  "privacy.11.p4": "You have the right to withdraw consent at any time, without affecting the lawfulness of processing carried out prior to withdrawal.",
 
   "cheapest.title": "Cheapest Right Now",
   "cheapest.subtitle": "best price per station",
@@ -226,5 +233,13 @@
 
   "chart.station.isolate_hint": "Click to isolate",
   "chart.station.clear_title": "Clear selection",
-  "chart.station.clear": "clear"
+  "chart.station.clear": "clear",
+
+  "subscribe.heading": "Get price alerts",
+  "subscribe.email_placeholder": "Your email",
+  "subscribe.consent": "I agree to receive email alerts",
+  "subscribe.cta": "Subscribe",
+  "subscribe.success": "Thanks! Check your inbox.",
+  "subscribe.error": "Error. Please try again.",
+  "subscribe.consent_required": "Consent required."
 }
