@@ -92,9 +92,9 @@ def fmt_delta(d: float | None) -> str:
     if d is None:
         return "—"
     if d > 0:
-        return f"▲ +{d:.3f}"
+        return f" +{d:.3f}"
     if d < 0:
-        return f"▼ {d:.3f}"
+        return f" {d:.3f}"
     return f"  {d:.3f}"
 
 # ---------------------------------------------------------------------------
@@ -149,9 +149,9 @@ def build_email(lang: str, subscriber: dict) -> dict:
         body = (
             "Jaunākās degvielas cenas Latvijā:\n"
             "\n"
-            f"Dīzelis: {diesel_price:.3f} €/l ({diesel_delta})\n"
-            f"95E:     {p95_price:.3f} €/l ({p95_delta})\n"
-            f"98E:     {p98_price:.3f} €/l ({p98_delta})\n"
+            f"Dīzelis: {diesel_price:.3f} € ({diesel_delta})\n"
+            f"95E:     {p95_price:.3f} € ({p95_delta})\n"
+            f"98E:     {p98_price:.3f} € ({p98_delta})\n"
             "\n"
             "Skatīt detaļas: https://thefuelpulse.com\n"
             "\n"
@@ -162,9 +162,9 @@ def build_email(lang: str, subscriber: dict) -> dict:
         body = (
             "Latest fuel prices in Latvia:\n"
             "\n"
-            f"Diesel:  {diesel_price:.3f} €/l ({diesel_delta})\n"
-            f"95E:     {p95_price:.3f} €/l ({p95_delta})\n"
-            f"98E:     {p98_price:.3f} €/l ({p98_delta})\n"
+            f"Diesel:  {diesel_price:.3f} € ({diesel_delta})\n"
+            f"95E:     {p95_price:.3f} € ({p95_delta})\n"
+            f"98E:     {p98_price:.3f} € ({p98_delta})\n"
             "\n"
             "View details: https://thefuelpulse.com/en/\n"
             "\n"
@@ -175,9 +175,9 @@ def build_email(lang: str, subscriber: dict) -> dict:
         body = (
             "Актуальные цены на топливо в Латвии:\n"
             "\n"
-            f"Дизель:  {diesel_price:.3f} €/l ({diesel_delta})\n"
-            f"95E:     {p95_price:.3f} €/l ({p95_delta})\n"
-            f"98E:     {p98_price:.3f} €/l ({p98_delta})\n"
+            f"Дизель:  {diesel_price:.3f} € ({diesel_delta})\n"
+            f"95E:     {p95_price:.3f} € ({p95_delta})\n"
+            f"98E:     {p98_price:.3f} € ({p98_delta})\n"
             "\n"
             "Подробнее: https://thefuelpulse.com/ru/\n"
             "\n"
@@ -189,9 +189,9 @@ def build_email(lang: str, subscriber: dict) -> dict:
         body = (
             "Latest fuel prices in Latvia:\n"
             "\n"
-            f"Diesel:  {diesel_price:.3f} €/l ({diesel_delta})\n"
-            f"95E:     {p95_price:.3f} €/l ({p95_delta})\n"
-            f"98E:     {p98_price:.3f} €/l ({p98_delta})\n"
+            f"Diesel:  {diesel_price:.3f} € ({diesel_delta})\n"
+            f"95E:     {p95_price:.3f} € ({p95_delta})\n"
+            f"98E:     {p98_price:.3f} € ({p98_delta})\n"
             "\n"
             "View details: https://thefuelpulse.com/en/\n"
             "\n"

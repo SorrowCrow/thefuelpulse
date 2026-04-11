@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime
 from zoneinfo import ZoneInfo
 
 import requests
@@ -12,6 +12,14 @@ DATA_DIR = os.path.join(SCRIPT_DIR, "..", "output", "src", "data")
 PRICES_FILE = os.path.join(DATA_DIR, "prices.json")
 HISTORY_FILE = os.path.join(DATA_DIR, "price-history.json")
 
+STATION_NAMES = {
+    "virsi": "Virši",
+    "circlek": "Circle K",
+    "neste": "Neste",
+    "viada": "Viada",
+    "kool": "Kool",
+}
+
 
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -19,30 +27,52 @@ def load_json(path):
 
 
 def format_delta(delta):
-    if delta is None:
-        return "—"
-    if delta > 0:
-        return f"▲ +{delta:.3f}"
-    if delta < 0:
-        return f"▼ {delta:.3f}"
-    return "—"
+    """Return signed delta in parens, or empty string if negligible."""
+    if delta is None or abs(delta) < 0.001:
+        return ""
+    sign = "+" if delta > 0 else ""
+    return f" ({sign}{delta:.3f})"
 
 
 def format_updated(iso_str):
     try:
         dt = datetime.fromisoformat(iso_str)
-        dt_local = dt.astimezone(ZoneInfo('Europe/Riga'))
+        dt_local = dt.astimezone(ZoneInfo("Europe/Riga"))
         return dt_local.strftime("%d.%m.%Y %H:%M")
     except Exception:
         return iso_str
 
 
-def find_yesterday_entry(history, today_date):
-    """Return the most recent entry whose date differs from today_date, or None."""
+def find_prev_entry(history, today_date, days_back=1):
+    """Return the most recent entry whose date differs from today_date."""
+    seen_different = 0
     for entry in history:
         if entry.get("date") != today_date:
+            seen_different += 1
+            if seen_different >= days_back:
+                return entry
+    return None
+
+
+def find_week_entry(history, today_date):
+    """Return entry closest to 7 days ago."""
+    for entry in reversed(history):
+        if entry.get("date") < today_date:
             return entry
     return None
+
+
+def cheapest_stations(stations_dict, fuel_key):
+    """Return (station_display_name, price) for the cheapest station for given fuel."""
+    best_name, best_price = None, None
+    for key, fuels in stations_dict.items():
+        price = fuels.get(fuel_key)
+        if price is None:
+            continue
+        if best_price is None or price < best_price:
+            best_price = price
+            best_name = STATION_NAMES.get(key, key.capitalize())
+    return best_name, best_price
 
 
 def main():
@@ -60,11 +90,10 @@ def main():
     last_updated = prices_data.get("last_updated", "")
 
     history = history_data.get("history", [])
-
-    # History is newest-first: index 0 is today
     today_entry = history[0] if history else None
     today_date = today_entry.get("date") if today_entry else None
-    yesterday_entry = find_yesterday_entry(history, today_date) if today_date else None
+    yesterday_entry = find_prev_entry(history, today_date) if today_date else None
+    week_entry = find_week_entry(history, today_date) if today_date else None
 
     fuel_keys = [
         ("diesel",    "Dīzelis"),
@@ -72,7 +101,8 @@ def main():
         ("petrol_98", "98E    "),
     ]
 
-    lines = []
+    # --- Price lines with trend ---
+    price_lines = []
     for key, label in fuel_keys:
         price = averages.get(key)
         if price is None:
@@ -80,22 +110,58 @@ def main():
 
         delta = None
         if yesterday_entry is not None:
-            yesterday_price = yesterday_entry.get(key)
-            if yesterday_price is not None:
-                delta = round(price - yesterday_price, 3)
+            prev = yesterday_entry.get(key)
+            if prev is not None:
+                delta = round(price - prev, 3)
 
         delta_str = format_delta(delta)
-        lines.append(f"{label}:  <b>{price:.3f} €/l</b>  {delta_str}")
+        price_lines.append(f"{label}:  <b>{price:.3f} €</b>{delta_str}")
 
+    # --- Week-over-week summary ---
+    week_lines = []
+    if week_entry is not None:
+        for key, label in fuel_keys:
+            price = averages.get(key)
+            week_price = week_entry.get(key)
+            if price is None or week_price is None:
+                continue
+            week_delta = round(price - week_price, 3)
+            if abs(week_delta) >= 0.001:
+                sign = "+" if week_delta > 0 else ""
+                week_lines.append(f"  {label.strip()}: ({sign}{week_delta:.3f})")
+
+    # --- Cheapest station per fuel ---
+    today_stations = today_entry.get("stations", {}) if today_entry else {}
+    cheapest_lines = []
+    cheapest_fuel_keys = [
+        ("diesel",    "Dīzelis"),
+        ("petrol_95", "95E"),
+        ("petrol_98", "98E"),
+    ]
+    for key, label in cheapest_fuel_keys:
+        name, price = cheapest_stations(today_stations, key)
+        if name and price:
+            cheapest_lines.append(f"  • {label}: <b>{name}</b> — {price:.3f} €")
+
+    # --- Assemble message ---
     updated_str = format_updated(last_updated) if last_updated else "—"
 
-    message = (
-        "<b>⛽ Degvielas cenas Latvijā</b>\n"
-        f"<i>Atjaunots: {updated_str}</i>\n"
-        "\n"
-        + "\n".join(lines)
-        + "\n\n🔗 thefuelpulse.com"
-    )
+    parts = [
+        f"<b>⛽ Degvielas cenas Latvijā</b>",
+        f"<i>{updated_str}</i>",
+        "",
+        "\n".join(price_lines),
+    ]
+
+    if week_lines:
+        parts += ["", "📅 <i>7 dienu izmaiņas:</i>"] + week_lines
+
+    if cheapest_lines:
+        parts += ["", "💰 <b>Lētākā šodien:</b>"] + cheapest_lines
+
+    parts += ["", "🔗 thefuelpulse.com"]
+
+    message = "\n".join(parts)
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {
