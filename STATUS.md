@@ -115,18 +115,6 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 - [x] Python scraper — 5 brands, runs via GitHub Actions
 - [x] Price history persisted in JSON
 
----
-
-## Not Yet Implemented
-- [ ] Telegram bot (post-commit notifications — discussed 2026-04-11, not started)
-- [ ] `/game/` page (route exists, content minimal)
-- [ ] Weekly recap automation (workflow file partial)
-- [ ] Price alerts / email notifications
-- [ ] Real-time API (scraper runs on schedule, not live)
-- [ ] Exact chart.js version pin on CDN (currently `@4`, could use `@4.x.y` for 1-yr cache)
-
----
-
 ## GitHub Actions
 | Workflow | Trigger | Purpose |
 |---|---|---|
