@@ -33,7 +33,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     const { data, error } = await supabase
       .from('subscribers')
-      .insert({ email, language, confirmed_at: null })
+      .insert({ email, language, confirmed_at: new Date().toISOString() })
       .select('token')
       .single();
 
@@ -48,15 +48,15 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const resend = new Resend(resendKey);
 
     const subjects: Record<string, string> = {
-      lv: 'Apstipriniet abonēšanu — The Fuel Pulse',
-      en: 'Confirm your subscription — The Fuel Pulse',
-      ru: 'Подтвердите подписку — The Fuel Pulse',
+      lv: 'Laipni lūdzam The Fuel Pulse',
+      en: 'Welcome to The Fuel Pulse',
+      ru: 'Добро пожаловать в The Fuel Pulse',
     };
 
     const bodies: Record<string, string> = {
-      lv: `Noklikšķiniet uz zemāk esošās saites, lai apstiprinātu abonēšanu degvielas cenu paziņojumiem:\n\nhttps://thefuelpulse.com/confirm?token=${token}\n\nJa neesat abonējis, ignorējiet šo e-pastu.`,
-      en: `Click the link below to confirm your subscription to fuel price alerts:\n\nhttps://thefuelpulse.com/confirm?token=${token}\n\nIf you did not subscribe, ignore this email.`,
-      ru: `Нажмите на ссылку ниже, чтобы подтвердить подписку на уведомления о ценах на топливо:\n\nhttps://thefuelpulse.com/confirm?token=${token}\n\nЕсли вы не подписывались, проигнорируйте это письмо.`,
+      lv: `Paldies, ka abonējāt degvielas cenu paziņojumus!\n\nJūs saņemsiet paziņojumus, kad degvielas cenas Latvijā mainīsies.\n\nLai atteiktos no abonēšanas jebkurā laikā, apmeklējiet:\nhttps://thefuelpulse.com/unsubscribe?token=${token}`,
+      en: `Thank you for subscribing to fuel price alerts!\n\nYou will receive notifications when fuel prices in Latvia change.\n\nTo unsubscribe at any time, visit:\nhttps://thefuelpulse.com/unsubscribe?token=${token}`,
+      ru: `Спасибо за подписку на уведомления о ценах на топливо!\n\nВы будете получать уведомления при изменении цен на топливо в Латвии.\n\nЧтобы отписаться в любое время, перейдите по ссылке:\nhttps://thefuelpulse.com/unsubscribe?token=${token}`,
     };
 
     const { error: sendError } = await resend.emails.send({
@@ -71,7 +71,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       throw new Error('email_send_failed');
     }
 
-    return new Response(JSON.stringify({ status: 'confirm_email_sent' }), { status: 200, headers: corsHeaders });
+    return new Response(JSON.stringify({ status: 'subscribed' }), { status: 200, headers: corsHeaders });
   } catch (err) {
     console.error('subscribe error:', err);
     return new Response(JSON.stringify({ error: 'internal_error' }), { status: 500, headers: corsHeaders });
