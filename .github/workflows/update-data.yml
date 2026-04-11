@@ -2,7 +2,7 @@ name: Update fuel data
 
 on:
   schedule:
-    - cron: '0 2,8,14 * * *'   # 3× daily — 5am, 11am, 5pm Riga (EEST UTC+3, summer)
+    - cron: '0 2,8,14 * * *'   # 3x daily — 5am, 11am, 5pm Riga (EEST UTC+3, summer)
     # NOTE: Latvia uses EEST (UTC+3) late-Mar→late-Oct, EET (UTC+2) otherwise.
     # Switch to '0 3,9,15 * * *' in winter to keep 5am/11am/5pm Riga time.
   workflow_dispatch:              # allow manual trigger from GitHub UI

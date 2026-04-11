@@ -15,7 +15,7 @@ Your job is to produce **concrete, actionable ideas** grounded in what the site 
 
 - **Astro v5** — static site, no server-side runtime, no databases
 - **No React/Vue** — Alpine.js for interactivity only
-- **Data sources**: JSON files scraped 3× daily (`station-prices.json`, `price-history.json`, `news.json`, `recommendation.json`)
+- **Data sources**: JSON files scraped 3x daily (`station-prices.json`, `price-history.json`, `news.json`, `recommendation.json`)
 - **3 languages**: Latvian (default), English, Russian — any content feature needs all 3
 - **Stations tracked**: Circle K, Virši, Neste, Viada (DUS + ADUS variants)
 - **Fuel types**: Diesel, Petrol 95, Petrol 98 + Specialty (Virši CNG/LPG, AdBlue, Circle K Ultimate, Neste MY)
@@ -76,7 +76,7 @@ Your job is to produce **concrete, actionable ideas** grounded in what the site 
 
 ### SEO / Structured data
 - **JSON-LD `Dataset` schema** on homepage with variableMeasured for all 3 fuel types
-- **Open Graph tags**: og:type, og:url, og:title, og:description, og:image (1200×630 PNG), og:locale
+- **Open Graph tags**: og:type, og:url, og:title, og:description, og:image (1200x630 PNG), og:locale
 - **Twitter Card**: summary_large_image
 - **hreflang** alternates: lv, en, ru, x-default
 - **Canonical links** on all pages

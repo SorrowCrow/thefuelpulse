@@ -19,24 +19,9 @@ const { lang } = Astro.props;
     const target = sessionStorage.getItem('scrollTarget');
     if (target) {
       sessionStorage.removeItem('scrollTarget');
-      window.scrollTo(0, 0);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const el = document.getElementById(target);
-          if (!el) return;
-          const HEADER = 64;
-          const start = 0;
-          const end = el.getBoundingClientRect().top + window.scrollY - HEADER;
-          const duration = 150;
-          const t0 = performance.now();
-          function step(now: number) {
-            const p = Math.min((now - t0) / duration, 1);
-            const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
-            window.scrollTo(0, start + (end - start) * ease);
-            if (p < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
-        });
+      window.addEventListener('load', () => {
+        const el = document.getElementById(target);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
   </script>

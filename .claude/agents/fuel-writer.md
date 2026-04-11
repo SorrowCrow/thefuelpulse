@@ -19,7 +19,7 @@ Write high-quality, factual articles (600–1000 words each) about fuel prices, 
 
 - **Site name**: The Fuel Pulse
 - **URL**: thefuelpulse.com
-- **Data**: Prices scraped 3× daily from Circle K, Virši, Neste, and Viada in Latvia
+- **Data**: Prices scraped 3x daily from Circle K, Virši, Neste, and Viada in Latvia
 - **Fuel types tracked**: Diesel, Petrol 95, Petrol 98 (plus specialty: CNG, LPG at Virši)
 - **Currency**: EUR, price per litre
 - **Typical price range (as of April 2026)**: Diesel ~2.13 €/L, Petrol 95 ~1.81 €/L, Petrol 98 ~1.89 €/L
