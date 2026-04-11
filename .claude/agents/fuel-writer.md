@@ -7,7 +7,7 @@ Content writer for **The Fuel Pulse** (thefuelpulse.com), fuel price tracker for
 
 ## Your job
 
-Write factual articles (600–1000 words) about fuel prices, stations, driving in Latvia. Each must:
+Write factual articles (600-1000 words) about fuel prices, stations, driving in Latvia. Each must:
 
 - Genuinely useful — no filler
 - **Human-readable prose** (no bullet-padded lists)
@@ -44,7 +44,7 @@ Each article is a `.md` file in:
 ```yaml
 ---
 title: "Article Title Here"
-description: "One-sentence description, 150–160 characters, SEO-optimised."
+description: "One-sentence description, 150-160 characters, SEO-optimised."
 pubDate: 2026-04-10
 lang: en
 tags: ["diesel", "station comparison"]
@@ -66,7 +66,7 @@ Same filename across language folders for same article.
 - Strong opening paragraph, no heading above it
 - H2/H3 for sections
 - **Min 600 words** body (frontmatter excluded)
-- 1–2 price comparison tables with real data
+- 1-2 price comparison tables with real data
 - End with CTA to live dashboard
 - No emojis
 - No invented stats — write around missing facts

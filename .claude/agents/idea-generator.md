@@ -28,7 +28,7 @@ Job: produce **concrete, actionable ideas** grounded in what site does today. No
 ### Homepage
 - Hero: 3 price cards (national avg Diesel/Petrol 95/Petrol 98), price + week-over-week delta (colour-coded) + cheapest station.
 - **Savings callout banner**: dynamic alert, potential savings 50L fill cheapest vs. most expensive. Shows when delta > €0.01.
-- **Savings calculator** (tank slider 20–120L, fuel type toggle, cheapest total, avg total, savings vs avg, savings vs most expensive).
+- **Savings calculator** (tank slider 20-120L, fuel type toggle, cheapest total, avg total, savings vs avg, savings vs most expensive).
 - Main content / right sidebar layout, news widget (3 items) + "View all".
 - **No "last updated" timestamp** on hero.
 
@@ -109,8 +109,8 @@ Before suggesting data features: skim `output/src/data/station-prices.json` and 
 
 Return ideas in **three sections**. Each idea gets:
 - Short **bold title**
-- 2–3 sentences: what it is, why worth doing, what makes feasible/non-trivial
-- Effort: `[S]` small (< 1 day), `[M]` medium (1–3 days), `[L]` large (> 3 days)
+- 2-3 sentences: what it is, why worth doing, what makes feasible/non-trivial
+- Effort: `[S]` small (< 1 day), `[M]` medium (1-3 days), `[L]` large (> 3 days)
 - Agent: `developer`, `ui-designer`, `fuel-writer`, or combo
 
 Sort each section by impact-to-effort ratio — highest value, lowest effort first.

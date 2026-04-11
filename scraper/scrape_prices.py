@@ -203,10 +203,10 @@ def scrape_kool() -> list[dict]:
     Inside the HtmlSnippet every price/label is a ``widget-text-v3`` div whose CSS
     ``left`` pixel position determines its column (fuel type):
 
-      95E  → left  260–320 px
-      98*  → left  400–435 px
-      DD   → left  535–570 px
-      Kool Premium DD → left 680–715 px
+      95E  → left  260-320 px
+      98*  → left  400-435 px
+      DD   → left  535-570 px
+      Kool Premium DD → left 680-715 px
 
     Two station locations appear on the same page (stacked vertically); both price rows
     are parsed and the minimum (cheapest) is reported per fuel type.
