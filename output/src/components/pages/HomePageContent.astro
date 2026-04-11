@@ -88,7 +88,7 @@ const jsonLd = {
 // Last updated time
 const scrapedAt = (stationData as any).scraped_at as string;
 const localeStr = lang === 'lv' ? 'lv-LV' : lang === 'ru' ? 'ru-RU' : 'en-GB';
-const scrapedTime = new Date(scrapedAt).toLocaleTimeString(localeStr, { hour: '2-digit', minute: '2-digit' });
+const scrapedTime = new Date(scrapedAt).toLocaleTimeString(localeStr, { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Riga' });
 
 // DUS vs ADUS gap
 const viadaStation = (stationData as any).stations?.find((s: any) => s.key === 'viada');

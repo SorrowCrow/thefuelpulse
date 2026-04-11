@@ -1,7 +1,8 @@
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -30,7 +31,7 @@ def format_delta(delta):
 def format_updated(iso_str):
     try:
         dt = datetime.fromisoformat(iso_str)
-        dt_local = dt.astimezone(tz=None)
+        dt_local = dt.astimezone(ZoneInfo('Europe/Riga'))
         return dt_local.strftime("%d.%m.%Y %H:%M")
     except Exception:
         return iso_str
