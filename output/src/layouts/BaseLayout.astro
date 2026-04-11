@@ -18,7 +18,8 @@ const htmlLang = lang === 'lv' ? 'lv' : lang === 'ru' ? 'ru' : 'en';
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://thefuelpulse.com';
 const canonicalPath = getCanonicalPath(Astro.url.pathname);
-const canonicalUrl = siteUrl + (canonicalPath === '/' ? '/' : canonicalPath);
+// Each language variant is canonical to itself; hreflang tells crawlers about alternates
+const canonicalUrl = siteUrl + (Astro.url.pathname || '/');
 
 const hreflangLinks: { hreflang: string; locale: Language }[] = [
   { hreflang: 'lv', locale: 'lv' },
@@ -74,7 +75,12 @@ const hreflangLinks: { hreflang: string; locale: Language }[] = [
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2572335002603798" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <!-- Non-blocking font load: preload hint + print-media swap trick -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" /></noscript>
+    <!-- Preload chart.js so download starts while head is parsed -->
+    <link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/chart.js@4" />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Gradient blob background — high-opacity amber + teal for visible ambient glow -->
@@ -126,7 +132,7 @@ const hreflangLinks: { hreflang: string; locale: Language }[] = [
         }
       </script>
     )}
-    <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script is:inline defer src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <script is:inline>
       (function () {
         // ── IntersectionObserver reveal ──

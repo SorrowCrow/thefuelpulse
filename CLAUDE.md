@@ -62,3 +62,17 @@ Requirements are in `requirements.md`. Agent instruction template in `agent-inst
 - NEVER write generated files directly to `src/`
 - ALWAYS stage in `output/` first
 - Human reviews output before copying to `src/`
+
+---
+
+## STATUS.md — Mandatory Update Rule
+
+After completing **any task that adds, removes, or meaningfully changes a feature**, update `STATUS.md` at the project root:
+
+1. **New component or page** → add a row to the Components or Pages table
+2. **New feature** → tick it in "Features Implemented" or add it to "Not Yet Implemented"
+3. **New station or data field** → update Stations Tracked table
+4. **Bug fix or known issue** → update Known Issues / Tech Debt section
+5. **Lighthouse or performance change** → update Lighthouse Status section
+
+Keep entries concise (one line each). The goal is that any agent can read STATUS.md and understand the full project without reading source files.

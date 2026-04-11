@@ -6,7 +6,9 @@
       "Bash(python -m pip show google-genai)",
       "Bash(/tmp/tree_output.txt:*)",
       "Read(//tmp/**)",
-      "Bash(grep -n \"FUEL_ALIASES\\\\|const stations\\\\|const STATIONS\" /Users/user/repos/agentsCollab/output/src/components/*.astro)"
+      "Bash(grep -n \"FUEL_ALIASES\\\\|const stations\\\\|const STATIONS\" /Users/user/repos/agentsCollab/output/src/components/*.astro)",
+      "Bash(grep -E \"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}\" -n)",
+      "Bash(find /Users/user/repos/agentsCollab/output/dist -name \"*.css\" -exec ls -lh {} \\\\;)"
     ]
   }
 }
