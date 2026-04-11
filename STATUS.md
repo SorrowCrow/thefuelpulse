@@ -1,13 +1,13 @@
 # The Fuel Pulse — Project Status
 
 > **Agents: read before any task. Update relevant section when done.**
-> Last updated: 2026-04-11
+> Last updated: 2026-04-11 (ads.txt headers verified OK)
 
 ---
 
 ## Live Site
 - URL: https://thefuelpulse.com
-- Hosting: Netlify/Vercel (static)
+- Hosting: Cloudflare Pages (static)
 - Data updates: GitHub Actions scraper (`.github/workflows/update-data.yml`)
 
 ---
@@ -144,6 +144,7 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 ## Known Issues / Tech Debt
 - Cloudflare email obfuscation adds ~1 KB `email-decode.min.js` (3 mailto links in Footer/Contact/About — low impact, Cloudflare-side)
 - AdSense script cannot defer (Google requirement)
+- ads.txt headers verified OK (2026-04-11): `content-type: text/plain`, `x-robots-tag: index, follow`. Cloudflare Transform Rule handles the override: `(http.host eq "thefuelpulse.com") then set-static X-Robots-Tag index, follow` — ensures prod gets `index, follow` while dev domain inherits `noindex, nofollow` from `_headers` `/*`. AdSense "not found" warning is stale crawl cache — no code fix needed, resolves on next AdSense re-crawl (24-48h).
 
 ---
 
