@@ -14,7 +14,14 @@ const { lang } = Astro.props;
   <div class="max-w-3xl mx-auto space-y-6" data-reveal>
 
     <div>
-      <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'common.back')}</a>
+      <nav aria-label="breadcrumb" class="mb-3">
+        <div class="breadcrumbs text-xs text-base-content/40 p-0 min-h-0">
+          <ul>
+            <li><a href={localePath('/', lang)} class="hover:text-primary">{t(lang, 'nav.home')}</a></li>
+            <li>{t(lang, 'nav.about')}</li>
+          </ul>
+        </div>
+      </nav>
       <h1 class="text-3xl md:text-4xl font-bold mb-2">{t(lang, 'about.title')}</h1>
       <p class="text-base-content/60 leading-relaxed">{t(lang, 'about.subtitle')}</p>
     </div>

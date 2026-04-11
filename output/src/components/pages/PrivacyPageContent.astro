@@ -13,7 +13,14 @@ const { lang } = Astro.props;
 <BaseLayout lang={lang} title={t(lang, 'meta.privacy.title')} description={t(lang, 'meta.privacy.description')}>
   <div class="max-w-3xl mx-auto" data-reveal>
 
-    <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'common.back')}</a>
+    <nav aria-label="breadcrumb" class="mb-3">
+      <div class="breadcrumbs text-xs text-base-content/40 p-0 min-h-0">
+        <ul>
+          <li><a href={localePath('/', lang)} class="hover:text-primary">{t(lang, 'nav.home')}</a></li>
+          <li>{t(lang, 'privacy.title')}</li>
+        </ul>
+      </div>
+    </nav>
     <h1 class="text-3xl md:text-4xl font-bold mb-2">{t(lang, 'privacy.title')}</h1>
     <p class="text-sm text-base-content/40 mb-8">{t(lang, 'privacy.updated')}</p>
 

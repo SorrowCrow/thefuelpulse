@@ -27,7 +27,14 @@ const noFilterMsg = t(lang, 'news.page.nofilter');
 
     <!-- Header -->
     <div class="mb-6" data-reveal>
-      <a href={localePath('/', lang)} class="text-xs text-base-content/40 hover:text-primary transition-colors mb-3 inline-block">{t(lang, 'news.page.back')}</a>
+      <nav aria-label="breadcrumb" class="mb-3">
+        <div class="breadcrumbs text-xs text-base-content/40 p-0 min-h-0">
+          <ul>
+            <li><a href={localePath('/', lang)} class="hover:text-primary">{t(lang, 'nav.home')}</a></li>
+            <li>{t(lang, 'nav.news')}</li>
+          </ul>
+        </div>
+      </nav>
       <h1 class="text-3xl md:text-4xl font-bold mb-1">{t(lang, 'news.page.title')}</h1>
       <p class="text-sm text-base-content/50">
         {articles.length} {t(lang, 'news.page.articles')} · {t(lang, 'news.page.fetched')} {fetched_at.slice(0, 10)}
