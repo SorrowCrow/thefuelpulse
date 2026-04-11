@@ -4,7 +4,7 @@ import type { APIRoute } from 'astro';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   const corsHeaders = {
     'Access-Control-Allow-Origin': 'https://thefuelpulse.com',
     'Content-Type': 'application/json',
@@ -24,10 +24,12 @@ export const POST: APIRoute = async ({ request }) => {
 
     const language = ['lv', 'en', 'ru'].includes(rawLang) ? rawLang : 'lv';
 
-    const supabase = createClient(
-      import.meta.env.SUPABASE_PROJECT_URL,
-      import.meta.env.SUPABASE_SERVICE_ROLE_KEY
-    );
+    const runtimeEnv = (locals as any).runtime?.env ?? {};
+    const supabaseUrl = runtimeEnv.SUPABASE_PROJECT_URL ?? import.meta.env.SUPABASE_PROJECT_URL;
+    const supabaseKey = runtimeEnv.SUPABASE_SERVICE_ROLE_KEY ?? import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
+    const resendKey = runtimeEnv.RESEND_API_KEY ?? import.meta.env.RESEND_API_KEY;
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data, error } = await supabase
       .from('subscribers')
@@ -43,7 +45,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const token = data.token;
-    const resend = new Resend(import.meta.env.RESEND_API_KEY);
+    const resend = new Resend(resendKey);
 
     const subjects: Record<string, string> = {
       lv: 'Apstipriniet abonēšanu — The Fuel Pulse',

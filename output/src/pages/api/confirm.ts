@@ -7,13 +7,16 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 
 const cors = { 'Access-Control-Allow-Origin': 'https://thefuelpulse.com', 'Content-Type': 'application/json' };
 
-export const GET: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ url, locals }) => {
   const token = url.searchParams.get('token');
   if (!token || !UUID_RE.test(token)) {
     return new Response(JSON.stringify({ error: 'invalid_token' }), { status: 400, headers: cors });
   }
   try {
-    const supabase = createClient(import.meta.env.SUPABASE_PROJECT_URL, import.meta.env.SUPABASE_SERVICE_ROLE_KEY);
+    const runtimeEnv = (locals as any).runtime?.env ?? {};
+    const supabaseUrl = runtimeEnv.SUPABASE_PROJECT_URL ?? import.meta.env.SUPABASE_PROJECT_URL;
+    const supabaseKey = runtimeEnv.SUPABASE_SERVICE_ROLE_KEY ?? import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabase = createClient(supabaseUrl, supabaseKey);
     const { data, error } = await supabase
       .from('subscribers')
       .update({ confirmed_at: new Date().toISOString() })
