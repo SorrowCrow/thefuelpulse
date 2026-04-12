@@ -25,22 +25,26 @@ const STATIONS = [
   { key: 'kool',      label: 'Kool',       color: 'rgba(56,189,248,0.9)',  fillColor: 'rgba(56,189,248,0.07)',  borderDash: [] as number[] },
 ];
 
-type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98';
+type FuelKey = 'diesel' | 'petrol_95' | 'petrol_98' | 'lpg' | 'cng' | 'hvo' | 'e85';
+
+type StationBucket = { diesel: number[]; petrol_95: number[]; petrol_98: number[]; lpg: number[]; cng: number[]; hvo: number[]; e85: number[] };
 
 // Group multiple polls per day, average per station, oldest-first
 const grouped = new Map<string, {
   date: string;
-  stations: Record<string, { diesel: number[]; petrol_95: number[]; petrol_98: number[] }>;
+  stations: Record<string, StationBucket>;
 }>();
+
+const emptyBucket = (): StationBucket => ({ diesel: [], petrol_95: [], petrol_98: [], lpg: [], cng: [], hvo: [], e85: [] });
 
 for (const item of historyData.history) {
   if (!grouped.has(item.date)) {
-    const stationBuckets: Record<string, { diesel: number[]; petrol_95: number[]; petrol_98: number[] }> = {};
-    for (const s of STATIONS) stationBuckets[s.key] = { diesel: [], petrol_95: [], petrol_98: [] };
+    const stationBuckets: Record<string, StationBucket> = {};
+    for (const s of STATIONS) stationBuckets[s.key] = emptyBucket();
     grouped.set(item.date, { date: item.date, stations: stationBuckets });
   }
   const g = grouped.get(item.date)!;
-  const stationPrices = (item as Record<string, unknown>).stations as Record<string, Record<FuelKey, number | null>> | undefined;
+  const stationPrices = (item as Record<string, unknown>).stations as Record<string, Record<string, number | null>> | undefined;
   if (stationPrices) {
     for (const s of STATIONS) {
       if (s.key === 'viada_adus') {
@@ -48,12 +52,27 @@ for (const item of historyData.history) {
         const viadaSp = stationPrices['viada'] as any;
         if (viadaSp?.diesel_ecto != null) g.stations['viada_adus'].diesel.push(viadaSp.diesel_ecto);
         // petrol for ADUS is same as DUS — omit to avoid duplicate lines on petrol tabs
+        // lpg is ADUS-only — read from viada entry
+        if (viadaSp?.lpg != null) g.stations['viada_adus'].lpg.push(viadaSp.lpg);
       } else {
-        const sp = stationPrices[s.key];
+        const sp = stationPrices[s.key] as any;
         if (!sp) continue;
         if (sp.diesel    != null) g.stations[s.key].diesel.push(sp.diesel);
         if (sp.petrol_95 != null) g.stations[s.key].petrol_95.push(sp.petrol_95);
         if (sp.petrol_98 != null) g.stations[s.key].petrol_98.push(sp.petrol_98);
+        // Specialty fuels per station
+        if (s.key === 'virsi') {
+          if (sp.cng != null) g.stations['virsi'].cng.push(sp.cng);
+          if (sp.lpg != null) g.stations['virsi'].lpg.push(sp.lpg);
+        } else if (s.key === 'circlek') {
+          if (sp.lpg != null) g.stations['circlek'].lpg.push(sp.lpg);
+        } else if (s.key === 'neste') {
+          if (sp.hvo != null) g.stations['neste'].hvo.push(sp.hvo);
+        } else if (s.key === 'viada') {
+          // DUS series: e85 only; lpg belongs to viada_adus
+          if (sp.e85 != null) g.stations['viada'].e85.push(sp.e85);
+        }
+        // kool: no specialty fuels — buckets remain empty
       }
     }
   }
@@ -71,6 +90,10 @@ const allHistory = [...grouped.values()]
         diesel:    _avg(g.stations[s.key].diesel),
         petrol_95: _avg(g.stations[s.key].petrol_95),
         petrol_98: _avg(g.stations[s.key].petrol_98),
+        lpg:       _avg(g.stations[s.key].lpg),
+        cng:       _avg(g.stations[s.key].cng),
+        hvo:       _avg(g.stations[s.key].hvo),
+        e85:       _avg(g.stations[s.key].e85),
       }])
     ),
   }));
@@ -233,11 +256,21 @@ const stationsJson = JSON.stringify(STATIONS);
 
       <!-- Controls row: fuel selector + range selector -->
       <div class="flex flex-wrap items-center gap-3 mb-4">
-        <!-- Fuel type -->
+        <!-- Fuel type — standard fuels -->
         <div class="join">
           <button class="join-item btn btn-sm" :class="fuel === 'diesel'    ? 'btn-primary' : 'btn-ghost'" @click="setFuel('diesel')">{t(lang, 'fuel.diesel')}</button>
           <button class="join-item btn btn-sm" :class="fuel === 'petrol_95' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('petrol_95')">95</button>
           <button class="join-item btn btn-sm" :class="fuel === 'petrol_98' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('petrol_98')">98</button>
+        </div>
+
+        <span class="text-base-content/20 select-none">|</span>
+
+        <!-- Fuel type — specialty fuels -->
+        <div class="join">
+          <button class="join-item btn btn-sm" :class="fuel === 'lpg' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('lpg')">LPG</button>
+          <button class="join-item btn btn-sm" :class="fuel === 'cng' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('cng')">CNG</button>
+          <button class="join-item btn btn-sm" :class="fuel === 'hvo' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('hvo')">HVO</button>
+          <button class="join-item btn btn-sm" :class="fuel === 'e85' ? 'btn-primary' : 'btn-ghost'" @click="setFuel('e85')">E85</button>
         </div>
 
         <span class="text-base-content/20 select-none">|</span>

@@ -2,7 +2,7 @@
 title: "LPG and CNG in Latvia - Is Alternative Fuel Actually Cheaper?"
 description: "LPG costs up to 46% less per litre than petrol 95 in Latvia - but is the real-world saving worth a conversion? We do the maths."
 pubDate: 2026-04-12
-category: guides
+category: explainer
 tags: ["lpg", "cng", "alternative fuel", "latvia", "fuel guide"]
 lang: en
 ---

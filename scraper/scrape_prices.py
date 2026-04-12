@@ -478,7 +478,7 @@ def update_price_history(results: list[dict], scraped_at: str) -> None:
         r["key"]: {
             entry["fuel_type"]: entry["price"]
             for entry in r["fuel_entries"]
-            if entry.get("category") == "standard"
+            if entry.get("category") in ("standard", "specialty")
         }
         for r in results
     }

@@ -1,7 +1,7 @@
 # The Fuel Pulse — Project Status
 
 > **Agents: read before any task. Update relevant section when done.**
-> Last updated: 2026-04-11 (ads.txt headers verified OK)
+> Last updated: 2026-04-12 (specialty fuel history charts + Telegram diesel bug fix)
 
 ---
 
@@ -99,7 +99,7 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 - [x] Price cards with change delta (vs previous day)
 - [x] Market average chart (Chart.js) — diesel/95/98 tabs, 7d/30d/custom range
 - [x] 7-day forecast bands on price chart (hidden on today when actuals arrive)
-- [x] Per-station price history chart — all 5 stations, fuel type tabs
+- [x] Per-station price history chart — all 5 stations, fuel type tabs (diesel/95/98/LPG/CNG/HVO/E85)
 - [x] Station price comparison table (current prices)
 - [x] Cheapest fuel widget
 - [x] Fuel savings calculator (Alpine.js, interactive)
@@ -113,7 +113,7 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 - [x] Google AdSense (async)
 - [x] Service worker (prod only)
 - [x] Python scraper — 5 brands, runs via GitHub Actions
-- [x] Price history persisted in JSON
+- [x] Price history persisted in JSON — standard + specialty fuels (LPG/CNG/HVO/E85) per station
 - [x] Telegram channel CTA — footer button + home page alert banner (https://t.me/thefuelpulse, i18n lv/en/ru)
 
 ## GitHub Actions

@@ -2,7 +2,7 @@
 title: "LPG un CNG Latvijā - Vai alternatīvā degviela tiešām ir lētāka?"
 description: "LPG Latvijā maksā līdz pat 46% mazāk nekā 95. benzīns, taču vai reālais ietaupījums ir pārbūves vērts? Mēs veicam aprēķinus."
 pubDate: 2026-04-12
-category: guides
+category: explainer
 tags: ["lpg", "cng", "alternatīvā degviela", "latvija", "degvielas ceļvedis"]
 lang: lv
 ---

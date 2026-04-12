@@ -16,7 +16,7 @@ STATION_NAMES = {
     "virsi": "Virši",
     "circlek": "Circle K",
     "neste": "Neste",
-    "viada": "Viada",
+    "viada": "Viada DUS",
     "kool": "Kool",
 }
 
@@ -63,15 +63,29 @@ def find_week_entry(history, today_date):
 
 
 def cheapest_stations(stations_dict, fuel_key):
-    """Return (station_display_name, price) for the cheapest station for given fuel."""
+    """Return (station_display_name, price) for the cheapest station for given fuel.
+
+    When fuel_key is 'diesel', also checks each station's 'diesel_ecto' key.
+    If diesel_ecto at viada is cheaper, the display name becomes 'Viada ADUS'.
+    """
     best_name, best_price = None, None
     for key, fuels in stations_dict.items():
         price = fuels.get(fuel_key)
+        display_name = STATION_NAMES.get(key, key.capitalize())
+
+        # For diesel: also consider diesel_ecto (Viada ADUS discount diesel)
+        if fuel_key == "diesel" and key == "viada":
+            ecto_price = fuels.get("diesel_ecto")
+            if ecto_price is not None:
+                if price is None or ecto_price < price:
+                    price = ecto_price
+                    display_name = "Viada ADUS"
+
         if price is None:
             continue
         if best_price is None or price < best_price:
             best_price = price
-            best_name = STATION_NAMES.get(key, key.capitalize())
+            best_name = display_name
     return best_name, best_price
 
 
