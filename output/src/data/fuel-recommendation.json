@@ -3,52 +3,57 @@
     "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Degvielas cenas Latvijā turpina kristies. Globāli jēlnaftas cenas strauji samazinājās pēc Hormuza šauruma atvēršanas. Gaidiet.",
-      "en": "Fuel prices in Latvia continue to fall. Globally, crude oil prices tumbled after the Strait of Hormuz reopened. Wait.",
-      "ru": "Цены на топливо в Латвии продолжают падать. Мировые цены на нефть резко снизились после открытия Ормузского пролива. Подождите."
+      "lv": "Dīzeļdegvielas cenas Latvijā turpina kristies, un globālās naftas cenas ir strauji samazinājušās. Ieteicams pagaidīt.",
+      "en": "Diesel prices in Latvia continue to fall, and global crude oil prices have tumbled. It is advisable to wait.",
+      "ru": "Цены на дизельное топливо в Латвии продолжают падать, а мировые цены на нефть резко снизились. Рекомендуется подождать."
     }
   },
   "petrol_95": {
     "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Degvielas cenas Latvijā turpina kristies. Globāli jēlnaftas cenas strauji samazinājās pēc Hormuza šauruma atvēršanas. Gaidiet.",
-      "en": "Fuel prices in Latvia continue to fall. Globally, crude oil prices tumbled after the Strait of Hormuz reopened. Wait.",
-      "ru": "Цены на топливо в Латвии продолжают падать. Мировые цены на нефть резко снизились после открытия Ормузского пролива. Подождите."
+      "lv": "Benzīna 95 cenas Latvijā samazinās, un globālās naftas cenas ir strauji kritušās. Ieteicams pagaidīt.",
+      "en": "Petrol 95 prices in Latvia are decreasing, and global crude oil prices have tumbled. It is advisable to wait.",
+      "ru": "Цены на бензин 95 в Латвии снижаются, а мировые цены на нефть резко упали. Рекомендуется подождать."
     }
   },
   "petrol_98": {
     "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Degvielas cenas Latvijā turpina kristies. Globāli jēlnaftas cenas strauji samazinājās pēc Hormuza šauruma atvēršanas. Gaidiet.",
-      "en": "Fuel prices in Latvia continue to fall. Globally, crude oil prices tumbled after the Strait of Hormuz reopened. Wait.",
-      "ru": "Цены на топливо в Латвии продолжают падать. Мировые цены на нефть резко снизились после открытия Ормузского пролива. Подождите."
+      "lv": "Benzīna 98 cenas Latvijā krīt, un globālās naftas cenas ir strauji samazinājušās. Ieteicams pagaidīt.",
+      "en": "Petrol 98 prices in Latvia are falling, and global crude oil prices have tumbled. It is advisable to wait.",
+      "ru": "Цены на бензин 98 в Латвии падают, а мировые цены на нефть резко снизились. Рекомендуется подождать."
     }
   },
   "factors": [
     {
-      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir samazinājušās par 0.045-0.066 EUR/L.",
-      "en": "Fuel prices in Latvia have fallen by 0.045-0.066 EUR/L over the last 7 days.",
-      "ru": "Цены на топливо в Латвии снизились на 0.045-0.066 EUR/L за последние 7 дней."
+      "lv": "Latvijas degvielas cenas pēdējo 7 dienu laikā ir ievērojami kritušās (piemēram, dīzelis par -0.066 EUR/L).",
+      "en": "Latvian fuel prices have fallen significantly over the last 7 days (e.g., Diesel by -0.066 EUR/L).",
+      "ru": "Цены на топливо в Латвии значительно снизились за последние 7 дней (например, дизель на -0.066 EUR/л)."
     },
     {
-      "lv": "Brent un WTI jēlnaftas cenas kritās par vairāk nekā 9% pēc ziņām par Hormuza šauruma atvēršanu (04-18).",
-      "en": "Brent and WTI crude oil prices tumbled over 9% following news of the Strait of Hormuz reopening (04-18).",
-      "ru": "Цены на нефть Brent и WTI упали более чем на 9% после новостей об открытии Ормузского пролива (18.04)."
+      "lv": "Brent un WTI jēlnaftas cenas kritās par vairāk nekā 9% pēc Hormuza šauruma atvēršanas, mazinot piegādes bažas.",
+      "en": "Brent and WTI crude oil prices tumbled over 9% following the reopening of the Strait of Hormuz, easing supply fears.",
+      "ru": "Цены на сырую нефть Brent и WTI упали более чем на 9% после открытия Ормузского пролива, что ослабило опасения по поводу поставок."
     },
     {
-      "lv": "OPEC samazināja naftas pieprasījuma prognozi, un Izraēlas-Libānas pamiera sākums mazināja ģeopolitisko spriedzi.",
-      "en": "OPEC cut its oil demand forecast, and the Israel-Lebanon ceasefire reduced geopolitical tensions.",
-      "ru": "ОПЕК снизила прогноз спроса на нефть, а начало перемирия между Израилем и Ливаном снизило геополитическую напряженность."
+      "lv": "OPEC samazināja naftas pieprasījuma prognozi, radot papildu spiedienu uz cenām.",
+      "en": "OPEC cut its oil demand forecast, adding further downward pressure on prices.",
+      "ru": "ОПЕК снизила прогноз спроса на нефть, что оказало дополнительное понижательное давление на цены."
     }
   ],
   "analysis": {
-    "lv": "Degvielas cenas Latvijā pēdējo septiņu dienu laikā ir konsekventi samazinājušās, Dīzelim krītot par 0.066 EUR/L, bet benzīnam 95 un 98 attiecīgi par 0.051 EUR/L un 0.045 EUR/L. Šī tendence ir apstiprināta arī vietējos ziņu avotos, kas norāda uz cenu kritumu Baltijas valstīs un diskusijām par to stabilizāciju. Pašreizējā situācija liecina, ka patērētājiem ir izdevīgi pagaidīt ar degvielas iegādi.\n\nGlobālajā tirgū vērojama būtiska jēlnaftas cenu korekcija. Pēc sākotnējām bažām par Hormuza šauruma blokādi, kas izraisīja Brent un WTI cenu kāpumu, situācija strauji mainījās. Jaunākās ziņas (18. aprīlis) liecina, ka Hormuza šaurums ir atvērts, un Irāna ir paziņojusi par tā atvēršanu, mazinot piegādes bažas. Tas izraisīja Brent un WTI jēlnaftas cenu kritumu par vairāk nekā 9%, WTI cenai nokrītot zem 84 USD par barelu. Papildus tam, OPEC samazināja naftas pieprasījuma prognozi, un Izraēlas-Libānas pamiera sākums mazināja ģeopolitisko spriedzi, kas parasti samazina naftas cenu riskus.\n\nŅemot vērā šos globālos signālus, kas parasti ietekmē Latvijas mazumtirdzniecības cenas 1-2 nedēļu laikā, ir sagaidāms, ka degvielas cenas Latvijā turpinās kristies. Lai gan ir bijušas diskusijas par iespējamu \"solidaritātes maksājumu\" degvielas tirgotājiem, kas varētu palielināt cenas nākotnē, pašreizējie globālie faktori norāda uz turpmāku cenu samazināšanos īstermiņā. Tāpēc ieteikums ir pagaidīt ar degvielas iegādi.",
-    "en": "Fuel prices in Latvia have consistently fallen over the past seven days, with Diesel dropping by 0.066 EUR/L, and Petrol 95 and 98 by 0.051 EUR/L and 0.045 EUR/L respectively. This trend is confirmed by local news sources, indicating price reductions across the Baltic states and discussions about their stabilization. The current situation suggests it is advantageous for consumers to delay their fuel purchases.\n\nThe global market is experiencing a significant correction in crude oil prices. Following initial concerns about a Strait of Hormuz blockade, which caused Brent and WTI prices to jump, the situation quickly reversed. The latest news (April 18) indicates that the Strait of Hormuz has reopened, with Iran declaring it open, easing supply fears. This led to Brent and WTI crude oil prices tumbling by over 9%, with WTI falling below $84 per barrel. Additionally, OPEC cut its oil demand forecast, and the start of an Israel-Lebanon ceasefire reduced geopolitical tensions, which typically lowers oil price risk premiums.\n\nGiven these strong global signals, which usually impact Latvian retail prices within 1-2 weeks, it is anticipated that fuel prices in Latvia will continue their downward trend. While there have been discussions about a potential \"solidarity payment\" for fuel traders that could increase prices in the future, current global factors point towards further price reductions in the short term. Therefore, the recommendation is to wait before filling up.",
-    "ru": "Цены на топливо в Латвии стабильно снижались в течение последних семи дней: дизельное топливо подешевело на 0.066 EUR/L, а бензин 95 и 98 — на 0.051 EUR/L и 0.045 EUR/L соответственно. Эта тенденция подтверждается местными новостными источниками, указывающими на снижение цен в странах Балтии и обсуждение их стабилизации. Текущая ситуация предполагает, что потребителям выгодно отложить покупку топлива.\n\nНа мировом рынке наблюдается значительная коррекция цен на сырую нефть. После первоначальных опасений по поводу блокады Ормузского пролива, вызвавших скачок цен на Brent и WTI, ситуация быстро изменилась. Последние новости (18 апреля) указывают на открытие Ормузского пролива, при этом Иран объявил о его открытии, что ослабило опасения по поводу поставок. Это привело к падению цен на сырую нефть Brent и WTI более чем на 9%, при этом WTI опустилась ниже 84 долларов за баррель. Кроме того, ОПЕК снизила прогноз спроса на нефть, а начало перемирия между Израилем и Ливаном снизило геополитическую напряженность, что обычно уменьшает риски для цен на нефть.\n\nУчитывая эти сильные глобальные сигналы, которые обычно влияют на розничные цены в Латвии в течение 1-2 недель, ожидается, что цены на топливо в Латвии продолжат снижаться. Хотя обсуждались возможные \"платежи солидарности\" для торговцев топливом, которые могут увеличить цены в будущем, текущие глобальные факторы указывают на дальнейшее снижение цен в краткосрочной перспективе. Поэтому рекомендуется подождать с заправкой."
+    "lv": "Dīzeļdegvielas, benzīna 95 un benzīna 98 cenas Latvijā pēdējās nedēļas laikā ir uzrādījušas konsekventu kritumu, ar ievērojamiem samazinājumiem visās kategorijās. Šo vietējo tendenci spēcīgi atbalsta jaunākie notikumi globālajā naftas tirgū.\n\nJēlnaftas etaloni, Brent un WTI, piedzīvoja strauju kritumu, samazinoties par vairāk nekā 9% pēc Hormuza šauruma atvēršanas, kas mazināja bažas par piegādēm. WTI jēlnaftas cena pat nokritās zem 84 ASV dolāriem par barelu, un Brent cena 16. aprīlī samazinājās līdz 86.09 ASV dolāriem. Turklāt OPEC lēmums samazināt naftas pieprasījuma prognozi pieaugošās ģeopolitiskās spriedzes apstākļos pastiprina lāču noskaņojumu, liecinot, ka globālās piegādes problēmas pašlaik atsver pieprasījuma perspektīvas un uzlaboto tranzītu.\n\nLai gan notiekošais Irānas karš un Eiropas gatavošanās enerģētikas krīzei ilgtermiņā varētu radīt spiedienu uz cenām, tūlītējie tirgus signāli norāda uz turpmāku cenu mērenību. Paredzams, ka ievērojamais jēlnaftas cenu kritums tuvākajās dienās pārvērtīsies par turpmākiem samazinājumiem Latvijas degvielas uzpildes stacijās. Tāpēc ir ieteicams atlikt degvielas iegādi.",
+    "en": "Latvian fuel prices for diesel, petrol 95, and petrol 98 have shown a consistent downward trend over the past week, with significant drops observed across all categories. This local trend is strongly supported by recent developments in the global oil market.\n\nCrude oil benchmarks, Brent and WTI, experienced sharp declines, tumbling over 9% in response to the reopening of the Strait of Hormuz, which eased supply fears. WTI crude even plunged below $84 per barrel, and Brent dropped to $86.09 on April 16. Furthermore, OPEC's decision to cut its oil demand forecast amid geopolitical tensions adds to the bearish sentiment, suggesting that global supply concerns are currently outweighed by demand outlook and improved transit.\n\nWhile the ongoing Iran war and Europe's preparations for an energy crisis could introduce upward pressure in the long term, the immediate market signals point to continued price moderation. The significant drops in crude oil prices are expected to translate into further reductions at Latvian pumps in the coming days. Therefore, delaying fuel purchases is advisable.",
+    "ru": "Цены на дизельное топливо, бензин 95 и бензин 98 в Латвии демонстрируют устойчивую тенденцию к снижению за последнюю неделю, при этом значительное падение наблюдается во всех категориях. Эта местная тенденция сильно поддерживается последними событиями на мировом нефтяном рынке.\n\nЭталонные сорта сырой нефти, Brent и WTI, испытали резкое падение, снизившись более чем на 9% в ответ на открытие Ормузского пролива, что ослабило опасения по поводу поставок. Цена на сырую нефть WTI даже опустилась ниже 84 долларов за баррель, а Brent упала до 86.09 долларов 16 апреля. Кроме того, решение ОПЕК сократить прогноз спроса на нефть на фоне геополитической напряженности усиливает медвежьи настроения, предполагая, что глобальные опасения по поводу предложения в настоящее время перевешиваются перспективами спроса и улучшением транзита.\n\nХотя продолжающаяся война в Иране и подготовка Европы к энергетическому кризису могут оказать повышательное давление в долгосрочной перспективе, немедленные рыночные сигналы указывают на продолжение умеренности цен. Ожидается, что значительное падение цен на сырую нефть приведет к дальнейшему снижению цен на латвийских заправках в ближайшие дни. Поэтому рекомендуется отложить покупку топлива."
   },
   "sources": [
+    {
+      "title": "As Iran war rages, Europe gears up for energy crisis - DW.com",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNLWhObFl3bVlMX09JdWozM0dnME5jcFUtSEVHZ3ZBUllPSmVJWVJ5eEdCYkpuUE1fN09wVVJ1NmtFVTZfU0NXb09Bblpnb2EtZkZlZzlVZlNMR3VkRGxFREJiQlNQbF9qZlU0Zl9CSWlHZmtwVWNlRm4tYVhtdnlUZkI4MHh2X0I1Y0tOV9IBjAFBVV95cUxOY2NpeXVyNmhZV0JEV1pTTGxlTW1WYVYzbFh0Ny16b3hvcFlMekdORng1djBWd3lTcXQ1djIzQjlyLTAxb0FZMGVVNlJiNFVwWU9XVG9DOTdtYzN2VFV1S0dGS2NTMFJJSEt0UzBDczA3VXhCUzVEZEdSNFNRLUZyY1U2NUVleWJWUTZ1aw?oc=5",
+      "published_at": "2026-04-19T01:00:16+00:00"
+    },
     {
       "title": "Brent, WTI Tumble Over 9% on Hormuz Reopening Signal - Business Post Nigeria",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQWWdQMzBKLUhIQnh4T015NkZZVG9qUDJSM1BycWNudWFYc2wtNVF2cjNXVzBlMnhVazBrMjBtNFZ3UklqeGh6Qm9GaWppVmhiaTZmT0ZjNjd6UE9MUUhpN082bjRkcG0tY3FLU25oNElzd3JaTjk2bU50TFR6M1pURWZiWG9CUjk4RHlZ?oc=5",
@@ -57,7 +62,7 @@
     {
       "title": "Kad stabilizēsies degvielas cenas Latvijā? Eksperta viedoklis - nra",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNRWlLcTE0ZzhaVnY3VHFtU0JETXRaWWw5eDktejRaT2tmbmVGWEJaVXRuV254NWhOcmZsTmd5WWtLcDJOc2M2R2FpWHVYcFJmZVJnc0RaRkJuNXFleHlNUDZrMHFZZTZYb1A5dmpidTJzSkhxWGl6MTA5R1JDVVkzU3FaQUtVa2hKVnBVWVdR?oc=5",
-      "published_at": "2026-04-18T09:31:00+00:00"
+      "published_at": "2026-04-18T09:32:20+00:00"
     },
     {
       "title": "Baltijas valstīs samazinās degvielas cenas - BauskasDzive.lv",
@@ -68,14 +73,9 @@
       "title": "OPEC Cuts Oil Demand Forecast Amid Iran War Tensions - Discovery Alert",
       "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1XVlo0NWhaVVBwcXVFUFJuSEtOeEthXzVPX3FRNHhuWWg4NEh6VUZ4QVJBVmdsSWdxTm1IWThrb1JkUEk0bHdxRmZhdlZROGV1VGxnTGFtbUZyMXJXajJZaHhOR0VVX0NJeEF2bDNDSzJoVzE1eUdYY01HM0Y?oc=5",
       "published_at": "2026-04-17T23:46:33+00:00"
-    },
-    {
-      "title": "Crude Oil Prices: Brent at $98, WTI at $93 as Israel-Lebanon Ceasefire Begins - CryptoRank",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZ3drQWtnR2VTa19rTVhfbFhyUHFybFlVWUp4U3pTcjdJQ055RzdSM3pZYTU3OUN6OVhBd0phbUphLVU5OHdyQ0NwMmJvWTB6aE9XS2REMGZBTFZ3SE1wYWtzbXZCQkdDUEdidXYtM3hKcS0za3RyUElsd2RKS0pJcmhLVFJvV0tmZEtHRG9TaUJyM2hLTnpaYUV3VGxxUERCaC1ucmRYQzMxblI2MmQtSQ?oc=5",
-      "published_at": "2026-04-17T15:26:24+00:00"
     }
   ],
-  "generated_at": "2026-04-19T04:48:22.123972+00:00",
+  "generated_at": "2026-04-19T08:46:02.313962+00:00",
   "prices_snapshot": {
     "diesel": 2.032,
     "petrol_95": 1.754,
