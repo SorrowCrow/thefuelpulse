@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-05T09:56:35.277419+00:00",
+  "scraped_at": "2026-05-05T15:48:20.402907+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -211,7 +211,7 @@
       "brand": "Kool",
       "key": "kool",
       "fuel_entries": [],
-      "error": "HTTPSConnectionPool(host='kool.lv', port=443): Max retries exceeded with url: /degviela/ (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1010)')))"
+      "error": "502 Server Error: Bad Gateway for url: https://kool.lv/degviela/"
     }
   ]
 }
