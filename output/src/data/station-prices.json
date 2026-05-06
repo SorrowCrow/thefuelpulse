@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-05T15:48:20.402907+00:00",
+  "scraped_at": "2026-05-06T05:24:20.077769+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -9,21 +9,21 @@
           "fuel_type": "diesel",
           "fuel_name": "Vir\u0161i DD",
           "category": "standard",
-          "price": 1.867,
+          "price": 1.887,
           "currency": "EUR"
         },
         {
           "fuel_type": "petrol_95",
           "fuel_name": "Vir\u0161i 95E",
           "category": "standard",
-          "price": 1.797,
+          "price": 1.717,
           "currency": "EUR"
         },
         {
           "fuel_type": "petrol_98",
           "fuel_name": "Vir\u0161i 98E",
           "category": "standard",
-          "price": 1.897,
+          "price": 1.787,
           "currency": "EUR"
         },
         {
@@ -107,28 +107,28 @@
           "fuel_type": "petrol_95",
           "fuel_name": "Neste Futura 95",
           "category": "standard",
-          "price": 1.797,
+          "price": 1.757,
           "currency": "EUR"
         },
         {
           "fuel_type": "petrol_98",
           "fuel_name": "Neste Futura 98",
           "category": "standard",
-          "price": 1.867,
+          "price": 1.827,
           "currency": "EUR"
         },
         {
           "fuel_type": "diesel",
           "fuel_name": "Neste Futura D",
           "category": "standard",
-          "price": 1.937,
+          "price": 1.887,
           "currency": "EUR"
         },
         {
           "fuel_type": "premium_diesel",
           "fuel_name": "Neste Pro Diesel",
           "category": "premium",
-          "price": 2.067,
+          "price": 1.997,
           "currency": "EUR"
         },
         {
@@ -210,8 +210,37 @@
     {
       "brand": "Kool",
       "key": "kool",
-      "fuel_entries": [],
-      "error": "502 Server Error: Bad Gateway for url: https://kool.lv/degviela/"
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Kool 95",
+          "category": "standard",
+          "price": 1.807,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Kool 98",
+          "category": "standard",
+          "price": 1.867,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Kool Diesel",
+          "category": "standard",
+          "price": 1.9177,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Kool Premium DD",
+          "category": "premium",
+          "price": 1.977,
+          "currency": "EUR"
+        }
+      ],
+      "error": null
     }
   ]
 }
