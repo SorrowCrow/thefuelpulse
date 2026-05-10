@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-10T05:32:35.141219+00:00",
+  "scraped_at": "2026-05-10T09:24:04.697049+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -210,8 +210,37 @@
     {
       "brand": "Kool",
       "key": "kool",
-      "fuel_entries": [],
-      "error": "HTTPSConnectionPool(host='kool.lv', port=443): Max retries exceeded with url: /degviela/ (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1010)')))"
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Kool 95",
+          "category": "standard",
+          "price": 1.797,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Kool 98",
+          "category": "standard",
+          "price": 1.867,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Kool Diesel",
+          "category": "standard",
+          "price": 1.9177,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Kool Premium DD",
+          "category": "premium",
+          "price": 1.967,
+          "currency": "EUR"
+        }
+      ],
+      "error": null
     }
   ]
 }
