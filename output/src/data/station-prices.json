@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-13T10:17:02.796048+00:00",
+  "scraped_at": "2026-05-13T16:14:45.854312+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -53,7 +53,50 @@
     {
       "brand": "Circle K",
       "key": "circlek",
-      "fuel_entries": [],
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "95miles",
+          "category": "standard",
+          "price": 1.814,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "98miles+",
+          "category": "standard",
+          "price": 1.884,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Dmiles",
+          "category": "standard",
+          "price": 1.914,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Dmiles+",
+          "category": "premium",
+          "price": 2.044,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "xtl",
+          "fuel_name": "miles+ XTL",
+          "category": "specialty",
+          "price": 2.49,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "lpg",
+          "fuel_name": "Autog\u0101ze/LPG",
+          "category": "specialty",
+          "price": 1.055,
+          "currency": "EUR"
+        }
+      ],
       "error": null
     },
     {
