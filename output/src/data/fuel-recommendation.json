@@ -1,52 +1,52 @@
 {
   "diesel": {
-    "recommendation": "wait",
+    "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Dīzeļdegvielas cena turpina krist (-0.056 EUR/L nedēļā). Globālās naftas cenas samazinās, pastāv iespēja sagaidīt vēl zemākas cenas.",
-      "en": "Diesel prices continue to fall (-0.056 EUR/L in a week). Global crude prices are declining, so waiting for lower prices is advisable.",
-      "ru": "Цена на дизельное топливо продолжает падать (-0.056 EUR/л за неделю). Мировые цены на нефть снижаются, есть шанс дождаться более низких цен."
+      "lv": "Degvielas cenas Latvijā krītas, taču globālās naftas cenas atjaunojas Irānas spriedzes dēļ. Iegādājieties tagad, lai izvairītos no gaidāmā kāpuma.",
+      "en": "Latvian fuel prices are falling, but global crude rebounded due to Iran tensions. Buy now to avoid anticipated price increases.",
+      "ru": "Цены на топливо в Латвии падают, но мировые цены на нефть восстановились из-за напряженности с Ираном. Заправляйтесь сейчас, чтобы избежать ожидаемого роста."
     }
   },
   "petrol_95": {
-    "recommendation": "wait",
+    "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 95 cena krītas (-0.012 EUR/L nedēļā). Globālās naftas cenas samazinās, iespējami turpmāki kritumi.",
-      "en": "Petrol 95 prices are falling (-0.012 EUR/L in a week). Global crude prices are declining, further drops are possible.",
-      "ru": "Цена на бензин 95 падает (-0.012 EUR/л за неделю). Мировые цены на нефть снижаются, возможны дальнейшие падения."
+      "lv": "Benzīna cenas Latvijā krītas, taču globālās naftas cenas atjaunojas Irānas spriedzes dēļ. Iegādājieties tagad, lai izvairītos no gaidāmā kāpuma.",
+      "en": "Latvian fuel prices are falling, but global crude rebounded due to Iran tensions. Buy now to avoid anticipated price increases.",
+      "ru": "Цены на бензин в Латвии падают, но мировые цены на нефть восстановились из-за напряженности с Ираном. Заправляйтесь сейчас, чтобы избежать ожидаемого роста."
     }
   },
   "petrol_98": {
-    "recommendation": "wait",
+    "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 98 cena krītas (-0.012 EUR/L nedēļā). Globālās naftas cenas samazinās, iespējami turpmāki kritumi.",
-      "en": "Petrol 98 prices are falling (-0.012 EUR/L in a week). Global crude prices are declining, further drops are possible.",
-      "ru": "Цена на бензин 98 падает (-0.012 EUR/л за неделю). Мировые цены на нефть снижаются, возможны дальнейшие падения."
+      "lv": "Benzīna cenas Latvijā krītas, taču globālās naftas cenas atjaunojas Irānas spriedzes dēļ. Iegādājieties tagad, lai izvairītos no gaidāmā kāpuma.",
+      "en": "Latvian fuel prices are falling, but global crude rebounded due to Iran tensions. Buy now to avoid anticipated price increases.",
+      "ru": "Цены на бензин в Латвии падают, но мировые цены на нефть восстановились из-за напряженности с Ираном. Заправляйтесь сейчас, чтобы избежать ожидаемого роста."
     }
   },
   "factors": [
     {
-      "lv": "Latvijā degvielas cenas turpina krist, dīzeļdegvielai par -0.056 EUR/L, bet benzīnam 95 un 98 par -0.012 EUR/L pēdējo 7 dienu laikā.",
-      "en": "Latvian fuel prices continue to fall, with diesel down by -0.056 EUR/L and Petrol 95/98 by -0.012 EUR/L over the last 7 days.",
-      "ru": "Цены на топливо в Латвии продолжают падать: дизельное топливо на -0.056 EUR/л, а бензин 95 и 98 на -0.012 EUR/л за последние 7 дней."
+      "lv": "Latvijas degvielas cenas (dīzelis -0.067 EUR, benzīns -0.014 EUR) pēdējo 7 dienu laikā ir kritušās.",
+      "en": "Latvian fuel prices (Diesel -0.067 EUR, Petrol -0.014 EUR) have been falling over the last 7 days.",
+      "ru": "Цены на топливо в Латвии (дизель -0.067 EUR, бензин -0.014 EUR) падали в течение последних 7 дней."
     },
     {
-      "lv": "Globālās jēlnaftas cenas (Brent/WTI) pēdējās dienās samazinājās, cerot uz ASV un Irānas spriedzes mazināšanos un iespējamu vienošanos (Gulf News, Reuters).",
-      "en": "Global crude oil prices (Brent/WTI) have recently fallen due to hopes of easing US-Iran tensions and a potential deal (Gulf News, Reuters).",
-      "ru": "Мировые цены на сырую нефть (Brent/WTI) в последние дни снизились на фоне надежд на ослабление напряженности между США и Ираном и возможное соглашение (Gulf News, Reuters)."
+      "lv": "Globālās jēlnaftas (Brent/WTI) cenas 28. maijā atjaunojās, baidoties par piegādēm no Irānas.",
+      "en": "Global crude oil (Brent/WTI) prices rebounded on May 28th due to revived Iran supply fears.",
+      "ru": "Мировые цены на сырую нефть (Brent/WTI) восстановились 28 мая из-за возобновившихся опасений по поводу поставок из Ирана."
     },
     {
-      "lv": "Tirgū valda liela svārstība, jo, lai gan cenas kritās, bija arī ziņojumi par naftas cenu pieaugumu Irānas risku dēļ (FXEmpire).",
-      "en": "The market remains highly volatile, as despite recent drops, there were also reports of oil price rebounds due to revived Iran supply fears (FXEmpire).",
-      "ru": "На рынке сохраняется высокая волатильность, поскольку, несмотря на недавнее падение, были также сообщения о росте цен на нефть из-за возобновившихся опасений по поводу поставок из Ирана (FXEmpire)."
+      "lv": "JPMorgan prognozē, ka naftas cenas šogad saglabāsies augstas, un eksperti norāda, ka vasarā labāk nebūs.",
+      "en": "JPMorgan predicts oil prices will remain high this year, and experts suggest summer won't bring better prices.",
+      "ru": "JPMorgan прогнозирует, что цены на нефть останутся высокими в этом году, и эксперты предполагают, что летом ситуация не улучшится."
     }
   ],
   "analysis": {
-    "lv": "Latvijas degvielas tirgū pašlaik vērojams cenu kritums visiem degvielas veidiem. Dīzeļdegvielas cena pēdējo septiņu dienu laikā ir samazinājusies par 0.056 EUR/L, savukārt benzīna 95 un 98 cenas ir kritušās par 0.012 EUR/L. Šī tendence liecina par skaidru lejupslīdi vietējā tirgū.\n\nŠis vietējais cenu kritums lielā mērā atspoguļo nesenās izmaiņas pasaules jēlnaftas tirgū. Nedēļas beigās (27.-28. maijā) Brent un WTI jēlnaftas cenas kopumā kritās, ko veicināja atjaunotās cerības par ASV un Irānas spriedzes mazināšanos un iespējamu vienošanos, kā ziņoja Gulf News un Reuters. Nedēļas sākumā (25.-26. maijā) cenas bija ļoti svārstīgas, vispirms strauji kritās baumu dēļ par vienošanos ar Irānu, bet pēc tam strauji pieauga ASV triecienu un Irānas atbildes draudu dēļ, virzot Brent naftas cenu uz 100 USD atzīmi.\n\nVisjaunākie globālie signāli (28. maijs) ir nedaudz pretrunīgi – daži ziņojumi liecina par turpmāku kritumu (\"oil prices down today\", \"Brent Crude Oil Prices Sink\"), kamēr citi min atsitienu, ko izraisījušas bažas par Irānas piegādēm. Tomēr pēdējo dienu dominējošais noskaņojums liecina par lejupslīdes spiedienu, ko rada cerības uz ģeopolitiskās situācijas deeskalāciju. Ņemot vērā pašreizējo cenu kritumu Latvijā un neseno globālo jēlnaftas cenu samazināšanos, autovadītājiem ieteicams pagaidīt, jo ir iespējami turpmāki cenu samazinājumi, ja globālā spriedzes mazināšanās tendence saglabāsies. Tomēr augstā svārstība pasaules tirgū nozīmē, ka šai prognozei ir vidēja pārliecība.",
-    "en": "The Latvian fuel market is currently experiencing a price drop across all fuel types. Diesel prices have decreased by 0.056 EUR/L over the last seven days, while Petrol 95 and 98 prices have fallen by 0.012 EUR/L. This trend indicates a clear downward momentum in the local market.\n\nThis local price decline largely mirrors recent movements in the global crude oil market. Towards the end of the week (May 27-28), Brent and WTI crude prices generally fell, driven by renewed hopes of easing US-Iran tensions and the possibility of a deal, as reported by Gulf News and Reuters. Earlier in the week (May 25-26), prices were highly volatile, first plunging on rumors of a deal with Iran, then sharply rising due to US strikes and Iran's retaliation threats, pushing Brent crude towards the $100 mark.\n\nThe most recent global signals (May 28) are somewhat mixed, with some reports indicating continued declines (\"oil prices down today,\" \"Brent Crude Oil Prices Sink\") while others mention a rebound driven by revived Iran supply fears. However, the prevailing sentiment from the last couple of days points to downward pressure from geopolitical de-escalation hopes. Given the current falling trend in Latvia and the recent global crude price drops, it is advisable for drivers to wait, as further price reductions are possible if the global trend of easing tensions holds. The high volatility in the global market, however, means this outlook comes with medium confidence.",
-    "ru": "На латвийском рынке топлива в настоящее время наблюдается снижение цен на все виды горючего. Цена на дизельное топливо за последние семь дней снизилась на 0.056 EUR/л, в то время как цены на бензин 95 и 98 упали на 0.012 EUR/л. Эта тенденция указывает на явное снижение на местном рынке.\n\nЭто местное снижение цен в значительной степени отражает недавние изменения на мировом рынке сырой нефти. К концу недели (27-28 мая) цены на нефть Brent и WTI в целом снизились, что было вызвано возобновившимися надеждами на ослабление напряженности между США и Ираном и возможное соглашение, как сообщали Gulf News и Reuters. В начале недели (25-26 мая) цены были крайне волатильными: сначала резко упали на слухах о сделке с Ираном, затем резко выросли из-за ударов США и угроз Ирана о возмездии, что подтолкнуло цену Brent к отметке в 100 долларов США.\n\nСамые свежие глобальные сигналы (28 мая) несколько противоречивы: некоторые сообщения указывают на продолжение снижения (\"oil prices down today\", \"Brent Crude Oil Prices Sink\"), в то время как другие упоминают отскок, вызванный возобновившимися опасениями по поводу поставок из Ирана. Однако преобладающее настроение последних нескольких дней указывает на понижательное давление, вызванное надеждами на деэскалацию геополитической ситуации. Учитывая текущую тенденцию снижения цен в Латвии и недавнее падение мировых цен на сырую нефть, водителям рекомендуется подождать, так как возможно дальнейшее снижение цен, если глобальная тенденция ослабления напряженности сохранится. Однако высокая волатильность на мировом рынке означает, что этот прогноз имеет среднюю степень уверенности."
+    "lv": "Latvijas degvielas tirgū pašlaik vērojama cenu samazināšanās. Dīzeļdegviela pēdējo septiņu dienu laikā ir kritusies par 0.067 EUR/L, savukārt benzīns 95 un 98 par 0.014 EUR/L. Šis kritums ir labs signāls autovadītājiem, taču ir svarīgi ņemt vērā globālos faktorus, kas var mainīt šo tendenci.\n\nGlobālajā naftas tirgū pēdējās dienās ir vērojama liela svārstība. Lai gan 25. maijā jēlnaftas cenas kritās par vairāk nekā 5% cerībā uz ASV-Irānas vienošanos, jau 26. maijā Brent jēlnafta pieauga par 2-3%, jo ASV streiki pret Irānu mazināja miera cerības, un Irāna solīja atriebties. 28. maijā naftas cenas atkal atjaunojās, baidoties par piegādēm no Irānas. JPMorgan prognozē, ka naftas cenas šogad saglabāsies augstas, un enerģētikas eksperti Latvijā jau iepriekš norādījuši, ka vasarā situācija neuzlabosies.\n\nŅemot vērā, ka globālās naftas cenu svārstības parasti ietekmē Latvijas mazumtirdzniecības cenas 1-2 nedēļu laikā, pašreizējais cenu kritums Latvijā var būt īslaicīgs. Globālo cenu atjaunošanās un ģeopolitiskā spriedze Tuvajos Austrumos liecina, ka drīzumā varētu sekot cenu kāpums. Tāpēc, neskatoties uz pašreizējo kritumu, ir ieteicams uzpildīt degvielu tagad, lai izvairītos no potenciāli augstākām cenām tuvākajā nākotnē.",
+    "en": "The Latvian fuel market is currently experiencing a price decrease. Diesel has fallen by 0.067 EUR/L over the last seven days, while Petrol 95 and 98 have dropped by 0.014 EUR/L. This decline is a positive signal for drivers, but it's crucial to consider global factors that could reverse this trend.\n\nThe global oil market has seen significant volatility in recent days. While crude prices crashed by over 5% on May 25th on hopes of a US-Iran deal, Brent crude surged by 2-3% on May 26th as US strikes on Iran dimmed peace hopes and Iran vowed retaliation. By May 28th, oil prices rebounded again due to renewed fears over Iran's supply. JPMorgan forecasts that oil prices will remain high this year, and energy experts in Latvia have previously indicated that the situation will not improve in the summer.\n\nGiven that global oil price fluctuations typically impact Latvian retail prices within 1-2 weeks, the current price drop in Latvia may be temporary. The rebound in global prices and geopolitical tensions in the Middle East suggest that a price increase could follow soon. Therefore, despite the current decline, it is advisable to fill up now to avoid potentially higher prices in the near future.",
+    "ru": "На латвийском топливном рынке в настоящее время наблюдается снижение цен. Дизельное топливо подешевело на 0.067 евро/л за последние семь дней, в то время как бензин 95 и 98 упал на 0.014 евро/л. Это снижение является позитивным сигналом для водителей, но крайне важно учитывать глобальные факторы, которые могут изменить эту тенденцию.\n\nНа мировом нефтяном рынке в последние дни наблюдалась значительная волатильность. Хотя 25 мая цены на сырую нефть упали более чем на 5% в надежде на сделку между США и Ираном, уже 26 мая нефть марки Brent подскочила на 2-3% после того, как удары США по Ирану ослабили надежды на мир, а Иран пообещал возмездие. К 28 мая цены на нефть снова восстановились из-за возобновившихся опасений по поводу поставок из Ирана. JPMorgan прогнозирует, что цены на нефть останутся высокими в этом году, а эксперты по энергетике в Латвии ранее указывали, что ситуация летом не улучшится.\n\nУчитывая, что колебания мировых цен на нефть обычно влияют на розничные цены в Латвии в течение 1-2 недель, текущее снижение цен в Латвии может быть временным. Восстановление мировых цен и геополитическая напряженность на Ближнем Востоке предполагают, что вскоре может последовать рост цен. Поэтому, несмотря на текущее снижение, рекомендуется заправиться сейчас, чтобы избежать потенциально более высоких цен в ближайшем будущем."
   },
   "sources": [
     {
@@ -55,30 +55,30 @@
       "published_at": "2026-05-28T17:59:31+00:00"
     },
     {
-      "title": "Crude Oil WTI Futures Chart - Investing.com",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1QVUZmbEFLek45c2FDcW5MdnIwVUE5c2p4Q21nUVU4a0NOZzd2QTdxSGRQS3A1QTk2M1cwVFNfd0JVUFZYMnVBa01IeWJzNy1HZmR3cFJXZk1zdVNSRGJONkI3MEJ4RDQ3VjlocXhYdHc?oc=5",
-      "published_at": "2026-05-28T17:51:09+00:00"
-    },
-    {
       "title": "Oil Price Forecast: WTI and Brent Rebound as Iran Risk Revives Supply Fears - FXEmpire",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNRHRNUjRiTFNYOVNqQWVwekhEUUMzMl91MkxtRld6bFNlanRvYjA2N1RXVDQtcnItVVFXUFZxQkMtNjZDN2EwcHpNd283Mk81NkNQc2lReUN4d1lydUZNMWpoZkJ2UERqNWZXLTBaNkpjVmVZR1lvUW1zRW5nZkF6NC05bDFib2JCV0RhZUU0UFRkajNSamkxZUdMcFZ1Qk5DNklSU2RHMVkxUE0wOVRqNXpROVlxaHBuTG1qY2F4cmlWVnc?oc=5",
       "published_at": "2026-05-28T06:32:00+00:00"
     },
     {
-      "title": "Brent Crude Oil Prices Sink, WTI Eyes $80 after the $90 Break as Markets Bet on an Iran Deal - FXLeaders",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPVE5aSkEwRGJtSTJTeVNNWnBRcHFFd2lmU1FhQldKNG9lUm9BWVZoWElpZTFKRXJGMUpEWEYzZWFIaG1ub2F1RTAtMEt2bXhQWV9qdWtCM2c0d2pObmc4N1dwNUdUa09qa3I1b29Sak92RmEwWF9TaVNpUjJGM0dpeHJjQmlESzU1MWxUbVF3bWFWVTRiV1paUzFYY1g5dnFVQ0tnVFliYWs1Y0U1MFlqeUpSeVNOMHpkNkhodTRFSkNzQzcyS3VadkEwdkZJQQ?oc=5",
-      "published_at": "2026-05-28T04:21:21+00:00"
-    },
-    {
       "title": "Core Differences Between West Texas Intermediate (WTI) and Brent Crude and the Affect of the Iran War - EnergyNow.com",
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN1ZOVFVuUnFFYUstVktuczhxdzBYN1lUbUlqbTIwZEVnX2lCclN2dDZyeVJxUnFPLXdLLWhHcTd1MUUyM0kxTFBUZWJZSVlfN2RCZkRlRXhqT3ZfdUJTQkFjSkR1dDFsQ2Rmc19VTERhc1hsV2Nka2RDVEFvZ0FUcFdJQ0dCR21lcm5mZU12UzJZZHlyOFh3WGEzVWpCVDlUeHc?oc=5",
       "published_at": "2026-05-28T04:10:05+00:00"
+    },
+    {
+      "title": "S&P 500, Nasdaq nab record closing highs, WTI crude falls on hopes for Iran peace deal - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOLUdJaVVrejdzRGFrQTZTY0JUUzY5SEVJUzR5WWJpYjJBdEJHenRtTzJ5dEd0Rkd2SGhrTk1qQ3o5MGhOb3dVSlZSd2gwNVFZV2hCS2VCWkFoUlA2WV8xTEhKbEpyVVhxWnNCMl85dllubTQzU2kwM0Q0WDlKek5YZUE4UQ?oc=5",
+      "published_at": "2026-05-27T01:22:01+00:00"
+    },
+    {
+      "title": "Latvia saw one of EU's biggest fuel price jumps in April / Article - LSM",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNNjFRYjlZLUdYTGxmdWpXeGZmbWgtTGZCalUyazFZWV9uU21IaHhoTWtiTGNHdVdlUm4xMWZaLWJOcVU3eHpua1NEMDBjQlliNWhIMGVvblVYRWZTcnQ5VFFZOFRSRTEyekNqUDdxQmNva1RNNnhVUE1qUjhDMVJhRHlkajltZjYxOXFNMFl3TlM0bUR5RktDVm42bWlHQzdUUlVsdGI2ai1nelJQc29LbERxcnRpbFdSRGQ2dA?oc=5",
+      "published_at": "2026-05-26T20:00:50+00:00"
     }
   ],
-  "generated_at": "2026-05-29T06:08:43.405411+00:00",
+  "generated_at": "2026-05-29T11:23:29.644898+00:00",
   "prices_snapshot": {
-    "diesel": 1.818,
-    "petrol_95": 1.832,
-    "petrol_98": 1.909
+    "diesel": 1.796,
+    "petrol_95": 1.828,
+    "petrol_98": 1.905
   }
 }
