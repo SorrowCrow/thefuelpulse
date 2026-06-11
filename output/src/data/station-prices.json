@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-10T16:54:57.742035+00:00",
+  "scraped_at": "2026-06-11T06:43:15.887827+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -210,8 +210,37 @@
     {
       "brand": "Kool",
       "key": "kool",
-      "fuel_entries": [],
-      "error": "HTTPSConnectionPool(host='kool.lv', port=443): Read timed out. (read timeout=20)"
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Kool 95",
+          "category": "standard",
+          "price": 1.797,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Kool 98",
+          "category": "standard",
+          "price": 1.867,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Kool Diesel",
+          "category": "standard",
+          "price": 1.7977,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Kool Premium DD",
+          "category": "premium",
+          "price": 1.857,
+          "currency": "EUR"
+        }
+      ],
+      "error": null
     }
   ]
 }
