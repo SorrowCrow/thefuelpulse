@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-28T15:13:47.544493+00:00",
+  "scraped_at": "2026-06-29T06:38:52.970489+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -53,8 +53,51 @@
     {
       "brand": "Circle K",
       "key": "circlek",
-      "fuel_entries": [],
-      "error": "403 Client Error: Forbidden for url: https://www.circlek.lv/degviela-miles/degvielas-cenas"
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "95miles",
+          "category": "standard",
+          "price": 1.704,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "98miles+",
+          "category": "standard",
+          "price": 1.774,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Dmiles",
+          "category": "standard",
+          "price": 1.664,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Dmiles+",
+          "category": "premium",
+          "price": 1.794,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "xtl",
+          "fuel_name": "miles+ XTL",
+          "category": "specialty",
+          "price": 2.39,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "lpg",
+          "fuel_name": "Autog\u0101ze/LPG",
+          "category": "specialty",
+          "price": 0.895,
+          "currency": "EUR"
+        }
+      ],
+      "error": null
     },
     {
       "brand": "Neste",
