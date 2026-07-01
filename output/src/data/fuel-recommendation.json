@@ -1,52 +1,52 @@
 {
   "diesel": {
-    "recommendation": "wait",
+    "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Dīzeļdegvielas cenas Latvijā strauji krītas, un globālās tendences liecina par turpmāku kritumu. Ieteicams pagaidīt.",
-      "en": "Diesel prices in Latvia are falling sharply, and global trends suggest further declines. It is advisable to wait.",
-      "ru": "Цены на дизельное топливо в Латвии резко падают, и мировые тенденции указывают на дальнейшее снижение. Рекомендуется подождать."
+      "lv": "Dīzeļdegvielas cena pēdējās 24 stundās pieaugusi, sekojot globālajām tendencēm. Ieteicams uzpildīties tagad.",
+      "en": "Diesel price has increased in the last 24 hours, following global trends. It is recommended to fill up now.",
+      "ru": "Цена на дизельное топливо выросла за последние 24 часа, следуя мировым тенденциям. Рекомендуется заправиться сейчас."
     }
   },
   "petrol_95": {
-    "recommendation": "wait",
+    "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 95 cenas Latvijā samazinās, un globālās naftas tirgus prognozes liecina par lejupslīdi. Ieteicams pagaidīt.",
-      "en": "Petrol 95 prices in Latvia are decreasing, and global oil market forecasts suggest a downturn. It is advisable to wait.",
-      "ru": "Цены на бензин 95 в Латвии снижаются, и прогнозы мирового нефтяного рынка указывают на спад. Рекомендуется подождать."
+      "lv": "Benzīna 95 cena pēdējās 24 stundās pieaugusi. Globālie faktori liecina par iespējamu tālāku kāpumu.",
+      "en": "Petrol 95 price has increased in the last 24 hours. Global factors suggest a potential further rise.",
+      "ru": "Цена на бензин 95 выросла за последние 24 часа. Глобальные факторы указывают на возможное дальнейшее повышение."
     }
   },
   "petrol_98": {
-    "recommendation": "wait",
+    "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 98 cenas Latvijā krītas, un globālās tendences, piemēram, naftas pārprodukcija, var turpināt spiedienu uz cenām. Ieteicams pagaidīt.",
-      "en": "Petrol 98 prices in Latvia are falling, and global trends like oil oversupply may continue to pressure prices. It is advisable to wait.",
-      "ru": "Цены на бензин 98 в Латвии падают, и мировые тенденции, такие как переизбыток нефти, могут продолжать оказывать давление на цены. Рекомендуется подождать."
+      "lv": "Benzīna 98 cena pēdējās 24 stundās pieaugusi. Globālie faktori liecina par iespējamu tālāku kāpumu.",
+      "en": "Petrol 98 price has increased in the last 24 hours. Global factors suggest a potential further rise.",
+      "ru": "Цена на бензин 98 выросла за последние 24 часа. Глобальные факторы указывают на возможное дальнейшее повышение."
     }
   },
   "factors": [
     {
-      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir ievērojami kritušās (dīzelis par -0.109 EUR, P95 par -0.041 EUR, P98 par -0.043 EUR).",
-      "en": "Fuel prices in Latvia have significantly fallen over the last 7 days (Diesel by -0.109 EUR, P95 by -0.041 EUR, P98 by -0.043 EUR).",
-      "ru": "Цены на топливо в Латвии значительно снизились за последние 7 дней (дизель на -0.109 EUR, АИ-95 на -0.041 EUR, АИ-98 на -0.043 EUR)."
+      "lv": "Latvijas degvielas cenas (dīzelis, benzīns 95, benzīns 98) ir pieaugušas no 2026. gada 1. jūlija līdz šim brīdim, mainot 7 dienu lejupslīdes tendenci.",
+      "en": "Latvian fuel prices (Diesel, Petrol 95, Petrol 98) have increased from 2026-07-01 to the current date, reversing the 7-day downward trend.",
+      "ru": "Цены на топливо в Латвии (дизель, бензин 95, бензин 98) выросли с 1 июля 2026 года по текущую дату, изменив 7-дневную тенденцию к снижению."
     },
     {
-      "lv": "Brent jēlnaftas cenas jūnijā piedzīvoja lielāko mēneša kritumu kopš 2020. gada marta.",
-      "en": "Brent crude prices posted their biggest monthly decline in June since March 2020.",
-      "ru": "Цены на нефть марки Brent показали самое большое месячное снижение в июне с марта 2020 года."
+      "lv": "Globālās Brent jēlnaftas cenas 2026. gada 30. jūnijā pieauga līdz 73,15 USD par barelu, ietekmējot vietējo cenu kāpumu.",
+      "en": "Global Brent crude oil prices surged to $73.15/barrel on 2026-06-30, influencing local price increases.",
+      "ru": "Мировые цены на нефть марки Brent 30 июня 2026 года подскочили до 73,15 долларов за баррель, что повлияло на рост местных цен."
     },
     {
-      "lv": "Prognozes liecina par naftas pārprodukciju 2026. gada otrajā pusē, kas varētu samazināt WTI cenas līdz 55 USD, un ASV-Irānas sarunas rada spiedienu uz cenām.",
-      "en": "Forecasts indicate potential oil oversupply in H2 2026, which could push WTI prices down to $55, and US-Iran talks pressure crude prices.",
-      "ru": "Прогнозы указывают на потенциальный переизбыток нефти во втором полугодии 2026 года, что может снизить цены на WTI до 55 долларов, а переговоры США-Иран оказывают давление на цены на сырую нефть."
+      "lv": "Notiekošās ASV un Irānas sarunas rada pretrunīgus signālus, taču jaunākās ziņas liecina par cenu pieaugumu saistībā ar darījumu (2026-06-29) un stabilizāciju (2026-07-01).",
+      "en": "Ongoing US-Iran talks create mixed signals, but recent news indicates some price rises related to the deal (2026-06-29) and stabilization (2026-07-01).",
+      "ru": "Продолжающиеся переговоры между США и Ираном создают смешанные сигналы, но последние новости указывают на некоторый рост цен, связанный со сделкой (2026-06-29) и стабилизацией (2026-07-01)."
     }
   ],
   "analysis": {
-    "lv": "Degvielas cenas Latvijā pēdējās septiņās dienās ir piedzīvojušas ievērojamu kritumu. Dīzeļdegviela ir samazinājusies par 0.109 EUR, bet benzīna 95 un 98 cenas ir kritušās attiecīgi par 0.041 EUR un 0.043 EUR. Šis vietējais cenu kritums liecina par lejupslīdes tendenci, kas ir labvēlīga patērētājiem.\n\nGlobālajā naftas tirgū vērojami pretrunīgi signāli, taču kopējais noskaņojums sliecas uz lejupslīdi. Lai gan bija īslaicīgi cenu kāpumi, ko izraisīja ASV un Irānas sarunas, kas sākotnēji radīja cerības par stabilitāti, Brent jēlnaftas cenas jūnijā piedzīvoja lielāko mēneša kritumu kopš 2020. gada marta. Turklāt prognozes par 2026. gada otro pusi norāda uz iespējamu naftas pārprodukciju, kas varētu samazināt WTI cenas līdz pat 55 USD par barelu. ASV-Irānas sarunas tiek uzskatītas par faktoru, kas var palielināt naftas piegādes un tādējādi radīt spiedienu uz cenām.\n\nŅemot vērā gan pašreizējo ievērojamo cenu kritumu Latvijā, gan globālās tendences, kas liecina par turpmāku naftas cenu samazināšanās potenciālu, ir ieteicams pagaidīt ar degvielas uzpildi. Vietējās cenas, visticamāk, turpinās pielāgoties globālajām tendencēm, piedāvājot iespēju uzpildīties par vēl zemākām cenām tuvākajā nākotnē.",
-    "en": "Fuel prices in Latvia have experienced a significant decline over the past seven days. Diesel has dropped by 0.109 EUR, while Petrol 95 and 98 prices have fallen by 0.041 EUR and 0.043 EUR respectively. This local price reduction indicates a clear downward trend, which is favorable for consumers.\n\nThe global oil market presents mixed signals, but the overall sentiment leans towards a bearish outlook. While there were brief price increases driven by US-Iran talks, which initially sparked hopes for stability, Brent crude prices posted their biggest monthly decline in June since March 2020. Furthermore, forecasts for the second half of 2026 indicate potential oil oversupply, which could push WTI prices down to as low as $55 per barrel. The US-Iran talks are seen as a factor that could increase oil supply, thereby putting downward pressure on prices.\n\nConsidering both the current significant price drop in Latvia and the global trends suggesting further potential for oil price reductions, it is advisable to wait before filling up. Local prices are likely to continue adjusting to global developments, offering an opportunity to refuel at even lower prices in the near future.",
-    "ru": "Цены на топливо в Латвии значительно снизились за последние семь дней. Дизельное топливо подешевело на 0.109 EUR, а цены на бензин 95 и 98 упали на 0.041 EUR и 0.043 EUR соответственно. Это местное снижение цен указывает на четкую тенденцию к снижению, что выгодно для потребителям.\n\nМировой нефтяной рынок демонстрирует смешанные сигналы, но общий настрой склоняется к медвежьему тренду. Хотя были кратковременные повышения цен, вызванные переговорами между США и Ираном, которые изначально вселяли надежду на стабильность, цены на нефть марки Brent зафиксировали самое большое месячное снижение в июне с марта 2020 года. Кроме того, прогнозы на второе полугодие 2026 года указывают на потенциальный переизбыток нефти, что может снизить цены на WTI до 55 долларов за баррель. Переговоры между США и Ираном рассматриваются как фактор, который может увеличить предложение нефти и, таким образом, оказать понижательное давление на цены.\n\nУчитывая как текущее значительное падение цен в Латвии, так и мировые тенденции, указывающие на дальнейший потенциал снижения цен на нефть, рекомендуется подождать с заправкой. Местные цены, вероятно, продолжат корректироваться в соответствии с мировыми событиями, предлагая возможность заправиться по еще более низким ценам в ближайшем будущем."
+    "lv": "Latvijas degvielas tirgū pēdējo septiņu dienu laikā bija vērojama cenu lejupslīde, dīzeļdegvielai samazinoties par 0,089 EUR, bet benzīnam 95 un 98 par aptuveni 0,03 EUR. Tomēr, aplūkojot jaunākos datus, redzams, ka no 2026. gada 1. jūlija līdz šim brīdim visas degvielas cenas ir pieaugušas. Dīzeļdegviela ir sadārdzinājusies no 1,585 EUR/L līdz 1,605 EUR/L, benzīns 95 no 1,659 EUR/L līdz 1,668 EUR/L, un benzīns 98 no 1,734 EUR/L līdz 1,743 EUR/L. Šis pēkšņais kāpums liecina par tendences maiņu.\n\nGlobālajā tirgū vērojami pretrunīgi signāli, taču dominējošā tendence pēdējās dienās ir bijusi augšupejoša. 2026. gada 30. jūnijā Brent jēlnaftas cenas pieauga līdz 73,15 USD par barelu, kas ir būtisks faktors, kas ietekmē mazumtirdzniecības cenas Latvijā. Lai gan 2026. gada 1. jūlijā Brent stabilizējās zem 73 USD, iepriekšējais kāpums jau ir atspoguļojies vietējā tirgū. ASV un Irānas sarunas rada neskaidrības par nākotnes piegādēm, taču īstermiņā tirgus reaģē uz pieprasījuma un piedāvājuma līdzsvara izmaiņām.\n\nŅemot vērā pēdējo 24 stundu cenu kāpumu Latvijā un globālo jēlnaftas cenu pieaugumu jūnija beigās, ir pamats uzskatīt, ka degvielas cenas var turpināt pieaugt. Lai gan ir prognozes par WTI jēlnaftas kritumu līdz 55 USD otrajā pusgadā, īstermiņa signāli liecina par pretējo. Tādēļ šobrīd ir ieteicams uzpildīties, lai izvairītos no iespējamiem turpmākiem cenu kāpumiem.",
+    "en": "The Latvian fuel market experienced a downward trend over the past seven days, with diesel falling by 0.089 EUR and Petrol 95 and 98 by approximately 0.03 EUR. However, a closer look at the most recent data reveals that all fuel prices have increased from July 1st, 2026, to the current date. Diesel has risen from 1.585 EUR/L to 1.605 EUR/L, Petrol 95 from 1.659 EUR/L to 1.668 EUR/L, and Petrol 98 from 1.734 EUR/L to 1.743 EUR/L. This sudden uptick indicates a reversal of the previous trend.\n\nGlobally, crude oil markets show conflicting signals, but the dominant trend in recent days has been upward. On June 30th, 2026, Brent crude oil prices surged to $73.15 per barrel, a significant factor that influences retail prices in Latvia. Although Brent stabilized below $73 on July 1st, the preceding surge has already begun to reflect in the local market. Ongoing US-Iran talks introduce uncertainty regarding future supplies, but in the short term, the market is reacting to shifts in the supply-demand balance.\n\nConsidering the price increase in Latvia over the last 24 hours and the global crude oil price surge at the end of June, there is reason to believe that fuel prices may continue to rise. While there are forecasts for WTI crude to drop to $55 in the second half of the year, immediate signals suggest the opposite. Therefore, it is advisable to fill up now to avoid potential further price increases.",
+    "ru": "На латвийском топливном рынке в течение последних семи дней наблюдалась тенденция к снижению цен: дизельное топливо подешевело на 0,089 евро, а бензин 95 и 98 — примерно на 0,03 евро. Однако более внимательный анализ последних данных показывает, что с 1 июля 2026 года по текущую дату цены на все виды топлива выросли. Дизельное топливо подорожало с 1,585 евро/л до 1,605 евро/л, бензин 95 — с 1,659 евро/л до 1,668 евро/л, а бензин 98 — с 1,734 евро/л до 1,743 евро/л. Этот внезапный рост указывает на изменение предыдущей тенденции.\n\nНа мировых рынках сырой нефти наблюдаются противоречивые сигналы, но доминирующая тенденция последних дней была восходящей. 30 июня 2026 года цены на нефть марки Brent подскочили до 73,15 долларов за баррель, что является значительным фактором, влияющим на розничные цены в Латвии. Хотя 1 июля Brent стабилизировалась ниже 73 долларов, предыдущий рост уже начал отражаться на местном рынке. Продолжающиеся переговоры между США и Ираном вносят неопределенность в отношении будущих поставок, но в краткосрочной перспективе рынок реагирует на изменения в балансе спроса и предложения.\n\nУчитывая рост цен в Латвии за последние 24 часа и глобальный скачок цен на сырую нефть в конце июня, есть основания полагать, что цены на топливо могут продолжить расти. Хотя существуют прогнозы падения цен на нефть WTI до 55 долларов во второй половине года, немедленные сигналы указывают на обратное. Поэтому в настоящее время рекомендуется заправиться, чтобы избежать возможного дальнейшего повышения цен."
   },
   "sources": [
     {
@@ -70,15 +70,15 @@
       "published_at": "2026-06-30T15:09:17+00:00"
     },
     {
-      "title": "Brent vs WTI: Why Two Oil Prices Exist & What They Mean - XTB.com",
+      "title": "Brent vs WTI: Why Two Oil Prices Exist & What They Mean - XTB",
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOQU16TWxQOGZYSU5TWVNqMDVBb2ZKRERfVnEwZ2RyYVpDWk1NMFZUTkdBSmQ5VnBtOS1iR1VxaXdQbElJU2c4U2JKbWRRbDRmcFgwM0cxTmRSQ3Z1ZWM1amV2V1RNbjZlbHhLclNIUVJqZzNWNjJMNVc1SFc1QnlDZ2JiUDBHSy12TmFMaUJYYjV2Vzc4V29nWUtCT3B2UFZOemc?oc=5",
       "published_at": "2026-06-30T14:44:03+00:00"
     }
   ],
-  "generated_at": "2026-07-01T06:20:33.958912+00:00",
+  "generated_at": "2026-07-01T11:19:56.836642+00:00",
   "prices_snapshot": {
-    "diesel": 1.565,
-    "petrol_95": 1.65,
-    "petrol_98": 1.725
+    "diesel": 1.605,
+    "petrol_95": 1.668,
+    "petrol_98": 1.743
   }
 }
