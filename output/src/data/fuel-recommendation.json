@@ -1,54 +1,59 @@
 {
   "diesel": {
     "recommendation": "buy",
-    "confidence": "medium",
+    "confidence": "high",
     "summary": {
-      "lv": "Degvielas cenas pēdējās 7 dienās ir pieaugušas, un globālās tendences liecina par turpmāku kāpumu. Ieteicams uzpildīties tagad.",
-      "en": "Diesel prices have risen over the last 7 days, and global trends suggest further increases. It is advisable to fill up now.",
-      "ru": "Цены на дизельное топливо за последние 7 дней выросли, а мировые тенденции указывают на дальнейший рост. Рекомендуется заправиться сейчас."
+      "lv": "Dīzeļdegvielas cenas Latvijā pēdējās 7 dienās pieaugušas. Globālie notikumi liecina par turpmāku kāpumu.",
+      "en": "Diesel prices in Latvia have risen over the last 7 days. Global events indicate further increases.",
+      "ru": "Цены на дизельное топливо в Латвии выросли за последние 7 дней. Глобальные события указывают на дальнейший рост."
     }
   },
   "petrol_95": {
     "recommendation": "buy",
-    "confidence": "medium",
+    "confidence": "high",
     "summary": {
-      "lv": "Benzīna 95 cenas pēdējās 7 dienās ir pieaugušas, un globālās tendences liecina par turpmāku kāpumu. Ieteicams uzpildīties tagad.",
-      "en": "Petrol 95 prices have risen over the last 7 days, and global trends suggest further increases. It is advisable to fill up now.",
-      "ru": "Цены на бензин 95 за последние 7 дней выросли, а мировые тенденции указывают на дальнейший рост. Рекомендуется заправиться сейчас."
+      "lv": "Benzīna 95 cenas Latvijā pēdējās 7 dienās pieaugušas. Globālie faktori liecina par turpmāku cenu kāpumu.",
+      "en": "Petrol 95 prices in Latvia have risen over the last 7 days. Global factors suggest further price increases.",
+      "ru": "Цены на бензин 95 в Латвии выросли за последние 7 дней. Глобальные факторы указывают на дальнейший рост цен."
     }
   },
   "petrol_98": {
     "recommendation": "buy",
-    "confidence": "medium",
+    "confidence": "high",
     "summary": {
-      "lv": "Benzīna 98 cenas pēdējās 7 dienās ir pieaugušas, un globālās tendences liecina par turpmāku kāpumu. Ieteicams uzpildīties tagad.",
-      "en": "Petrol 98 prices have risen over the last 7 days, and global trends suggest further increases. It is advisable to fill up now.",
-      "ru": "Цены на бензин 98 за последние 7 дней выросли, а мировые тенденции указывают на дальнейший рост. Рекомендуется заправиться сейчас."
+      "lv": "Benzīna 98 cenas Latvijā pēdējās 7 dienās pieaugušas. Sagaidāms, ka globālo notikumu dēļ cenas turpinās kāpt.",
+      "en": "Petrol 98 prices in Latvia have risen over the last 7 days. Prices are expected to continue rising due to global events.",
+      "ru": "Цены на бензин 98 в Латвии выросли за последние 7 дней. Ожидается, что цены продолжат расти из-за глобальных событий."
     }
   },
   "factors": [
     {
-      "lv": "Latvijas degvielas cenas pēdējo 7 dienu laikā ir pieaugušas (dīzelis par +0,036 EUR, benzīns 95/98 par +0,026 EUR).",
-      "en": "Latvian fuel prices have risen over the last 7 days (Diesel +0.036 EUR, Petrol 95/98 +0.026 EUR).",
-      "ru": "Цены на топливо в Латвии выросли за последние 7 дней (дизель на +0,036 EUR, бензин 95/98 на +0,026 EUR)."
+      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir pieaugušas (dīzelis par +0.036 EUR, benzīns par +0.026 EUR).",
+      "en": "Fuel prices in Latvia have risen over the last 7 days (diesel by +0.036 EUR, petrol by +0.026 EUR).",
+      "ru": "Цены на топливо в Латвии выросли за последние 7 дней (дизель на +0.036 EUR, бензин на +0.026 EUR)."
     },
     {
-      "lv": "Jēlnaftas fjūčeru cenas pieaug pieprasījuma dēļ (7. jūlijs).",
-      "en": "Crude Oil Futures are reported to be rising due to spot demand (July 7th).",
-      "ru": "Фьючерсы на сырую нефть растут из-за спотового спроса (7 июля)."
+      "lv": "WTI jēlnaftas cena pieauga līdz 70 USD, ko ietekmēja karadarbība, ASV-Irānas sarunu risks un Krievijas naftas pārstrādes rūpnīcas paralīze.",
+      "en": "WTI Crude soared to $70, influenced by war zones, US-Iran memorandum rupture risk, and a paralyzed Russian refinery.",
+      "ru": "Цена на нефть WTI подскочила до 70 долларов из-за военных действий, риска разрыва меморандума США-Иран и парализации российского НПЗ."
     },
     {
-      "lv": "Brent jēlnaftas cena noslīdēja līdz 71,99 USD/barelu, savukārt WTI piedzīvoja nelielu atjaunošanos (7. jūlijs), norādot uz jauktiem globāliem signāliem, bet kopumā uz augšupejošu spiedienu WTI.",
-      "en": "Brent crude oil slid to $71.99/barrel, while WTI saw a modest rebound (July 7th), indicating mixed global signals but overall upward pressure on WTI.",
-      "ru": "Цена на нефть марки Brent снизилась до 71,99 долл. США/баррель, в то время как WTI показала умеренный отскок (7 июля), что указывает на смешанные глобальные сигналы, но в целом на повышательное давление на WTI."
+      "lv": "Goldman Sachs paaugstināja Brent jēlnaftas vidējās cenas prognozi 2026. gadam par 8 USD līdz 85 USD par barelu.",
+      "en": "Goldman Sachs raised its 2026 Brent Crude average price forecast by $8 to $85 a barrel.",
+      "ru": "Goldman Sachs повысил прогноз средней цены на нефть Brent на 2026 год на 8 долларов до 85 долларов за баррель."
     }
   ],
   "analysis": {
-    "lv": "Latvijas degvielas cenas dīzelim, benzīnam 95 un benzīnam 98 pēdējo septiņu dienu laikā ir uzrādījušas skaidru augšupejošu tendenci, dīzelim pieaugot par 0,036 EUR/L un benzīnam par 0,026 EUR/L. Šo vietējo tendenci atbalsta nesenās globālās tirgus kustības, kur jēlnaftas fjūčeru cenas ir pieaugušas palielināta tūlītējā pieprasījuma dēļ.\n\nLai gan daži ziņojumi liecina, ka Brent jēlnaftas cena noslīdēja līdz 71,99 USD/barelu, WTI un Murban ir piedzīvojuši nelielu atjaunošanos. Turklāt nedēļas sākumā tika atzīmēts, ka naftas cenas attālinās no vairāku mēnešu zemākajiem punktiem. Lai gan ir prognozes, kas liecina, ka piedāvājuma pieaugums varētu ierobežot atjaunošanos, tūlītējie signāli norāda uz turpmāku augšupejošu spiedienu uz cenām.\n\nŅemot vērā pašreizējo augšupejošo trajektoriju Latvijā un neseno augšupejošo kustību globālajos jēlnaftas fjūčeros, autovadītājiem ir ieteicams uzpildīties tagad. Jauktie globālie signāli rada zināmu nenoteiktību, taču dominējošā tendence liecina, ka gaidīšana varētu novest pie augstākām cenām tuvākajā nākotnē.",
-    "en": "Latvian fuel prices for diesel, petrol 95, and petrol 98 have all shown a clear upward trend over the past seven days, with diesel increasing by 0.036 EUR/L and petrol by 0.026 EUR/L. This local trend is supported by recent global market movements where crude oil futures have risen due to increased spot demand.\n\nWhile some reports indicate Brent crude sliding to $71.99/barrel, WTI and Murban have seen a modest rebound. Furthermore, earlier in the week, oil prices were noted to be moving away from multi-month lows. Although there are forecasts suggesting supply growth might limit the rebound, the immediate signals point towards continued upward pressure on prices.\n\nConsidering the current rising trajectory in Latvia and the recent upward movement in global crude futures, it is advisable for drivers to fill up now. The mixed global signals introduce some uncertainty, but the prevailing trend suggests that waiting might result in higher prices in the near future.",
-    "ru": "Цены на дизельное топливо, бензин 95 и бензин 98 в Латвии демонстрируют явную тенденцию к росту за последние семь дней: дизельное топливо подорожало на 0,036 евро/л, а бензин — на 0,026 евро/л. Эта местная тенденция подтверждается недавними движениями на мировом рынке, где фьючерсы на сырую нефветь выросли из-за увеличения спотового спроса.\n\nХотя некоторые сообщения указывают на снижение цены на нефть марки Brent до 71,99 долл. США/баррель, WTI и Murban показали умеренный отскок. Кроме того, в начале недели было отмечено, что цены на нефть отдаляются от многомесячных минимумов. Несмотря на прогнозы, предполагающие, что рост предложения может ограничить восстановление, непосредственные сигналы указывают на продолжение повышательного давления на цены.\n\nУчитывая текущую восходящую траекторию в Латвии и недавнее движение вверх фьючерсов на сырую нефть, водителям рекомендуется заправиться сейчас. Смешанные глобальные сигналы вносят некоторую неопределенность, но преобладающая тенденция предполагает, что ожидание может привести к более высоким ценам в ближайшем будущем."
+    "lv": "Pašreizējie dati liecina par skaidru degvielas cenu pieauguma tendenci Latvijā pēdējo 7 dienu laikā, dīzeļdegvielai pieaugot par +0.036 EUR/L un gan 95., gan 98. benzīnam par +0.026 EUR/L. Tas iezīmē pagrieziena punktu pēc ievērojamā cenu krituma jūnijā, kad degvielas cenas kopumā samazinājās par 6.7%, bet dīzelis par 6.3% nedēļas laikā. Nesenie pieaugumi liecina, ka cenu krituma periods ir beidzies.\n\nGlobālajos jēlnaftas tirgos vērojams spēcīgs cenu kāpums. WTI jēlnaftas cena ir atgriezusies pie 70 USD, ko veicina vairāki kritiski ģeopolitiski notikumi, tostarp divu lielu karadarbības zonu uzliesmojumi, ASV-Irānas memoranduma pārtraukšanas risks un nozīmīgas Krievijas naftas pārstrādes rūpnīcas paralīze. Šie notikumi tieši ietekmē globālo piedāvājumu un tirgus noskaņojumu, kā rezultātā jēlnaftas cenas pieaug. Turklāt Goldman Sachs ir paaugstinājis savu 2026. gada Brent jēlnaftas vidējās cenas prognozi par 8 USD līdz 85 USD par barelu un WTI līdz 79 USD par barelu, norādot uz ilgstoši augstākām cenām.\n\nŅemot vērā pašreizējo cenu pieauguma tendenci Latvijā un spēcīgos, tūlītējos globālos naftas tirgus virzītājspēkus, ir ļoti ticams, ka Latvijas mazumtirdzniecības degvielas cenas turpinās pieaugt īstermiņā un vidējā termiņā. Ģeopolitiskā spriedze un piegādes traucējumi ir būtiski faktori, kas parasti 1-2 nedēļu laikā pārvēršas augstākās cenās pie sūkņiem. Tāpēc autovadītājiem ieteicams uzpildīt degvielu šodien, lai mazinātu paredzamo nākotnes cenu pieaugumu.",
+    "en": "The current data shows a clear upward trend in Latvian fuel prices over the past 7 days, with diesel rising by +0.036 EUR/L and both Petrol 95 and 98 by +0.026 EUR/L. This marks a reversal from the significant price declines observed in June, where fuel prices fell by 6.7% overall and diesel by 6.3% in a week. The recent increases suggest that the period of falling prices has ended.\n\nGlobal crude oil markets are experiencing strong upward pressure. WTI crude has soared back to $70, driven by several critical geopolitical events, including the explosion of two major war zones, a rupture risk in the US-Iran memorandum, and a significant Russian refinery being hit and paralyzed. These events directly impact global supply and market sentiment, leading to higher crude prices. Furthermore, Goldman Sachs has raised its 2026 Brent Crude average price forecast by $8 to $85 a barrel, and WTI to $79 a barrel, indicating expectations of sustained higher prices.\n\nGiven the current rising trend in Latvia and the strong, immediate upward drivers in the global oil market, it is highly probable that Latvian retail fuel prices will continue to increase in the short to medium term. The geopolitical tensions and supply disruptions are significant factors that typically translate into higher pump prices within 1-2 weeks. Therefore, drivers are advised to fill up today to mitigate against anticipated future price hikes.",
+    "ru": "Текущие данные показывают явную тенденцию к росту цен на топливо в Латвии за последние 7 дней: дизельное топливо подорожало на +0.036 EUR/л, а бензин 95 и 98 — на +0.026 EUR/л. Это знаменует собой разворот после значительного снижения цен, наблюдавшегося в июне, когда цены на топливо в целом упали на 6.7%, а на дизельное топливо — на 6.3% за неделю. Недавний рост цен свидетельствует о том, что период снижения цен завершился.\n\nНа мировых рынках сырой нефти наблюдается сильное повышательное давление. Цена на нефть WTI снова подскочила до 70 долларов, что обусловлено несколькими критическими геополитическими событиями, включая эскалацию двух крупных зон военных действий, риск разрыва меморандума между США и Ираном, а также парализацию крупного российского нефтеперерабатывающего завода. Эти события напрямую влияют на мировое предложение и рыночные настроения, что приводит к росту цен на сырую нефть. Кроме того, Goldman Sachs повысил свой прогноз средней цены на нефть Brent на 2026 год на 8 долларов до 85 долларов за баррель, а на WTI — до 79 долларов за баррель, что указывает на ожидания устойчиво высоких цен.\n\nУчитывая текущую тенденцию к росту цен в Латвии и сильные, немедленные факторы роста на мировом нефтяном рынке, весьма вероятно, что розничные цены на топливо в Латвии продолжат расти в краткосрочной и среднесрочной перспективе. Геополитическая напряженность и перебои с поставками являются значительными факторами, которые обычно приводят к повышению цен на заправках в течение 1-2 недель. Поэтому водителям рекомендуется заправиться сегодня, чтобы минимизировать ожидаемое повышение цен в будущем."
   },
   "sources": [
+    {
+      "title": "WTI Crude Soars Back to $70. Two Major War Zones Explode on the Same Day, US-Iran Memorandum Faces Rupture Risk, and Russia's 21-Million-Ton Core Refinery Is Hit and Paralyzed. - TradingKey",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOMlNsbW1Uc09PR2FQTjBWTHBLZmdpVWVyS211aEstNjMtRHhEbHNlMk00U3FMUjBRV09WWEc3VjBfTDlndUxqR2dfWTVHbk9aZkxkUjFIT1dWdzRkLVlNeTJralExeWxMaHFRb0hlSTREOW5KWjBFZjZQMmpNU3FjbUxmNktZRmszMk5fVVpsMVpSUERpOUE1XzE5d0s1TVZpX0xENU9XV0dsd09IcGZnSXdmWUFZY0lNS0pvMjd3?oc=5",
+      "published_at": "2026-07-07T14:16:55+00:00"
+    },
     {
       "title": "Crude Oil Futures Rise: Spot Demand Drives Prices Up - Rediff MoneyWiz",
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPUkllWHVnSksteVVMR2xCdkZkQXRQb0lXTDM3MDE4U3VQTHRaaDVScFZTYm1QSU84YUVqV0x5WF9tUUVkcGoxc3J6b1ZoenhaeHhsRnAzaEMzY1UwWWZqbldWLThocVZyNEo1Q1VQTG9abGVhTkRCaXNzc2hNNy1PUTlMNV9oakUzYUdXN1lQd1RpazNOMEhWOEJseGt2cE5qM1dPM1930gGrAUFVX3lxTE9rZ3IyWUtKSUVxb0stM3RPQi1GSXg0d1ZKZVFoQ0JjNTk2b3FmMjEyWFNFWHlqakpjckN1empWTkNtQVBubDV5SFpzdm51NVdTV2VrSU5tRW5SeVJQbmVZWVBZZjQzNmRKTF9ORGtEMWZRVnM3QlNaOUw3ZlltWFZfUVNKam1uYjVMTkc3STFvXzFhLW1GczdIT2kwdzJ0WlE4MDMyanZLaVZ2TQ?oc=5",
@@ -68,14 +73,9 @@
       "title": "Core Differences Between West Texas Intermediate (WTI) and Brent Crude and the Affect of the Iran War - EnergyNow.com",
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN1ZOVFVuUnFFYUstVktuczhxdzBYN1lUbUlqbTIwZEVnX2lCclN2dDZyeVJxUnFPLXdLLWhHcTd1MUUyM0kxTFBUZWJZSVlfN2RCZkRlRXhqT3ZfdUJTQkFjSkR1dDFsQ2Rmc19VTERhc1hsV2Nka2RDVEFvZ0FUcFdJQ0dCR21lcm5mZU12UzJZZHlyOFh3WGEzVWpCVDlUeHc?oc=5",
       "published_at": "2026-07-06T21:13:09+00:00"
-    },
-    {
-      "title": "Brent vs WTI: Why Two Oil Prices Exist & What They Mean - XTB.com",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOVTFvd1JROVU5Z0E3Rlo5LWl5Wi00SlZFdnhQZm8tODBkaWR3RTNUd2FPd0pwdEE3bzF0YS05UmQ3cmJzVThydV9RR1p6MVJhUU1yZmduTW10MzJoOHMzbFE2LXFaMzVfWkVDbnZSY1lSSC11RFl1b1RCcXVjRnVUNk0xSEpNODI0VDlWZktVbTUyblV6aTNucktWR0pwelBf?oc=5",
-      "published_at": "2026-07-06T20:28:08+00:00"
     }
   ],
-  "generated_at": "2026-07-07T10:50:16.618340+00:00",
+  "generated_at": "2026-07-07T16:23:09.908154+00:00",
   "prices_snapshot": {
     "diesel": 1.626,
     "petrol_95": 1.688,
