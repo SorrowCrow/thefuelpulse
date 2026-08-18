@@ -3,56 +3,61 @@
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Dīzeļdegvielas cenas pēdējā nedēļā strauji kāpušas, un globālais deficīts liecina par turpmāku kāpumu. Ieteicams uzpildīties.",
-      "en": "Diesel prices have risen sharply in the last week, and global shortages suggest further increases. Recommended to fill up.",
-      "ru": "Цены на дизельное топливо резко выросли за последнюю неделю, а глобальный дефицит указывает на дальнейший рост. Рекомендуется заправиться."
+      "lv": "Dīzeļa cenas strauji kāpj (+0.076 EUR/L 7 dienās), ko veicina globālais deficīts. Ieteicams uzpildīties tagad.",
+      "en": "Diesel prices are rising sharply (+0.076 EUR/L in 7 days), driven by a global shortage. Recommend filling up now.",
+      "ru": "Цены на дизель резко растут (+0.076 EUR/л за 7 дней) из-за глобального дефицита. Рекомендуется заправиться сейчас."
     }
   },
   "petrol_95": {
     "recommendation": "buy",
-    "confidence": "high",
+    "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 95 cenas pēdējā nedēļā ir ievērojami pieaugušas, sekojot globālajām naftas cenām. Ieteicams uzpildīties.",
-      "en": "Petrol 95 prices have significantly increased in the last week, tracking global oil prices. Recommended to fill up.",
-      "ru": "Цены на бензин 95 значительно выросли за последнюю неделю, следуя за мировыми ценами на нефть. Рекомендуется заправиться."
+      "lv": "Benzīna 95 cenas kāpj (+0.061 EUR/L 7 dienās), sekojot globālajām naftas cenām. Ieteicams uzpildīties.",
+      "en": "Petrol 95 prices are rising (+0.061 EUR/L in 7 days), tracking global crude. Recommend filling up.",
+      "ru": "Цены на бензин 95 растут (+0.061 EUR/л за 7 дней), следуя за мировыми ценами на нефть. Рекомендуется заправиться."
     }
   },
   "petrol_98": {
     "recommendation": "buy",
-    "confidence": "high",
+    "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 98 cenas pēdējā nedēļā ir ievērojami pieaugušas, sekojot globālajām naftas cenām. Ieteicams uzpildīties.",
-      "en": "Petrol 98 prices have significantly increased in the last week, tracking global oil prices. Recommended to fill up.",
-      "ru": "Цены на бензин 98 значительно выросли за последнюю неделю, следуя за мировыми ценами на нефть. Рекомендуется заправиться."
+      "lv": "Benzīna 98 cenas kāpj (+0.058 EUR/L 7 dienās), sekojot globālajām naftas cenām. Ieteicams uzpildīties.",
+      "en": "Petrol 98 prices are rising (+0.058 EUR/L in 7 days), tracking global crude. Recommend filling up.",
+      "ru": "Цены на бензин 98 растут (+0.058 EUR/л за 7 дней), следуя за мировыми ценами на нефть. Рекомендуется заправиться."
     }
   },
   "factors": [
     {
-      "lv": "Latvijas degvielas cenas pēdējo 7 dienu laikā ir ievērojami pieaugušas (Dīzelis +0.074 EUR, Benzīns 95 +0.061 EUR, Benzīns 98 +0.058 EUR).",
-      "en": "Latvian fuel prices have risen significantly over the last 7 days (Diesel +0.074 EUR, Petrol 95 +0.061 EUR, Petrol 98 +0.058 EUR).",
-      "ru": "Цены на топливо в Латвии значительно выросли за последние 7 дней (Дизель +0.074 EUR, Бензин 95 +0.061 EUR, Бензин 98 +0.058 EUR)."
+      "lv": "Latvijā degvielas cenas pēdējo 7 dienu laikā ir ievērojami pieaugušas: dīzelis par +0.076 EUR, P95 par +0.061 EUR, P98 par +0.058 EUR.",
+      "en": "Latvian fuel prices have risen significantly over the last 7 days: Diesel by +0.076 EUR, P95 by +0.061 EUR, and P98 by +0.058 EUR.",
+      "ru": "Цены на топливо в Латвии значительно выросли за последние 7 дней: дизель на +0.076 EUR, P95 на +0.061 EUR, P98 на +0.058 EUR."
     },
     {
-      "lv": "Globālās jēlnaftas cenas, īpaši Brent, pēdējā laikā ir strauji kāpušas Tuvo Austrumu spriedzes un tankkuģu satiksmes problēmu dēļ.",
-      "en": "Global crude oil prices, particularly Brent, have surged recently due to Middle East tensions and tanker traffic issues.",
-      "ru": "Мировые цены на сырую нефть, особенно Brent, недавно резко выросли из-за напряженности на Ближнем Востоке и проблем с движением танкеров."
+      "lv": "Globālās jēlnaftas (Brent) cenas ir pieaugušas, ko veicina tankkuģu satiksmes apstāšanās un spriedze Tuvajos Austrumos, kas rada bažas par piegādēm.",
+      "en": "Global crude oil (Brent) prices have surged, fueled by tanker traffic nearing a standstill and Middle East tensions raising supply fears.",
+      "ru": "Мировые цены на сырую нефть (Brent) выросли, чему способствовали почти полная остановка танкерного движения и напряженность на Ближнем Востоке, вызывающая опасения по поводу поставок."
     },
     {
-      "lv": "Eiropā paplašinās dīzeļdegvielas deficīts, kas paaugstina dīzeļdegvielas cenas pat virs aviācijas degvielas cenām.",
-      "en": "A widening diesel shortage in Europe is pushing diesel prices higher, even above jet fuel.",
-      "ru": "Усиливающийся дефицит дизельного топлива в Европе толкает цены на дизель вверх, даже выше цен на авиационное топливо."
+      "lv": "Eiropā paplašinās globālais dīzeļdegvielas deficīts, kas izraisījis dīzeļa cenu pieaugumu pat virs aviācijas degvielas cenām.",
+      "en": "A widening global diesel shortage in Europe is pushing diesel prices higher, even surpassing jet fuel prices.",
+      "ru": "Расширяющийся глобальный дефицит дизельного топлива в Европе приводит к росту цен на дизель, превышающему даже цены на авиационное топливо."
     }
   ],
   "analysis": {
-    "lv": "Latvijas degvielas tirgū vērojams ievērojams cenu kāpums visiem degvielas veidiem pēdējo septiņu dienu laikā. Dīzeļdegvielas cena pieaugusi par 0.074 EUR, bet benzīna 95 un 98 cenas attiecīgi par 0.061 EUR un 0.058 EUR. Šobrīd cenas ir sasniegušas augstāko punktu šajā periodā un pēdējās dienās stabilizējušās augstā līmenī.\n\nŠis kāpums cieši seko globālajām tendencēm. Jēlnaftas cenas pasaules tirgos, īpaši Brent, ir strauji kāpušas, ko veicina pieaugošā spriedze Tuvajos Austrumos un ziņas par tankkuģu satiksmes apstāšanos, radot bažas par piegādes traucējumiem. Turklāt Eiropā ir vērojams pieaugošs dīzeļdegvielas deficīts, kas jau ir izraisījis dīzeļdegvielas cenu pārsniegšanu pār aviācijas degvielas cenām, norādot uz turpmāku spiedienu uz dīzeļdegvielas cenām.\n\nŅemot vērā gan vietējo cenu kāpumu, gan spēcīgos globālos faktorus, kas liecina par turpmāku cenu pieaugumu vai vismaz saglabāšanos augstā līmenī, autovadītājiem ieteicams uzpildīties tagad. Lai gan Latvijā tiek apspriesti plāni degvielas cenu ierobežošanai, šobrīd nav konkrētu signālu par tūlītēju cenu kritumu.",
-    "en": "The Latvian fuel market has seen a significant price increase across all fuel types over the past seven days. Diesel prices have risen by 0.074 EUR, while Petrol 95 and 98 have increased by 0.061 EUR and 0.058 EUR respectively. Current prices are at their highest point within this period and have stabilized at this elevated level in recent days.\n\nThis surge closely mirrors global trends. Crude oil prices in international markets, particularly Brent, have climbed sharply, driven by escalating tensions in the Middle East and reports of tanker traffic nearing a standstill, fueling concerns about supply disruptions. Furthermore, Europe is experiencing a widening diesel shortage, which has already led to diesel prices surpassing jet fuel, indicating continued upward pressure on diesel costs.\n\nConsidering both the local price increases and the strong global factors pointing towards further price hikes or at least sustained high levels, drivers are advised to fill up now. Although there are discussions in Latvia about plans to curb fuel prices, there are no concrete signals for an immediate price drop at this time.",
-    "ru": "На латвийском топливном рынке наблюдается значительный рост цен на все виды топлива за последние семь дней. Цена на дизельное топливо выросла на 0.074 EUR, а цены на бензин 95 и 98 увеличились на 0.061 EUR и 0.058 EUR соответственно. Текущие цены достигли своего пика за этот период и стабилизировались на высоком уровне в последние дни.\n\nЭтот рост тесно связан с мировыми тенденциями. Цены на сырую нефть на международных рынках, особенно Brent, резко выросли, что обусловлено эскалацией напряженности на Ближнем Востоке и сообщениями о почти полной остановке движения танкеров, что вызывает опасения по поводу перебоев в поставках. Кроме того, в Европе наблюдается усиливающийся дефицит дизельного топлива, который уже привел к тому, что цены на дизель превысили цены на авиационное топливо, что указывает на дальнейшее давление на цены на дизельное топливо.\n\nУчитывая как местный рост цен, так и сильные глобальные факторы, указывающие на дальнейшее повышение цен или, по крайней мере, сохранение их на высоком уровне, водителям рекомендуется заправиться сейчас. Хотя в Латвии обсуждаются планы по сдерживанию цен на топливо, в настоящее время нет конкретных сигналов о немедленном снижении цен."
+    "lv": "Latvijas degvielas tirgū novērojams nepārtraukts cenu kāpums visiem degvielas veidiem. Pēdējo 7 dienu laikā dīzeļa cena ir pieaugusi par 0.076 EUR/L, bet benzīna 95 un 98 cenas attiecīgi par 0.061 EUR/L un 0.058 EUR/L. Šis kāpums liecina par spēcīgu augšupejošu tendenci, kas sākās pēc īslaicīga atvieglojuma 13. augustā.\n\nGlobālie faktori spēcīgi ietekmē šo tendenci. Jēlnaftas cenas (īpaši Brent) ir pieaugušas, ko veicina ģeopolitiskā spriedze Tuvajos Austrumos un ziņas par tankkuģu satiksmes apstāšanos, kas rada bažas par piegādēm. Turklāt Eiropā ir vērojams pieaugošs dīzeļdegvielas deficīts, kas ir izraisījis dīzeļa cenu pieaugumu pat virs aviācijas degvielas cenām, kas ir tiešs signāls par turpmāku dīzeļa cenu kāpumu.\n\nŅemot vērā gan vietējo cenu kāpumu, gan globālo jēlnaftas cenu pieaugumu un specifisko dīzeļdegvielas deficītu, ir sagaidāms, ka degvielas cenas Latvijā tuvākajā laikā turpinās pieaugt. Lai gan ir ziņas par valdības plāniem ierobežot degvielas cenas, pašreizējā tirgus dinamika liecina, ka šie pasākumi vēl nav ietekmējuši cenu tendences. Tāpēc šobrīd ir ieteicams uzpildīties.",
+    "en": "The Latvian fuel market is experiencing a continuous upward trend across all fuel types. Over the past 7 days, diesel prices have increased by 0.076 EUR/L, while Petrol 95 and 98 have risen by 0.061 EUR/L and 0.058 EUR/L respectively. This consistent rise indicates a strong upward momentum, reversing a brief period of relief noted around August 13th.\n\nGlobal factors are significantly influencing this trend. Crude oil prices, particularly Brent, have surged due to geopolitical tensions in the Middle East and reports of tanker traffic nearing a standstill, which fuels supply concerns. Furthermore, Europe is facing a widening global diesel shortage, pushing diesel prices above even jet fuel, a clear indicator of continued upward pressure specifically on diesel.\n\nConsidering both the local price increases and the supportive global crude oil price surges, coupled with the specific diesel shortage, fuel prices in Latvia are expected to continue their upward trajectory in the short term. While there are reports of government plans to curb fuel prices, current market dynamics suggest these measures have not yet impacted the prevailing trends. Therefore, it is advisable to fill up now.",
+    "ru": "На латвийском рынке топлива наблюдается непрерывный рост цен на все виды горючего. За последние 7 дней цена на дизель выросла на 0.076 EUR/л, а на бензин 95 и 98 — на 0.061 EUR/л и 0.058 EUR/л соответственно. Этот последовательный рост указывает на сильную восходящую динамику, отменившую кратковременное снижение цен, отмеченное около 13 августа.\n\nГлобальные факторы оказывают значительное влияние на эту тенденцию. Цены на сырую нефть, особенно Brent, выросли из-за геополитической напряженности на Ближнем Востоке и сообщений о почти полной остановке танкерного движения, что вызывает опасения по поводу поставок. Кроме того, Европа сталкивается с растущим глобальным дефицитом дизельного топлива, что приводит к росту цен на дизель даже выше цен на авиационное топливо, что является четким индикатором дальнейшего повышения цен именно на дизель.\n\nУчитывая как местный рост цен, так и поддерживающий рост мировых цен на сырую нефть, а также специфический дефицит дизельного топлива, ожидается, что цены на топливо в Латвии продолжат расти в ближайшее время. Хотя есть сообщения о планах правительства по сдерживанию цен на топливо, текущая динамика рынка показывает, что эти меры пока не повлияли на преобладающие тенденции. Поэтому в настоящее время рекомендуется заправиться."
   },
   "sources": [
     {
       "title": "Oil News: Brent Leads WTI Higher as Tanker Traffic Nears a Standstill - FXEmpire",
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPb2U3OWE1dExrc2NJR1NPTmFpVUF3MFdTQ1Z2UWJJM1BrUFVmdlRYOFI3WC1CUGZENFpweVZucFZSTzZOSTEyMnFWNHZfQzNjcG12anRJc0RrXzFTdVcwdFZZa2N1MHZObkFnRUl5N19CT185SEVYejIyT2F4VmphMUxNZnJIWTB6X2RNUWFQeVg3YmpHdTJFVHJXTDc2aElQanpqcFlrZV9LRFlEeEtwZ3RXRWF0TGVxdFFLWUluWjdicnlsVkE?oc=5",
       "published_at": "2026-08-17T11:07:00+00:00"
+    },
+    {
+      "title": "Degvielas cenas Latvijā: litrā nav starp augstākajām ES, bet pret ienākumu līmeni - dārga (+ VIDEO) - iAuto.lv",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOenhMMlJKLTlaX1c5b0trbVRnWS1wU1dQVDhKNVBnc0d4bXBiSU1ScEV1eFRNMzdDcjdidTZfc1k0WjZzWU4tT1Q1cGFjdGVkWU5ldzNKSmRrc21Jc1p0V3Zxek9RRmdFWTBiSzlnb1pycHJ2S3IyY1k2c19ZZUxuR0ZIdEt4WjRNVUNBZ1ZMSURZbl83NkNOYVdQLXVZOUVCWWhETTFQODhHeU96NXR4STU0bVZFSnBaLXV6bU9Ra1RuN0hnYTFsc3JrOEViVUZpdVlUZw?oc=5",
+      "published_at": "2026-08-17T07:09:45+00:00"
     },
     {
       "title": "Brent crude rises, WTI falls on global markets - Apa.az",
@@ -65,19 +70,14 @@
       "published_at": "2026-08-16T20:23:46+00:00"
     },
     {
-      "title": "Degvielas cenas Latvijā: litrā nav starp augstākajām ES, bet pret ienākumu līmeni - dārga (+ VIDEO) - iAuto.lv",
-      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOenhMMlJKLTlaX1c5b0trbVRnWS1wU1dQVDhKNVBnc0d4bXBiSU1ScEV1eFRNMzdDcjdidTZfc1k0WjZzWU4tT1Q1cGFjdGVkWU5ldzNKSmRrc21Jc1p0V3Zxek9RRmdFWTBiSzlnb1pycHJ2S3IyY1k2c19ZZUxuR0ZIdEt4WjRNVUNBZ1ZMSURZbl83NkNOYVdQLXVZOUVCWWhETTFQODhHeU96NXR4STU0bVZFSnBaLXV6bU9Ra1RuN0hnYTFsc3JrOEViVUZpdVlUZw?oc=5",
-      "published_at": "2026-08-16T18:33:45+00:00"
-    },
-    {
       "title": "Degvielas cenas Latvijā: litrā nav starp augstākajām ES, bet pret ienākumu līmeni - dārga (+ VIDEO) - Inbox.eu",
       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMW5Oek4yWFhiaHlwcjhCM0QxRGMxMUlCOTFVRDc0UGprcjRfdUw5dFJxQ3lseThiT3c5bWVPMTMzcHlxWG9EaEF4RTdUbnZXMW85REtkSG9TaldVUG1ObDlfWlpzQXpEZlJsd01BeXB1VkJpYVloMFRwdW1FdS1feTZKTVA2UC1ZT05PYklMZDRaZENZeXo1S0NqYkRtZTF1WENVOVNFMzNBR2hIaGhONFZacnNxZlJXeUV4VXNFRkZVVXZoQVpORWhWak1JZw?oc=5",
       "published_at": "2026-08-16T00:51:20+00:00"
     }
   ],
-  "generated_at": "2026-08-18T02:50:39.829549+00:00",
+  "generated_at": "2026-08-18T08:28:18.353202+00:00",
   "prices_snapshot": {
-    "diesel": 1.92,
+    "diesel": 1.925,
     "petrol_95": 1.806,
     "petrol_98": 1.884
   }
