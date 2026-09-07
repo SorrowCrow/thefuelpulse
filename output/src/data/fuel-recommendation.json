@@ -3,52 +3,67 @@
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Dīzeļdegvielas cenas strauji aug gan Latvijā, gan pasaulē. Globālie konflikti un piegādes riski liecina par turpmāku kāpumu.",
-      "en": "Diesel prices are rapidly rising in Latvia and globally. Global conflicts and supply risks indicate further increases.",
-      "ru": "Цены на дизельное топливо быстро растут как в Латвии, так и в мире. Глобальные конфликты и риски поставок указывают на дальнейший рост."
+      "lv": "Dīzeļdegvielas cenas Latvijā strauji aug, un globālie faktori liecina par turpmāku kāpumu. Ieteicams uzpildīties tagad.",
+      "en": "Diesel prices in Latvia are rising sharply, and global factors indicate further increases. Recommended to fill up now.",
+      "ru": "Цены на дизельное топливо в Латвии резко растут, и мировые факторы указывают на дальнейшее повышение. Рекомендуется заправиться сейчас."
     }
   },
   "petrol_95": {
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Benzīna 95 cenas Latvijā strauji aug. Globālās naftas cenas kāpj ASV-Irānas konflikta dēļ, kas ietekmēs arī benzīnu.",
-      "en": "Petrol 95 prices in Latvia are rising sharply. Global oil prices are climbing due to the US-Iran conflict, affecting petrol.",
-      "ru": "Цены на бензин 95 в Латвии резко растут. Мировые цены на нефть растут из-за конфликта США-Иран, что повлияет и на бензин."
+      "lv": "Benzīna 95 cenas Latvijā strauji aug, un globālie faktori liecina par turpmāku kāpumu. Ieteicams uzpildīties tagad.",
+      "en": "Petrol 95 prices in Latvia are rising sharply, and global factors indicate further increases. Recommended to fill up now.",
+      "ru": "Цены на бензин 95 в Латвии резко растут, и мировые факторы указывают на дальнейшее повышение. Рекомендуется заправиться сейчас."
     }
   },
   "petrol_98": {
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Benzīna 98 cenas Latvijā turpina kāpt. Globālie naftas tirgi ir saspringti, un sagaidāms, ka cenas saglabāsies augstas.",
-      "en": "Petrol 98 prices in Latvia continue to climb. Global oil markets are tense, and prices are expected to remain high.",
-      "ru": "Цены на бензин 98 в Латвии продолжают расти. Мировые нефтяные рынки напряжены, и ожидается, что цены останутся высокими."
+      "lv": "Benzīna 98 cenas Latvijā strauji aug, un globālie faktori liecina par turpmāku kāpumu. Ieteicams uzpildīties tagad.",
+      "en": "Petrol 98 prices in Latvia are rising sharply, and global factors indicate further increases. Recommended to fill up now.",
+      "ru": "Цены на бензин 98 в Латвии резко растут, и мировые факторы указывают на дальнейшее повышение. Рекомендуется заправиться сейчас."
     }
   },
   "factors": [
     {
-      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā strauji pieaugušas (D: +0.079, P95: +0.106, P98: +0.105 EUR/L).",
-      "en": "Fuel prices in Latvia have risen sharply over the last 7 days (D: +0.079, P95: +0.106, P98: +0.105 EUR/L).",
-      "ru": "Цены на топливо в Латвии резко выросли за последние 7 дней (Д: +0.079, P95: +0.106, P98: +0.105 EUR/л)."
+      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir strauji pieaugušas (D: +0.084 EUR, P95: +0.107 EUR, P98: +0.105 EUR).",
+      "en": "Latvian fuel prices have risen sharply over the last 7 days (Diesel: +0.084 EUR, P95: +0.107 EUR, P98: +0.105 EUR).",
+      "ru": "Цены на топливо в Латвии резко выросли за последние 7 дней (Дизель: +0.084 EUR, АИ-95: +0.107 EUR, АИ-98: +0.105 EUR)."
     },
     {
-      "lv": "Brent un WTI jēlnaftas cenas kāpj ASV-Irānas konflikta un Hormuza šauruma piegādes risku dēļ (EnergyNow.com, APAC Media).",
-      "en": "Brent and WTI crude oil prices are climbing due to the US-Iran conflict and Strait of Hormuz supply concerns (EnergyNow.com, APAC Media).",
-      "ru": "Цены на сырую нефть Brent и WTI растут из-за конфликта США-Иран и опасений по поводу поставок через Ормузский пролив (EnergyNow.com, APAC Media)."
+      "lv": "Globālās jēlnaftas cenas (Brent, WTI) ir strauji pieaugušas, ko veicina ASV un Irānas konflikta eskalācija.",
+      "en": "Global crude oil prices (Brent, WTI) have surged, driven by the escalating US-Iran conflict.",
+      "ru": "Мировые цены на сырую нефть (Brent, WTI) резко выросли из-за эскалации конфликта между США и Ираном."
     },
     {
-      "lv": "Citi paaugstinājis Brent prognozi 2026. gadam, paredzot $150 par barelu, ja Hormuza traucējumi saglabāsies (EnergyNow.com).",
-      "en": "Citi raised its Brent forecast for 2026, seeing $150 oil if Hormuz disruption persists (EnergyNow.com).",
-      "ru": "Citi повысил прогноз по Brent на 2026 год, ожидая $150 за баррель, если перебои в Ормузском проливе сохранятся (EnergyNow.com)."
+      "lv": "Bažas par piegādes traucējumiem Hormuza šaurumā un Citi prognoze par 150 USD/barelu, ja traucējumi turpināsies.",
+      "en": "Concerns over supply disruptions in the Strait of Hormuz and Citi's forecast of $150/barrel if disruptions persist.",
+      "ru": "Опасения по поводу перебоев с поставками в Ормузском проливе и прогноз Citi о $150/баррель в случае продолжения перебоев."
     }
   ],
   "analysis": {
-    "lv": "Degvielas cenas Latvijā pēdējās septiņās dienās ir piedzīvojušas ievērojamu kāpumu visiem degvielas veidiem. Dīzeļdegviela pieaugusi par 0.079 EUR/L, bet benzīns 95 un 98 attiecīgi par 0.106 EUR/L un 0.105 EUR/L. Šis kāpums turpina augustā novēroto tendenci, kad degvielas cenas Latvijā pieauga par 8.8%, un Rīga joprojām saglabā augstākās degvielas cenas Baltijas galvaspilsētu vidū.\n\nGlobālajā tirgū jēlnaftas cenas, tostarp Brent un WTI, ir strauji kāpušas. Galvenais iemesls ir pieaugošais ASV-Irānas konflikts un ar to saistītās bažas par naftas piegādēm caur stratēģiski svarīgo Hormuza šaurumu. Irāna pat draudējusi pasludināt šaurumu par ierobežotu zonu pēc ASV uzbrukumiem. Šī ģeopolitiskā spriedze tieši ietekmē naftas tirgus, radot piegādes riskus un spekulatīvu spiedienu uz cenām.\n\nAnalītiķi, piemēram, Citi, ir paaugstinājuši Brent naftas cenas prognozes 2026. gadam, paredzot pat 150 ASV dolārus par barelu, ja Hormuza šauruma traucējumi saglabāsies. Ņemot vērā gan vietējo cenu kāpumu, gan spēcīgos globālos faktorus, kas liecina par turpmāku naftas cenu pieaugumu, autovadītājiem Latvijā ir ieteicams uzpildīt degvielu tagad, jo tuvākajā laikā cenas, visticamāk, turpinās kāpt.",
-    "en": "Fuel prices in Latvia have experienced a significant increase across all fuel types over the past seven days. Diesel has risen by 0.079 EUR/L, while Petrol 95 and 98 have increased by 0.106 EUR/L and 0.105 EUR/L respectively. This surge continues the trend observed in August, when fuel prices in Latvia rose by 8.8%, and Riga maintains the highest fuel prices among the Baltic capitals.\n\nGlobally, crude oil prices, including Brent and WTI, have climbed sharply. The primary driver is the escalating US-Iran conflict and associated concerns about oil supplies through the strategically vital Strait of Hormuz. Iran has even threatened to declare the strait a restricted zone following US attacks. This geopolitical tension directly impacts oil markets, creating supply risks and speculative pressure on prices.\n\nAnalysts like Citi have raised their Brent oil price forecasts for 2026, anticipating up to $150 per barrel if disruptions in the Strait of Hormuz persist. Given both the local price increases and the strong global factors indicating further rises in oil prices, drivers in Latvia are advised to fill up now, as prices are highly likely to continue climbing in the near future.",
-    "ru": "Цены на топливо в Латвии значительно выросли по всем видам топлива за последние семь дней. Дизельное топливо подорожало на 0.079 EUR/л, а бензин 95 и 98 — на 0.106 EUR/л и 0.105 EUR/л соответственно. Этот рост продолжает тенденцию, наблюдавшуюся в августе, когда цены на топливо в Латвии выросли на 8.8%, и Рига по-прежнему сохраняет самые высокие цены на топливо среди столиц Балтии.\n\nНа мировом рынке цены на сырую нефть, включая Brent и WTI, резко выросли. Основной причиной является эскалация конфликта между США и Ираном и связанные с этим опасения по поводу поставок нефти через стратегически важный Ормузский пролив. Иран даже угрожал объявить пролив ограниченной зоной после атак США. Эта геополитическая напряженность напрямую влияет на нефтяные рынки, создавая риски поставок и спекулятивное давление на цены.\n\nАналитики, такие как Citi, повысили свои прогнозы цен на нефть Brent на 2026 год, ожидая до 150 долларов за баррель, если перебои в Ормузском проливе сохранятся. Учитывая как местный рост цен, так и сильные глобальные факторы, указывающие на дальнейшее повышение цен на нефть, водителям в Латвии рекомендуется заправиться сейчас, так как цены, скорее всего, продолжат расти в ближайшем будущем."
+    "lv": "Degvielas cenas Latvijā pēdējās septiņās dienās ir piedzīvojušas ievērojamu kāpumu. Dīzeļdegviela ir sadārdzinājusies par 0.084 EUR/L, bet benzīns 95 un 98 attiecīgi par 0.107 EUR/L un 0.105 EUR/L. Pašreizējās cenas ir augstākās pēdējo septiņu dienu periodā, un ziņas liecina, ka Rīgā ir augstākās degvielas cenas starp Baltijas galvaspilsētām, kā arī augustā cenas pieaugušas par 8.8%. Šis vietējais kāpums atspoguļo globālās tendences.\n\nPasaules jēlnaftas tirgū vērojams spēcīgs cenu kāpums, ko galvenokārt veicina ASV un Irānas konflikta eskalācija. Brent un WTI jēlnaftas cenas ir strauji pieaugušas, un tirgus analītiķi prognozē turpmāku kāpumu. Īpašas bažas rada iespējamie piegādes traucējumi Hormuza šaurumā, kas ir kritiski svarīgs naftas transporta maršruts. Citi pat prognozē, ka naftas cena var sasniegt 150 USD par barelu, ja šie traucējumi saglabāsies.\n\nŅemot vērā gan vietējo cenu straujo kāpumu, gan spēcīgos globālos faktorus, kas norāda uz turpmāku naftas cenu pieaugumu, ir ļoti ticams, ka degvielas cenas Latvijā turpinās kāpt. Tāpēc autovadītājiem ieteicams uzpildīties tagad, lai izvairītos no vēl augstākām cenām tuvākajā nākotnē.",
+    "en": "Fuel prices in Latvia have experienced a significant increase over the past seven days. Diesel has risen by 0.084 EUR/L, while Petrol 95 and 98 have increased by 0.107 EUR/L and 0.105 EUR/L respectively. Current prices are the highest in the last seven-day period, and local news indicates that Riga has the highest fuel prices among the Baltic capitals, with an 8.8% increase in August. This local surge mirrors global trends.\n\nThe global crude oil market is witnessing a strong price rally, primarily driven by the escalating conflict between the US and Iran. Brent and WTI crude oil prices have surged, and market analysts forecast further increases. Particular concern arises from potential supply disruptions in the Strait of Hormuz, a critically important oil transport route. Citi even forecasts oil prices could reach $150 per barrel if these disruptions persist.\n\nConsidering both the rapid local price increases and the strong global factors pointing to continued upward pressure on oil prices, it is highly probable that fuel prices in Latvia will continue to climb. Therefore, drivers are advised to fill up now to avoid even higher prices in the near future.",
+    "ru": "Цены на топливо в Латвии значительно выросли за последние семь дней. Дизельное топливо подорожало на 0.084 EUR/л, а бензин 95 и 98 — на 0.107 EUR/л и 0.105 EUR/л соответственно. Текущие цены являются самыми высокими за последние семь дней, и местные новости указывают на то, что в Риге самые высокие цены на топливо среди столиц Балтии, а также на рост цен в августе на 8.8%. Этот местный рост отражает мировые тенденции.\n\nНа мировом рынке сырой нефти наблюдается сильный рост цен, в основном вызванный эскалацией конфликта между США и Ираном. Цены на нефть марок Brent и WTI резко выросли, и аналитики рынка прогнозируют дальнейшее повышение. Особую озабоченность вызывают возможные перебои с поставками в Ормузском проливе, который является критически важным маршрутом для транспортировки нефти. Citi даже прогнозирует, что цена на нефть может достичь 150 долларов за баррель, если эти перебои сохранятся.\n\nУчитывая как быстрый рост местных цен, так и сильные глобальные факторы, указывающие на дальнейшее повышение цен на нефть, весьма вероятно, что цены на топливо в Латвии продолжат расти. Поэтому водителям рекомендуется заправиться сейчас, чтобы избежать еще более высоких цен в ближайшем будущем."
   },
   "sources": [
+    {
+      "title": "Core Differences Between West Texas Intermediate (WTI) and Brent Crude and the Affect of the Iran War - EnergyNow.com",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN1ZOVFVuUnFFYUstVktuczhxdzBYN1lUbUlqbTIwZEVnX2lCclN2dDZyeVJxUnFPLXdLLWhHcTd1MUUyM0kxTFBUZWJZSVlfN2RCZkRlRXhqT3ZfdUJTQkFjSkR1dDFsQ2Rmc19VTERhc1hsV2Nka2RDVEFvZ0FUcFdJQ0dCR21lcm5mZU12UzJZZHlyOFh3WGEzVWpCVDlUeHc?oc=5",
+      "published_at": "2026-09-07T13:49:51+00:00"
+    },
+    {
+      "title": "Crude Oil Forecast: WTI, Brent Bulls Target Key Breakouts - FXEmpire",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOVXlxS2tmNUlFSW9GczFRcUk0SHFwTmljdUVZaUZiR291QUpuZlFmRXlaVlE1UUpORENJTkV2Zk1sS2ZxOXZvUHk5alF6dU1La0c3ZWpVS05tOTRBR1kyM193azdLV3MwMzhjOTVQaTFnX3FKZDNBWnlTRmZPMWJ3RUdvTThpenFJcVhHQkZKelFNdUZtYmhvMC1QMHc2dDVCbU9vaVZBeFhvdw?oc=5",
+      "published_at": "2026-09-07T13:49:00+00:00"
+    },
+    {
+      "title": "Global crude oil prices surged - News On AIR",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBlcDBycXp3TzV0ZFJfaFNIV25SdkxwYnJRS0wwdVM4YlE0am92cnpHQXVUaG90MlA0SHN1RkxXMXk2bWFDWmFHX0FGYWVnZ1dOUVJNRDV0d2ZncnQ4T1NOR28teGgtZmc?oc=5",
+      "published_at": "2026-09-07T13:06:25+00:00"
+    },
     {
       "title": "Citi Raises Brent Forecast for 2026; Sees $150 Oil if Hormuz Disruption Persists - EnergyNow.com",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQdk5UVWpBQWFNVy1reG1ZeFlEdlQxcWlxWkMzTFNfUmFKdVFZaWRqNm4zTFo5V05Pd2o5b3hpOXNLeWJ3Tm9XdzR1aEk1VWd1S29vaW1GUVZ1OTU5c0hsUE5fWnhUV1RoakRubVlGcW14cHBhaER0VzZmeDVFNGZkeEVUb2l6WGhtTVlBUXBMTFFYNkMwalRYZmYzQUItWEhDLUhiVkdaOFBoU0Q4Vnc?oc=5",
@@ -58,24 +73,9 @@
       "title": "Crude Oil Futures Climb Amid Positive Global Trends - Rediff MoneyWiz",
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNTXRTZ3d4eEpvY29Mck56WWNBbnlGdHVqUEhDczY2Sy1DS1hxTlZpTExMNlFqQ1htSkZHUEhvTV9xUWRKcjB0NDQzdVY1dWJ0d0l5cUVaOE9fa0hKM2h2RlpGQVgzUUFqNWk4YnB1U24xT2lhZFA5SHpLT3BVdFhCR180dU1aQ3hoQXBfREtVZ29INHRGRzBzMlV1RGlhR2ZxQkUyQXdn0gGrAUFVX3lxTE9XbHhjSF9CN2RiNk10ZmhkNkpHMkhvdVdVaHAtenNTWlNtd1RRd1hsQmRBcW04eV9QSUhDRjlONXBUcTd2X1dZVEVGa2tLcHcxT2t6LTB1OVhTWnRBYUVnMmVOeVlwWm1iRVAxSVhrczNCT0ZtcTNkWFRYc2IxVGlZeHZibmt0YWFldW1haUxqblpjbUFqSG1LVGkwQWxuZWtjb2RuV2w2Z3I5SQ?oc=5",
       "published_at": "2026-09-07T08:02:33+00:00"
-    },
-    {
-      "title": "Brent, WTI Oil Prices Rise as U.S.-Iran Conflict Raises Strait of Hormuz Supply Concerns - APAC Media",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1QaDdNU1NtRzh0ZGdSMUlPdEsyVDFIMW10Nl8xMFVDMGRXT0EtbU91azlQNjZnTEhObm5Ldnl5T08zWUxfTmsxRm5rNl9manpPdDF5YlE5UUxLSVd6WUpGUzFjUGJ6dnk4UUxCM1Y0eXJRNl9seHlJcnRJYU8?oc=5",
-      "published_at": "2026-09-07T07:29:20+00:00"
-    },
-    {
-      "title": "Core Differences Between West Texas Intermediate (WTI) and Brent Crude and the Affect of the Iran War - EnergyNow.com",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN1ZOVFVuUnFFYUstVktuczhxdzBYN1lUbUlqbTIwZEVnX2lCclN2dDZyeVJxUnFPLXdLLWhHcTd1MUUyM0kxTFBUZWJZSVlfN2RCZkRlRXhqT3ZfdUJTQkFjSkR1dDFsQ2Rmc19VTERhc1hsV2Nka2RDVEFvZ0FUcFdJQ0dCR21lcm5mZU12UzJZZHlyOFh3WGEzVWpCVDlUeHc?oc=5",
-      "published_at": "2026-09-06T22:54:41+00:00"
-    },
-    {
-      "title": "Oil Prices Fall as Market Awaits Possible US-Iran Ceasefire Deal - EnergyNow",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSWlSQ0JySWhtckl3S01IdjNPcndoTTVOUWVSRmRXLWw2b1U3R3hZeTdwcFM4S1pxNnRVa2dPMXV5Vk9SZWNXaEsyWVYtd2hTZkNBXy1SbjRiaFRFT2cxekVUbTZFXzY1LXJEMXA2WkNVdXhMVnBzbGdNSllPdjlmcS1DMzZTQmo1bDl3dGJIWFhDUzhtUDN1bEV3?oc=5",
-      "published_at": "2026-09-06T22:20:00+00:00"
     }
   ],
-  "generated_at": "2026-09-07T13:52:23.499133+00:00",
+  "generated_at": "2026-09-07T18:32:25.671302+00:00",
   "prices_snapshot": {
     "diesel": 2.038,
     "petrol_95": 1.911,
