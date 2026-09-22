@@ -3,82 +3,82 @@
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Cenas kāpj, Eiropā rekordi, iespējams turpmāks kāpums. Ieteicams uzpildīties tagad.",
-      "en": "Prices rising, European record highs, further increases possible. Recommended to fill up now.",
-      "ru": "Цены растут, в Европе рекорды, возможен дальнейший рост. Рекомендуется заправиться сейчас."
+      "lv": "Eiropā dīzeļdegvielas cenas sasniegušas rekordaugstu līmeni, un sagaidāms tālāks kāpums. Pildiet tagad.",
+      "en": "European diesel prices hit record highs, with further increases expected. Fill up now.",
+      "ru": "Цены на дизельное топливо в Европе достигли рекордных значений, ожидается дальнейший рост. Заправляйтесь сейчас."
     }
   },
   "petrol_95": {
     "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Cenas Latvijā strauji kāpj. Globālās tendences liecina par augstām cenām. Uzpildieties tagad.",
-      "en": "Latvian prices rising sharply. Global trends indicate high prices. Fill up now.",
-      "ru": "Цены в Латвии резко растут. Мировые тенденции указывают на высокие цены. Заправьтесь сейчас."
+      "lv": "Benzīna cenas pēdējās dienās nedaudz pieaugušas, un globālās naftas tirgus svārstības liecina par iespējamu kāpumu.",
+      "en": "Petrol prices have slightly increased recently, and global oil market volatility suggests potential rises.",
+      "ru": "Цены на бензин в последние дни немного выросли, а волатильность мирового нефтяного рынка указывает на возможный рост."
     }
   },
   "petrol_98": {
     "recommendation": "buy",
     "confidence": "medium",
     "summary": {
-      "lv": "Cenas Latvijā strauji kāpj. Globālās tendences liecina par augstām cenām. Uzpildieties tagad.",
-      "en": "Latvian prices rising sharply. Global trends indicate high prices. Fill up now.",
-      "ru": "Цены в Латвии резко растут. Мировые тенденции указывают на высокие цены. Заправьтесь сейчас."
+      "lv": "Benzīns 98 ir sasniedzis zemāko cenu pēdējo 7 dienu laikā. Izmantojiet izdevību, kamēr cenas nav atkal kāpušas.",
+      "en": "Petrol 98 is at its lowest price in the last 7 days. Take advantage before prices rise again.",
+      "ru": "Бензин 98 достиг самой низкой цены за последние 7 дней. Воспользуйтесь возможностью, пока цены снова не выросли."
     }
   },
   "factors": [
     {
-      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir būtiski pieaugušas (piemēram, Dīzelis +0.014 EUR, Benzīns 95 +0.024 EUR).",
-      "en": "Fuel prices in Latvia have significantly increased over the last 7 days (e.g., Diesel +0.014 EUR, Petrol 95 +0.024 EUR).",
-      "ru": "Цены на топливо в Латвии значительно выросли за последние 7 дней (например, дизель +0.014 EUR, бензин 95 +0.024 EUR)."
+      "lv": "Globālās dīzeļdegvielas cenas Eiropā sasniegušas rekordaugstu līmeni, un tiek prognozēts tālāks kāpums, kā ziņo Reuters un Euronews.com.",
+      "en": "Global diesel prices have hit record highs in Europe, with further rises possible, as reported by Reuters and Euronews.com.",
+      "ru": "Мировые цены на дизельное топливо в Европе достигли рекордных значений, и возможен дальнейший рост, как сообщают Reuters и Euronews.com."
     },
     {
-      "lv": "Globālās dīzeļdegvielas cenas ir sasniegušas rekordaugstu līmeni, un ir iespējams turpmāks kāpums (Reuters, Euronews).",
-      "en": "Global diesel prices have hit record highs, with further rises possible (Reuters, Euronews).",
-      "ru": "Мировые цены на дизельное топливо достигли рекордных максимумов, возможен дальнейший рост (Reuters, Euronews)."
+      "lv": "Globālajos jēlnaftas tirgos vērojama svārstība; pēc iepriekšējiem kritumiem, 22. septembrī Brent un WTI cenas atkal pieauga, Brent sasniedzot 101 USD.",
+      "en": "Global crude oil markets are volatile; after earlier falls, Brent and WTI prices rebounded on Sept 22, with Brent rising to $101.",
+      "ru": "На мировых рынках сырой нефти наблюдается волатильность; после предыдущих падений, 22 сентября цены на Brent и WTI снова выросли, Brent достигла 101 доллара."
     },
     {
-      "lv": "Brent jēlnaftas cena svārstās ap 101-103 USD par barelu, saglabājot augstas izejvielu izmaksas.",
-      "en": "Brent crude oil is trading around $101-$103 per barrel, maintaining high raw material costs.",
-      "ru": "Цена на нефть марки Brent колеблется в районе 101-103 долларов за баррель, поддерживая высокие затраты на сырье."
+      "lv": "Latvijas ekonomisti norāda, ka augstās degvielas cenas nosaka globālās tendences, un valsts iespējas tās mazināt ir ierobežotas, kā ziņo lat.bb.lv.",
+      "en": "Latvian economists state that high local fuel prices are driven by global trends, with limited state intervention capabilities, as reported by lat.bb.lv.",
+      "ru": "Латвийские экономисты заявляют, что высокие местные цены на топливо обусловлены мировыми тенденциями, а возможности государства по их снижению ограничены, как сообщает lat.bb.lv."
     }
   ],
   "analysis": {
-    "lv": "Degvielas cenas Latvijā pēdējās septiņās dienās ir uzrādījušas nepārtrauktu un ievērojamu kāpumu. Dīzeļdegviela sadārdzinājusies par 0.014 EUR/L, bet benzīns 95 un 98 attiecīgi par 0.024 EUR/L un 0.025 EUR/L. Šis kāpums liecina, ka pašreizējās cenas nav zemākais punkts, un vietējie ekonomisti norāda, ka šīs tendences nosaka globālie faktori.\n\nGlobālajā tirgū jēlnaftas cenas saglabājas augstas, Brent markas naftai svārstoties ap 101-103 USD par barelu. Lai gan ir pretrunīgas ziņas par ikdienas svārstībām un ASV-Irānas sarunu ietekmi uz piegādēm, kopējais tonis liecina par spiedienu uz cenām. Eiropā situācija ir īpaši saspringta, jo dīzeļdegvielas cenas ir sasniegušas rekordaugstu līmeni, un eksperti prognozē, ka tās varētu turpināt kāpt vismaz līdz oktobrim.\n\nŅemot vērā vietējo cenu kāpumu un globālās tendences, kas liecina par augstām un potenciāli vēl pieaugošām cenām, īpaši dīzeļdegvielai, ir ieteicams uzpildīties tagad. Pašreizējā situācija neliecina par drīzu cenu kritumu, drīzāk par to, ka tās varētu saglabāties augstas vai pat turpināt kāpt.",
-    "en": "Fuel prices in Latvia have shown a continuous and significant increase over the past seven days. Diesel has risen by 0.014 EUR/L, while Petrol 95 and 98 have increased by 0.024 EUR/L and 0.025 EUR/L respectively. This upward trend indicates that current prices are not at a local low, and local economists attribute these trends to global factors.\n\nIn the global market, crude oil prices remain high, with Brent crude fluctuating around $101-$103 per barrel. While there are conflicting reports on daily fluctuations and the impact of US-Iran talks on supply, the overall sentiment points to upward price pressure. The situation in Europe is particularly tense, as diesel prices have reached record highs, and experts predict they could continue to rise at least until October.\n\nGiven the local price increases and global trends suggesting high and potentially further rising prices, especially for diesel, it is advisable to fill up now. The current situation does not indicate an imminent price drop; rather, it suggests that prices are likely to remain high or even continue to climb.",
-    "ru": "Цены на топливо в Латвии за последние семь дней показали непрерывный и значительный рост. Дизельное топливо подорожало на 0.014 EUR/л, а бензин 95 и 98 — на 0.024 EUR/л и 0.025 EUR/л соответственно. Этот рост указывает на то, что текущие цены не являются локальным минимумом, и местные экономисты связывают эти тенденции с глобальными факторами.\n\nНа мировом рынке цены на сырую нефть остаются высокими, при этом нефть марки Brent колеблется в районе 101-103 долларов за баррель. Хотя есть противоречивые сообщения о ежедневных колебаниях и влиянии переговоров между США и Ираном на поставки, общий тон указывает на повышательное давление на цены. Ситуация в Европе особенно напряженная, поскольку цены на дизельное топливо достигли рекордных максимумов, и эксперты прогнозируют, что они могут продолжать расти как минимум до октября.\n\nУчитывая местный рост цен и глобальные тенденции, указывающие на высокие и потенциально еще более растущие цены, особенно на дизельное топливо, рекомендуется заправиться сейчас. Текущая ситуация не предвещает скорого падения цен; скорее, она предполагает, что цены, вероятно, останутся высокими или даже продолжат расти."
+    "lv": "Pašreizējās degvielas cenas Latvijā pēdējo septiņu dienu laikā uzrāda nelielu pieaugumu dīzeļdegvielai (+0,004 EUR) un benzīnam 95 (+0,008 EUR), savukārt benzīna 98 cena saglabājusies stabila (+0,000 EUR). Ikdienas cenu vēsture liecina, ka dīzeļdegvielas un benzīna 95 cenas ir atjaunojušās pēc nesenajiem kritumiem ap 19.-20. septembri. Benzīns 98 pašlaik ir sasniedzis zemāko cenu pēdējās nedēļas laikā (2,017 EUR/L). Latvijas ziņas liecina, ka degvielas cenas ir nozīmīga problēma, ar ziņām par \"Degvielas cenas tik augstu kā vēl nekad\" 21. septembrī, un ekonomisti šīs augstās cenas saista ar globālajām tendencēm, ierobežojot valsts spēju iejaukties.\n\nGlobālajā naftas tirgū vērojama pretrunīga aina. No vienas puses, bija ziņojumi par jēlnaftas cenu kritumu trīs secīgas sesijas, Brent cenai noslēdzoties pie 103,87 USD un WTI nokrītot zem 100 USD 21. septembrī, daļēji saistībā ar Saūda Arābijas piegādes atjaunošanās cerībām un ASV-Irānas pamiera darījuma cerībām. Tomēr jaunākas ziņas no 22. septembra liecina, ka WTI un Brent jēlnafta atjaunojās, Brent cenai pieaugot līdz 101 USD, neskatoties uz notiekošajām ASV-Irānas sarunām. Tas liecina par svārstīgumu, bet arī par potenciālu cenu pieaugumam. Īpaši svarīgi ir tas, ka Eiropas tirgū ir vērojama nopietna degvielas krīze, globālajām dīzeļdegvielas cenām sasniedzot rekordaugstu līmeni un iespējamu tālāku kāpumu, un Francijas dīzeļdegvielas cenām pārsniedzot 2,40 EUR.\n\nŅemot vērā šos faktorus, dīzeļdegvielai, neskatoties uz nelielo vietējo pieaugumu pēdējo 7 dienu laikā, spēcīgie signāli par rekordaugstām un potenciāli pieaugošām cenām visā Eiropā liek ieteikt \"pirkt\" ar augstu pārliecību. Gaidīšana rada risku maksāt vēl vairāk. Benzīnam 95 vietējā cena ir atjaunojusies no nesenā krituma, un globālā jēlnafta, lai arī svārstīga, uzrāda atjaunošanās pazīmes. Tāpēc tiek ieteikts \"pirkt\" ar vidēju pārliecību. Benzīnam 98 pašreizējā cena 2,017 EUR/L ir zemākā pēdējo 7 dienu laikā, piedāvājot labu iespēju uzpildīties pirms potenciālā globālā jēlnaftas atjaunošanās pārvēršas vietējo cenu pieaugumā. Tādējādi tiek sniegts \"pirkt\" ieteikums ar vidēju pārliecību.",
+    "en": "Current fuel prices in Latvia show slight increases for Diesel (+0.004 EUR) and Petrol 95 (+0.008 EUR) over the last 7 days, while Petrol 98 remains stable (+0.000 EUR). Looking at the daily history, Diesel and Petrol 95 have seen a rebound from their recent lows around Sept 19-20. Petrol 98, however, is currently at its lowest point in the last week (2.017 EUR/L). Latvian news indicates that fuel prices are a significant concern, with reports of \"fuel prices as high as never before\" on Sept 21st, and economists attributing these high prices to global trends, limiting the state's ability to intervene.\n\nThe global oil market presents a mixed picture. On one hand, there were reports of crude oil prices falling for three consecutive sessions, with Brent settling at $103.87 and WTI dropping below $100 on Sept 21st, partly due to expectations of Saudi supply recovery and hopes of a US-Iran ceasefire deal. However, more recent news from Sept 22nd indicates that WTI and Brent crude rebounded, with Brent rising to $101, despite ongoing US-Iran talk hopes. This suggests volatility but a potential for upward movement. Crucially, the European market is experiencing a severe fuel crisis, with global diesel prices hitting record highs and further rises possible, and French diesel prices topping €2.40.\n\nGiven these factors, for diesel, despite the slight local increase over 7 days, the strong signals of record-high and potentially rising prices across Europe make a \"buy\" recommendation highly confident. Waiting risks paying even more. For petrol 95, the local price has rebounded from a recent low, and global crude, while volatile, shows signs of rebound. Therefore, \"buy\" is recommended with medium confidence. For petrol 98, the current price of 2.017 EUR/L is the lowest in the past 7 days, offering a good opportunity to fill up before potential global crude rebounds translate into local price increases. Thus, a \"buy\" recommendation with medium confidence is given.",
+    "ru": "Текущие цены на топливо в Латвии показывают небольшой рост для дизельного топлива (+0,004 EUR) и бензина 95 (+0,008 EUR) за последние 7 дней, в то время как цена на бензин 98 остается стабильной (+0,000 EUR). Анализ ежедневной истории цен показывает, что цены на дизельное топливо и бензин 95 восстановились после недавних минимумов, зафиксированных примерно 19-20 сентября. Бензин 98, однако, в настоящее время находится на самом низком уровне за последнюю неделю (2,017 EUR/л). Латвийские новости указывают на то, что цены на топливо являются серьезной проблемой, с сообщениями о «самых высоких ценах на топливо за всю историю» 21 сентября, и экономисты связывают эти высокие цены с мировыми тенденциями, ограничивая возможности государства по вмешательству.\n\nМировой нефтяной рынок представляет собой смешанную картину. С одной стороны, были сообщения о падении цен на сырую нефть в течение трех последовательных сессий, при этом Brent остановилась на уровне 103,87 доллара, а WTI опустилась ниже 100 долларов 21 сентября, отчасти из-за ожиданий восстановления поставок из Саудовской Аравии и надежд на сделку о прекращении огня между США и Ираном. Однако более свежие новости от 22 сентября указывают на то, что цены на Brent и WTI восстановились, при этом Brent поднялась до 101 доллара, несмотря на продолжающиеся переговоры между США и Ираном. Это указывает на волатильность, но также и на потенциал роста цен. Крайне важно, что европейский рынок переживает серьезный топливный кризис, при этом мировые цены на дизельное топливо достигают рекордных максимумов и возможен дальнейший рост, а цены на дизельное топливо во Франции превышают 2,40 евро.\n\nУчитывая эти факторы, для дизельного топлива, несмотря на небольшой местный рост за 7 дней, сильные сигналы о рекордно высоких и потенциально растущих ценах по всей Европе делают рекомендацию «покупать» очень уверенной. Ожидание рискует привести к еще большим затратам. Для бензина 95 местная цена восстановилась после недавнего минимума, а мировая сырая нефть, хотя и волатильна, показывает признаки восстановления. Поэтому рекомендуется «покупать» со средней уверенностью. Для бензина 98 текущая цена 2,017 EUR/л является самой низкой за последние 7 дней, что дает хорошую возможность заправиться до того, как потенциальное восстановление мировых цен на сырую нефть приведет к росту местных цен. Таким образом, дается рекомендация «покупать» со средней уверенностью."
   },
   "sources": [
     {
-      "title": "Brent Crude Rises to $101 as US-Iran Talks in Focus - HDFC Sky",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNeGNxbWlVWE5jcVk4UlBxTFNGUjR6dHBoeE9FVG5ycXZfRGx0Z0NoZmEycmJoMWQ2YTlySF8tSFZWN3luWXBHQUo0S2t3eFJLZ21BdEVOTnBGelItdDhlV1kxR290bVlxdi1MLS00d0JtUTQ3S1dJd21YMk1vTDJ4by1mT0NfUi1GU3loYTM1U1JmZVFtclpucjAzalpvaEtZU3B6YnpCaDc1TWpCa3JmaVlOeXlzUWU1bmFBSE85aEpPVnFvUG5QSHBsUGhDOG16MTJBQXJ1M2dfVUd4UTdFaEh1M0pyWmFm?oc=5",
-      "published_at": "2026-09-22T04:07:34+00:00"
+      "title": "Latvia is looking for a way to reduce fuel prices: how much drivers can save - Inbox.eu",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOeHhpWVZ4QlR4MkVqeDdhQXlwMmhYemNkRF9yUHdtZ3Rlb1dBdldrNkhMQzdkNGpKUjZDc1VMNTQxU3hVVmNVWWI3ZkFCbndzWC1VTVhKQ09lTndGYWhxVVE4X3B2VEZfZk5EbXR6QUljVGZFS2puVFNFTHl4V2Q2X3hvVEVDTExQWldad1A3Q1Ffc1lqS0Z3T1NocjZEa1lYUlZhalgxX2dmUE1FX2FxdjZtRzNSaDI3?oc=5",
+      "published_at": "2026-09-22T11:00:41+00:00"
+    },
+    {
+      "title": "Vai krīzes situācijā ar degvielas apriti kritiskajai infrastruktūrai viss būs kārtībā? - LA.LV",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPZDJRd3JLcEEyd2wzM2tta1YwNi1BdGFONGV6NzdWUWgwUWxwaTV0eC1WQXpXWHJNb1VwcUdYQWJQNENlUzBDZi1IYzBXS1NBLWJtNm53dlBmZFJoazlGbDFzeExEX3pKQ2x3aG1jTmdRa2owSm1nNmlWY3gyOWxmMkZmZXd1NGlQV3pvNlpiZjdDLUJHeTU2QXoyLV9DTy1YSVBqQ1BzVDJwUTRiMHc?oc=5",
+      "published_at": "2026-09-22T09:52:38+00:00"
+    },
+    {
+      "title": "Kā degvielas cenas Latvijā atšķiras no cenām citās valstīs? - LA.LV",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOYlVTbmFJTXpMMTE4ZllEdV8wd2lDellMTHRMUjgtaTFrU2kwMzlBS3RVYkdaLXppUFg1dXRZSUtxek5MVlZPUW9YelV2U0l4TEJqUE9kczBzbDBmMWNtaUxHRS1qc243NlFrSjNEcDluSE9HUUhzMEVQV2ZhSjVYVTF3VFh0b0dMaEE?oc=5",
+      "published_at": "2026-09-22T08:54:09+00:00"
     },
     {
       "title": "Oil Price Forecast: WTI and Brent Rebound Despite U.S.-Iran Talk Hopes - FXEmpire",
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOY3IyckxlSGN0XzVVdTdfZHljalBhMkRHZWc4dVI0SjRiOGlPSTRnSnBYSkNIQ3lfNUNneUlGMzFIYk13MTlQblVUeWRwQ2FicTRtLWtvN3NIbTVNQmtBblYzNEJ4UEFvTERmb1hpSHdoRW1TT093RTVkVHJTaEliU0ptZmxOYVpwekFmUGZLem9HNFlXamdQNEpfRnJqZU9vWE9FSl9fOFd3MndzSXU1WDNQc05qTGVxZzZF?oc=5",
-      "published_at": "2026-09-22T04:03:39+00:00"
+      "published_at": "2026-09-22T06:48:42+00:00"
     },
     {
-      "title": "Natural Gas, WTI Oil, Brent Oil Forecasts – Oil Tests New Lows As Traders Bet Trump Could Talk To Iranian President - FXEmpire",
-      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPZzVfZU5IQ0VRbkMtejZfODlhVUtBWjZ4WFJQcXFmbjl5Z2o3eVBMWTZWX09ETzg2VEVNM1RlbFRWZ0JwaWxhY3N3WjFnQWVrSE9xTElSUm1DWUZQNUx4SWJIRWVGbWhQX3NxMmhmcll0WENYMmFxLUdLd2xSR3lCMko0OUFsWW04eGM1aFpFUnFrekk5NU4wUjFKaUJlVWZoWjRiY1lKbEtWaHp0dFYzeXJsdDhCQng4bDVNdS1MMkEtdUthVjJ2eGFTaXJPQ2pMaTBiYkJmZTI5T3BOWUN0X0tybm1WdHE0TTdRMzZYYzVWY2RX?oc=5",
-      "published_at": "2026-09-22T01:12:45+00:00"
-    },
-    {
-      "title": "Oil Prices Fall for Third Consecutive Session Amid Expectations of Saudi Supply Recovery, Brent Settles at $103.87 and November WTI Drops to $96.08 - CPG Click Oil and Gas",
-      "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxNOXE0cWpOUkJ5SkowRGo3T0M1YUkwd2tqcXpoUldTY1k0bjBNR0ZJV0NQY19CYkgtYmdDTFU1RkNrUUM0dmRhNVpmZG9saEhzM2FPTi11V3dfR0FvRm4xX2tFek0zLUtqc0tyaEFkNnByVFV6eEhzWjQwWm5ldlEtWE1PckJFckJVVjNrWFRObnVlMkkwWEJkRXpaeEZoX3Y0VExyVWhuWmZqS3ZCRjdtVDhpQ0FBQ0J2SFpKazdMaWQ2ZjlHajdHOGhhdG1kbDZfaGhmNEl3a19pSEsyRVhLQmpPRDBpUG05akZ3Q1NYLXJlV3c3X2F6aE9rWm1SSGFSNU8wMUdSdV9xYXlZ?oc=5",
-      "published_at": "2026-09-21T23:21:00+00:00"
-    },
-    {
-      "title": "Global crude oil prices surged - News On AIR",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBlcDBycXp3TzV0ZFJfaFNIV25SdkxwYnJRS0wwdVM4YlE0am92cnpHQXVUaG90MlA0SHN1RkxXMXk2bWFDWmFHX0FGYWVnZ1dOUVJNRDV0d2ZncnQ4T1NOR28teGgtZmc?oc=5",
-      "published_at": "2026-09-21T22:31:48+00:00"
+      "title": "Oil Prices Fall as Market Awaits Possible US-Iran Ceasefire Deal - EnergyNow",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSWlSQ0JySWhtckl3S01IdjNPcndoTTVOUWVSRmRXLWw2b1U3R3hZeTdwcFM4S1pxNnRVa2dPMXV5Vk9SZWNXaEsyWVYtd2hTZkNBXy1SbjRiaFRFT2cxekVUbTZFXzY1LXJEMXA2WkNVdXhMVnBzbGdNSllPdjlmcS1DMzZTQmo1bDl3dGJIWFhDUzhtUDN1bEV3?oc=5",
+      "published_at": "2026-09-22T06:15:41+00:00"
     }
   ],
-  "generated_at": "2026-09-22T07:09:46.742974+00:00",
+  "generated_at": "2026-09-22T13:00:44.797230+00:00",
   "prices_snapshot": {
-    "diesel": 2.187,
-    "petrol_95": 1.988,
-    "petrol_98": 2.067
+    "diesel": 2.167,
+    "petrol_95": 1.956,
+    "petrol_98": 2.017
   }
 }
