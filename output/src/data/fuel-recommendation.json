@@ -1,84 +1,84 @@
 {
   "diesel": {
-    "recommendation": "buy",
-    "confidence": "medium",
+    "recommendation": "wait",
+    "confidence": "high",
     "summary": {
-      "lv": "Dīzeļa cenas stabilas, bet globālais deficīts un spriedze liecina par kāpumu. Izmantojiet akcīzes nodokļa samazinājumu.",
-      "en": "Diesel prices stable, but global shortage and tensions suggest rises. Take advantage of the excise tax cut.",
-      "ru": "Цены на дизель стабильны, но глобальный дефицит и напряженность указывают на рост. Воспользуйтесь снижением акциза."
+      "lv": "Latvijā tiek samazināti akcīzes nodokļi dīzeļdegvielai, kas drīzumā varētu pazemināt cenas. Pagaidiet.",
+      "en": "Latvia is cutting excise taxes on diesel, which could lead to lower prices soon. Wait.",
+      "ru": "В Латвии снижают акцизы на дизельное топливо, что может привести к снижению цен в ближайшее время. Подождите."
     }
   },
   "petrol_95": {
-    "recommendation": "buy",
-    "confidence": "medium",
+    "recommendation": "wait",
+    "confidence": "high",
     "summary": {
-      "lv": "Benzīna 95 cenas stabilas. Globālais jēlnaftas kāpums un akcīzes nodokļa samazinājums padara šo brīdi izdevīgu uzpildei.",
-      "en": "Petrol 95 prices stable. Global crude oil increases and excise tax cut make this a good time to fill up.",
-      "ru": "Цены на бензин 95 стабильны. Рост мировых цен на нефть и снижение акциза делают этот момент выгодным для заправки."
+      "lv": "Latvijā tiek samazināti akcīzes nodokļi benzīnam, un cenas ir stabilas/krītošas. Ieteicams pagaidīt.",
+      "en": "Latvia is cutting excise taxes on gasoline, and prices are stable/falling. It's advisable to wait.",
+      "ru": "В Латвии снижают акцизы на бензин, и цены стабильны/падают. Рекомендуется подождать."
     }
   },
   "petrol_98": {
-    "recommendation": "buy",
-    "confidence": "medium",
+    "recommendation": "wait",
+    "confidence": "high",
     "summary": {
-      "lv": "Benzīna 98 cenas stabilas. Globālais jēlnaftas kāpums un akcīzes nodokļa samazinājums padara šo brīdi izdevīgu uzpildei.",
-      "en": "Petrol 98 prices stable. Global crude oil increases and excise tax cut make this a good time to fill up.",
-      "ru": "Цены на бензин 98 стабильны. Рост мировых цен на нефть и снижение акциза делают этот момент выгодным для заправки."
+      "lv": "Latvijā tiek samazināti akcīzes nodokļi benzīnam, un cenas ir stabilas/krītošas. Ieteicams pagaidīt.",
+      "en": "Latvia is cutting excise taxes on gasoline, and prices are stable/falling. It's advisable to wait.",
+      "ru": "В Латвии снижают акцизы на бензин, и цены стабильны/падают. Рекомендуется подождать."
     }
   },
   "factors": [
     {
-      "lv": "Latvija samazina akcīzes nodokli benzīnam un dīzeļdegvielai, piedāvājot vietēju cenu atvieglojumu.",
-      "en": "Latvia is cutting excise taxes on gasoline and diesel fuel, offering local price relief.",
-      "ru": "Латвия снижает акцизные налоги на бензин и дизельное топливо, предлагая местное снижение цен."
+      "lv": "Latvijā tiek samazināti akcīzes nodokļi dīzeļdegvielai un benzīnam, kā ziņoja Delfi (24.09.2026).",
+      "en": "Latvia is cutting excise taxes on diesel and gasoline, as reported by Delfi (2026-09-24).",
+      "ru": "В Латвии снижают акцизы на дизельное топливо и бензин, как сообщает Delfi (24.09.2026)."
     },
     {
-      "lv": "Globālās jēlnaftas cenas (Brent) pārsniedza 106 USD par barelu Houthi uzbrukumu un Hormuza šauruma bažu dēļ.",
-      "en": "Global crude oil prices (Brent) surged above $106 per barrel due to Houthi attacks and Hormuz fears.",
-      "ru": "Мировые цены на сырую нефть (Brent) выросли выше 106 долларов за баррель из-за атак хуситов и опасений по поводу Ормузского пролива."
+      "lv": "Jēlnaftas cenas 25. septembrī samazinājās, cerot uz ASV un Irānas pamieru, lai gan 24. septembrī tās pieauga virs 106 USD par barelu.",
+      "en": "Crude oil prices slipped on September 25th on US-Iran truce hopes, after surging above $106 a barrel on September 24th.",
+      "ru": "Цены на сырую нефть 25 сентября снизились на фоне надежд на перемирие между США и Ираном, хотя 24 сентября они выросли выше $106 за баррель."
     },
     {
-      "lv": "Globālais dīzeļdegvielas deficīts veicina cenu kāpumu, vidējai ES dīzeļa cenai sasniedzot rekordlielus 2,23 EUR/L.",
-      "en": "A global diesel shortage is contributing to upward price pressure, with average EU diesel prices hitting a record €2.23/L.",
-      "ru": "Глобальный дефицит дизельного топлива способствует росту цен, при этом средняя цена на дизель в ЕС достигла рекордных 2,23 евро/литр."
+      "lv": "Notiekošie ģeopolitiskie riski, piemēram, Houthi uzbrukumi un Irānas karš, uztur augstu spiedienu uz cenām.",
+      "en": "Ongoing geopolitical risks, such as Houthi attacks and the Iran war, maintain high underlying price pressure.",
+      "ru": "Продолжающиеся геополитические риски, такие как атаки хуситов и война в Иране, поддерживают высокое базовое ценовое давление."
     }
   ],
   "analysis": {
-    "lv": "Degvielas cenas Latvijā pēdējo septiņu dienu laikā uzrāda jaukas tendences. Dīzeļdegvielas cena ir pieaugusi par 0,023 EUR, sasniedzot 2,156 EUR/L, lai gan pēdējās divās dienās tā ir stabilizējusies. Benzīna 95 un 98 cenas ir bijušas salīdzinoši stabilas, pieaugot attiecīgi par 0,005 EUR un 0,006 EUR. Svarīgi ir atzīmēt, ka Latvija ir paziņojusi par akcīzes nodokļa samazināšanu benzīnam un dīzeļdegvielai, kas varētu piedāvāt īslaicīgu atvieglojumu vietējām cenām.\n\nGlobālajā tirgū jēlnaftas cenas ir ļoti svārstīgas, taču ar izteiktu tendenci uz kāpumu. Brent jēlnaftas cena nesen pārsniedza 106 USD par barelu, ko veicināja Houthi uzbrukumi Saūda Arābijai un bažas par Hormuza šaurumu. Lai gan ir bijušas ziņas par ASV un Irānas sarunām, kas īslaicīgi mazināja bažas, ģeopolitiskā spriedze Tuvajos Austrumos joprojām ir galvenais faktors, kas uztur augstu cenu spiedienu.\n\nĪpaši satraucoša ir situācija ar dīzeļdegvielu. Ir vērojams globāls dīzeļdegvielas deficīts, un vidējā dīzeļdegvielas cena Eiropas Savienībā ir sasniegusi rekordlielus 2,23 EUR/L, kas ir augstāk nekā pašreizējā cena Latvijā. Tas liecina, ka, neskatoties uz vietējo akcīzes nodokļa samazinājumu, globālie faktori var drīzumā izraisīt cenu kāpumu arī Latvijā. Tādēļ, ņemot vērā vietējo nodokļu atvieglojumu un gaidāmo globālo spiedienu, šis brīdis varētu būt izdevīgs uzpildei.",
-    "en": "Fuel prices in Latvia have shown mixed trends over the last seven days. Diesel prices have risen by 0.023 EUR to 2.156 EUR/L, although they have stabilized over the past two days. Petrol 95 and 98 prices have been relatively stable, increasing by 0.005 EUR and 0.006 EUR respectively. Importantly, Latvia has announced a cut in excise taxes on both gasoline and diesel fuel, which could offer temporary relief to local prices.\n\nIn the global market, crude oil prices have been highly volatile but with a clear upward bias. Brent crude recently surged above $106 per barrel, driven by Houthi attacks on Saudi Arabia and fears regarding the Strait of Hormuz. While there have been reports of U.S.-Iran talks temporarily easing concerns, geopolitical tensions in the Middle East remain a primary factor maintaining upward price pressure.\n\nThe situation with diesel fuel is particularly concerning. There is a global diesel shortage, and the average diesel price in the European Union has hit a record €2.23/L, which is higher than the current price in Latvia. This suggests that despite the local excise tax cut, global factors could soon lead to price increases in Latvia. Therefore, considering the local tax relief and anticipated global pressures, this moment might be opportune for refueling.",
-    "ru": "Цены на топливо в Латвии за последние семь дней демонстрируют смешанные тенденции. Цена на дизельное топливо выросла на 0,023 евро, достигнув 2,156 евро/литр, хотя за последние два дня она стабилизировалась. Цены на бензин 95 и 98 были относительно стабильными, увеличившись на 0,005 евро и 0,006 евро соответственно. Важно отметить, что Латвия объявила о снижении акцизных налогов на бензин и дизельное топливо, что может временно облегчить местные цены.\n\nНа мировом рынке цены на сырую нефть были крайне волатильными, но с явной тенденцией к росту. Нефть марки Brent недавно превысила 106 долларов за баррель, что было вызвано атаками хуситов на Саудовскую Аравию и опасениями по поводу Ормузского пролива. Хотя были сообщения о переговорах между США и Ираном, временно ослабляющих опасения, геополитическая напряженность на Ближнем Востоке остается основным фактором, поддерживающим ценовое давление.\n\nОсобую тревогу вызывает ситуация с дизельным топливом. Наблюдается глобальный дефицит дизельного топлива, и средняя цена на дизель в Европейском Союзе достигла рекордных 2,23 евро/литр, что выше текущей цены в Латвии. Это говорит о том, что, несмотря на местное снижение акцизного налога, глобальные факторы вскоре могут привести к росту цен и в Латвии. Поэтому, учитывая местное налоговое послабление и ожидаемое глобальное давление, этот момент может быть благоприятным для заправки."
+    "lv": "Pašreizējā situācija Latvijas degvielas tirgū liecina par gaidāmu cenu kritumu, pateicoties valdības lēmumam samazināt akcīzes nodokļus dīzeļdegvielai un benzīnam. Lai gan dīzeļdegvielas cena pēdējo 7 dienu laikā ir uzrādījusi nelielu pieaugumu (+0.012 EUR), jaunākās ziņas par akcīzes nodokļu samazināšanu (UA.NEWS, 24.09.2026) ir spēcīgs signāls par cenu korekciju uz leju. Benzīna cenas (95 un 98) pēdējā nedēļā ir bijušas stabilas vai ar nelielu kritumu, kas kopā ar nodokļu samazināšanu padara gaidīšanu par saprātīgu stratēģiju.\n\nGlobālajā tirgū jēlnaftas cenas pēdējās dienās ir bijušas svārstīgas. Pēc strauja kāpuma 24. septembrī, kad Brent jēlnafta pārsniedza 106 USD par barelu, reaģējot uz Hormuzas šauruma bažām un piegādes riskiem, 25. septembrī cenas nedaudz samazinājās, pateicoties cerībām uz ASV un Irānas pamieru. Tomēr ģeopolitiskā spriedze Tuvajos Austrumos un Ukrainā joprojām ir augsta, ko apliecina Houthi uzbrukumi Saūda Arābijai, uzturot augstu riska piemaksu.\n\nŅemot vērā gan vietējos, gan globālos faktorus, Latvijas autovadītājiem ieteicams pagaidīt ar degvielas uzpildi. Akcīzes nodokļu samazināšana ir tiešs faktors, kas ietekmēs mazumtirdzniecības cenas, un šī ietekme drīzumā būtu jūtama. Lai gan globālās jēlnaftas cenas ir nestabilas, nesenais kritums un vietējā nodokļu politika norāda uz iespēju iegādāties degvielu par zemāku cenu tuvākajā nākotnē.",
+    "en": "The current situation in the Latvian fuel market suggests an impending price drop, primarily due to the government's decision to cut excise taxes on diesel and gasoline. Although diesel prices showed a slight increase (+0.012 EUR over 7 days), the latest news regarding excise tax reductions (UA.NEWS, 2026-09-24) is a strong signal for a downward price correction. Gasoline prices (95 and 98) have been stable or slightly falling over the past week, which, combined with the tax cuts, makes waiting a reasonable strategy.\n\nIn the global market, crude oil prices have been volatile in recent days. After a sharp surge on September 24th, when Brent crude exceeded $106 per barrel in response to Strait of Hormuz concerns and supply risks, prices slightly slipped on September 25th due to hopes for a US-Iran truce. However, geopolitical tensions in the Middle East and Ukraine remain high, as evidenced by Houthi attacks on Saudi Arabia, maintaining a high-risk premium.\n\nConsidering both local and global factors, Latvian drivers are advised to wait before filling up. The reduction in excise taxes is a direct factor that will impact retail prices, and this effect should be felt soon. While global crude oil prices are unstable, the recent slip and local tax policy indicate an opportunity to purchase fuel at a lower price in the near future.",
+    "ru": "Текущая ситуация на латвийском топливном рынке предполагает скорое снижение цен, в первую очередь, из-за решения правительства сократить акцизы на дизельное топливо и бензин. Хотя цена на дизельное топливо за последние 7 дней показала небольшой рост (+0.012 EUR), последние новости о снижении акцизов (UA.NEWS, 24.09.2026) являются сильным сигналом к коррекции цен в сторону понижения. Цены на бензин (95 и 98) за последнюю неделю были стабильными или демонстрировали небольшое падение, что в сочетании со снижением налогов делает ожидание разумной стратегией.\n\nНа мировом рынке цены на сырую нефть в последние дни были волатильными. После резкого роста 24 сентября, когда нефть марки Brent превысила 106 долларов за баррель в ответ на опасения по поводу Ормузского пролива и рисков поставок, 25 сентября цены немного снизились благодаря надеждам на перемирие между США и Ираном. Однако геополитическая напряженность на Ближнем Востоке и в Украине остается высокой, о чем свидетельствуют атаки хуситов на Саудовскую Аравию, поддерживая высокую премию за риск.\n\nУчитывая как местные, так и глобальные факторы, латвийским водителям рекомендуется подождать с заправкой. Снижение акцизов является прямым фактором, который повлияет на розничные цены, и этот эффект должен быть ощутим в ближайшее время. Хотя мировые цены на сырую нефть нестабильны, недавнее снижение и местная налоговая политика указывают на возможность приобрести топливо по более низкой цене в ближайшем будущем."
   },
   "sources": [
+    {
+      "title": "How European governments are trying to ease the fuel price shock - AOL.co.uk",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOUkVrNWh6ZERjWjFtVTRBSjFwUXJMMUtPcXFNVDBrb25DOGl6dTMxQUZhejRlYXJUTFFScHBna2RTcTQ3dk44MUFMM1lobnpGZ1ItdWNyd1B2YlNRclNla1NEdVZzQkVGV1MtaVZ6Um9ZSDNnTHFVeDM4c05qWmVlUWFBUnZaNnhUeDVV?oc=5",
+      "published_at": "2026-09-25T06:51:00+00:00"
+    },
     {
       "title": "Europe rolls out fuel relief as Iran war and Ukraine push energy costs up - India Today",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQZkFCNm90VUxBeGg3eGdvelBTNDluQVZNSEN4bFBhaTk3cmtSell5b0FneWROdWo5MERrX2lXWWZ6ckFOU1dYYllKVVdYSVgwMVhYMW9MbU55aEZGSmFwSHNVMXJJVTNEdlkybDROaURDclV4NWc2eG1odHBMVmExRDRDWUEwdmlRWUNaXzV6cEVUOWVGYS1uSDNNZXhLMGFUQjBlYmd6enZyekQxekdNQ2c1Y1VUSmJSbXfSAb8BQVVfeXFMTV9faXhZQXRRVW1DbHljQ01sVkJ4MVBGbV9xNzhYS1NDa3dpT3pxSHBsMzU0Qm1Va1ZIbm9ZV2poeGdMOVZtT0RJV2kzRVhmdkc0MUZISW5LQk1TTk1OaGlYQUhkazkwZURpMGVRanVxejZuaDVDRWZKVnBfdTFQbkF6RjEtUUs1SUVpdDdrcmdDLXNVRktMa0pTYmxJOTRDYWhFZ3FQV08xTFZSZGRuMVF6ZVZab1BjWFprNzBLUkk?oc=5",
       "published_at": "2026-09-25T06:34:37+00:00"
     },
     {
-      "title": "Europe uses subsidies, taxes and policy pauses to offset pain of high fuel prices - Yahoo",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQaHlFZm1XeElpRlRZN1lGLVVyYUxzbVlKTWdQQ1c3LW1HSWxmSXJmV0tDYXRSMG1NU2dXMEZJVU9vWmRTSUo2a05zakg0TjRSemJpZWoxOXQwZll2RzZ6VFBTaDY1czJhMF9BcVhydGxEM1lMOHdNcmhPcFZoY185RmxmdUlIQmhKRWEwWlBKcDdXbmtjMHc?oc=5",
+      "title": "Europe uses subsidies, taxes and policy pauses to offset pain of high fuel prices - independent.co.uk",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxON3hiWWlwZ2FsOGpOV0NjYjl5aHBPMEVnTVdCMDZfWkZEWUxIbzlsOHBwdURLaXZtTDVCbGNXM1BhUzNoa2NwSlE3NWMySklwLU0yUkRWblVrdDREdnh4Yl8xZktfY21tdk9MUnBXdmtkRHVJOC1oNnlVbnhKb2NuSnQ0aTdIRWowMThabXFJLVRHbVROTWEzM28wWUdidw?oc=5",
       "published_at": "2026-09-25T06:04:00+00:00"
     },
     {
-      "title": "Brent, WTI Oil Prices Slip as U.S.-Iran Talks Ease Fears, Houthi Attacks Keep Risks High - apacnewsnetwork.com",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQZjgtZUMzalZjLU5qN05KSWIxZzY3TF8wQnJMand3Z1ZjelAtM2VKNVZPR0EzalhDRmgzMWJ6TGJubllLbV9MWnNBSnBrMm1Gejkwdk55QVBnU1JXcHVKR3lJeGZhOVFaeHRDQmJYTXJyUzhEMkZDQVBkekdMa1VaVi11UjJiZnJ2V0NxRlAtQQ?oc=5",
-      "published_at": "2026-09-25T05:22:46+00:00"
+      "title": "Crude Oil Prices Today September 25, 2026: Brent, WTI and Iran Truce Outlook - Kalkine India",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeDRlNlVaR0lUWjM2djl3bGNIbDFrcVlpY2EzTjZGWGpGRmxOazlGRkxybW9YX2dlTjRDcjU1X3FVX2NpelM2bTQ1TFpoUW1JcWZuRVVUQTRqS0MtaXdUWHFCeGpXd3g0b3FNSWE1MmpoOEl3U2RRb3YwVEtqVjZCQnNFRVpKeUVBREV2TTNwV2JHNExaYzhOYVl0Y2dCTlpJM0haUjNhemVQa0VWS3pfdnRVVVViTTB4elo3QQ?oc=5",
+      "published_at": "2026-09-25T05:25:00+00:00"
     },
     {
-      "title": "Natural Gas, WTI Oil, Brent Oil Forecasts – Oil Rallies As Houthis Attack Saudi Arabia - FXEmpire",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxORUNUSXQyakhVZnlDWGFlbzhHcWVVY2lUeWVlRkFzY0RuSXNJck9JdWhMbzExRm5xYUtfbDFVRjhkWVBoRXF3MVFsaTlFYXF2UGRKYmMwRUZ6eW1tYUF1a3ZRWDdUc05jb0FWMHRVREhYMUlxMXE0QVcySEhzeTFIeV9DbDNqS1ZMbXJteGM5R1lOQnJsOVhIYm5OcHVmNXFReUN3M05ocGZ5czJQUlFNYnY1WlotcDFRM1NoVDFJN1lPZlZFbG5VNFdHWkVvZw?oc=5",
-      "published_at": "2026-09-25T02:04:00+00:00"
-    },
-    {
-      "title": "Oil prices fall as markets look to Iran truce, but remain wary of attacks on oil facilities - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQV3EzX3oydnQxRk5Ld1BKbk82ek14ZVdyLVpTdldjdEpqeDJfTVZ2Q0F1TnhvaWlhR1p0Z3hScDV0S2Z1UFR5OXhKSWk3NmtqTzd0SkJfa2RLRFpOOUlEcE5mR1d4Z21Td2FCQVZqNHV1eDloQkplT1NHaHhyTDlqOG5DYlFFdnRERThxNU0yX29LcTRyal9pMHQ4ZzNoU0VKZkdHN2hFYjhCZUpZZ3d2am11SDJYYVBiN0JxWVBtczNRYkh1?oc=5",
-      "published_at": "2026-09-25T01:11:00+00:00"
+      "title": "Crude Oil Price Today September 25, 2026: Brent at $105, WTI, Middle East Conflict and Outlook - Kalkine India",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOSUEyX0VSN29PY0hCYlVPQll2OVpOSGp5RWdLaXdXSFZXMC1JaFFya0dpX1B6ZkdTRHRsS3RWMnlpTWpqd3U1bDVhM3VhZGQ3b2FJOEV4eU5qY2FQQ1VIT1lEbE56ekJlaWpFYWwwaGJndFV0RTdoNDJNYTR3T1BKRHZoU09oVmFtSWd4RjJkdmNaQU13THdYdDQ0dHBSeHdmS2lXbHlNVUhCZ3J4SWwxTlR3cGFUcTkxd2xrZmxieTNtc2RicW40?oc=5",
+      "published_at": "2026-09-25T05:25:00+00:00"
     }
   ],
-  "generated_at": "2026-09-25T06:58:26.653369+00:00",
+  "generated_at": "2026-09-25T13:10:14.974694+00:00",
   "prices_snapshot": {
-    "diesel": 2.156,
-    "petrol_95": 1.944,
-    "petrol_98": 2.023
+    "diesel": 2.134,
+    "petrol_95": 1.928,
+    "petrol_98": 2.006
   }
 }
