@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-09-30T07:47:43.283763+00:00",
+  "scraped_at": "2026-09-30T14:28:57.333638+00:00",
   "stations": [
     {
       "brand": "Vir\u0161i",
@@ -58,28 +58,28 @@
           "fuel_type": "petrol_95",
           "fuel_name": "95miles",
           "category": "standard",
-          "price": 2.094,
+          "price": 2.016,
           "currency": "EUR"
         },
         {
           "fuel_type": "petrol_98",
           "fuel_name": "98miles+",
           "category": "standard",
-          "price": 2.164,
+          "price": 2.086,
           "currency": "EUR"
         },
         {
           "fuel_type": "diesel",
           "fuel_name": "Dmiles",
           "category": "standard",
-          "price": 2.244,
+          "price": 2.181,
           "currency": "EUR"
         },
         {
           "fuel_type": "premium_diesel",
           "fuel_name": "Dmiles+",
           "category": "premium",
-          "price": 2.374,
+          "price": 2.311,
           "currency": "EUR"
         },
         {
@@ -174,8 +174,37 @@
     {
       "brand": "Kool",
       "key": "kool",
-      "fuel_entries": [],
-      "error": "HTTPSConnectionPool(host='kool.lv', port=443): Read timed out. (read timeout=20)"
+      "fuel_entries": [
+        {
+          "fuel_type": "petrol_95",
+          "fuel_name": "Kool 95",
+          "category": "standard",
+          "price": 1.997,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "petrol_98",
+          "fuel_name": "Kool 98",
+          "category": "standard",
+          "price": 2.067,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "diesel",
+          "fuel_name": "Kool Diesel",
+          "category": "standard",
+          "price": 2.1677,
+          "currency": "EUR"
+        },
+        {
+          "fuel_type": "premium_diesel",
+          "fuel_name": "Kool Premium DD",
+          "category": "premium",
+          "price": 2.217,
+          "currency": "EUR"
+        }
+      ],
+      "error": null
     }
   ]
 }
