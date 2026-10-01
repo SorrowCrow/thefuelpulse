@@ -1,84 +1,84 @@
 {
   "diesel": {
-    "recommendation": "wait",
-    "confidence": "high",
+    "recommendation": "buy",
+    "confidence": "medium",
     "summary": {
-      "lv": "Cenas ir tuvu rekordaugstam līmenim, taču no ceturtdienas samazinās akcīzes nodokli, kas varētu tās pazemināt.",
-      "en": "Prices are near record highs, but an excise tax reduction effective from Thursday is expected to lower them.",
-      "ru": "Цены близки к рекордно высоким, но с четверга снижается акцизный налог, что должно привести к их падению."
+      "lv": "Cenas samazinājās akcīzes nodokļa dēļ. Pildiet tagad, kamēr cenas ir zemākas.",
+      "en": "Prices fell due to excise tax reduction. Fill up now while prices are lower.",
+      "ru": "Цены снизились из-за акцизного налога. Заправляйтесь сейчас, пока цены ниже."
     }
   },
   "petrol_95": {
-    "recommendation": "wait",
-    "confidence": "high",
+    "recommendation": "buy",
+    "confidence": "medium",
     "summary": {
-      "lv": "Cenas ir augstas, taču no ceturtdienas samazinās akcīzes nodokli, kas varētu tās pazemināt.",
-      "en": "Prices are high, but an excise tax reduction effective from Thursday is expected to lower them.",
-      "ru": "Цены высоки, но с четверга снижается акцизный налог, что должно привести к их падению."
+      "lv": "Akcīzes nodokļa samazinājums izraisīja cenu kritumu. Izmantojiet izdevību.",
+      "en": "Excise tax cut led to price drop. Take advantage of the current dip.",
+      "ru": "Снижение акцизного налога привело к падению цен. Воспользуйтесь возможностью."
     }
   },
   "petrol_98": {
-    "recommendation": "wait",
-    "confidence": "high",
+    "recommendation": "buy",
+    "confidence": "medium",
     "summary": {
-      "lv": "Cenas ir augstas, taču no ceturtdienas samazinās akcīzes nodokli, kas varētu tās pazemināt.",
-      "en": "Prices are high, but an excise tax reduction effective from Thursday is expected to lower them.",
-      "ru": "Цены высоки, но с четверга снижается акцизный налог, что должно привести к их падению."
+      "lv": "Cenas kritušās akcīzes nodokļa dēļ. Ieteicams uzpildīties šodien.",
+      "en": "Prices dropped due to excise tax. Recommended to fill up today.",
+      "ru": "Цены упали из-за акцизного налога. Рекомендуется заправиться сегодня."
     }
   },
   "factors": [
     {
-      "lv": "No ceturtdienas, 30. septembra, Latvijā samazinās akcīzes nodokli degvielai, kas tieši ietekmēs mazumtirdzniecības cenas.",
-      "en": "Effective from Thursday, September 30, Latvia is reducing the excise tax on fuel, which will directly impact retail prices.",
-      "ru": "С четверга, 30 сентября, в Латвии снижается акцизный налог на топливо, что напрямую повлияет на розничные цены."
+      "lv": "Latvijas valdība samazināja akcīzes nodokli degvielai, kas stājās spēkā no ceturtdienas, izraisot cenu kritumu 1. oktobrī.",
+      "en": "Latvian government lowered excise tax on fuel, effective from Thursday, causing prices to drop on October 1st.",
+      "ru": "Правительство Латвии снизило акцизный налог на топливо, вступивший в силу с четверга, что привело к падению цен 1 октября."
     },
     {
-      "lv": "Dīzeļdegvielas cena Latvijā sasniegusi rekordaugstu līmeni (2.218 EUR/L 29. septembrī), un arī benzīna cenas ir augstas.",
-      "en": "Diesel prices in Latvia reached a record high (2.218 EUR/L on Sept 29), with petrol prices also at elevated levels.",
-      "ru": "Цены на дизельное топливо в Латвии достигли рекордного уровня (2.218 EUR/L 29 сентября), цены на бензин также высоки."
+      "lv": "Globālās jēlnaftas cenas ir pretrunīgas, ar ziņām par kritumu (Gulf exports recover) un pieaugumu (Global crude oil prices surged), kā arī bažām par Hormuza šaurumu.",
+      "en": "Global crude oil prices show mixed signals, with reports of falls (Gulf exports recover) and surges (Global crude oil prices surged), alongside concerns about the Strait of Hormuz.",
+      "ru": "Мировые цены на сырую нефть показывают смешанные сигналы, с сообщениями о падении (восстановление экспорта из Персидского залива) и росте (мировые цены на сырую нефть выросли), а также опасениями по поводу Ормузского пролива."
     },
     {
-      "lv": "Globālās jēlnaftas cenas (Brent/WTI) uzrāda svārstības, ar kritumu pēc septembra kāpuma, bet ģeopolitiskā spriedze saglabājas.",
-      "en": "Global crude oil prices (Brent/WTI) show volatility, retreating after September's surge, but geopolitical tensions persist.",
-      "ru": "Мировые цены на сырую нефть (Brent/WTI) демонстрируют волатильность, снижаясь после сентябрьского роста, но геополитическая напряженность сохраняется."
+      "lv": "Latvijas degvielas cenas 1. oktobrī ievērojami kritās pēc tam, kad ap 29.-30. septembri sasniedza rekordaugstu līmeni.",
+      "en": "Latvian fuel prices for all types saw a significant drop on October 1st after reaching record highs around September 29-30.",
+      "ru": "Цены на топливо в Латвии значительно упали 1 октября после достижения рекордных максимумов около 29-30 сентября."
     }
   ],
   "analysis": {
-    "lv": "Latvijas degvielas tirgū pašlaik vērojams cenu kāpums, īpaši dīzeļdegvielai, kas 29. septembrī sasniedza rekordaugstu līmeni – 2.218 EUR/L. Arī benzīna cenas ir būtiski pieaugušas pēdējo septiņu dienu laikā. Šis kāpums rada spiedienu uz autovadītājiem un uzņēmumiem.\n\nTomēr ir gaidāmas pozitīvas izmaiņas. Sākot ar ceturtdienu, 30. septembri, Latvijā stājas spēkā akcīzes nodokļa samazinājums degvielai. Šis lēmums ir tiešs faktors, kas varētu mazināt mazumtirdzniecības cenas degvielas uzpildes stacijās, piedāvājot īstermiņa atvieglojumu.\n\nGlobālajā tirgū jēlnaftas cenas ir svārstīgas. Pēc 14% kāpuma septembrī, Brent un WTI cenas pēdējās dienās ir nedaudz atkāpušās, ko veicināja Saūda Arābijas piegāžu atjaunošana. Tomēr ģeopolitiskā spriedze, īpaši ASV un Irānas konflikts un neskaidrības Hormuza šaurumā, joprojām rada augšupēju spiedienu uz cenām, Brent jēlnaftai saglabājoties tuvu 103 ASV dolāriem par barelu. Neskatoties uz globālajiem riskiem, vietējais akcīzes nodokļa samazinājums ir pietiekami spēcīgs signāls, lai ieteiktu pagaidīt ar degvielas iegādi.",
-    "en": "The Latvian fuel market is currently experiencing rising prices, particularly for diesel, which reached a record high of 2.218 EUR/L on September 29. Petrol prices have also seen significant increases over the past seven days. This surge is putting pressure on drivers and businesses alike.\n\nHowever, a positive change is on the horizon. Starting from Thursday, September 30, Latvia will implement a reduction in the excise tax on fuel. This decision is a direct factor that is expected to lower retail prices at petrol stations, offering a short-term relief for consumers.\n\nGlobally, crude oil prices are volatile. After a 14% surge in September, Brent and WTI prices have retreated slightly in recent days, partly due to Saudi Arabia restarting loading operations. Nevertheless, geopolitical tensions, particularly the US-Iran conflict and uncertainties in the Strait of Hormuz, continue to exert upward pressure, with Brent crude remaining near $103 per barrel. Despite these global risks, the local excise tax reduction is a strong enough signal to recommend waiting before purchasing fuel.",
-    "ru": "На латвийском рынке топлива в настоящее время наблюдается рост цен, особенно на дизельное топливо, которое 29 сентября достигло рекордного уровня в 2.218 EUR/L. Цены на бензин также значительно выросли за последние семь дней. Этот рост оказывает давление на водителей и предприятия.\n\nОднако ожидаются позитивные изменения. Начиная с четверга, 30 сентября, в Латвии вступает в силу снижение акцизного налога на топливо. Это решение является прямым фактором, который, как ожидается, снизит розничные цены на автозаправочных станциях, предлагая краткосрочное облегчение для потребителей.\n\nНа мировом рынке цены на сырую нефть волатильны. После 14%-го роста в сентябре цены на Brent и WTI немного отступили в последние дни, отчасти из-за возобновления погрузочных операций в Саудовской Аравии. Тем не менее, геополитическая напряженность, особенно конфликт между США и Ираном и неопределенность в Ормузском проливе, продолжает оказывать повышательное давление, при этом нефть Brent остается около 103 долларов за баррель. Несмотря на глобальные риски, местное снижение акцизного налога является достаточно сильным сигналом, чтобы рекомендовать подождать с покупкой топлива."
+    "lv": "Degvielas cenas Latvijā, īpaši dīzelim, sasniedza rekordaugstu līmeni ap 29.-30. septembri. Tomēr 1. oktobrī visiem degvielas veidiem bija vērojams ievērojams kritums. Tas ir tieši saistīts ar valdības lēmumu samazināt akcīzes nodokli, kā ziņo vietējie mediji. Šis samazinājums padara pašreizējās cenas salīdzinoši labvēlīgākas nekā iepriekšējās dienās, piedāvājot autovadītājiem izdevīgu brīdi uzpildīties.\n\nGlobālais jēlnaftas tirgus ir ļoti nestabils. Lai gan daži 1. oktobra ziņojumi liecina par cenu kritumu, ko izraisīja Persijas līča eksporta atjaunošanās un ASV-Irānas sarunas, citi ziņojumi no tās pašas dienas un iepriekšējām dienām uzsver pieaugumus un pastāvīgās bažas par Hormuza šaurumu un ASV-Irānas konfliktu. Brent jēlnaftas cena tika ziņota tuvu 103 ASV dolāriem, kas liecina par augstām pamatcenām. ES arī apsver politikas izmaiņas, lai ierobežotu augošās degvielas cenas.\n\nVietējais akcīzes nodokļa samazinājums nodrošina pagaidu buferi vai cenu samazinājumu Latvijas autovadītājiem. Tomēr globālais tirgus joprojām ir saspringts un pakļauts ģeopolitiskiem riskiem. Lai gan pašreizējās vietējās cenas ir zemākas politikas dēļ, globālā perspektīva liecina, ka bez turpmākas vietējās iejaukšanās cenas varētu atsākt pieaugt, ja globālās jēlnaftas cenas atkal pieaugs. Tāpēc ir ieteicams izmantot pašreizējo kritumu.",
+    "en": "Fuel prices in Latvia, especially for diesel, reached record highs around September 29-30. However, on October 1st, there was a noticeable drop across all fuel types. This is directly attributable to the government's decision to lower the excise tax, as reported by local media. This reduction makes current prices relatively more favorable than in previous days, offering drivers a good moment to fill up.\n\nThe global crude oil market is highly volatile. While some reports on October 1st indicate a fall in prices due to the recovery of Gulf exports and US-Iran talks, other reports from the same day and previous days highlight surges and ongoing concerns about the Strait of Hormuz and the US-Iran conflict. Brent crude was reported near $103, indicating high underlying prices. The EU is also considering policy changes to curb rising fuel prices.\n\nThe local excise tax reduction provides a temporary buffer or reduction in prices for Latvian drivers. However, the global market remains tense and subject to geopolitical risks. While the current local prices are lower due to policy, the global outlook suggests that without further local intervention, prices could resume an upward trend if global crude prices surge again. Therefore, taking advantage of the current dip is advisable.",
+    "ru": "Цены на топливо в Латвии, особенно на дизельное, достигли рекордно высокого уровня примерно 29-30 сентября. Однако 1 октября наблюдалось значительное падение цен на все виды топлива. Это напрямую связано с решением правительства снизить акцизный налог, как сообщают местные СМИ. Это снижение делает текущие цены относительно более выгодными, чем в недавнем прошлом, предлагая водителям благоприятный момент для заправки.\n\nМировой рынок сырой нефти крайне нестабилен. Хотя некоторые сообщения от 1 октября указывают на падение цен из-за восстановления экспорта из Персидского залива и переговоров между США и Ираном, другие сообщения того же дня и предыдущих дней подчеркивают рост цен и постоянные опасения по поводу Ормузского пролива и конфликта между США и Ираном. Цена на нефть Brent сообщалась около 103 долларов США, что указывает на высокие базовые цены. ЕС также рассматривает изменения в политике для сдерживания роста цен на топливо.\n\nСнижение местного акцизного налога обеспечивает временный буфер или снижение цен для латвийских водителей. Однако мировой рынок остается напряженным и подверженным геополитическим рискам. Хотя текущие местные цены ниже из-за политики, глобальный прогноз предполагает, что без дальнейшего местного вмешательства цены могут возобновить рост, если мировые цены на сырую нефть снова поднимутся. Поэтому рекомендуется воспользоваться текущим падением."
   },
   "sources": [
     {
-      "title": "Piedāvājums aug, pieprasījums krīt, bet degvielas cena nesamazinās. Neticami, bet fakts! - Dienas Bizness",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOVDBhcHctdzVodjR0dFpLTHRFV0xJN0FIMFJEYW10NGVzOVEwc0I0cFJFOWhYajZNeXVUbXNURmFSZUJKQ2E2UXV5dXV5cHYxaktJeURYLTNSUXkzNlMwZlg1cUo0VkJoX2RsenZURkp4TFVtR1hPWkpFZFktdEkxUlJYUEYzUVVaeTVwOXN1dU82TGtfZ0gzSUxYZmN3WTZkWTRWbUJBRENIQ28?oc=5",
-      "published_at": "2026-09-30T14:10:26+00:00"
+      "title": "Trump's decision may push fuel prices in Latvia: why authorities lowered the excise tax - Inbox.lv",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPNExNUF9melByV1kwU25rTk9jcktxOF9BdlF6VnBFZFZmUV9uZ2dNaTMzbkNITk1WblhnOEREZGw4Uk1aaXVHOXNZWTdJWGlNOHhlcGNibVVBMlRqYnlzZC00VDJ1am1TVTV3a0tSNzJ5ckp3Rjd3RGtCaFJ5bTJkOXlLQTA4Q0daMmgxYmpDUVBwWGZkdEVXOUJYYWhOeGhsSVBEZDZoMDk0TGltOEFRUlEtTHBtbWdmbllRWGVjWVBWUG5MbU5r?oc=5",
+      "published_at": "2026-10-01T08:01:35+00:00"
     },
     {
-      "title": "WTI and Brent Forecast: Oil Bounces from 50-Day EMA Support - FXEmpire",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNalRXdmR4bUlNMTdEa3FUR19TMlU5Wi14Rk9oemFNOUVXaXYtRVBJel9pNlIyVFAzMy1YLVN4Y041dWZVT0x5b0FRb0tyX0dqU29iSEFfejQ4N0ZUY3VVVC1VUURWbkN2ck5fdmZxYlF0cWxhYUM5ZGlXV3NIM0wxNzhYVURkVlBaTGo1YzlLQXBqRkN2ZUtFaGVNdW4xS0FPWUgwRE1fYUZqZlVtNEE?oc=5",
-      "published_at": "2026-09-30T13:20:54+00:00"
+      "title": "“Vēl kādi 50 centi un likšu auto malā!” Lai arī degvielas cenas šodien sarūk, autovadītāji atklāj savu sāpju slieksni - LA.LV",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPRE5VTncxOElNZUYxOEtEZ21HX0wwcmgyVk9qcDNsSm1vTHB6eWE5Uno3dFR3c29kMWQ3QnNVZkhFVjh1VS13dExSVllWcE5jWmNIUlFuel8xVVUyQUxMTWo5SEVUNGNDNTRTMEJLX3F0QXo2aWhZZ1E4N3Jnb251X1c2ZVVvNldrS1p2NGtmaWZ5eGlnUGZaZmc2V01mdEgxQkl0Yjg0OWh0VktjejQ2dG1Zd2tpNGRFQVNwV1ZWZ0hmTWhjVC1nSGRPaw?oc=5",
+      "published_at": "2026-10-01T07:48:07+00:00"
     },
     {
-      "title": "US-Iran Conflict Drives Europe's Fuel Import Bill to 100 Billion Euros - Tempo.co English",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNaFV4Wmp5MFFwZkJoVEFSdDZZdEtEdk1RNnZHbGNfN3lMMFc0bklGWm0zeDBfMXIxUHJaZjFOY3VvZHZCZjVNZ214V0lWcGxaekJLQzlZenUyeXFFRklKWVFycUVmRVEtTW9GeTViZktTNWFINHZQYlJKcXduU0IwTTR4X3BQeGJWMElxajhWeUJrdmF3NFA4ZjRJdjE0WENJNUlRSw?oc=5",
-      "published_at": "2026-09-30T09:58:04+00:00"
+      "title": "Oil Prices Fall as Gulf Exports Recover, US-Iran Talks - HDFC Sky",
+      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOSThzWjhsTDJBVDgwN25WVjVlU1lFZ1VEV2VfZF9OUHNaZkxILU82UktoNmVydllPNW03SHg0WXkzczBNQUVINndDM2FaY1Z0NVZvdDg5WU5kMndsMVVVZXR2MTdOQmZESFV3UnpmY05BWTdOZXo5QjNyWWUwOXlNd2xnU0NzMGNxZkFTczFFcHV5TTd3VkdwaUotc2JZMVhIWmVXQTRkdU44dU4yM1Q3QnpBUlo1VDJDRHdmb1ZISWg5U3BsSDRWSUExMV9uN3IzOU1LRE5nb3JzMjFxdHRxZ1g5QUNWOVdNQXN1SkZKaHgweTZW?oc=5",
+      "published_at": "2026-10-01T05:32:59+00:00"
     },
     {
-      "title": "Crude Oil Prices: Why Brent, WTI are falling after September’s 14% surge - CNBC TV18",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOcFVxc0tMdHV1dlFOSTc4MC1hU01CcUdiUVB0STFPSnliZGFKcmQ3N093ME41OWJqTUp6MzZNUFZ3LTVLZWRJOGNFaTZ5SVpFQUNWNGtuUHpKc28xR29oQ2RRX2RyVnk2bFNXV25BLUdVVXFpXzhEbk9MbUVTXy1jMEk1eE9KR2daRDNtTTdzUU1nVVRNZ2p0bFRUS256Zkh1MkRvMWhwT2t1bU1OX2FmYVJKY2pkU1VPU1pwaVRIOHg1MjlGeXRXUnZ2NkZ5TGNQcktjLUNR0gHbAUFVX3lxTE1uS2F4cEFMYWd6U3laOEpwN1BVamliLXNrazhTOVhZdElMMEJRYnh5TFQxNS1Jc3RBMlA2WU9xcHNNQ0ptVnZhZzZmVnUxV1hlM1pRNWYwbGdRMnVvN0pLd3RRWXRBT0gtTTlSTm9ZdmZyRUlaUUd2QjNQVUp1UkE4cm5XZzZGTlBwSDhMMFdkOFB0VVViejJ1VS03X1RFUFA5VmNKOHl6MjdESWpSWW9Nbzl6VUROajM5b21zTnQ3WDdzdjM2RHlGZ25xWHRDSl9aaGpXWWFSbDFKVQ?oc=5",
-      "published_at": "2026-09-30T05:47:49+00:00"
+      "title": "Global crude oil prices surged | Akashvani News - News On AIR",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBlcDBycXp3TzV0ZFJfaFNIV25SdkxwYnJRS0wwdVM4YlE0am92cnpHQXVUaG90MlA0SHN1RkxXMXk2bWFDWmFHX0FGYWVnZ1dOUVJNRDV0d2ZncnQ4T1NOR28teGgtZmc?oc=5",
+      "published_at": "2026-10-01T02:04:24+00:00"
     },
     {
-      "title": "No ceturtdienas samazinās akcīzes nodokli degvielai – ko tas nozīmē autovadītājiem - lat.bb.lv",
-      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOWXd0VHR2NVZ6aTgtQ01MYzdwbnBpUVh5ZWU1VDZEMDMzZUhUbTZETVlXa0tiRVJvSmp2X2VzM2lPeWVlMjNIQ0IyU3J3UVdPOGxIRTIyNVUycGFwZFNkUDFhRHNCTmhkZUZKTVZ3M3Z5ZllqdmFwemlkZFFZc1ZTQWphME9PNGZrdHF2VGYwTDVHYl9lTFExRkhBbmJORFQwZ1BuMWR2eFNfSWU5VmJXRTNYTHlCVFBWdGdQQWRWSHVQc0Z0MDJHVmtXcGFfaHRXbXhvUzlEQUN5Q1RiWldNYUhpRmwtRnM3Z3g4M2xPLXd2MDTSAfMBQVVfeXFMTll3dFR0djVWemk4LUNNTGM3cG5waVFYeWVlNVQ2RDAzM2VIVG02RE1ZV2tLYkVSb0pqdl9lczNpT3llZTIzSENCMlNyd1FXTzhsSEUyMjVVMnBhcGRTZFAxYURzQk5oZGVGSk1WdzN2eWZZanZhcHppZGRRWXNWU0FqYTBPTzRma3RxdlRmMEw1R2JfZUxRMUZIQW5iTkRUMGdQbjFkdnhTX0llOVZiV0UzWEx5QlRQVnRnUEFkVkh1UHNGdDAyR1ZrV3BhX2h0V214b1M5REFDeUNUYlpXTWFIaUZsLUZzN2d4ODNsTy13djA0?oc=5",
-      "published_at": "2026-09-30T05:23:24+00:00"
+      "title": "Latvia's airBaltic Faces US Bankruptcy Amid Fuel Price Surge - Global Banking & Finance Review",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOaE5kbzNYQnRPckhSekcyUEFYdGtLc2t2dmQzUVdNUHFlVGdVdzZoejY4SHQ2d2RjLVRGZGcwQkFwN3JsWlFpVFlnbjhzTE1uaTB6VU15dXdEMXU3cm43N2Uwb2VQV1BGc1ZSLURjR2FZVTZkN25FcjU0RVZveUE1WVRJa0JyWkZoOHB2X0xoU2MzOW9lS2dmSg?oc=5",
+      "published_at": "2026-09-30T18:32:35+00:00"
     }
   ],
-  "generated_at": "2026-09-30T14:30:18.334931+00:00",
+  "generated_at": "2026-10-01T08:08:24.490741+00:00",
   "prices_snapshot": {
-    "diesel": 2.185,
-    "petrol_95": 2.004,
-    "petrol_98": 2.083
+    "diesel": 2.147,
+    "petrol_95": 1.969,
+    "petrol_98": 2.047
   }
 }
