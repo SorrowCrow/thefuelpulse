@@ -3,79 +3,84 @@
     "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Dīzeļdegvielas cenas Latvijā strauji krīt, un G7 rezervju atbrīvošana liecina par turpmāku kritumu. Ieteicams pagaidīt.",
-      "en": "Diesel prices in Latvia are falling sharply, and G7 reserve releases suggest further drops. Recommended to wait.",
-      "ru": "Цены на дизельное топливо в Латвии резко падают, а высвобождение резервов G7 указывает на дальнейшее снижение. Рекомендуется подождать."
+      "lv": "Dīzeļdegvielas cenas Latvijā ievērojami krītas G7 rezervju atbrīvošanas un globālo jēlnaftas tendenču dēļ. Pagaidiet vēl.",
+      "en": "Latvian diesel prices are significantly falling due to G7 reserve releases and global crude trends. Wait for further drops.",
+      "ru": "Цены на дизельное топливо в Латвии значительно падают из-за высвобождения резервов G7 и мировых тенденций на сырую нефль. Подождите дальнейшего снижения."
     }
   },
   "petrol_95": {
     "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Benzīna 95 cenas Latvijā samazinās. Globālie faktori, tostarp G7 naftas atbrīvošana, liecina par turpmāku kritumu. Pagaidiet.",
-      "en": "Petrol 95 prices in Latvia are decreasing. Global factors, including G7 oil release, suggest further drops. Wait.",
-      "ru": "Цены на бензин 95 в Латвии снижаются. Глобальные факторы, включая высвобождение нефти G7, указывают на дальнейшее снижение. Подождите."
+      "lv": "Benzīna 95 cenas Latvijā krītas, ietekmējoties no jēlnaftas cenu krituma un pieaugošā piedāvājuma. Pagaidiet vēl.",
+      "en": "Petrol 95 prices are falling in Latvia, influenced by global crude price drops and increased supply. Wait for further reductions.",
+      "ru": "Цены на бензин 95 в Латвии падают под влиянием снижения цен на сырую нефть и увеличения предложения. Подождите дальнейшего снижения."
     }
   },
   "petrol_98": {
     "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Benzīna 98 cenas Latvijā ir kritušās. Globālie naftas tirgus signāli un G7 rīcība liecina par iespējamu turpmāku kritumu. Pagaidiet.",
-      "en": "Petrol 98 prices in Latvia have fallen. Global oil market signals and G7 actions suggest potential for further drops. Wait.",
-      "ru": "Цены на бензин 98 в Латвии упали. Глобальные сигналы нефтяного рынка и действия G7 указывают на потенциальное дальнейшее снижение. Подождите."
+      "lv": "Benzīna 98 cenas Latvijā krītas, ietekmējoties no jēlnaftas cenu krituma un pieaugošā piedāvājuma. Pagaidiet vēl.",
+      "en": "Petrol 98 prices are falling in Latvia, influenced by global crude price drops and increased supply. Wait for further reductions.",
+      "ru": "Цены на бензин 98 в Латвии падают под влиянием снижения цен на сырую нефть и увеличения предложения. Подождите дальнейшего снижения."
     }
   },
   "factors": [
     {
-      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir strauji kritušās par aptuveni 0.08 EUR/L visiem veidiem.",
-      "en": "Fuel prices in Latvia have fallen sharply by approximately 0.08 EUR/L for all types over the last 7 days.",
-      "ru": "Цены на топливо в Латвии резко упали примерно на 0.08 евро/л для всех видов за последние 7 дней."
+      "lv": "Degvielas cenas Latvijā pēdējo 7 dienu laikā ir ievērojami kritušās (apmēram par 0,08 EUR/L).",
+      "en": "Latvian fuel prices have fallen significantly (approx. 0.08 EUR/L) over the last 7 days.",
+      "ru": "Цены на топливо в Латвии значительно снизились (примерно на 0,08 EUR/л) за последние 7 дней."
     },
     {
-      "lv": "G7 valstis atbrīvo 100 miljonus barelu naftas un dīzeļdegvielas no rezervēm, lai mazinātu cenas Eiropā.",
-      "en": "G7 nations are releasing 100 million barrels of oil and diesel from reserves to curb prices in Europe.",
-      "ru": "Страны G7 высвобождают 100 миллионов баррелей нефти и дизельного топлива из резервов для сдерживания цен в Европе."
+      "lv": "G7 valstis atbrīvo stratēģiskās dīzeļdegvielas rezerves, īpaši mērķējot uz ES degvielas cenām.",
+      "en": "G7 nations are releasing strategic diesel reserves, specifically targeting EU fuel prices.",
+      "ru": "Страны G7 высвобождают стратегические запасы дизельного топлива, целенаправленно снижая цены на топливо в ЕС."
     },
     {
-      "lv": "Pieaug eksports no Tuvajiem Austrumiem, un Saudi Aramco samazina cenas Āzijas pircējiem, palielinot globālo piedāvājumu.",
-      "en": "Middle East crude exports are rising, and Saudi Aramco is cutting prices for Asian buyers, increasing global supply.",
-      "ru": "Экспорт сырой нефти с Ближнего Востока растет, а Saudi Aramco снижает цены для азиатских покупателей, увеличивая мировое предложение."
+      "lv": "Saudi Aramco ir samazinājis cenas Āzijas pircējiem, norādot uz plašāku spiedienu uz jēlnaftas cenām.",
+      "en": "Saudi Aramco has cut prices for Asian buyers, indicating broader downward pressure on crude.",
+      "ru": "Saudi Aramco снизила цены для азиатских покупателей, что указывает на более широкое давление на цены на сырую нефть."
+    },
+    {
+      "lv": "Pieaugošais jēlnaftas eksports no Tuvajiem Austrumiem un iespējamās ASV un Irānas pamiera sarunas veicina naftas cenu kritumu.",
+      "en": "Increased Middle East crude exports and potential US-Iran ceasefire talks are contributing to falling oil prices.",
+      "ru": "Увеличение экспорта сырой нефти с Ближнего Востока и возможные переговоры о прекращении огня между США и Ираном способствуют падению цен на нефть."
     }
   ],
   "analysis": {
-    "lv": "Degvielas cenas Latvijā pēdējās septiņās dienās ir piedzīvojušas ievērojamu kritumu, visiem degvielas veidiem samazinoties par aptuveni 0.08 EUR/L. Pašreizējās cenas ir zemākās pēdējās nedēļas laikā, kas liecina par spēcīgu lejupslīdes tendenci vietējā tirgū.\n\nŠo vietējo kritumu pastiprina vairāki globāli faktori. Brent jēlnaftas cenas ir samazinājušās, ko ietekmē pieaugošais piedāvājums. Jo īpaši G7 valstu lēmums atbrīvot 100 miljonus barelu naftas un dīzeļdegvielas no stratēģiskajām rezervēm ir nozīmīgs solis, kas tieši vērsts uz degvielas cenu samazināšanu Eiropas Savienībā. Turklāt pieaug naftas eksports no Tuvajiem Austrumiem, un Saudi Aramco ir samazinājusi cenas Āzijas pircējiem, vēl vairāk palielinot globālo piedāvājumu un radot spiedienu uz cenām.\n\nŅemot vērā šos apstākļus, ir liela iespējamība, ka degvielas cenas Latvijā turpinās kristies vai vismaz stabilizēsies pašreizējā zemākajā līmenī. Tādēļ autovadītājiem ir ieteicams pagaidīt, pirms uzpildīt degvielu, jo tuvākajā laikā var būt pieejamas vēl labākas cenas.",
-    "en": "Fuel prices in Latvia have experienced a significant decline over the past seven days, with all fuel types falling by approximately 0.08 EUR/L. Current prices are at their lowest point in the last week, indicating a strong downward trend in the local market.\n\nThis local decline is reinforced by several global factors. Brent crude oil prices have been falling, influenced by increased supply. Notably, the G7's decision to release 100 million barrels of oil and diesel from strategic reserves is a major move, specifically aimed at lowering fuel prices within the European Union. Furthermore, rising crude exports from the Middle East and Saudi Aramco's price cuts for Asian buyers are contributing to increased global supply and downward pressure on prices.\n\nGiven these combined circumstances, there is a high probability that fuel prices in Latvia will continue to fall or at least stabilize at their current lower levels. Therefore, drivers are advised to wait before filling up, as better prices may be available in the near future.",
-    "ru": "Цены на топливо в Латвии значительно снизились за последние семь дней, при этом все виды топлива подешевели примерно на 0.08 евро/л. Текущие цены являются самыми низкими за последнюю неделю, что указывает на сильную тенденцию к снижению на местном рынке.\n\nЭто местное снижение усиливается несколькими глобальными факторами. Цены на нефть Brent падают под влиянием увеличения предложения. В частности, решение стран G7 высвободить 100 миллионов баррелей нефти и дизельного топлива из стратегических резервов является важным шагом, направленным непосредственно на снижение цен на топливо в Европейском Союзе. Кроме того, рост экспорта сырой нефти с Ближнего Востока и снижение цен Saudi Aramco для азиатских покупателей способствуют увеличению мирового предложения и оказывают давление на цены.\n\nУчитывая эти совокупные обстоятельства, существует высокая вероятность того, что цены на топливо в Латвии продолжат падать или, по крайней мере, стабилизируются на текущих более низких уровнях. Поэтому водителям рекомендуется подождать, прежде чем заправляться, так как в ближайшем будущем могут быть доступны более выгодные цены."
+    "lv": "Latvijas autovadītāji pašlaik piedzīvo ievērojamu degvielas cenu kritumu, jo dīzeļdegviela, benzīns 95 un benzīns 98 pēdējo septiņu dienu laikā ir samazinājušies par aptuveni 0,08 EUR/L. Šī lejupslīdes tendence seko ievērojamam cenu pieauguma periodam septembrī, kā ziņoja IndexBox un Diena, kur vidējās degvielas cenas pieauga par gandrīz 10%. Pašreizējais samazinājums, ko apstiprināja LSM, liecina par tirgus dinamikas maiņu.\n\nGlobāli vairāki faktori veicina šo lejupslīdes spiedienu. G7 valstu lēmums atbrīvot stratēģiskās dīzeļdegvielas rezerves ir galvenais virzītājspēks, kas īpaši vērsts uz degvielas cenu samazināšanu ES. Šis solis, ko atzinīgi novērtēja Eiropas Komisija, tieši ietekmē rafinēto produktu piedāvājumu. Turklāt Saudi Aramco nesenie cenu samazinājumi Āzijas pircējiem liecina par plašāku atvieglojumu jēlnaftas tirgos. Pieaugošais jēlnaftas eksports no Tuvajiem Austrumiem un notiekošās diskusijas par iespējamu ASV un Irānas pamiera vienošanos arī veicina Brent un WTI jēlnaftas cenu kritumu.\n\nLai gan ģeopolitiskā spriedze, piemēram, Irānas mēģinājumi traucēt satiksmi Hormuza šaurumā, rada zināmu nestabilitāti un var izraisīt īslaicīgu naftas cenu atgūšanos, dominējošie signāli no palielināta piedāvājuma un stratēģiskajām rezervju atbrīvošanas liecina, ka lejupslīdes tendence, visticamāk, turpināsies tuvākajā nākotnē. Tāpēc Latvijas autovadītājiem ieteicams atlikt degvielas iegādi, jo ir paredzami turpmāki cenu samazinājumi.",
+    "en": "Latvian drivers are currently experiencing a notable decline in fuel prices, with Diesel, Petrol 95, and Petrol 98 all falling by approximately 0.08 EUR/L over the past seven days. This downward trend follows a period of significant price increases in September, as reported by IndexBox and Diena, where average fuel prices rose by nearly 10%. The current reduction, confirmed by LSM, suggests a shift in market dynamics.\n\nGlobally, several factors are contributing to this downward pressure. The G7 nations' decision to release strategic diesel reserves is a key driver, specifically aimed at lowering fuel prices within the EU. This move, welcomed by the European Commission, directly impacts the supply of refined products. Furthermore, Saudi Aramco's recent price cuts for Asian buyers signal a broader easing in crude oil markets. Increased crude exports from the Middle East and ongoing discussions about a potential US-Iran ceasefire deal are also contributing to falling Brent and WTI crude prices.\n\nWhile geopolitical tensions, such as Iran's attempts to disrupt traffic in Hormuz, introduce some volatility and can cause temporary oil price rebounds, the dominant signals from increased supply and strategic releases suggest that the downward trend is likely to continue in the short term. Therefore, it is advisable for Latvian drivers to delay their fuel purchases, as further price reductions are anticipated.",
+    "ru": "Латвийские водители в настоящее время наблюдают заметное снижение цен на топливо: дизельное топливо, бензин 95 и бензин 98 подешевели примерно на 0,08 EUR/л за последние семь дней. Эта нисходящая тенденция следует за периодом значительного роста цен в сентябре, как сообщали IndexBox и Diena, когда средние цены на топливо выросли почти на 10%. Текущее снижение, подтвержденное LSM, указывает на изменение рыночной динамики.\n\nВ мировом масштабе этому нисходящему давлению способствуют несколько факторов. Решение стран G7 высвободить стратегические запасы дизельного топлива является ключевым фактором, направленным на снижение цен на топливо в ЕС. Этот шаг, приветствуемый Европейской комиссией, напрямую влияет на предложение нефтепродуктов. Кроме того, недавнее снижение цен Saudi Aramco для азиатских покупателей сигнализирует о более широком ослаблении на рынках сырой нефти. Увеличение экспорта сырой нефти с Ближнего Востока и продолжающиеся дискуссии о возможном соглашении о прекращении огня между США и Ираном также способствуют падению цен на сырую нефть Brent и WTI.\n\nХотя геополитическая напряженность, такая как попытки Ирана нарушить движение в Ормузском проливе, вносит некоторую волатильность и может вызвать временное восстановление цен на нефть, доминирующие сигналы от увеличения предложения и стратегических высвобождений указывают на то, что нисходящая тенденция, вероятно, сохранится в краткосрочной перспективе. Поэтому латвийским водителям рекомендуется отложить покупку топлива, так как ожидаются дальнейшие снижения цен."
   },
   "sources": [
     {
-      "title": "Oil Price Forecast: Rising Middle East Exports Limit the Rebound - FXEmpire",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQM1BUSXRaUkJQVnpudVRpOFlRR1l0RFFRdG5qR2w1S2QxbGx0eXIzdi04M2tfNnQ4dndvcTdETmJtYTJYal9SVjNjU09wU0poQ0FsbXZWNDdxa0RlV0xSU2kyNFR1QV9VMk5WQ25MQ0hNa2MzTFYyWVNKWjdXcHgzbjNmT0Qtb19zRkpTdDVPaExMdVJOS2N4NXBSMWI5Zy1zSnFHWVI4WGR3dFdMbjJUSzlyWTc?oc=5",
-      "published_at": "2026-10-06T07:54:57+00:00"
+      "title": "Natural Gas, WTI Oil, Brent Oil Forecasts – Oil Rebounds As Iran Attempts To Stop Traffic In Hormuz - FXEmpire",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPSnRlOERvc0lHTmlhU0xlcGN0NkpMbGlvcElqYlRtcDdPa2g5enhlMDNwbktXSlRzSFl0azY4TGNrclF6UTJIVGRNMThCY0w5aUEwa3lXdDhPRXlwTFVjLTVXR0hwVEFwVWdCTk9rVlV3TndWanN3eXVuSHFpeTJyMmVhbEtJdVBvRjdSdmJCTWhXNGNIX0t6VXF0eS0ySmcxU0ZoRXJUN3JnYkQ3dDlPZFg1X3Z5NlFpQ1VhVHJfT0ZNSEZackdySlMxSzJKcm01eWpMbVM2V3RiS0pkSV9B?oc=5",
+      "published_at": "2026-10-06T18:40:12+00:00"
+    },
+    {
+      "title": "Latvia Fuel Prices September 2026: Diesel, Petrol, Auto Gas Rise 9.6% - News and Statistics - IndexBox",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOWENpSjJ0V1BGeHloM2ZlNXpWYmNJbHU4aU8xOWFkT0dkZGtSTkp2cTBWNHpIV0pFeURPQnN1MGIyZkxLX3NfdWx5d1JwUldRT1dFWmE4aWVOWGF6b2xSaTdhUlk5N1luMy1VeWQxbDdJU1NESmM0bUV5T0lpZ1piYUNZMGJNWThnN0E?oc=5",
+      "published_at": "2026-10-06T10:50:50+00:00"
+    },
+    {
+      "title": "Latvijā degvielas vidējā cena septembrī pieaugusi par teju 10% - Diena",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNakExcThjbnVJU2FxdGN2Wlh4cUJDQXJtVTVESzhWT21xSHRrNkJpMEx4dHBTS1JaajNpYUVQTFY4UkpiTlJVWFFPemNNTzZienBSd180aFZUbC13aFZ3VEdvOEx3QWpvaTVfZWVjRHZCdFNZQk5ZLU44WGlFcDVFVW1HeEx4UWNSWnJTV3FpZkI1LWhDMHRqSnlsNXRlUTkzUjBjTHdxU08xT3RpbkE?oc=5",
+      "published_at": "2026-10-06T10:47:34+00:00"
     },
     {
       "title": "Natural Gas and Oil Forecast: WTI Tests $88.55 as Brent Eyes $103.90 - FXEmpire",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNS25TaEV3V2pHOTBSSUxlcDc2dFhWa0dYaHFORHFadG8xb3I5OF83cUV3TXNvM1g0OXZuLVdRaHJuZVV3NkxQVEtBQ2JYMkRpX3pvYkR5Tk1vWVJnUjN2alU3d1NHYXhsdmxHRFVHWWhqZnMyWUlqT3JtWHRjX1JBWWVGRFpCZFR6RWpuTXd3TlFpaFAwMkV0MVo2ZWJ5Q3lySGdjVkR2TnNaTzgwNXN6VFZ2d3ZWdnM?oc=5",
-      "published_at": "2026-10-06T07:12:05+00:00"
+      "published_at": "2026-10-06T10:47:30+00:00"
     },
     {
-      "title": "Natural Gas, WTI Oil, Brent Oil Forecasts – Oil Dives As Saudi Aramco Cuts Prices For Asian Buyers - FXEmpire",
-      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPMHVWTF9wTGpKZ0F1a1hMdnZjZHJYbnhxcHJWdjE5bzc5cjVOWWhaS0JwcGlmR21FTmRXS2hZcktqUFVRWHNLdHlDMmphUUpFMjNWNDJmdUgwbXdwVWRqWDJ0T1o4MDY2ZU9YT0hjaDhqaHJ1VDJ4bUkzNGlFT1c3ZDlZYTRoemNmSHNtbjVuZktaTmlKbW95TjVlN2taZ0IwOUdNZjMzaGwxaUxmVjQ1S3hHU0t3cEZZRzVtMGlLQUhBcWxhcW5yZEd2elhFWUJwTEh2LXpwMk1hcEIzd1E?oc=5",
-      "published_at": "2026-10-06T01:57:00+00:00"
-    },
-    {
-      "title": "Brent Crude Oil Hovers Near $100 As G7 Reserve Release Offsets Iran War Supply Fears - NDTV Profit",
-      "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxPekJIRE5lbzV1WE5HM1M5bHZyQWhJRmYzekZjZzVNSGduYXJEQ1lVWms3cE5ETGd1dnp0N3gydV9Xb3pvVkRsXzZURXZjNjBlY3ZSbGZqdlY1U0RxQ2RaT2NnWDZibFdkNGZqN0hTU0hWSThIaGhXb2wzMm9iTHJpcnliUGhVNDd6Zl9PVF90ZTNudFlXbG9wMzBaY2hRYUt3cUVqX1ROM0pheUlOY0NiWmxXM3BubVp5SjN5cE5nbzdFRmw0djJwRG1QclVPcl9ncjdVWFItc3NBb2hkcDJ1aExQVEtEbTNmYzdZX2lfMUc4eWZma0k5dzUyTHRxTUV2Q09wQUE0ZTk1SmPSAZMCQVVfeXFMTVF2QWotZUUyb3VYZHUyYVJiWTF6LUx2bUhsYjZnd29WSF8yZjV5X2ZfRDBpLTFSbTQ4SFExemVXVVliVXA5M0lvUGtOXzZEY2NteHptWnJpeEl6dEtuUWp0TUdfQ1MycDRETFpzS0lldVc4SUhILXRlcndsdm5zcVdlUnhVV2xjRmQwdC16NVV3N09YS0J0eFFYUFJFeGZweGowS2hpNUxKRmhKMWVMaDVTSXB6azJRQ1V1MUxWREZNNXhRejZuSVdac05HbUhEN2hySVhURGZQc2xqdi0tWktXZUVFZ2s3TnVtUlllQnh4dlhDSlQ4b1dWdUFWQlhxV3VDY2Q3amlfZm85SFhobGRDMzQ?oc=5",
-      "published_at": "2026-10-06T00:42:36+00:00"
-    },
-    {
-      "title": "Will the debt crisis and industrial decline lower fuel prices in Latvia? - Inbox.lv",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxONnFsaEJzb1JqUG5Nd3N0MXEzekRkdEtWQmktT19kcU0zZlpkR19wOEh5ZDZhUUZLQ2d1YlpDM3paaTN4MkhKYXFvYUpYdm5wTTAtTkJXVkhYYVJ1QTdrcmdYV0Jlb2xjdlFhS2F3cDZzV0diakt1M1lMNExUVHdpUmZ0a3JwbkxUT0ZBRXlXUHNUc0pWOHFSSWVydGxESEhqQU9oc2lWc25OMlE3bGl2cnppNA?oc=5",
-      "published_at": "2026-10-05T22:41:33+00:00"
+      "title": "Oil Price Forecast: Rising Middle East Exports Limit the Rebound - FXEmpire",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQM1BUSXRaUkJQVnpudVRpOFlRR1l0RFFRdG5qR2w1S2QxbGx0eXIzdi04M2tfNnQ4dndvcTdETmJtYTJYal9SVjNjU09wU0poQ0FsbXZWNDdxa0RlV0xSU2kyNFR1QV9VMk5WQ25MQ0hNa2MzTFYyWVNKWjdXcHgzbjNmT0Qtb19zRkpTdDVPaExMdVJOS2N4NXBSMWI5Zy1zSnFHWVI4WGR3dFdMbjJUSzlyWTc?oc=5",
+      "published_at": "2026-10-06T07:54:57+00:00"
     }
   ],
-  "generated_at": "2026-10-06T08:25:46.238935+00:00",
+  "generated_at": "2026-10-06T19:16:55.743056+00:00",
   "prices_snapshot": {
     "diesel": 2.113,
     "petrol_95": 1.938,
