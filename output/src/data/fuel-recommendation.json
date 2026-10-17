@@ -1,52 +1,52 @@
 {
   "diesel": {
     "recommendation": "buy",
-    "confidence": "high",
+    "confidence": "medium",
     "summary": {
-      "lv": "Dīzeļdegvielas cena ir 7 dienu zemākajā punktā. Globālās jēlnaftas cenas strauji kāpj, sagaidāms cenu pieaugums. Uzpildiet tagad.",
-      "en": "Diesel price is at a 7-day low. Global crude prices are surging, anticipating future increases. Fill up now.",
-      "ru": "Цена на дизельное топливо находится на 7-дневном минимуме. Мировые цены на нефть резко растут, ожидается повышение. Заправьтесь сейчас."
+      "lv": "Dīzeļdegvielas cenas stabilas/zemas. Globālais jēlnaftas kāpums un riski liecina par pieaugumu. IEA dīzeļa atbrīvošana var sniegt īslaicīgu atvieglojumu.",
+      "en": "Diesel prices stable/low. Global crude surge and risks suggest future increases. IEA diesel release may offer temporary relief.",
+      "ru": "Цены на дизель стабильны/низкие. Глобальный рост нефти и риски указывают на будущий рост. Выпуск дизеля МЭА может принести временное облегчение."
     }
   },
   "petrol_95": {
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Benzīna 95 cena ir kritusies no nesenajiem maksimumiem. Globālās jēlnaftas cenas strauji kāpj, sagaidāms cenu pieaugums. Uzpildiet tagad.",
-      "en": "Petrol 95 price has fallen from recent peaks. Global crude prices are surging, anticipating future increases. Fill up now.",
-      "ru": "Цена на бензин 95 упала с недавних пиков. Мировые цены на нефть резко растут, ожидается повышение. Заправьтесь сейчас."
+      "lv": "Benzīna cenas Latvijā jau kāpj. Globālais jēlnaftas kāpums no Tuvo Austrumu spriedzes norāda uz turpmāku pieaugumu.",
+      "en": "Petrol prices in Latvia are rising. Global crude surge from Middle East tensions and supply fears indicates further increases.",
+      "ru": "Цены на бензин в Латвии уже растут. Глобальный рост нефти из-за напряженности на Ближнем Востоке указывает на дальнейший рост."
     }
   },
   "petrol_98": {
     "recommendation": "buy",
     "confidence": "high",
     "summary": {
-      "lv": "Benzīna 98 cena ir kritusies no nesenajiem maksimumiem. Globālās jēlnaftas cenas strauji kāpj, sagaidāms cenu pieaugums. Uzpildiet tagad.",
-      "en": "Petrol 98 price has fallen from recent peaks. Global crude prices are surging, anticipating future increases. Fill up now.",
-      "ru": "Цена на бензин 98 упала с недавних пиков. Мировые цены на нефть резко растут, ожидается повышение. Заправьтесь сейчас."
+      "lv": "Benzīna cenas Latvijā jau kāpj. Globālais jēlnaftas kāpums no Tuvo Austrumu spriedzes norāda uz turpmāku pieaugumu.",
+      "en": "Petrol prices in Latvia are rising. Global crude surge from Middle East tensions and supply fears indicates further increases.",
+      "ru": "Цены на бензин в Латвии уже растут. Глобальный рост нефти из-за напряженности на Ближнем Востоке указывает на дальнейший рост."
     }
   },
   "factors": [
     {
-      "lv": "Brent jēlnaftas cena sasniedza 110 USD, WTI pārsniedza 100 USD pirmo reizi kopš maija.",
-      "en": "Brent crude oil prices hit $110, WTI topped $100 for the first time since May.",
-      "ru": "Цены на нефть Brent достигли $110, WTI превысили $100 впервые с мая."
+      "lv": "Brent jēlnaftas cenas sasniedza 110 USD, pirmo reizi kopš maija, ko veicina eskalējošā spriedze Tuvajos Austrumos un piegādes bažas.",
+      "en": "Brent crude oil prices surged to $110, first time since May, driven by escalating Middle East tensions and supply fears.",
+      "ru": "Цены на нефть Brent достигли 110 долларов, впервые с мая, что обусловлено эскалацией напряженности на Ближнем Востоке и опасениями по поводу поставок."
     },
     {
-      "lv": "Eskalējošie konflikti Tuvajos Austrumos un Ukrainas draudi Krievijas enerģētikas infrastruktūrai rada piegādes bažas.",
-      "en": "Escalating Middle East conflicts and Ukraine's threats to Russian energy infrastructure fuel supply fears.",
-      "ru": "Эскалация конфликтов на Ближнем Востоке и угрозы Украины энергетической инфраструктуре России вызывают опасения по поводу поставок."
+      "lv": "Latvijas benzīna cenas (95 un 98) pēdējo 7 dienu laikā ir pieaugušas par attiecīgi +0.023 EUR un +0.019 EUR, atspoguļojot sākotnējās tirgus reakcijas.",
+      "en": "Latvian petrol prices (95 and 98) have risen by +0.023 EUR and +0.019 EUR respectively over the past 7 days, reflecting initial market reactions.",
+      "ru": "Цены на бензин в Латвии (95 и 98) выросли за последние 7 дней на +0,023 евро и +0,019 евро соответственно, отражая первоначальную реакцию рынка."
     },
     {
-      "lv": "ASV jēlnaftas krājumi samazinājās par 8,6 miljoniem barelu, norādot uz spēcīgu pieprasījumu.",
-      "en": "US crude inventories dropped by 8.6 million barrels, indicating strong demand.",
-      "ru": "Запасы сырой нефти в США сократились на 8,6 млн баррелей, что указывает на высокий спрос."
+      "lv": "ASV jēlnaftas krājumi ievērojami samazinājās par 8,6 miljoniem barelu, norādot uz stingrāku piedāvājumu globālajā tirgū.",
+      "en": "US crude inventories saw a significant drop of 8.6 million barrels, indicating tighter supply in the global market.",
+      "ru": "Запасы сырой нефти в США значительно сократились на 8,6 миллиона баррелей, что указывает на ужесточение предложения на мировом рынке."
     }
   ],
   "analysis": {
-    "lv": "Vietējā tirgū dīzeļdegvielas cena šobrīd ir zemākajā punktā pēdējo 7 dienu laikā, savukārt benzīna 95 un 98 cenas ir kritušās no nedēļas vidus maksimumiem, lai gan šodien tās ir nedaudz stabilizējušās vai pat nedaudz pieaugušas. Tas padara pašreizējās cenas salīdzinoši izdevīgas, salīdzinot ar nesenajiem maksimumiem.\n\nTomēr šo vietējo tendenci aizēno nozīmīgi notikumi globālajā tirgū. Brent jēlnaftas cena ir strauji pieaugusi līdz 110 USD par barelu, bet WTI jēlnaftas cena pārsniegusi 100 USD, sasniedzot līmeni, kas nav redzēts kopš maija. Šo straujo pieaugumu galvenokārt veicina pieaugošā ģeopolitiskā spriedze Tuvajos Austrumos, tostarp Irānas uzbrukumi, un bažas par piegādes traucējumiem, ko vēl vairāk pastiprina Ukrainas draudi Krievijas enerģētikas infrastruktūrai. Turklāt ASV jēlnaftas krājumu samazināšanās par 8,6 miljoniem barelu liecina par spēcīgu pieprasījumu.\n\nŅemot vērā, ka globālās jēlnaftas cenu svārstības parasti ietekmē mazumtirdzniecības cenas Latvijā 1-2 nedēļu laikā, pašreizējais straujais kāpums liecina, ka degvielas cenas Latvijā tuvākajā nākotnē, visticamāk, pieaugs. Tādēļ ir ieteicams uzpildīt degvielu tagad, lai izvairītos no gaidāmā cenu pieauguma.",
-    "en": "Locally, diesel prices are currently at a 7-day low, while Petrol 95 and 98 prices have recently fallen from their mid-week peaks, despite showing slight stability or a minor increase today. This makes current prices relatively favorable compared to recent highs.\n\nHowever, this local trend is overshadowed by significant developments in the global market. Brent crude oil has surged to $110 per barrel, and WTI crude has topped $100, reaching levels not seen since May. This sharp increase is primarily driven by escalating geopolitical tensions in the Middle East, including Iran's attacks, and concerns over supply disruptions, further exacerbated by Ukraine's threats to Russian energy infrastructure. Additionally, a notable drop of 8.6 million barrels in US crude inventories indicates strong demand.\n\nGiven that global crude price movements typically impact Latvian retail prices within 1-2 weeks, the current surge strongly suggests that fuel prices in Latvia are likely to rise in the near future. Therefore, filling up now is advisable to pre-empt these anticipated increases.",
-    "ru": "На местном рынке цена на дизельное топливо в настоящее время находится на 7-дневном минимуме, в то время как цены на бензин 95 и 98 недавно снизились с пиков середины недели, несмотря на небольшую стабилизацию или незначительный рост сегодня. Это делает текущие цены относительно выгодными по сравнению с недавними максимумами.\n\nОднако эта местная тенденция омрачена значительными событиями на мировом рынке. Цена на нефть Brent резко выросла до $110 за баррель, а WTI превысила $100, достигнув уровней, невиданных с мая. Этот резкий рост в основном обусловлен эскалацией геополитической напряженности на Ближнем Востоке, включая атаки Ирана, и опасениями по поводу перебоев в поставках, что еще больше усугубляется угрозами Украины в отношении российской энергетической инфраструктуры. Кроме того, заметное сокращение запасов сырой нефти в США на 8,6 млн баррелей указывает на высокий спрос.\n\nУчитывая, что изменения мировых цен на сырую нефть обычно влияют на розничные цены в Латвии в течение 1-2 недель, текущий резкий рост убедительно свидетельствует о том, что цены на топливо в Латвии, вероятно, вырастут в ближайшем будущем. Поэтому рекомендуется заправиться сейчас, чтобы опередить ожидаемое повышение цен."
+    "lv": "Globālajā jēlnaftas tirgū vērojams ievērojams cenu kāpums, Brent jēlnaftai sasniedzot 110 USD par barelu, kas ir augstākais līmenis kopš maija. Šo kāpumu galvenokārt veicina eskalējošā ģeopolitiskā spriedze Tuvajos Austrumos, īpaši Irānas uzbrukumi un bažas par piegādes traucējumiem. Turklāt Ukrainas nodomi vērsties pret Krievijas enerģētikas infrastruktūru un ASV jēlnaftas krājumu samazināšanās par 8,6 miljoniem barelu vēl vairāk pastiprina piegādes bažas.\n\nLatvijas degvielas tirgū šīs globālās tendences jau sāk atspoguļoties. Benzīna cenas (95 un 98) pēdējo 7 dienu laikā ir pieaugušas, attiecīgi par +0.023 EUR un +0.019 EUR, kas liecina par tirgus reakciju uz pieaugošajām jēlnaftas cenām. Lai gan dīzeļdegvielas cena pēdējā nedēļā ir bijusi stabila vai nedaudz samazinājusies (-0.008 EUR), globālais spiediens uz augšu ir spēcīgs. Starptautiskās Enerģētikas aģentūras (IEA) plāns atbrīvot 20 miljonus barelu dīzeļdegvielas var sniegt īslaicīgu atvieglojumu, taču tas, visticamāk, nespēs pilnībā kompensēt plašāku jēlnaftas cenu kāpumu.\n\nŅemot vērā globālo jēlnaftas cenu straujo kāpumu un jau novēroto benzīna cenu pieaugumu Latvijā, ir sagaidāms, ka tuvākajās 1-2 nedēļās degvielas cenas turpinās pieaugt. Tādēļ autovadītājiem ieteicams uzpildīt degvielu tagad, jo īpaši benzīnu. Dīzeļdegvielas gadījumā, lai gan vietējās cenas ir stabilas, globālie faktori liecina par neizbēgamu pieaugumu, padarot pirkumu šobrīd par saprātīgu lēmumu.",
+    "en": "The global crude oil market is experiencing a significant price surge, with Brent crude hitting $110 per barrel, its highest level since May. This rally is primarily driven by escalating geopolitical tensions in the Middle East, particularly Iran's attacks and concerns over supply disruptions. Furthermore, Ukraine's intentions to target Russian energy infrastructure and a substantial drawdown of US crude inventories by 8.6 million barrels are exacerbating supply fears.\n\nIn the Latvian fuel market, these global trends are already beginning to manifest. Petrol prices (95 and 98) have risen over the past 7 days, by +0.023 EUR and +0.019 EUR respectively, indicating a market reaction to the increasing crude oil costs. While diesel prices have remained stable or slightly decreased (-0.008 EUR) in the last week, the global upward pressure is strong. The International Energy Agency's (IEA) plan to release 20 million barrels of diesel might offer some temporary relief, but it is unlikely to fully offset the broader crude price increases.\n\nGiven the sharp rise in global crude oil prices and the already observed increase in petrol prices in Latvia, it is highly probable that fuel prices will continue to climb in the next 1-2 weeks. Therefore, drivers are advised to fill up now, especially for petrol. For diesel, while local prices are stable, global factors point to an inevitable increase, making a purchase now a prudent decision.",
+    "ru": "На мировом рынке сырой нефти наблюдается значительный рост цен: нефть Brent достигла 110 долларов за баррель, что является самым высоким уровнем с мая. Этот рост в основном обусловлен эскалацией геополитической напряженности на Ближнем Востоке, в частности атаками Ирана и опасениями по поводу перебоев с поставками. Кроме того, намерения Украины атаковать российскую энергетическую инфраструктуру и значительное сокращение запасов сырой нефти в США на 8,6 миллиона баррелей усугубляют опасения по поводу поставок.\n\nНа латвийском топливном рынке эти глобальные тенденции уже начинают проявляться. Цены на бензин (95 и 98) выросли за последние 7 дней на +0,023 евро и +0,019 евро соответственно, что указывает на реакцию рынка на рост цен на сырую нефть. Хотя цены на дизельное топливо оставались стабильными или немного снизились (-0,008 евро) за последнюю неделю, глобальное давление на рост цен очень сильное. План Международного энергетического агентства (МЭА) по выпуску 20 миллионов баррелей дизельного топлива может принести временное облегчение, но вряд ли сможет полностью компенсировать более широкий рост цен на сырую нефть.\n\nУчитывая резкий рост мировых цен на сырую нефть и уже наблюдаемый рост цен на бензин в Латвии, весьма вероятно, что цены на топливо продолжат расти в ближайшие 1-2 недели. Поэтому водителям рекомендуется заправиться сейчас, особенно бензином. Что касается дизельного топлива, то, хотя местные цены стабильны, глобальные факторы указывают на неизбежный рост, что делает покупку сейчас разумным решением."
   },
   "sources": [
     {
@@ -75,7 +75,7 @@
       "published_at": "2026-10-17T00:06:25+00:00"
     }
   ],
-  "generated_at": "2026-10-17T11:55:34.383959+00:00",
+  "generated_at": "2026-10-17T16:47:26.071162+00:00",
   "prices_snapshot": {
     "diesel": 2.031,
     "petrol_95": 1.901,
