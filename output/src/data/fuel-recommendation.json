@@ -1,81 +1,81 @@
 {
   "diesel": {
-    "recommendation": "buy",
+    "recommendation": "wait",
     "confidence": "high",
     "summary": {
-      "lv": "Dīzeļdegvielas cenas ir stabilas un sasniegušas pēdējo 7 dienu zemāko punktu. Globālās cenas pieaugs.",
-      "en": "Diesel prices are stable and at a 7-day low. Global prices are set to rise.",
-      "ru": "Цены на дизельное топливо стабильны и находятся на минимуме за 7 дней. Глобальные цены будут расти."
+      "lv": "Dīzeļdegvielas cenas Latvijā krītas, un globālās naftas cenas samazinās. Eiropa atbrīvo rezerves. Ieteicams pagaidīt.",
+      "en": "Diesel prices in Latvia are falling, global crude prices are down, and Europe released reserves. Recommend waiting.",
+      "ru": "Цены на дизельное топливо в Латвии падают, мировые цены на нефть снижаются, Европа высвобождает резервы. Рекомендуется подождать."
     }
   },
   "petrol_95": {
-    "recommendation": "buy",
-    "confidence": "high",
+    "recommendation": "wait",
+    "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 95 cenas ir kritušās un sasniegušas pēdējo 7 dienu zemāko punktu. Globālās cenas pieaugs.",
-      "en": "Petrol 95 prices have fallen and are at a 7-day low. Global prices are set to rise.",
-      "ru": "Цены на бензин 95 упали и находятся на минимуме за 7 дней. Глобальные цены будут расти."
+      "lv": "Benzīna 95 cenas Latvijā krītas. Globālās naftas cenas samazinās, mazinot piegādes bažas. Ieteicams pagaidīt.",
+      "en": "Petrol 95 prices in Latvia are falling. Global crude prices are down, easing supply fears. Recommend waiting.",
+      "ru": "Цены на бензин 95 в Латвии падают. Мировые цены на нефть снижаются, ослабляя опасения по поводу поставок. Рекомендуется подождать."
     }
   },
   "petrol_98": {
-    "recommendation": "buy",
-    "confidence": "high",
+    "recommendation": "wait",
+    "confidence": "medium",
     "summary": {
-      "lv": "Benzīna 98 cenas ir kritušās un sasniegušas pēdējo 7 dienu zemāko punktu. Globālās cenas pieaugs.",
-      "en": "Petrol 98 prices have fallen and are at a 7-day low. Global prices are set to rise.",
-      "ru": "Цены на бензин 98 упали и находятся на минимуме за 7 дней. Глобальные цены будут расти."
+      "lv": "Benzīna 98 cenas Latvijā krītas. Globālās naftas cenas samazinās, mazinot piegādes bažas. Ieteicams pagaidīt.",
+      "en": "Petrol 98 prices in Latvia are falling. Global crude prices are down, easing supply fears. Recommend waiting.",
+      "ru": "Цены на бензин 98 в Латвии падают. Мировые цены на нефть снижаются, ослабляя опасения по поводу поставок. Рекомендуется подождать."
     }
   },
   "factors": [
     {
-      "lv": "Globālās jēlnaftas cenas (Brent, WTI) strauji pieauga, Brent sasniedzot 117 ASV dolārus un WTI 104 ASV dolārus Tuvo Austrumu konflikta dēļ.",
-      "en": "Global crude oil prices (Brent, WTI) surged, with Brent hitting US$117 and WTI US$104 due to escalating Middle East conflict.",
-      "ru": "Мировые цены на сырую нефть (Brent, WTI) резко выросли, при этом Brent достигла 117 долларов США, а WTI — 104 долларов США из-за конфликта на Ближнем Востоке."
+      "lv": "Degvielas cenas Latvijā (Dīzelis, P95, P98) pēdējo 7 dienu laikā ir samazinājušās par aptuveni 0.043-0.044 EUR/L.",
+      "en": "Latvian fuel prices (Diesel, P95, P98) have fallen by approximately 0.043-0.044 EUR/L over the last 7 days.",
+      "ru": "Цены на топливо в Латвии (дизель, АИ-95, АИ-98) снизились примерно на 0.043-0.044 EUR/л за последние 7 дней."
     },
     {
-      "lv": "OPEC+ saglabāja nemainīgus decembra ražošanas mērķus, nepalielinot piedāvājumu, neskatoties uz ģeopolitisko spriedzi.",
-      "en": "OPEC+ maintained unchanged output targets for December, not increasing supply despite heightened geopolitical tensions.",
-      "ru": "ОПЕК+ сохранила целевые показатели добычи на декабрь без изменений, не увеличивая предложение, несмотря на геополитическую напряженность."
+      "lv": "Globālās jēlnaftas cenas (Brent, WTI) 2. novembrī kritās par 3% līdz aptuveni 110-111 USD par barelu, Irānas un Kataras sarunām mazinot piegādes bažas.",
+      "en": "Global crude oil prices (Brent, WTI) fell by 3% to around $110-111 a barrel on November 2nd, as Iran-Qatar talks eased supply fears.",
+      "ru": "Мировые цены на сырую нефть (Brent, WTI) 2 ноября упали на 3% до примерно 110-111 долларов за баррель, поскольку переговоры между Ираном и Катаром ослабили опасения по поводу поставок."
     },
     {
-      "lv": "Latvijas mazumtirdzniecības cenas benzīnam pēdējo 7 dienu laikā ir kritušās par -0,052 EUR/L, sasniedzot lokālo zemāko punktu, savukārt dīzeļdegviela ir stabila.",
-      "en": "Latvian retail prices for petrol have fallen by -0.052 EUR/L over 7 days, reaching a local low, while diesel is stable at a 7-day low.",
-      "ru": "Розничные цены на бензин в Латвии упали на -0,052 евро/л за 7 дней, достигнув местного минимума, в то время как дизельное топливо стабильно."
+      "lv": "Eiropa ir atbrīvojusi 42 miljonus barelu ārkārtas naftas, no kuriem puse ir dīzeļdegviela, lai samazinātu degvielas cenas.",
+      "en": "Europe has released 42 million barrels of emergency oil, half of which is diesel, to lower fuel prices.",
+      "ru": "Европа высвободила 42 миллиона баррелей аварийной нефти, половина из которых дизельное топливо, для снижения цен на топливо."
     }
   ],
   "analysis": {
-    "lv": "Latvijā pēdējās septiņās dienās novērojamas atšķirīgas tendences degvielas cenās. Benzīna 95 un 98 cenas ir ievērojami kritušās par 0,052 EUR/L, sasniedzot lokālos zemākos punktus. Dīzeļdegvielas cena ir bijusi salīdzinoši stabila, taču arī tā pašlaik ir pēdējo septiņu dienu zemākajā līmenī. Šis kritums, visticamāk, ir saistīts ar vietējiem centieniem samazināt degvielas cenas, kas tika ziņots pagājušajā nedēļā.\n\nTomēr globālajā tirgū situācija ir pretēja un rada nopietnas bažas par nākotnes cenu kāpumu. Jēlnaftas cenas (Brent un WTI) pēdējās dienās ir strauji pieaugušas, Brent sasniedzot pat 117 ASV dolārus par barelu, ko galvenokārt veicina Tuvo Austrumu konflikta eskalācija un uzbrukumi. OPEC+ lēmums saglabāt nemainīgus ražošanas mērķus decembrī, neskatoties uz pieaugošo spriedzi, vēl vairāk pastiprina spiedienu uz cenām.\n\nŅemot vērā, ka globālās cenu svārstības parasti atspoguļojas Latvijas mazumtirdzniecības cenās 1-2 nedēļu laikā, pašreizējais vietējais cenu kritums, visticamāk, ir īslaicīgs. Ieteicams uzpildīt degvielu tagad, kamēr cenas ir zemākas, jo tuvākajā nākotnē, visticamāk, tās atkal pieaugs, reaģējot uz globālajiem tirgus notikumiem.",
-    "en": "Latvia has seen diverging fuel price trends over the past seven days. Petrol 95 and 98 prices have significantly fallen by 0.052 EUR/L, reaching local lows. Diesel prices have been relatively stable but are also currently at their lowest point in the last seven days. This local reduction is likely influenced by reported attempts to reduce fuel prices within Latvia last week.\n\nHowever, the global market presents a contrasting and concerning picture for future price movements. Crude oil prices (Brent and WTI) have surged sharply in recent days, with Brent reaching as high as US$117 per barrel, primarily driven by escalating Middle East conflict and attacks. The decision by OPEC+ to keep December output targets unchanged, despite rising tensions, further exacerbates upward price pressure.\n\nGiven that global price movements typically translate into Latvian retail prices within 1-2 weeks, the current local price dip is likely temporary. It is advisable to fill up now while prices are lower, as they are highly likely to increase in the near future in response to global market developments.",
-    "ru": "В Латвии за последние семь дней наблюдались разнонаправленные тенденции цен на топливо. Цены на бензин 95 и 98 значительно снизились на 0,052 евро/л, достигнув локальных минимумов. Цены на дизельное топливо были относительно стабильными, но также находятся на самом низком уровне за последние семь дней. Это местное снижение, вероятно, связано с сообщениями о попытках снизить цены на топливо в Латвии на прошлой неделе.\n\nОднако на мировом рынке наблюдается противоположная и тревожная картина для будущих движений цен. Цены на сырую нефть (Brent и WTI) резко выросли в последние дни, при этом Brent достигла 117 долларов США за баррель, что в основном обусловлено эскалацией конфликта на Ближнем Востоке и атаками. Решение ОПЕК+ сохранить целевые показатели добычи на декабрь без изменений, несмотря на растущую напряженность, еще больше усиливает повышательное давление на цены.\n\nУчитывая, что глобальные изменения цен обычно отражаются на розничных ценах в Латвии в течение 1-2 недель, текущее местное снижение цен, вероятно, является временным. Рекомендуется заправиться сейчас, пока цены ниже, так как в ближайшем будущем они, скорее всего, снова вырастут в ответ на события на мировом рынке."
+    "lv": "Latvijas degvielas tirgū novērojams nepārtraukts cenu kritums visiem degvielas veidiem, pēdējo 7 dienu laikā cenas samazinājušās par aptuveni 0.043-0.044 EUR/L. Lai gan pēdējās trīs dienas cenas ir stabilizējušās, kopējā tendence joprojām ir lejupejoša, un Rīgā cenas samazinās, kamēr Viļņā un Tallinā tās kāpj. Tas liecina par vietējo tirgus reakciju uz globālajām tendencēm un iespējamiem valdības pasākumiem, lai mazinātu degvielas cenas.\n\nGlobālajā tirgū jēlnaftas cenas pēdējās dienās ir piedzīvojušas ievērojamu kritumu. Pēc tam, kad oktobra beigās Brent jēlnaftas cena sasniedza 117 USD par barelu Tuvo Austrumu konflikta dēļ, novembra sākumā tā strauji kritās līdz aptuveni 110-111 USD par barelu. Šo kritumu veicināja Irānas un Kataras sarunas, kas mazināja bažas par naftas piegādes traucējumiem. Šādas globālās cenu svārstības parasti atspoguļojas Latvijas mazumtirdzniecības cenās 1-2 nedēļu laikā.\n\nPapildus tam, Eiropa ir veikusi konkrētus pasākumus, lai stabilizētu un samazinātu degvielas cenas, atbrīvojot 42 miljonus barelu ārkārtas naftas rezervju, no kuriem puse ir dīzeļdegviela. Šis solis tieši ietekmēs dīzeļdegvielas pieejamību un cenu. Ņemot vērā gan vietējo cenu kritumu, gan globālo jēlnaftas cenu samazināšanos, kā arī Eiropas stratēģiskās rezerves atbrīvošanu, ir sagaidāms, ka degvielas cenas Latvijā turpinās kristies vai vismaz saglabāsies pašreizējā zemajā līmenī. Tādēļ šobrīd ir ieteicams pagaidīt ar degvielas uzpildi.",
+    "en": "The Latvian fuel market shows a continuous decline in prices for all fuel types, with prices falling by approximately 0.043-0.044 EUR/L over the last 7 days. Although prices have stabilized for the past three days, the overall trend remains downwards, and prices in Riga are decreasing while they are rising in Vilnius and Tallinn. This indicates a local market reaction to global trends and potential government measures to curb fuel prices.\n\nIn the global market, crude oil prices have experienced a significant drop in recent days. After Brent crude reached $117 a barrel at the end of October due to the Middle East conflict, it sharply fell to around $110-111 a barrel at the beginning of November. This decline was driven by Iran-Qatar talks, which eased concerns about oil supply disruptions. Such global price fluctuations typically reflect in Latvian retail prices within 1-2 weeks.\n\nFurthermore, Europe has taken concrete steps to stabilize and reduce fuel prices by releasing 42 million barrels of emergency oil reserves, half of which is diesel. This move will directly impact diesel availability and price. Given both the local price drop and the global crude oil price reduction, as well as the release of European strategic reserves, it is expected that fuel prices in Latvia will continue to fall or at least remain at the current low level. Therefore, it is advisable to wait before refueling.",
+    "ru": "На латвийском рынке топлива наблюдается непрерывное снижение цен на все виды топлива: за последние 7 дней цены упали примерно на 0.043-0.044 EUR/л. Хотя в последние три дня цены стабилизировались, общая тенденция остается нисходящей, и цены в Риге снижаются, в то время как в Вильнюсе и Таллинне они растут. Это указывает на реакцию местного рынка на мировые тенденции и возможные меры правительства по сдерживанию цен на топливо.\n\nНа мировом рынке цены на сырую нефть в последние дни значительно снизились. После того как в конце октября цена на нефть Brent достигла 117 долларов за баррель из-за конфликта на Ближнем Востоке, в начале ноября она резко упала до примерно 110-111 долларов за баррель. Это снижение было вызвано переговорами между Ираном и Катаром, которые ослабили опасения по поводу перебоев в поставках нефти. Такие глобальные колебания цен обычно отражаются на розничных ценах в Латвии в течение 1-2 недель.\n\nКроме того, Европа предприняла конкретные шаги для стабилизации и снижения цен на топливо, высвободив 42 миллиона баррелей аварийных запасов нефти, половина из которых составляет дизельное топливо. Этот шаг напрямую повлияет на доступность и цену дизельного топлива. Учитывая как местное снижение цен, так и падение мировых цен на сырую нефть, а также высвобождение европейских стратегических резервов, ожидается, что цены на топливо в Латвии продолжат снижаться или, по крайней мере, останутся на текущем низком уровне. Поэтому в настоящее время рекомендуется подождать с заправкой."
   },
   "sources": [
     {
-      "title": "Valsts palīdzēs, bet ne visiem? Zvērināts advokāts skaidro, vai arī turpmāk Latvija spēs mazināt degvielas cenas - LA.LV",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQZjRXTXItN2s3UGRvVzllZTZuXzByVVhDSTBTSFYzZXM4dk9hUDV2X2ZuR1Qya3JjcE1aellpRkFJczRPcGNTZjlURnU4OFBDT25UN1NXRDN4WUdUbk1IeXd4eUVQbzdFUVZBU3M3WGpTQUZfVnladU9MR25yb0NuM3YycmctOUZEMlZucE5lc24tam9ydnNZR0RKSlNmQVFXTkd2bDNrS0lvbFprOE9MbTYwZG8xWUFGdlRrX2JOenIxMXhhVkE?oc=5",
-      "published_at": "2026-11-01T10:47:43+00:00"
+      "title": "Crude Falls 3% to $110 as Iran–Qatar Talks Ease Supply Fears - HDFC Sky",
+      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQRnhsR1NnZU9oZDNoYWlTdUZZeV83SzJfYnFuTlcyNWxHUGN0c0hmbllQS0V3cjh1X3JPR0VRajFYd1VDMkdLbUtpTWlwY1dYRXpnb2ZJS0tDa0gxdlM4UjJpZXNjS0dzT3VEcW0xcFdLX0E5aHVjSkJhMTdMYWZUQVV0OF9IRXhtVEFPVEpXSFZUM3Y4MHI4aG9ncTZSdTdVTE00cm53d2NXZVVfUlZObmxOZXNPalV4NUhCeUxjM09ieV81djBBYV9IZzB2dkJlZVAyZm1fX2JUTDVqVDltNVdYM3NPRTBpZFFj?oc=5",
+      "published_at": "2026-11-02T04:34:12+00:00"
     },
     {
-      "title": "OPEC+ December Output Targets Unchanged Amid Hormuz Closure - https://houseofsaud.com/",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA0cjVkR1hjWEdHbm00eXQxdFlBS0UzZ1BwRHpLSnZpaHVaRHVweGpTbVhkaEVnb3NpUnQ5bVk1d3VtVDNiYkhxVFNJMGRhT1dBaVYyM1JBeklROUhtQkRnVGFHS19NMG5QQ0xwRU1MbC1jLUh4LWc?oc=5",
-      "published_at": "2026-11-01T07:59:49+00:00"
+      "title": "WTI Crude Pulls Back From Highs Near $100 as US and Iran Plan Talks, Risking 20% Correction - TradingKey",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQQjNmR2hPdXllN1lJZzVVY212akFSMkM3djU1MXE3V3pOUzNYWGJrOWxMcG5JaUZVNjJuWUExQmpiRUVLLVIxQWZEdXJNeWtIUllnTzN6SWhBMjRuNmFjTVhVMnlSQ09xd25IVlI2eVBLQ0k1X0IwMzhBU0ZvcXhsaU1ZSV9FTG9JZkVTZW40WUJFS2p6SnBpV0JmdWxCYmc?oc=5",
+      "published_at": "2026-11-02T03:50:49+00:00"
     },
     {
-      "title": "Trump Turns the Screws on Europe Over Energy Prices - EnergyNow.com",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNLTVIV01jRGVHWDhBaFlSN1BKVkJuQVpRNWk5elNpcDJqSTBhMHN3dy04Z1h6NDQzZjJqMEpSMUl0emFvVmZaOU40MEpVN0NfTDdzTUcwZHdRemdoczNJZ0JranA3MEV4eU1GeWt4aEYwNWVrX2hOVHVlTzZwdk41eFpfb3JsMFhtN3c?oc=5",
-      "published_at": "2026-11-01T02:27:38+00:00"
+      "title": "Global oil prices retreat, Brent falls to USD 111.84 a barrel - IDNFinancials",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTmttT0tiM09mNnprYlVNSk5QOGlJd1ZSUWYzLUw0VmVITWRDZmR3RnhUTFJOZU94dEN2eDAzWmJpZnFyUWFrZ19rWEhzbU83REtKbkt2VXlwbV9sWEJWMzdaaWQ3d0NRejBFRk1XLVRQRklTWHRVN25ZSFJHcGE0ajVDSDRBOG10bzVhSmF3emNUQVVCMXQwNmtSdnplMnhsQm80?oc=5",
+      "published_at": "2026-11-02T03:40:00+00:00"
     },
     {
-      "title": "Core Differences Between West Texas Intermediate (WTI) and Brent Crude and the Affect of the Iran War - EnergyNow.com",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN1ZOVFVuUnFFYUstVktuczhxdzBYN1lUbUlqbTIwZEVnX2lCclN2dDZyeVJxUnFPLXdLLWhHcTd1MUUyM0kxTFBUZWJZSVlfN2RCZkRlRXhqT3ZfdUJTQkFjSkR1dDFsQ2Rmc19VTERhc1hsV2Nka2RDVEFvZ0FUcFdJQ0dCR21lcm5mZU12UzJZZHlyOFh3WGEzVWpCVDlUeHc?oc=5",
-      "published_at": "2026-10-31T21:52:57+00:00"
+      "title": "Oil Price Today (November 2): Crude oil falls to $111 as Iran-Qatar talks continue to end war. What are ex - The Economic Times",
+      "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxQck9aVENkcmxNZVl4QnUzZWtWLVpMaXJTZTgxWkJWRXpfenJ5Y01IWlpmZUh2MXZwN3d6eUYyaE5XbURCbnE3UWJsMXRSbHJ3U2ZLWlZvME40WHBVQmhtWXhiQ19lYlpwc1N5OVdMSFdCYnJwZzFZZFlYOFZCQUZURUxzSDdwU0hnR1BoM0JqbGJ4ZHBYdllGNlRxQjN3ZVZQY0JkTm5hNGV5TnFQcDc4VDJIVHRHTWZnWkFIN3ROR1FBMGxjeWdYcWd2SG5kcVpxWUd2ZzBVVURTOGZUMnZjSXdYQk9HNTRHQS0wbzN1dHN6b0dUaFNaeEIwZ053Y3NNQ1JRcnBqTVQ1bFhhMEh5Tl9Lc0NWaTBrUlNUMNIBogJBVV95cUxQVTl1MVlYVTJmdXNibUpWQmpsZ1dzTzNqSDhBelVoM1JNZzhud2FwaHlfdk1BWldRLTd3NkM1RlNIYTZ1MFRJODhYbnNhUVRtdFZhUEctWGlROXBRbW1PVFVDU053VEN5cmRYU1A2bklNRjBRcmNFamJVT185WW5NWDUwQm94VXBONUs2SUt1Uk9LZXJlZEpESTVLRlZPZF8wRjR6NnR3LWNjaHU5R0dtdUc5bVRpRkluU1FHZV9NR081YWhBWEh1RWsyaE96SUw4b1hYMFpYamR3aG9LNDVJVFo2aWhSMDY5Y0FlbGtOYmFCS2lyQU5BOTdOMnpVNGVXNFRrbVlnUmdmTDdYRzRkU3F2RnloakhEUjUyZzhDSEIwQQ?oc=5",
+      "published_at": "2026-11-02T02:17:08+00:00"
     },
     {
-      "title": "Global Oil Prices Surge Sharply, Brent Hits US$117 and WTI US$104 Amid Middle East Conflict - Aktualita.co",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNeXVpS1BYWTBhQ3hzU3NXUVNTaW1jb0JlSUxmbWNWbTlTbTAxbEczSmdSX1M2NlpYdEJkcDBfdjJVanl1emY5bTA5VGYyUHB5Y1RtY3dXUnk5ekVXdjM5clJqbmtDbzZmWHcwZkJQVWZHZGViZVM2Wm5WLVZzU3VkZUttOWItRDlqV213N0dzZkh6X3RoNl9yOG42d2tlYTRLRDlHSTJpbktQaUh4VmNsRTJzMXZmRXdoampSVkU3RWVhc1Nw?oc=5",
-      "published_at": "2026-10-31T08:28:12+00:00"
+      "title": "Viļņā un Tallinā degvielas cenas kāpj, bet Rīgā – samazinās - liepajniekiem.lv",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQT1RKa19sdWlsTzJOSVFrd2lWQVVlRjZyTEphRkhUVFdna0lEUUNncG85MEJoWXN0NDV4N3lGWFhNRzdGTENpVExSUTFFSzh1T1RnOFg1MTdmdndpM05TbmxMb3R2OHdHZzJyWUJ3TmtGM2FuTU5KdjB6VDR6c3BNenk0QndqWUwyM1UtZ2VuV0MzRjJad19lSVBPR3RTRlFVb255VlZPanYzdnd6VUtBYw?oc=5",
+      "published_at": "2026-11-02T00:29:03+00:00"
     }
   ],
-  "generated_at": "2026-11-01T18:42:58.378919+00:00",
+  "generated_at": "2026-11-02T08:43:32.650806+00:00",
   "prices_snapshot": {
     "diesel": 2.058,
     "petrol_95": 1.844,
