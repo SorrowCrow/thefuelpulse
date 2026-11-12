@@ -1,7 +1,7 @@
 # The Fuel Pulse — Project Status
 
 > **Agents: read before any task. Update relevant section when done.**
-> Last updated: 2026-04-12 (specialty fuel history charts + Telegram diesel bug fix)
+> Last updated: 2026-11-12 (AI recommendation no longer blocks data commit and Telegram)
 
 ---
 
@@ -119,7 +119,7 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 ## GitHub Actions
 | Workflow | Trigger | Purpose |
 |---|---|---|
-| `update-data.yml` | Schedule | Runs scraper, commits updated JSON data |
+| `update-data.yml` | Schedule (winter cron `0 3,9,15`) | Runs scraper, commits updated JSON data, then Telegram and email alerts. AI recommendation failure is a `::warning::`, never a job failure |
 | `weekly-recap.yml` | Schedule | Weekly recap post (partial) |
 
 ---
@@ -142,6 +142,9 @@ Petrol tabs: single Viada series only (ADUS and DUS share same petrol price).
 ---
 
 ## Known Issues / Tech Debt
+- 2026-11-04 to 2026-11-12: every data run failed in `generate_recommendation.py` (Gemini call raised, exit 1), so no prices were committed and Telegram and email were skipped. Fixed 2026-11-12: the script now exits 0 and prints the error as a run warning. Root cause still unknown (job logs need a GitHub login); read the warning on the next run.
+- `gemini-2.5-flash` is deprecated: from 2026-12-01 API calls route to `gemini-3.5-flash-lite`. Used in `generate_recommendation.py` and `scrape_news.py`.
+- Cron is set for winter (EET). Switch back to `0 2,8,14` when Latvia moves to EEST (late March).
 - Cloudflare email obfuscation adds ~1 KB `email-decode.min.js` (3 mailto links in Footer/Contact/About — low impact, Cloudflare-side)
 - AdSense script cannot defer (Google requirement)
 - ads.txt headers verified OK (2026-04-11): `content-type: text/plain`, `x-robots-tag: index, follow`. Cloudflare Transform Rule handles the override: `(http.host eq "thefuelpulse.com") then set-static X-Robots-Tag index, follow` — ensures prod gets `index, follow` while dev domain inherits `noindex, nofollow` from `_headers` `/*`. AdSense "not found" warning is stale crawl cache — no code fix needed, resolves on next AdSense re-crawl (24-48h).

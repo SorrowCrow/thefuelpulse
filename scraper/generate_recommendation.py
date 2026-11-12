@@ -260,6 +260,9 @@ def main() -> None:
             temperature=0.3,
         ),
     )
+    if not response.text:
+        reason = response.candidates[0].finish_reason if response.candidates else "no candidates"
+        raise RuntimeError(f"empty response from {MODEL_NAME} (finish reason: {reason})")
     raw = response.text.strip()
 
     try:
@@ -347,5 +350,19 @@ def main() -> None:
     print(f"\n{'='*50}\nDone.\n{'='*50}\n")
 
 
+def _annotate(message: str) -> str:
+    """Escape text for a GitHub Actions ::warning:: line."""
+    return message.replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+
+
 if __name__ == "__main__":
-    main()
+    # The recommendation is optional. A failure here must never block the
+    # price commit, Telegram and email steps that run after it.
+    try:
+        main()
+    except Exception as e:
+        error = f"{type(e).__name__}: {e}"
+        print(f"  ❌ Recommendation skipped, previous one kept. {error}")
+        print(f"::warning title=AI recommendation skipped::{_annotate(error[:1000])}")
+        write_seed()
+        sys.exit(0)
